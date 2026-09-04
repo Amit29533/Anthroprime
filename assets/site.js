@@ -622,4 +622,122 @@
     });
   }
 
+  /* ════════════════════════════════════════════════════════
+     MODERN INTERACTIVE REFRESH
+     Ambient aurora + cyber-grid + scanline + HUD chips are
+     injected behind every hero, so each page inherits the
+     same depth. Adds interactive diagram focus and shine.
+  ════════════════════════════════════════════════════════ */
+
+  /* ---------- theme broadcast ----------
+     Let other modules know when the theme flips so they
+     can refresh accents without a full page reload. */
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.theme-toggle')){
+      window.setTimeout(function(){
+        document.dispatchEvent(new CustomEvent('ap-theme-change', {
+          detail:{theme: currentTheme()}
+        }));
+      }, 60);
+    }
+  });
+
+  /* ---------- ambient layered background writers ---------- */
+  var ambientHosts = document.querySelectorAll('.hero, .services-hero, .prac-hero, .contact-hero');
+  ambientHosts.forEach(function(host){
+    if(host.querySelector('.site-aurora')) return;
+
+    var aurora = document.createElement('div');
+    aurora.className = 'site-aurora';
+    aurora.setAttribute('aria-hidden','true');
+
+    var grid = document.createElement('div');
+    grid.className = 'site-grid';
+    grid.setAttribute('aria-hidden','true');
+
+    var noise = document.createElement('div');
+    noise.className = 'site-noise';
+    noise.setAttribute('aria-hidden','true');
+
+    var scan = document.createElement('div');
+    scan.className = 'site-scanline';
+    scan.setAttribute('aria-hidden','true');
+
+    host.insertBefore(scan, host.firstChild);
+    host.insertBefore(noise, host.firstChild);
+    host.insertBefore(grid, host.firstChild);
+    host.insertBefore(aurora, host.firstChild);
+  });
+
+  /* ---------- floating HUD chips ---------- */
+  var hudDefaults = {
+    'services-hero': ['Security-first','AI-ready data mesh','Cloud native','Zero Trust'],
+    'prac-hero': ['NIST CSF','Zero Trust','CIS Controls','MITRE ATT&CK'],
+    'contact-hero': ['Response < 1 day','Senior humans only','No sales layer','In confidence']
+  };
+  var hudHosts = document.querySelectorAll('.hero, .services-hero, .prac-hero, .contact-hero');
+  hudHosts.forEach(function(host){
+    if(host.querySelector('.site-mesh-hud') || reduceMotion) return;
+    var custom = (host.getAttribute('data-hud') || '').split('|').filter(Boolean);
+    var list = custom.length ? custom : (hudDefaults[host.className.replace(/\s.*/,'')] || ['Human first','AI · Data · Cloud','Secure by design','Open systems']);
+    var layer = document.createElement('div');
+    layer.className = 'site-mesh-hud';
+    layer.setAttribute('aria-hidden','true');
+    list.slice(0,6).forEach(function(label){
+      var chip = document.createElement('span');
+      chip.className = 'mesh-chip';
+      chip.innerHTML = '<span class="hud-dot"></span>' + label;
+      layer.appendChild(chip);
+    });
+    host.appendChild(layer);
+  });
+
+  /* ---------- interactive diagram: hover focus / slow glow ---------- */
+  var diagrams = document.querySelectorAll('.hero-diagram, .hero-orbit');
+  diagrams.forEach(function(dg){
+    var host = dg.closest('.hero, .services-hero, .prac-hero, .contact-hero') || dg.parentElement;
+    if(!host) return;
+    host.addEventListener('mousemove', function(e){
+      var r = host.getBoundingClientRect();
+      var px = ((e.clientX - r.left) / r.width);
+      var py = ((e.clientY - r.top) / r.height);
+      var dx = (px - 0.5) * 12;
+      var dy = (py - 0.5) * 10;
+      dg.style.transform = 'translateY(-50%) translate(' + dx + 'px,' + dy + 'px)';
+      dg.style.filter = 'drop-shadow(0 0 22px rgba(114,136,214,.32)) drop-shadow(0 26px 60px rgba(26,39,68,.28))';
+    }, {passive:true});
+    host.addEventListener('mouseleave', function(){
+      dg.style.transform = '';
+      dg.style.filter = '';
+    });
+  });
+
+  /* ---------- pointer shine on cards (adds to existing spotlight) ---------- */
+  var shineCards = document.querySelectorAll('.cap-card, .service-card, .framework-card, .industry-card, .checklist-card, .pillar');
+  shineCards.forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty('--shine-x', x + 'px');
+      card.style.setProperty('--shine-y', y + 'px');
+    }, {passive:true});
+  });
+
+  /* ---------- click ripple (subtle) ---------- */
+  if(fineHover && !reduceMotion){
+    var rippleTargets = document.querySelectorAll('.btn-solid, .btn-navy, .btn-primary, .site-cta, .cta-btn, .cap-card, .service-card, .framework-card, .industry-card, .checklist-card');
+    rippleTargets.forEach(function(el){
+      el.addEventListener('pointerdown', function(e){
+        var r = el.getBoundingClientRect();
+        var x = e.clientX - r.left, y = e.clientY - r.top;
+        var ripple = document.createElement('span');
+        ripple.className = 'ap-ripple';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        el.appendChild(ripple);
+        window.setTimeout(function(){ ripple.remove(); }, 800);
+      });
+    });
+  }
+
 })();

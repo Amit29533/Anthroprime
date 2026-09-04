@@ -389,7 +389,7 @@
 </header>
 
 <!-- HERO -->
-<section class="hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
+<section class="hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)" data-hud="Weekly founder sessions|8 pillars of engagement|Pitch &amp; proposal support|Retainer — not hours">
   <div class="wrap" data-reveal>
     <p class="eyebrow">Founder &amp; Executive Advisory</p>
     <h1>Strategic Growth <em>Advisor</em></h1>
@@ -408,45 +408,50 @@
 
   <!-- Animated growth orbit diagram -->
   <svg class="hero-diagram" style="right:3%;width:340px;height:340px" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <!-- Orbiting rings -->
-    <circle cx="170" cy="170" r="145" class="diagram-orbit-ring diagram-rotate" style="animation-duration:40s"/>
-    <circle cx="170" cy="170" r="105" class="diagram-orbit-ring inner diagram-rotate reverse" style="animation-duration:30s"/>
-    <!-- Advisory pillars around outer ring -->
-    <circle cx="170" cy="25" r="18" class="diagram-node"/>
-    <text x="170" y="29" class="diagram-label" style="font-size:8px">Strategy</text>
-    <circle cx="273" cy="67" r="18" class="diagram-node" style="animation-delay:0.5s"/>
-    <text x="273" y="71" class="diagram-label" style="font-size:8px">Revenue</text>
-    <circle cx="315" cy="170" r="18" class="diagram-node" style="animation-delay:1s"/>
-    <text x="315" y="174" class="diagram-label" style="font-size:8px">Partners</text>
-    <circle cx="273" cy="273" r="18" class="diagram-node" style="animation-delay:1.5s"/>
-    <text x="273" y="277" class="diagram-label" style="font-size:8px">Services</text>
-    <circle cx="170" cy="315" r="18" class="diagram-node" style="animation-delay:2s"/>
-    <text x="170" y="319" class="diagram-label" style="font-size:8px">Talent</text>
-    <circle cx="67" cy="273" r="18" class="diagram-node" style="animation-delay:2.5s"/>
-    <text x="67" y="277" class="diagram-label" style="font-size:8px">Marketing</text>
-    <circle cx="25" cy="170" r="18" class="diagram-node" style="animation-delay:3s"/>
-    <text x="25" y="174" class="diagram-label" style="font-size:8px">Advisory</text>
-    <circle cx="67" cy="67" r="18" class="diagram-node" style="animation-delay:3.5s"/>
-    <text x="67" y="71" class="diagram-label" style="font-size:8px">Pitching</text>
-    <!-- Inner orbit nodes (representing growth trajectory) -->
-    <circle cx="170" cy="65" r="10" class="diagram-node" style="animation-delay:0.3s;fill:rgba(184,160,128,0.2);stroke:rgba(184,160,128,0.5)"/>
-    <circle cx="275" cy="170" r="10" class="diagram-node" style="animation-delay:1.1s;fill:rgba(184,160,128,0.2);stroke:rgba(184,160,128,0.5)"/>
-    <circle cx="170" cy="275" r="10" class="diagram-node" style="animation-delay:1.9s;fill:rgba(184,160,128,0.2);stroke:rgba(184,160,128,0.5)"/>
-    <circle cx="65" cy="170" r="10" class="diagram-node" style="animation-delay:2.7s;fill:rgba(184,160,128,0.2);stroke:rgba(184,160,128,0.5)"/>
-    <!-- Connection lines from center -->
-    <line x1="170" y1="170" x2="170" y2="43" class="diagram-line" style="animation-delay:0.2s"/>
-    <line x1="170" y1="170" x2="255" y2="67" class="diagram-line" style="animation-delay:0.4s"/>
-    <line x1="170" y1="170" x2="297" y2="170" class="diagram-line" style="animation-delay:0.6s"/>
-    <line x1="170" y1="170" x2="255" y2="273" class="diagram-line" style="animation-delay:0.8s"/>
-    <line x1="170" y1="170" x2="170" y2="297" class="diagram-line" style="animation-delay:1s"/>
-    <line x1="170" y1="170" x2="85" y2="273" class="diagram-line" style="animation-delay:1.2s"/>
-    <line x1="170" y1="170" x2="43" y2="170" class="diagram-line" style="animation-delay:1.4s"/>
-    <line x1="170" y1="170" x2="85" y2="67" class="diagram-line" style="animation-delay:1.6s"/>
-    <!-- Center hub - The Founder -->
-    <circle cx="170" cy="170" r="30" class="diagram-hub" style="fill:rgba(184,160,128,0.15);stroke:rgba(184,160,128,0.5)"/>
-    <text x="170" y="167" class="diagram-hub-label" style="font-size:11px">The</text>
-    <text x="170" y="180" class="diagram-hub-label" style="font-size:11px">Founder</text>
-  </svg>
+  <defs>
+    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9b190"/><stop offset=".55" stop-color="#e8d7b8"/><stop offset="1" stop-color="#7288d6"/>
+    </linearGradient>
+    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8d7b8" stop-opacity="0"/><stop offset=".5" stop-color="#e8d7b8"/><stop offset="1" stop-color="#e8d7b8" stop-opacity="0"/>
+    </linearGradient>
+  
+    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <circle cx="170" cy="170" r="150" class="dg-ring-soft"/>
+  <circle cx="170" cy="170" r="124" class="dg-ring"/>
+  <circle cx="170" cy="170" r="82" class="dg-ring reverse"/>
+  <circle cx="170" cy="170" r="144" fill="none" stroke="rgba(184,160,128,.08)" stroke-width="22" filter="url(#dgBlur)"/>
+  <line x1="170" y1="170" x2="170" y2="32" class="diagram-line" style="animation-delay:.2s"/>
+  <line x1="170" y1="170" x2="272" y2="66" class="diagram-line" style="animation-delay:.4s"/>
+  <line x1="170" y1="170" x2="308" y2="170" class="diagram-line" style="animation-delay:.6s"/>
+  <line x1="170" y1="170" x2="272" y2="274" class="diagram-line" style="animation-delay:.8s"/>
+  <line x1="170" y1="170" x2="170" y2="308" class="diagram-line" style="animation-delay:1s"/>
+  <line x1="170" y1="170" x2="68" y2="274" class="diagram-line" style="animation-delay:1.2s"/>
+  <line x1="170" y1="170" x2="32" y2="170" class="diagram-line" style="animation-delay:1.4s"/>
+  <line x1="170" y1="170" x2="68" y2="66" class="diagram-line" style="animation-delay:1.6s"/>
+  <g><circle cx="170" cy="32" r="18" class="diagram-node dg-node-data"/><text x="170" y="36" class="dg-label" style="font-size:8px">Strategy</text></g>
+  <g><circle cx="272" cy="66" r="18" class="diagram-node dg-node-infra"/><text x="272" y="70" class="dg-label" style="font-size:8px">Revenue</text></g>
+  <g><circle cx="308" cy="170" r="18" class="diagram-node dg-node-cloud"/><text x="308" y="174" class="dg-label" style="font-size:8px">Partners</text></g>
+  <g><circle cx="272" cy="274" r="18" class="diagram-node dg-node-data"/><text x="272" y="278" class="dg-label" style="font-size:8px">Services</text></g>
+  <g><circle cx="170" cy="308" r="18" class="diagram-node dg-node-infra"/><text x="170" y="312" class="dg-label" style="font-size:8px">Talent</text></g>
+  <g><circle cx="68" cy="274" r="18" class="diagram-node dg-node-cloud"/><text x="68" y="278" class="dg-label" style="font-size:8px">Marketing</text></g>
+  <g><circle cx="32" cy="170" r="18" class="diagram-node dg-node-sec"/><text x="32" y="174" class="dg-label" style="font-size:8px">Advisory</text></g>
+  <g><circle cx="68" cy="66" r="18" class="diagram-node dg-node-ai"/><text x="68" y="70" class="dg-label" style="font-size:8px">Pitching</text></g>
+  <g><circle cx="170" cy="88" r="10" class="diagram-node dg-node-infra"/></g>
+  <g><circle cx="252" cy="170" r="10" class="diagram-node dg-node-cloud"/></g>
+  <g><circle cx="170" cy="252" r="10" class="diagram-node dg-node-data"/></g>
+  <g><circle cx="88" cy="170" r="10" class="diagram-node dg-node-sec"/></g>
+  <circle cx="170" cy="170" r="32" class="dg-core"/>
+  <text x="170" y="166" class="dg-label" style="font-size:10px">The</text>
+  <text x="170" y="180" class="dg-label" style="font-size:10px">Founder</text>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:0px;--dy:-138px;animation-delay:.2s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:102px;--dy:-104px;animation-delay:.9s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:138px;--dy:0px;animation-delay:1.6s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:102px;--dy:104px;animation-delay:2.3s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:0px;--dy:138px;animation-delay:3s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.2" style="--dx:-138px;--dy:0px;animation-delay:3.7s"/>
+</svg>
 </section>
 
 <!-- PHILOSOPHY -->

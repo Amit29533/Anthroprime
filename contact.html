@@ -264,39 +264,41 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
   <!-- Animated communication/network diagram on right -->
   <svg class="hero-diagram" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <!-- Outer rotating ring -->
-    <circle cx="190" cy="190" r="160" class="diagram-orbit-ring diagram-rotate" style="animation-duration:45s"/>
-    <circle cx="190" cy="190" r="120" class="diagram-orbit-ring inner diagram-rotate reverse" style="animation-duration:35s"/>
-    <circle cx="190" cy="190" r="80" class="diagram-orbit-ring"/>
-    <!-- Connection lines from center -->
-    <line x1="190" y1="190" x2="190" y2="60" class="diagram-line" style="animation-delay:0.2s"/>
-    <line x1="190" y1="190" x2="303" y2="125" class="diagram-line" style="animation-delay:0.5s"/>
-    <line x1="190" y1="190" x2="303" y2="255" class="diagram-line" style="animation-delay:0.8s"/>
-    <line x1="190" y1="190" x2="190" y2="320" class="diagram-line" style="animation-delay:1.1s"/>
-    <line x1="190" y1="190" x2="77" y2="255" class="diagram-line" style="animation-delay:1.4s"/>
-    <line x1="190" y1="190" x2="77" y2="125" class="diagram-line" style="animation-delay:1.7s"/>
-    <!-- Center hub -->
-    <circle cx="190" cy="190" r="24" class="diagram-hub"/>
-    <text x="190" y="195" class="diagram-hub-label">AP</text>
-    <!-- Outer nodes -->
-    <circle cx="190" cy="60" r="20" class="diagram-node"/>
-    <text x="190" y="64" class="diagram-label">Email</text>
-    <circle cx="303" cy="125" r="20" class="diagram-node"/>
-    <text x="303" y="129" class="diagram-label">Call</text>
-    <circle cx="303" cy="255" r="20" class="diagram-node"/>
-    <text x="303" y="259" class="diagram-label">Schedule</text>
-    <circle cx="190" cy="320" r="20" class="diagram-node"/>
-    <text x="190" y="324" class="diagram-label">Proposal</text>
-    <circle cx="77" cy="255" r="20" class="diagram-node"/>
-    <text x="77" y="259" class="diagram-label">Advisory</text>
-    <circle cx="77" cy="125" r="20" class="diagram-node"/>
-    <text x="77" y="129" class="diagram-label">Audit</text>
-    <!-- Data flow packets -->
-    <circle cx="190" cy="190" r="3" class="diagram-packet" style="--dx:0px;--dy:-130px;animation-delay:0.2s"/>
-    <circle cx="190" cy="190" r="3" class="diagram-packet" style="--dx:113px;--dy:-65px;animation-delay:1s"/>
-    <circle cx="190" cy="190" r="3" class="diagram-packet" style="--dx:113px;--dy:65px;animation-delay:1.8s"/>
-    <circle cx="190" cy="190" r="3" class="diagram-packet" style="--dx:-113px;--dy:65px;animation-delay:2.6s"/>
-  </svg>
+  <defs>
+    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
+    </linearGradient>
+    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
+    </linearGradient>
+  
+    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <circle cx="190" cy="190" r="168" class="dg-ring-soft"/>
+  <circle cx="190" cy="190" r="138" class="dg-ring"/>
+  <circle cx="190" cy="190" r="92" class="dg-ring reverse"/>
+  <circle cx="190" cy="190" r="160" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="24" filter="url(#dgBlur)"/>
+  <line x1="190" y1="190" x2="190" y2="55" class="diagram-line" style="animation-delay:.2s"/>
+  <line x1="190" y1="190" x2="305" y2="125" class="diagram-line" style="animation-delay:.5s"/>
+  <line x1="190" y1="190" x2="305" y2="255" class="diagram-line" style="animation-delay:.8s"/>
+  <line x1="190" y1="190" x2="190" y2="325" class="diagram-line" style="animation-delay:1.1s"/>
+  <line x1="190" y1="190" x2="75" y2="255" class="diagram-line" style="animation-delay:1.4s"/>
+  <line x1="190" y1="190" x2="75" y2="125" class="diagram-line" style="animation-delay:1.7s"/>
+  <g><circle cx="190" cy="55" r="22" class="diagram-node dg-node-ai"/><text x="190" y="59" class="dg-label">Email</text></g>
+  <g><circle cx="305" cy="125" r="22" class="diagram-node dg-node-cloud"/><text x="305" y="129" class="dg-label">Call</text></g>
+  <g><circle cx="305" cy="255" r="22" class="diagram-node dg-node-data"/><text x="305" y="259" class="dg-label">Schedule</text></g>
+  <g><circle cx="190" cy="325" r="22" class="diagram-node dg-node-infra"/><text x="190" y="329" class="dg-label">Proposal</text></g>
+  <g><circle cx="75" cy="255" r="22" class="diagram-node dg-node-sec"/><text x="75" y="259" class="dg-label">Advisory</text></g>
+  <g><circle cx="75" cy="125" r="22" class="diagram-node dg-node-sec"/><text x="75" y="129" class="dg-label">Audit</text></g>
+  <circle cx="190" cy="190" r="28" class="dg-core"/>
+  <text x="190" y="186" class="dg-label" style="font-size:10px">Talk</text>
+  <text x="190" y="199" class="dg-label" style="font-size:10px">Human</text>
+  <circle class="dg-pack" cx="190" cy="190" r="3.2" style="--dx:0px;--dy:-135px;animation-delay:.2s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.2" style="--dx:115px;--dy:-65px;animation-delay:1s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.2" style="--dx:115px;--dy:65px;animation-delay:1.8s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.2" style="--dx:-115px;--dy:65px;animation-delay:2.6s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.2" style="--dx:-115px;--dy:-65px;animation-delay:3.4s"/>
+</svg>
 
   <div class="scroll-indicator">
     <span>Scroll</span>

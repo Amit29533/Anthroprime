@@ -62,7 +62,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* ══════════════════════════════
    MAIN SITE — GROWTH ADVISORY SPOTLIGHT
 ══════════════════════════════ */
-.growth-spotlight{background:var(--navy);padding:0.7rem 3.5rem;position:relative;z-index:5}
+.growth-spotlight{background:var(--navy);padding:0.7rem 3.5rem;position:relative;z-index:5;overflow:hidden}
+.growth-spotlight::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(46,64,128,0.15),transparent);animation:spotlight-sweep 8s ease-in-out infinite;pointer-events:none}
+@keyframes spotlight-sweep{0%{transform:translateX(-100%)}50%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
 .growth-spotlight-inner{display:flex;align-items:center;justify-content:center;gap:1.1rem;flex-wrap:wrap;text-align:center;max-width:1100px;margin:0 auto}
 .growth-spotlight-tag{flex-shrink:0;font-size:0.64rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy-lt);opacity:0.75;white-space:nowrap}
 .growth-spotlight-title{font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.82rem;line-height:1.4;color:rgba(245,244,241,0.82);letter-spacing:0.01em;margin:0}
@@ -78,7 +80,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:4rem 3.5rem 5rem;position:relative;overflow:hidden;background:var(--surface)}
 .hero-band{position:absolute;top:0;right:0;width:38%;height:100%;background:var(--navy);clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);pointer-events:none;opacity:0.97}
 .hero-band-inner{position:absolute;top:0;right:0;width:36%;height:100%;background:var(--navy2);clip-path:polygon(18% 0,100% 0,100% 100%,6% 100%);pointer-events:none;opacity:0.5}
-.hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none}
+.hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none;animation:ring-breathe 8s ease-in-out infinite}
+@keyframes ring-breathe{0%,100%{transform:translateY(-50%) scale(1);opacity:0.8}50%{transform:translateY(-50%) scale(1.04);opacity:1}}
 .hero-ring::before{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(212,218,240,0.1)}
 .hero-content{display:flex;flex-direction:column;justify-content:center;max-width:600px;position:relative;z-index:1}
 .hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:2.5rem}
@@ -468,7 +471,7 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
     <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:-118.9px;--pdy:-38.6px;animation-delay:3.08s"/>
   </svg>
   <div class="hero-content" data-reveal>
-    <div class="hero-tag">AI · Data · Cloud · Cybersecurity · AI Infrastructure</div>
+    <div class="hero-tag" data-typewriter="AI · Data · Cloud · Cybersecurity · AI Infrastructure">AI · Data · Cloud · Cybersecurity · AI Infrastructure</div>
     <h1>Technology that<br/>starts with <em>people.</em></h1>
     <p class="hero-sub">AnthroPrime Technology delivers elite consulting across AI, data, cloud, and cybersecurity — built on a simple conviction: lasting advantage comes from standing shoulder to shoulder with our clients, starting with your problem, not our product.</p>
     <div class="hero-actions">
@@ -478,8 +481,12 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
   </div>
   <div class="hero-bottom" data-reveal>
     <div><div class="stat-num">Human First</div><div class="stat-label">Our founding principle</div></div>
-    <div><div class="stat-num">5 Disciplines</div><div class="stat-label">AI, Data, Cloud, Security &amp; Infrastructure</div></div>
+    <div><div class="stat-num"><span data-count-to="5" data-count-suffix=" Disciplines">0</span></div><div class="stat-label">AI, Data, Cloud, Security &amp; Infrastructure</div></div>
     <div><div class="stat-num">Gov + PSU</div><div class="stat-label">Sector pipeline</div></div>
+  </div>
+  <div class="scroll-indicator" style="color:var(--text)">
+    <span style="color:var(--muted)">Scroll</span>
+    <div class="scroll-arrow" style="border-color:var(--muted)"></div>
   </div>
 </section>
 
@@ -488,7 +495,7 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
 <section class="capabilities" id="capabilities">
   <div class="capabilities-header" data-reveal>
     <div class="section-tag">— What We Do</div>
-    <h2>Five disciplines. <em>One</em> point of view.</h2>
+    <h2 class="animated-heading">Five disciplines. <em>One</em> point of view.</h2>
   </div>
   <div class="cap-grid" data-reveal-group>
     <div class="cap-card">

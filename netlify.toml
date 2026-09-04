@@ -1,0 +1,34 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/index"
+  to = "/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/practices"
+  to = "/practices.html"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/anthroprime_services.html"
+  status = 301
+
+[[redirects]]
+  from = "/growth-advisor"
+  to = "/strategic-growth-advisor.html"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

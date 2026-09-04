@@ -118,7 +118,8 @@
   .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
   .ladder-step{background:var(--surface);padding:2rem 1.5rem 1.75rem;position:relative}
   .ladder-bar{height:5px;border-radius:3px;background:var(--border2);margin-bottom:1.1rem;overflow:hidden}
-  .ladder-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--navy-mid),var(--sp-accent))}
+  .ladder-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--navy-mid),var(--sp-accent));width:0;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94)}
+  .ladder-step.in-view .ladder-bar span{width:var(--bar-width)}
   .ladder-num{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--sp-accent-dark);margin-bottom:.4rem}
   .ladder-name{font-size:.85rem;font-weight:500;letter-spacing:.03em;color:var(--text);margin-bottom:.5rem}
   .ladder-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.6}
@@ -180,6 +181,53 @@
     <div class="prac-label">Our Practice</div>
     <h1>The standards we build to —<br>not just <em>sell.</em></h1>
     <p class="prac-hero-sub">Every engagement is anchored to the same recognised frameworks, whether or not it's billable. This page is the reference — the frameworks we practice, and the checklists we hand to clients for free. Looking for what we deliver? See our <a href="anthroprime_services.html">Services</a>.</p>
+  </div>
+
+  <!-- Animated framework layers / shield diagram -->
+  <svg class="hero-diagram" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <!-- Concentric shield layers -->
+    <circle cx="190" cy="190" r="155" class="diagram-orbit-ring diagram-rotate" style="animation-duration:50s"/>
+    <circle cx="190" cy="190" r="125" class="diagram-orbit-ring diagram-rotate reverse" style="animation-duration:40s"/>
+    <circle cx="190" cy="190" r="95" class="diagram-orbit-ring"/>
+    <circle cx="190" cy="190" r="65" class="diagram-orbit-ring inner"/>
+    <!-- Framework nodes around outer ring -->
+    <circle cx="190" cy="35" r="22" class="diagram-node"/>
+    <text x="190" y="39" class="diagram-label">NIST</text>
+    <circle cx="324" cy="113" r="22" class="diagram-node" style="animation-delay:0.6s"/>
+    <text x="324" y="117" class="diagram-label">ISO</text>
+    <circle cx="324" cy="267" r="22" class="diagram-node" style="animation-delay:1.2s"/>
+    <text x="324" y="271" class="diagram-label">CIS</text>
+    <circle cx="190" cy="345" r="22" class="diagram-node" style="animation-delay:1.8s"/>
+    <text x="190" y="349" class="diagram-label">MITRE</text>
+    <circle cx="56" cy="267" r="22" class="diagram-node" style="animation-delay:2.4s"/>
+    <text x="56" y="271" class="diagram-label">DPDP</text>
+    <circle cx="56" cy="113" r="22" class="diagram-node" style="animation-delay:3s"/>
+    <text x="56" y="117" class="diagram-label">Zero Trust</text>
+    <!-- Inner ring labels -->
+    <text x="190" y="115" class="diagram-label" style="font-size:8px;opacity:0.6">IDENTIFY</text>
+    <text x="190" y="155" class="diagram-label" style="font-size:8px;opacity:0.6">PROTECT</text>
+    <text x="190" y="225" class="diagram-label" style="font-size:8px;opacity:0.6">DETECT</text>
+    <text x="190" y="265" class="diagram-label" style="font-size:8px;opacity:0.6">RESPOND</text>
+    <!-- Center hub -->
+    <circle cx="190" cy="190" r="28" class="diagram-hub"/>
+    <text x="190" y="194" class="diagram-hub-label" style="font-size:13px">Practice</text>
+    <!-- Connection lines -->
+    <line x1="190" y1="190" x2="190" y2="57" class="diagram-line" style="animation-delay:0.2s"/>
+    <line x1="190" y1="190" x2="302" y2="113" class="diagram-line" style="animation-delay:0.5s"/>
+    <line x1="190" y1="190" x2="302" y2="267" class="diagram-line" style="animation-delay:0.8s"/>
+    <line x1="190" y1="190" x2="190" y2="323" class="diagram-line" style="animation-delay:1.1s"/>
+    <line x1="190" y1="190" x2="78" y2="267" class="diagram-line" style="animation-delay:1.4s"/>
+    <line x1="190" y1="190" x2="78" y2="113" class="diagram-line" style="animation-delay:1.7s"/>
+    <!-- Flow packets -->
+    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:0px;--dy:-133px"/>
+    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:112px;--dy:-77px;animation-delay:0.9s"/>
+    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:112px;--dy:77px;animation-delay:1.7s"/>
+    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:-112px;--dy:77px;animation-delay:2.5s"/>
+  </svg>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
   </div>
 </section>
 
@@ -424,32 +472,32 @@
   </div>
 
   <div class="ladder" data-reveal-group>
-    <div class="ladder-step">
-      <div class="ladder-bar"><span style="width:20%"></span></div>
+    <div class="ladder-step" style="--bar-width:20%">
+      <div class="ladder-bar"><span></span></div>
       <div class="ladder-num">01</div>
       <div class="ladder-name">Ad Hoc</div>
       <div class="ladder-desc">Reactive, undocumented, dependent on individuals.</div>
     </div>
-    <div class="ladder-step">
-      <div class="ladder-bar"><span style="width:40%"></span></div>
+    <div class="ladder-step" style="--bar-width:40%">
+      <div class="ladder-bar"><span></span></div>
       <div class="ladder-num">02</div>
       <div class="ladder-name">Repeatable</div>
       <div class="ladder-desc">Informal but consistent practices, not yet written down.</div>
     </div>
-    <div class="ladder-step">
-      <div class="ladder-bar"><span style="width:60%"></span></div>
+    <div class="ladder-step" style="--bar-width:60%">
+      <div class="ladder-bar"><span></span></div>
       <div class="ladder-num">03</div>
       <div class="ladder-name">Defined</div>
       <div class="ladder-desc">Documented and standardised across the organisation.</div>
     </div>
-    <div class="ladder-step">
-      <div class="ladder-bar"><span style="width:80%"></span></div>
+    <div class="ladder-step" style="--bar-width:80%">
+      <div class="ladder-bar"><span></span></div>
       <div class="ladder-num">04</div>
       <div class="ladder-name">Managed</div>
       <div class="ladder-desc">Measured and monitored against defined KPIs.</div>
     </div>
-    <div class="ladder-step">
-      <div class="ladder-bar"><span style="width:100%"></span></div>
+    <div class="ladder-step" style="--bar-width:100%">
+      <div class="ladder-bar"><span></span></div>
       <div class="ladder-num">05</div>
       <div class="ladder-name">Optimized</div>
       <div class="ladder-desc">Continuously improved, threat-informed, board-visible.</div>
@@ -501,6 +549,25 @@
     });
     refresh();
   });
+
+  // Animate maturity ladder bars when they come into view
+  if('IntersectionObserver' in window){
+    var ladderIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          ladderIO.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.3});
+    document.querySelectorAll('.ladder-step').forEach(function(step){
+      ladderIO.observe(step);
+    });
+  } else {
+    document.querySelectorAll('.ladder-step').forEach(function(step){
+      step.classList.add('in-view');
+    });
+  }
 </script>
 <script src="assets/site.js"></script>
 

@@ -262,64 +262,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     <span class="quicklink"><span>Status</span><span class="live-status"><span class="live-dot"></span><span class="live-text">Accepting new engagements</span></span></span>
   </div>
 
-  <!-- Animated communication/network diagram on right -->
-  <svg class="ap-viz hero-diagram" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
-    </linearGradient>
-    <linearGradient id="ctTunnel" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#8ea0e0" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#c9b190" stop-opacity=".85"/>
-      <stop offset="1" stop-color="#8ea0e0" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="ctBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
-  </defs>
-  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
-  <circle cx="210" cy="210" r="138" class="ap-ring"/>
-  <circle cx="210" cy="210" r="96" class="ap-ring reverse"/>
-  <ellipse cx="210" cy="210" rx="150" ry="52" fill="none" stroke="rgba(174,188,240,.16)" stroke-dasharray="4 8"/>
-  <path d="M70 210 C 120 150, 300 150, 350 210 C 300 270, 120 270, 70 210" fill="none" stroke="url(#ctTunnel)" stroke-width="2.2" filter="url(#ctBlur)"/>
-  <path class="ap-link" d="M70 210 C 120 150, 300 150, 350 210"/>
-  <path class="ap-link" d="M70 210 C 120 270, 300 270, 350 210"/>
-  <g class="ap-node ap-node-ai" transform="translate(210,52)">
-    <title>Email</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <path class="ap-node-icon" d="M-7 -4 h14 v8 h-14z M-7 -4 L0 1 L7 -4"/>
-    <text class="ap-node-label" y="38">Email</text>
-  </g>
-  <g class="ap-node ap-node-cloud" transform="translate(352,140)">
-    <title>Call</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <path class="ap-node-icon" d="M-4 6c4 3 9 4 12 1 l2-2 -4-3 -2 2c-1 .8-3 .4-5-1s-1.8-4-1-5l2-2 -3-4 -2 2c-3 3-2 8 1 12z"/>
-    <text class="ap-node-label" y="38">Call</text>
-  </g>
-  <g class="ap-node ap-node-data" transform="translate(348,292)">
-    <title>Schedule</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <rect class="ap-node-icon" x="-6" y="-5" width="12" height="11" rx="1.5"/><path class="ap-node-icon" d="M-3 -8 v4 M3 -8 v4 M-6 -1 h12"/>
-    <text class="ap-node-label" y="38">Schedule</text>
-  </g>
-  <g class="ap-node ap-node-infra" transform="translate(210,368)">
-    <title>Proposal</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <path class="ap-node-icon" d="M-5 -7 h7 l5 5 v9 h-12z M2 -7 v5 h5"/>
-    <text class="ap-node-label" y="38">Proposal</text>
-  </g>
-  <g class="ap-node ap-node-sec" transform="translate(72,292)">
-    <title>Advisory</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <circle class="ap-node-icon" cx="0" cy="-2" r="3.2"/><path class="ap-node-icon" d="M-7 8c1.4-4 4-6 7-6s5.6 2 7 6"/>
-    <text class="ap-node-label" y="38">Advisory</text>
-  </g>
-  <g class="ap-node ap-node-sec" transform="translate(68,140)">
-    <title>Audit</title><circle class="ap-node-halo" r="24"/><circle class="ap-node-disc" r="16"/>
-    <path class="ap-node-icon" d="M-2 -2 l3 3 6-7 M-6 6 h8"/>
-    <text class="ap-node-label" y="38">Audit</text>
-  </g>
-  <g transform="translate(210,210)">
-    <circle class="ap-core" r="30"/>
-    <path d="M-8 -2 a8 8 0 0 1 16 0 v6 h-3 v-6 a5 5 0 0 0-10 0 v6 h-3z" fill="none" stroke="#f4f1ea" stroke-width="1.4" stroke-linejoin="round"/>
-    <rect x="-10" y="2" width="20" height="12" rx="2" fill="none" stroke="#f4f1ea" stroke-width="1.4"/>
-  </g>
-  <circle class="ap-packet" cx="90" cy="210" r="3.2" style="--dx:240px;--dy:0px;animation-delay:.2s"/>
-  <circle class="ap-packet" cx="90" cy="210" r="3.2" style="--dx:240px;--dy:0px;animation-delay:1.8s"/>
-</svg>
+  <!-- Live, interactive diagram — switch between AI / Cybersecurity / Data (built by assets/site.js) -->
+  <div class="live-viz" data-live-viz="ai"></div>
 
   <div class="scroll-indicator">
     <span>Scroll</span>

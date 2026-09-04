@@ -762,3 +762,374 @@
   }
 
 })();
+
+/* ════════════════════════════════════════════════════════
+   LIVE, INTERACTIVE DIAGRAMS — AI · Cybersecurity · Data
+   Builds each placeholder into a live SVG with telemetry,
+   switchable domains, animated data packets, and clickable
+   nodes. Completely replaces the old static hero SVGs.
+════════════════════════════════════════════════════════ */
+(function(){
+  "use strict";
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- tiny icon library (paths drawn inside a -8..8 box) ---------- */
+  function icon(type){
+    switch(type){
+      case 'database': return '<ellipse cx="0" cy="-4.5" rx="6" ry="2.4"/><path d="M-6 -4.5 V4.5 a6 2.4 0 0 0 12 0 V-4.5"/><path d="M-6 0 a6 2.4 0 0 0 12 0"/>';
+      case 'brain': return '<circle cx="-3.5" cy="-3.5" r="2"/><circle cx="3" cy="-4.2" r="1.7"/><circle cx="5" cy="1" r="1.7"/><circle cx="-1" cy="4.5" r="1.7"/><path d="M-3.5 -3.5 L-1 4.5 M-3.5 -3.5 L3 -4.2 M-1 4.5 L5 1"/>';
+      case 'chip': return '<rect x="-6" y="-6" width="12" height="12" rx="2"/><rect x="-3" y="-3" width="6" height="6" rx="1"/><path d="M-6 -9 v3 M0 -9 v3 M6 -9 v3 M-6 6 v3 M0 6 v3 M6 6 v3 M-9 -6 h3 M-9 0 h3 M-9 6 h3 M6 -6 h3 M6 0 h3 M6 6 h3"/>';
+      case 'shield': return '<path d="M0 -7 L7 -4.5 V1 c0 4.4-3 8-7 9.2 C-3 9-7 5.4-7 1 V-4.5 Z"/><path d="M-3.5 1.5 l2.5 2.5 5-5"/>';
+      case 'cloud': return '<path d="M-6 3.5 c-2.4 0-4-1.8-4-4s1.8-4.2 4.4-4.2c.6-2.6 2.9-4.4 5.6-4.4 2.8 0 5.1 2 5.6 4.7 1.9.2 3.4 1.8 3.4 3.8 0 2.1-1.7 3.9-3.9 3.9z"/>';
+      case 'detect': return '<circle cx="-2" cy="-2" r="4"/><path d="M1 1 L5 5"/>';
+      case 'response': return '<path d="M1 -7 h-6 l-3 6 h5 l-2 8 8-9 h-5"/>';
+      case 'recovery': return '<path d="M0 -6 a6 6 0 0 1 5.9 4.8 M4 -4.7 L5.9 -1.2 M5.9 -1.2 L2.2 .1"/><path d="M0 6 a6 6 0 0 1 -5.9 -4.8 M-4 4.7 L-5.9 1.2 M-5.9 1.2 L-2.2 -.1"/>';
+      case 'zero': return '<circle cx="0" cy="0" r="5"/><rect x="-6" y="-1" width="12" height="2" rx="1"/>';
+      case 'oversight': return '<circle cx="0" cy="-3" r="2.4"/><path d="M-6 6 c1.2-3.4 3.4-5 6-5 s4.8 1.6 6 5"/>';
+      case 'govern': return '<rect x="-6" y="-6" width="12" height="12" rx="2"/><path d="M-3.5 0 l2.2 2.4 5-5.4"/>';
+      case 'learn': return '<path d="M-5 -3 C 0 -7 0 -7 5 -3 M-5 3 C 0 7 0 7 5 3 M-5 3 V-3 M5 3 V-3"/>';
+      case 'source': return '<path d="M-6 6 V2 M-2 6 V-1 M2 6 V-4 M6 6 V-6"/>';
+      case 'intel': return '<circle cx="0" cy="0" r="5"/><circle cx="0" cy="0" r="2"/><path d="M0 -7 V-9 M0 7 V9 M-7 0 H-9 M7 0 H9"/>';
+      case 'pipeline': return '<path d="M-6 4 h4 v-3 h4 M-6 -4 h4 v3 h4"/>';
+      case 'lake': return '<ellipse cx="0" cy="-4.5" rx="6" ry="2.4"/><path d="M-6 -4.5 V4.5 a6 2.4 0 0 0 12 0 V-4.5"/>';
+      case 'insight': return '<path d="M-6 6 V2 M-2 6 V-1 M2 6 V-4 M6 6 V-6"/><path d="M-6 -5 H6"/>';
+      case 'mesh': return '<circle cx="0" cy="0" r="1.7"/><path d="M-5 -4 h4 v4 h-4 z M1 -4 h4 v4 h-4 z M-5 1 h4 v4 h-4 z M1 1 h4 v4 h-4 z"/>';
+      default: return '<circle cx="0" cy="0" r="3.5"/><circle cx="0" cy="0" r="1"/>';
+    }
+  }
+
+  /* ---------- three live diagram configurations ---------- */
+  var VIZ = {
+    ai: {
+      key:'ai', label:'AI Systems', abbr:'AI', sub:'Governed intelligence across the enterprise',
+      coreLabel:'AI Core', coreSub:'Gov. Intelligence',
+      nodes:[
+        {id:'sources',  label:'Data Sources',  sub:'Ingest',    x:96,  y:104, ly:34,  icon:'source',  color:'#8ea0e0', detail:'Streams, APIs, documents and enterprise systems that feed every AI workload — unified, cleaned and versioned before use.'},
+        {id:'models',   label:'Models & Agents', sub:'Train',    x:324, y:104, ly:34,  icon:'brain',   color:'#c9b190', detail:'Foundation and fine-tuned models plus orchestrated agents tested for accuracy, safety and cost before they touch production.'},
+        {id:'oversight',label:'Human Oversight', sub:'Guard',    x:210, y:54,  ly:34,  icon:'oversight', color:'#9bb6e8', detail:'Humans stay in the loop for high-stakes decisions — approval gates, escalation paths and audit trials on every automated action.'},
+        {id:'governance',label:'Governance & Controls', sub:'Comply', x:96, y:316, ly:-34, icon:'govern',  color:'#7d93e0', detail:'Model cards, data lineage, policy guardrails and regulator-ready controls that keep AI explainable, accountable and repeatable.'},
+        {id:'inference',label:'Inference & Apps', sub:'Serve',    x:324, y:316, ly:-34, icon:'chip',     color:'#b8a080', detail:'Cloud-native inference serving with routing, caching and observability so AI products stay fast, resilient and observable.'},
+        {id:'learning', label:'Continuous Learning', sub:'Evolve', x:210, y:366, ly:-34, icon:'learn',   color:'#aebcf0', detail:'Feedback loops, drift detection and retraining pipelines that keep models current without sacrificing stability or control.'}
+      ],
+      metrics:[
+        {label:'Inference', unit:'req/s', val:1284, dec:0, j:36, flash:0},
+        {label:'Accuracy', unit:'%', val:97.4, dec:1, j:.2, min:96, max:99.4, flash:0},
+        {label:'Active Models', unit:'', val:24, dec:0, j:1, min:18, max:30, flash:0},
+        {label:'GPU Util', unit:'%', val:68, dec:0, j:4, min:45, max:92, flash:0},
+        {label:'Drift Alerts', unit:'', val:3, dec:0, j:1, min:0, max:12, flash:1},
+        {label:'Avg Latency', unit:'ms', val:42, dec:0, j:6, min:18, max:95, flash:0}
+      ],
+      legend:[['#8ea0e0','Data'],['#c9b190','Models'],['#9bb6e8','Human'],['#7d93e0','Governance'],['#b8a080','Apps']]
+    },
+    cyber: {
+      key:'cyber', label:'Cybersecurity', abbr:'CYB', sub:'Defence-in-depth across every layer',
+      coreLabel:'SOC', coreSub:'Security Ops',
+      nodes:[
+        {id:'telemetry',label:'Telemetry', sub:'Sensors',  x:96,  y:104, ly:34,  icon:'source',  color:'#8ea0e0', detail:'Endpoint, network, cloud and identity telemetry ingested in real time so the SOC sees the whole attack surface, not fragments.'},
+        {id:'detection',label:'Detection', sub:'Find',     x:324, y:104, ly:34,  icon:'detect',  color:'#c9b190', detail:'Correlation, UEBA and AI-assisted detection tuned to reduce noisy alerts and surface the signals that actually matter.'},
+        {id:'intel',   label:'Threat Intel', sub:'Know',   x:210, y:54,  ly:34,  icon:'intel',   color:'#9bb6e8', detail:'Global threat intelligence and MITRE ATT&CK mapping that keeps detection and hunting aligned to real, current adversaries.'},
+        {id:'zerotrust',label:'Zero Trust', sub:'Verify',  x:96,  y:316, ly:-34, icon:'zero',    color:'#7d93e0', detail:'Never trust, always verify — continuous identity verification, least privilege and micro-segmentation baked into every path.'},
+        {id:'response',label:'Response', sub:'Act',        x:324, y:316, ly:-34, icon:'response', color:'#b8a080', detail:'Orchestrated containment, automated playbooks and human decision points that cut incident response time dramatically.'},
+        {id:'recovery',label:'Recovery', sub:'Restore',    x:210, y:366, ly:-34, icon:'recovery', color:'#aebcf0', detail:'Backup, restore and business-continuity workflows tested and rehearsed so an attack compromises uptime, not trust.'}
+      ],
+      metrics:[
+        {label:'Events', unit:'/s', val:15380, dec:0, j:1200, min:8000, max:24000, flash:0},
+        {label:'Alerts', unit:'today', val:38, dec:0, j:2, min:8, max:75, flash:0},
+        {label:'Blocked', unit:'', val:127, dec:0, j:4, min:70, max:220, flash:0},
+        {label:'MTTD', unit:'min', val:6, dec:0, j:1, min:1, max:18, flash:0},
+        {label:'Coverage', unit:'%', val:94, dec:0, j:1, min:82, max:99, flash:0},
+        {label:'Open Cases', unit:'', val:11, dec:0, j:1, min:2, max:24, flash:1}
+      ],
+      legend:[['#8ea0e0','Sense'],['#c9b190','Detect'],['#9bb6e8','Intel'],['#7d93e0','Verify'],['#b8a080','Act']]
+    },
+    data: {
+      key:'data', label:'Data & Analytics', abbr:'DAT', sub:'A trusted, real-time data fabric',
+      coreLabel:'Data Core', coreSub:'Trusted Fabric',
+      nodes:[
+        {id:'sources', label:'Source Systems', sub:'Collect',  x:96,  y:104, ly:34,  icon:'database', color:'#8ea0e0', detail:'ERP, CRM, logs, IoT, documents and third-party feeds — connected without brittle point-to-point integrations.'},
+        {id:'ingest',  label:'Ingestion',      sub:'Capture',  x:324, y:104, ly:34,  icon:'pipeline', color:'#c9b190', detail:'Real-time streaming and batch pipelines that land data quickly, idempotently and with full replay capability.'},
+        {id:'govern',  label:'Governance',     sub:'Control',  x:210, y:54,  ly:34,  icon:'govern',   color:'#9bb6e8', detail:'Lineage, cataloguing, access policy and data-quality contracts that make enterprise data trustworthy and auditable.'},
+        {id:'lake',    label:'Lakehouse',      sub:'Store',    x:96,  y:316, ly:-34, icon:'lake',    color:'#7d93e0', detail:'Open table formats, Delta/Iceberg-style lakehouses and structured stores that unify analytics and AI workloads.'},
+        {id:'insight', label:'Insights & BI',  sub:'Visualise', x:324, y:316, ly:-34, icon:'insight', color:'#b8a080', detail:'Self-service dashboards, KPIs and embedded analytics that translate the fabric into decisions people can act on.'},
+        {id:'mesh',    label:'Data Mesh',      sub:'Share',    x:210, y:366, ly:-34, icon:'mesh',     color:'#aebcf0', detail:'Domains own their data and expose governed products through a shared mesh — decentralised ownership, centralised trust.'}
+      ],
+      metrics:[
+        {label:'Records', unit:'/s', val:86420, dec:0, j:5200, min:30000, max:130000, flash:0},
+        {label:'Pipelines', unit:'', val:212, dec:0, j:2, min:150, max:280, flash:0},
+        {label:'DQ Valid', unit:'%', val:99.2, dec:1, j:.1, min:97, max:99.9, flash:0},
+        {label:'Queries', unit:'/s', val:540, dec:0, j:18, min:280, max:900, flash:0},
+        {label:'Tables', unit:'', val:1873, dec:0, j:12, min:900, max:2200, flash:0},
+        {label:'Freshness', unit:'min', val:3, dec:0, j:1, min:0, max:15, flash:1}
+      ],
+      legend:[['#8ea0e0','Collect'],['#c9b190','Capture'],['#9bb6e8','Govern'],['#7d93e0','Store'],['#b8a080','Decide']]
+    }
+  };
+
+  /* ---------- format a rolling telemetry value ---------- */
+  function fmt(metric, v){
+    var s;
+    if(typeof metric.dec !== 'undefined' && metric.dec > 0){ s = v.toFixed(metric.dec); }
+    else{ s = Math.round(v).toLocaleString('en-US'); }
+    return s;
+  }
+  function step(metric){
+    var v = metric.val + Math.round((Math.random() - .5) * 2 * metric.j);
+    if(typeof metric.min === 'number'){ v = Math.max(metric.min, v); }
+    if(typeof metric.max === 'number'){ v = Math.min(metric.max, v); }
+    return v;
+  }
+
+  /* ---------- build the SVG for a mode ---------- */
+  function buildStage(cfg){
+    var parts = [];
+    parts.push('<svg class="lv-svg" viewBox="0 0 420 420" role="img" aria-label="' + cfg.label + ' live diagram" xmlns="http://www.w3.org/2000/svg">');
+    parts.push('<defs>' +
+      '<linearGradient id="lvCoreGrad" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="lvWaveGrad" x1="0" y1="0" x2="1" y2="0">' +
+        '<stop offset="0" stop-color="#8ea0e0" stop-opacity="0"/><stop offset=".5" stop-color="#c9b190" stop-opacity=".9"/><stop offset="1" stop-color="#8ea0e0" stop-opacity="0"/>' +
+      '</linearGradient>' +
+    '</defs>');
+    for(var g=1; g<5; g++){
+      var gx = 84 * g;
+      if(gx < 420){ parts.push('<line class="lv-gridline" x1="'+gx+'" y1="0" x2="'+gx+'" y2="420"/>'); }
+      if(gx < 420){ parts.push('<line class="lv-gridline" x1="0" y1="'+gx+'" x2="420" y2="'+gx+'"/>'); }
+    }
+    parts.push('<circle class="lv-orbit" cx="210" cy="210" r="174"/>');
+    parts.push('<circle class="lv-orbit dash" cx="210" cy="210" r="146"/>');
+    parts.push('<circle class="lv-orbit dash rev" cx="210" cy="210" r="104"/>');
+    parts.push('<ellipse class="lv-orbit" cx="210" cy="210" rx="188" ry="66" transform="rotate(-22 210 210)"/>');
+
+    // links from hub to each node
+    cfg.nodes.forEach(function(n){
+      var strong = (n.id === 'governance' || n.id === 'zerotrust' || n.id === 'govern');
+      parts.push('<line class="lv-link' + (strong ? ' strong' : '') + '" x1="210" y1="210" x2="'+n.x+'" y2="'+n.y+'"/>');
+    });
+
+    // hub
+    parts.push('<g class="lv-hub">' +
+      '<circle class="lv-hub-circle" cx="210" cy="210" r="30"/>' +
+      '<text class="lv-hub-label" x="210" y="214">' + cfg.coreLabel + '</text>' +
+      '<text class="lv-hub-label" x="210" y="230" style="font-size:6.5px">' + cfg.coreSub + '</text>' +
+    '</g>');
+    parts.push('<circle class="lv-wave" cx="210" cy="210" r="58"/>');
+
+    // nodes
+    cfg.nodes.forEach(function(n){
+      var iy = n.ly, sy = n.ly + (n.ly > 0 ? 11 : -11);
+      parts.push('<g class="lv-node" data-node="'+n.id+'" tabindex="0" role="button" aria-label="'+n.label+'" transform="translate('+n.x+', '+n.y+')">' +
+        '<circle class="lv-node-halo" r="27"/>' +
+        '<circle class="lv-node-disc" r="17" style="stroke:'+n.color+';"/>' +
+        '<g class="lv-node-icon" transform="translate(0,0)">' + icon(n.icon) + '</g>' +
+        '<text class="lv-node-label" y="'+iy+'">' + n.label + '</text>' +
+        '<text class="lv-node-sub" y="'+sy+'">' + n.sub + '</text>' +
+      '</g>');
+    });
+
+    // moving data packets from hub to nodes
+    cfg.nodes.forEach(function(n, i){
+      var dx = n.x - 210, dy = n.y - 210;
+      parts.push('<circle class="lv-pack" cx="210" cy="210" r="3" style="--dx:'+dx+'px;--dy:'+dy+'px;animation-delay:'+(i*0.42)+'s"/>');
+    });
+
+    parts.push('</svg>');
+    return parts.join('');
+  }
+
+  /* ---------- build a full live-diagram card ---------- */
+  function buildViz(host, cfg){
+    host.classList.add('live-viz');
+    host.setAttribute('role','region');
+    host.setAttribute('aria-label', cfg.label + ' — live interactive diagram');
+
+    var card = document.createElement('div');
+    card.className = 'lv-card';
+
+    var head = document.createElement('div');
+    head.className = 'lv-head';
+    head.innerHTML =
+      '<span class="lv-icon">'+cfg.abbr+'</span>' +
+      '<span><span class="lv-title">'+cfg.label+'</span><br><span class="lv-sub">'+cfg.sub+'</span></span>' +
+      '<span class="lv-status"><span class="lv-dot"></span>Live</span>';
+    card.appendChild(head);
+
+    var tabs = document.createElement('div');
+    tabs.className = 'lv-tabs';
+    ['ai','cyber','data'].forEach(function(k){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'lv-tab' + (k === cfg.key ? ' active' : '');
+      b.setAttribute('data-mode', k);
+      b.innerHTML = '<span>'+VIZ[k].label.replace(' & Analytics','').replace('Systems','')+'</span>';
+      b.setAttribute('aria-pressed', k === cfg.key ? 'true' : 'false');
+      tabs.appendChild(b);
+    });
+    card.appendChild(tabs);
+
+    var stage = document.createElement('div');
+    stage.className = 'lv-stage';
+    var svgWrap = document.createElement('div');
+    svgWrap.innerHTML = buildStage(cfg);
+    stage.appendChild(svgWrap.firstChild);
+
+    var detail = document.createElement('div');
+    detail.className = 'lv-detail';
+    detail.setAttribute('role','status');
+    detail.innerHTML = '<button type="button" class="lv-detail-close" aria-label="Close detail">&#10005;</button><div class="lv-detail-title"></div><div class="lv-detail-body"></div>';
+    stage.appendChild(detail);
+    card.appendChild(stage);
+
+    var readout = document.createElement('div');
+    readout.className = 'lv-readout';
+    readout.setAttribute('aria-live','polite');
+    var metricEls = [];
+    cfg.metrics.forEach(function(m){
+      var cell = document.createElement('div');
+      cell.className = 'lv-metric';
+      cell.innerHTML = '<div class="lv-metric-label">'+m.label+'</div><div class="lv-metric-val">'+fmt(m,m.val)+(m.unit?'<small>'+m.unit+'</small>':'')+'</div>';
+      readout.appendChild(cell);
+      metricEls.push({el:cell, val:cell.querySelector('.lv-metric-val'), m:m});
+    });
+    card.appendChild(readout);
+
+    var legend = document.createElement('div');
+    legend.className = 'lv-legend';
+    cfg.legend.forEach(function(l){
+      var s = document.createElement('span');
+      s.innerHTML = '<i style="background:'+l[0]+';box-shadow:0 0 6px '+l[0]+'"></i>'+l[1];
+      legend.appendChild(s);
+    });
+    card.appendChild(legend);
+
+    var hint = document.createElement('div');
+    hint.className = 'lv-hint';
+    hint.innerHTML = '<b>Click</b> any node for a focused explanation · <b>Switch</b> AI / Cyber / Data';
+    card.appendChild(hint);
+
+    host.appendChild(card);
+
+    /* ---------- interactivity ---------- */
+    var svg = stage.querySelector('.lv-svg');
+    var detailEl = detail;
+    var titleEl = detail.querySelector('.lv-detail-title');
+    var bodyEl = detail.querySelector('.lv-detail-body');
+    var currentActive = null;
+
+    function showDetail(node){
+      if(currentActive){ currentActive.classList.remove('is-active'); }
+      currentActive = node;
+      node.classList.add('is-active');
+      titleEl.textContent = node.getAttribute('aria-label');
+      bodyEl.textContent = node.__detail || '';
+      detailEl.classList.add('show');
+    }
+    function hideDetail(){
+      detailEl.classList.remove('show');
+      if(currentActive){ currentActive.classList.remove('is-active'); currentActive = null; }
+    }
+
+    svg.querySelectorAll('.lv-node').forEach(function(node){
+      var cfgNode = cfg.nodes.filter(function(n){ return n.id === node.getAttribute('data-node'); })[0];
+      if(cfgNode){ node.__detail = cfgNode.detail; }
+      node.addEventListener('click', function(){ showDetail(node); });
+      node.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showDetail(node); }
+      });
+    });
+    detail.querySelector('.lv-detail-close').addEventListener('click', hideDetail);
+    stage.addEventListener('click', function(e){ if(e.target === stage){ hideDetail(); } });
+
+    // pointer parallax on the whole stage
+    if(fineHover && !reduceMotion){
+      stage.addEventListener('mousemove', function(e){
+        var r = stage.getBoundingClientRect();
+        var x = ((e.clientX - r.left) / r.width - .5) * 7;
+        var y = ((e.clientY - r.top) / r.height - .5) * 7;
+        svg.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      });
+      stage.addEventListener('mouseleave', function(){ svg.style.transform = ''; });
+    }
+
+    /* ---------- live telemetry ---------- */
+    function tick(flash){
+      metricEls.forEach(function(row){
+        var v = step(row.m);
+        row.m.val = v;
+        row.val.innerHTML = fmt(row.m, v) + (row.m.unit ? '<small>'+row.m.unit+'</small>' : '');
+        if(flash && row.m.flash){
+          row.el.classList.remove('flash');
+          void row.el.offsetWidth;
+          row.el.classList.add('flash');
+        }
+      });
+    }
+    tick(true);
+    if(!reduceMotion){
+      window.setInterval(function(){ tick(true); }, 1900);
+    } else {
+      window.setInterval(function(){ tick(false); }, 6000);
+    }
+
+    /* ---------- domain switching ---------- */
+    tabs.querySelectorAll('.lv-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var mode = btn.getAttribute('data-mode');
+        var next = VIZ[mode];
+        if(!next || mode === cfg.key) return;
+        cfg = next;
+        host.setAttribute('aria-label', cfg.label + ' — live interactive diagram');
+        head.querySelector('.lv-title').textContent = cfg.label;
+        head.querySelector('.lv-sub').textContent = cfg.sub;
+        head.querySelector('.lv-icon').textContent = cfg.abbr;
+        tabs.querySelectorAll('.lv-tab').forEach(function(b){
+          b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+          b.setAttribute('aria-pressed', b.getAttribute('data-mode') === mode ? 'true' : 'false');
+        });
+        svgWrap.innerHTML = buildStage(cfg);
+        var nextSvg = svgWrap.firstChild;
+        stage.replaceChild(nextSvg, svg);
+        svg = nextSvg;
+        detailEl.classList.remove('show');
+        currentActive = null;
+
+        metricEls = [];
+        readout.innerHTML = '';
+        cfg.metrics.forEach(function(m){
+          var cell = document.createElement('div');
+          cell.className = 'lv-metric';
+          cell.innerHTML = '<div class="lv-metric-label">'+m.label+'</div><div class="lv-metric-val">'+fmt(m,m.val)+(m.unit?'<small>'+m.unit+'</small>':'')+'</div>';
+          readout.appendChild(cell);
+          metricEls.push({el:cell, val:cell.querySelector('.lv-metric-val'), m:m});
+        });
+        tick(true);
+
+        legend.innerHTML = '';
+        cfg.legend.forEach(function(l){
+          var s = document.createElement('span');
+          s.innerHTML = '<i style="background:'+l[0]+';box-shadow:0 0 6px '+l[0]+'"></i>'+l[1];
+          legend.appendChild(s);
+        });
+
+        // re-wire node interactivity
+        svg.querySelectorAll('.lv-node').forEach(function(node){
+          var cNode = cfg.nodes.filter(function(n){ return n.id === node.getAttribute('data-node'); })[0];
+          if(cNode){ node.__detail = cNode.detail; }
+          node.addEventListener('click', function(){ showDetail(node); });
+          node.addEventListener('keydown', function(e){
+            if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showDetail(node); }
+          });
+        });
+      });
+    });
+  }
+
+  document.querySelectorAll('[data-live-viz]').forEach(function(el){
+    var mode = el.getAttribute('data-live-viz') || 'ai';
+    var cfg = VIZ[mode] || VIZ.ai;
+    buildViz(el, cfg);
+  });
+
+})();

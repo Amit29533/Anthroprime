@@ -130,7 +130,7 @@
     font-family: var(--serif);
     font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 300;
-    color: var(--bg);
+    color: #f5f4f1;
     line-height: 1.1;
     margin-bottom: 1.5rem;
   }
@@ -176,7 +176,7 @@
   }
   .pillar-chip:last-child { border-right: none; }
   .pillar-chip:nth-child(5) { flex: 1.7; }
-  .pillar-chip:hover { background: rgba(255,255,255,0.05); color: var(--bg); }
+  .pillar-chip:hover { background: rgba(255,255,255,0.05); color: #f5f4f1; }
   .pillar-chip.active {
     background: var(--surface);
     color: var(--navy);
@@ -249,7 +249,7 @@
   }
   .framework-word.accent {
     background: var(--navy);
-    color: var(--bg);
+    color: #f5f4f1;
     border-color: var(--navy);
   }
 
@@ -311,7 +311,7 @@
     line-height: 1.2;
     transition: color 0.3s;
   }
-  .service-card.expanded .service-name { color: var(--bg); }
+  .service-card.expanded .service-name { color: #f5f4f1; }
 
   .service-tagline {
     font-size: 0.9rem;
@@ -430,7 +430,7 @@
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--navy-mid);
     margin-bottom: 0.75rem;
   }
   .approach-desc {
@@ -628,39 +628,68 @@
   </div>
 
   <!-- Animated five-pillar service interconnection diagram -->
-  <svg class="hero-diagram" style="right:4%;width:350px;height:350px" viewBox="0 0 350 350" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <svg class="ap-viz hero-diagram" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
     </linearGradient>
-    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
+    <radialGradient id="svGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#7288d6" stop-opacity=".4"/><stop offset="1" stop-color="#7288d6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="svSweep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ea0e0" stop-opacity="0"/>
+      <stop offset="1" stop-color="#8ea0e0" stop-opacity=".42"/>
     </linearGradient>
-  
-    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="svBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
   </defs>
-  <circle cx="175" cy="175" r="160" class="dg-ring-soft"/>
-  <circle cx="175" cy="175" r="134" class="dg-ring"/>
-  <circle cx="175" cy="175" r="100" class="dg-ring reverse"/>
-  <circle cx="175" cy="175" r="154" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="22" filter="url(#dgBlur)"/>
-  <line x1="175" y1="175" x2="175" y2="30" class="diagram-line" style="animation-delay:.2s"/>
-  <line x1="175" y1="175" x2="314" y2="112" class="diagram-line" style="animation-delay:.45s"/>
-  <line x1="175" y1="175" x2="249" y2="293" class="diagram-line" style="animation-delay:.7s"/>
-  <line x1="175" y1="175" x2="101" y2="293" class="diagram-line" style="animation-delay:.95s"/>
-  <line x1="175" y1="175" x2="36" y2="112" class="diagram-line" style="animation-delay:1.2s"/>
-  <g><circle cx="175" cy="30" r="29" class="diagram-node dg-node-ai"/><circle cx="175" cy="30" r="37" fill="none" stroke="rgba(114,136,214,.25)"/><text x="175" y="34" class="dg-label">AI</text><text x="175" y="55" class="dg-sub">Systems</text></g>
-  <g><circle cx="314" cy="112" r="29" class="diagram-node dg-node-data"/><circle cx="314" cy="112" r="37" fill="none" stroke="rgba(201,177,144,.25)"/><text x="314" y="116" class="dg-label">Data</text></g>
-  <g><circle cx="249" cy="293" r="29" class="diagram-node dg-node-cloud"/><circle cx="249" cy="293" r="37" fill="none" stroke="rgba(142,160,224,.25)"/><text x="249" y="297" class="dg-label">Cloud</text></g>
-  <g><circle cx="101" cy="293" r="29" class="diagram-node dg-node-infra"/><circle cx="101" cy="293" r="37" fill="none" stroke="rgba(184,160,128,.25)"/><text x="101" y="297" class="dg-label">Infra</text></g>
-  <g><circle cx="36" cy="112" r="29" class="diagram-node dg-node-sec"/><circle cx="36" cy="112" r="37" fill="none" stroke="rgba(114,136,214,.25)"/><text x="36" y="116" class="dg-label">Security</text></g>
-  <circle cx="175" cy="175" r="26" class="dg-core"/>
-  <text x="175" y="171" class="dg-label" style="font-size:10px">Anthro</text>
-  <text x="175" y="184" class="dg-label" style="font-size:10px">Prime</text>
-  <circle class="dg-pack" cx="175" cy="175" r="3.4" style="--dx:0px;--dy:-145px;animation-delay:.2s"/>
-  <circle class="dg-pack" cx="175" cy="175" r="3.4" style="--dx:139px;--dy:-63px;animation-delay:.92s"/>
-  <circle class="dg-pack" cx="175" cy="175" r="3.4" style="--dx:74px;--dy:118px;animation-delay:1.64s"/>
-  <circle class="dg-pack" cx="175" cy="175" r="3.4" style="--dx:-74px;--dy:118px;animation-delay:2.36s"/>
-  <circle class="dg-pack" cx="175" cy="175" r="3.4" style="--dx:-139px;--dy:-63px;animation-delay:3.08s"/>
+  <circle cx="210" cy="210" r="170" fill="url(#svGlow)" filter="url(#svBlur)"/>
+  <line class="ap-cross" x1="210" y1="28" x2="210" y2="392"/>
+  <line class="ap-cross" x1="28" y1="210" x2="392" y2="210"/>
+  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
+  <circle cx="210" cy="210" r="128" class="ap-ring-solid"/>
+  <circle cx="210" cy="210" r="86" class="ap-ring-solid"/>
+  <circle cx="210" cy="210" r="48" class="ap-ring-solid"/>
+  <g class="ap-sweep">
+    <path d="M210 210 L210 42 A168 168 0 0 1 302 70 Z" fill="url(#svSweep)"/>
+  </g>
+  <g class="ap-node ap-node-sec" transform="translate(210,42)">
+    <title>Protect</title>
+    <circle class="ap-node-halo" r="26"/><circle class="ap-node-disc" r="16"/>
+    <path class="ap-node-icon" d="M0 -7 L7 -4.5 V1c0 4.4-3 8-7 9.2C-3 9-7 5.4-7 1V-4.5Z" transform="scale(.9)"/>
+    <text class="ap-node-label" y="40">Protect</text>
+  </g>
+  <g class="ap-node ap-node-ai" transform="translate(352,118)">
+    <title>Detect</title>
+    <circle class="ap-node-halo" r="26"/><circle class="ap-node-disc" r="16"/>
+    <circle class="ap-node-icon" cx="0" cy="0" r="5"/><circle class="ap-node-icon" cx="0" cy="0" r="1.6" fill="#eef2ff" stroke="none"/>
+    <text class="ap-node-label" y="40">Detect</text>
+  </g>
+  <g class="ap-node ap-node-data" transform="translate(330,300)">
+    <title>Respond</title>
+    <circle class="ap-node-halo" r="26"/><circle class="ap-node-disc" r="16"/>
+    <path class="ap-node-icon" d="M-6 4 L0 -6 L6 4 M0 -6 V8"/>
+    <text class="ap-node-label" y="40">Respond</text>
+  </g>
+  <g class="ap-node ap-node-cloud" transform="translate(90,300)">
+    <title>Recover</title>
+    <circle class="ap-node-halo" r="26"/><circle class="ap-node-disc" r="16"/>
+    <path class="ap-node-icon" d="M-6 2 a6 6 0 1 1 10 4 h-10"/>
+    <text class="ap-node-label" y="40">Recover</text>
+  </g>
+  <g class="ap-node ap-node-infra" transform="translate(68,118)">
+    <title>Govern</title>
+    <circle class="ap-node-halo" r="26"/><circle class="ap-node-disc" r="16"/>
+    <path class="ap-node-icon" d="M-7 6 V-2 L0 -7 L7 -2 V6 M-4 6 V2 h8 v4"/>
+    <text class="ap-node-label" y="40">Govern</text>
+  </g>
+  <circle class="ap-blip" cx="268" cy="96" r="3.2"/>
+  <circle class="ap-blip" cx="318" cy="210" r="2.6"/>
+  <circle class="ap-blip" cx="248" cy="292" r="3"/>
+  <circle class="ap-blip" cx="132" cy="268" r="2.4"/>
+  <circle class="ap-blip" cx="118" cy="148" r="2.8"/>
+  <path d="M210 182 l18 6 v14 c0 12-7.5 22-18 25 -10.5-3-18-13-18-25 v-14z" fill="rgba(18,24,42,.75)" stroke="#c9d4f5" stroke-width="1.4"/>
+  <circle class="ap-core" cx="210" cy="210" r="22"/>
+  <text class="ap-core-label" x="210" y="214" style="font-size:11px">SOC</text>
 </svg>
 
   <div class="scroll-indicator" style="color:rgba(212,218,240,0.6)">

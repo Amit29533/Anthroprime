@@ -673,9 +673,10 @@ html[data-theme="dark"]{
 .site-aurora::before,.site-aurora::after{
   content:''; position:absolute; width:46vw; height:46vw; border-radius:50%;
   filter:blur(70px); opacity:.75; will-change:transform;
+  animation:aurora-drift 22s ease-in-out infinite;
 }
-.site-aurora::before{background:radial-gradient(circle at 30% 30%, var(--ap-aurora-a), transparent 62%)}
-.site-aurora::after{background:radial-gradient(circle at 70% 70%, var(--ap-aurora-b), transparent 62%)}
+.site-aurora::before{background:radial-gradient(circle at 30% 30%, var(--ap-aurora-a), transparent 62%); top:-18%; left:-8%}
+.site-aurora::after{background:radial-gradient(circle at 70% 70%, var(--ap-aurora-b), transparent 62%); bottom:-22%; right:-12%; animation-delay:-9s}
 html[data-theme="dark"] .site-aurora::before,
 html[data-theme="dark"] .site-aurora::after{
   filter:blur(80px) saturate(150%);
@@ -718,20 +719,27 @@ html[data-theme="dark"] .site-aurora::after{
 @keyframes hud-in{to{opacity:1;transform:translateY(0)}}
 html[data-theme="dark"] .mesh-chip{color:var(--gh-text,#ecf1ff)}
 
-/* ── glass card / panel refresh (keeps original shared borders) ── */
+/* ── glass card / panel refresh — theme-aware, never wash out copy ── */
 html .service-card, html .industry-card, html .framework-card, html .checklist-card,
 html .coverage-item, html .philosophy-card, html .card, html .grid-card{
-  border:1px solid var(--ap-glass-border) !important;
-  background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
+  border:1px solid color-mix(in srgb, var(--border, var(--ap-glass-border)) 80%, transparent);
+  background:color-mix(in srgb, var(--surface, #faf9f7) 88%, transparent);
   backdrop-filter:blur(18px) saturate(150%);
   -webkit-backdrop-filter:blur(18px) saturate(150%);
   box-shadow:var(--ap-shadow);
   transition:transform .35s var(--gh-ease), box-shadow .35s var(--gh-ease), border-color .35s ease, background .35s ease;
 }
-html .cap-card, html .pillar, html .outcome-item, html .p-step, html .a-step{
-  background:linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.12));
+html .cap-card, html .pillar, html .outcome-item{
+  background:color-mix(in srgb, var(--surface, #faf9f7) 70%, transparent);
   backdrop-filter:blur(14px) saturate(140%);
   -webkit-backdrop-filter:blur(14px) saturate(140%);
+  transition:transform .35s var(--gh-ease), box-shadow .35s var(--gh-ease), background .35s ease;
+}
+/* Navy-surface steps keep a dark glass, not a white wash */
+html .p-step, html .a-step{
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(10px) saturate(130%);
+  -webkit-backdrop-filter:blur(10px) saturate(130%);
   transition:transform .35s var(--gh-ease), box-shadow .35s var(--gh-ease), background .35s ease;
 }
 html[data-theme="dark"] .cap-card,
@@ -742,30 +750,24 @@ html[data-theme="dark"] .checklist-card,
 html[data-theme="dark"] .coverage-item,
 html[data-theme="dark"] .pillar,
 html[data-theme="dark"] .outcome-item,
-html[data-theme="dark"] .p-step,
-html[data-theme="dark"] .a-step,
 html[data-theme="dark"] .philosophy-card,
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .grid-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border-color:rgba(255,255,255,.1);
+  color:inherit;
 }
 html .service-card:hover, html .industry-card:hover, html .framework-card:hover,
 html .checklist-card:hover, html .coverage-item:hover, html .philosophy-card:hover,
 html .card:hover, html .grid-card:hover,
-html .cap-card:hover, html .pillar:hover, html .outcome-item:hover,
-html .p-step:hover, html .a-step:hover{
+html .cap-card:hover, html .pillar:hover, html .outcome-item:hover{
   transform:translateY(-6px);
   box-shadow:var(--ap-shadow-glow);
-  border-color:rgba(114,136,214,.4) !important;
+  border-color:rgba(114,136,214,.45);
 }
-html[data-theme="dark"] .service-card,
-html[data-theme="dark"] .framework-card,
-html[data-theme="dark"] .checklist-card,
-html[data-theme="dark"] .industry-card,
-html[data-theme="dark"] .coverage-item,
-html[data-theme="dark"] .philosophy-card{
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
-  border-color:var(--ap-glass-border) !important;
+html .p-step:hover, html .a-step:hover{
+  background:rgba(255,255,255,.06);
+  box-shadow:0 18px 40px -28px rgba(0,0,0,.45);
 }
 html .cap-card, html .pillar, html .outcome-item, html .p-step,
 html .a-step, html .service-card, html .framework-card, html .industry-card,
@@ -909,16 +911,11 @@ html[data-theme="dark"] .btn-primary{
   paint-order:stroke; stroke:rgba(10,14,24,.35); stroke-width:2px;
 }
 
-/* ── dark-mode focus: hide noisy decorative text / ghost numbers ── */
-html[data-theme="dark"] .dm-hide{display:none !important}
-html[data-theme="dark"] .a-step-num,
-html[data-theme="dark"] .p-step-num,
-html[data-theme="dark"] .service-hero::before,
-html[data-theme="dark"] .coverage-item-num{display:none !important}
+/* Dark mode must never hide copy, numbers, or diagrams.
+   Contrast is handled in the v2 safety-net at the end of this file. */
 html[data-theme="dark"] .stat-num,
 html[data-theme="dark"] .hero-bottom .count-label{font-variant-numeric:tabular-nums}
-html[data-theme="dark"] .hero-ring, html[data-theme="dark"] .hero-band-inner{opacity:.25}
-html[data-theme="dark"] .scrapbook-badge, html[data-theme="dark"] .deco-tag{display:none}
+html[data-theme="dark"] .hero-ring, html[data-theme="dark"] .hero-band-inner{opacity:.55}
 
 /* ── gradient text accent (subtle energy in headings) ── */
 .glow-text{
@@ -963,5 +960,442 @@ html[data-theme="dark"] .ap-ripple{
 .contact-hero-inner, .hero-quicklinks{position:relative; z-index:2}
 .site-aurora, .site-grid, .site-noise, .site-scanline{z-index:0}
 .site-mesh-hud{z-index:1}
-.hero-diagram, .hero-orbit{z-index:1}
+.hero-diagram, .hero-orbit, .ap-viz, .ap-viz-stage{z-index:1}
 .hero-ring{z-index:0}
+
+/* ════════════════════════════════════════════════════════
+   V2 — COHESIVE REFRESH
+   Unique AI / cyber / data diagrams, pointer light, and a
+   dark-mode contrast safety net that never hides copy.
+════════════════════════════════════════════════════════ */
+
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark}
+
+::selection{background:rgba(46,64,128,.22); color:inherit}
+html[data-theme="dark"] ::selection{background:rgba(114,136,214,.38); color:#f6f3ec}
+
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background:
+    radial-gradient(1100px 620px at 8% -12%, rgba(46,64,128,.10), transparent 58%),
+    radial-gradient(900px 520px at 110% 0%, rgba(184,160,128,.08), transparent 55%);
+}
+html[data-theme="dark"] body::before{
+  background:
+    radial-gradient(1100px 620px at 8% -12%, rgba(114,136,214,.16), transparent 58%),
+    radial-gradient(900px 520px at 110% 0%, rgba(184,160,128,.07), transparent 55%);
+}
+
+/* pointer-follow light injected into heroes */
+.ap-pointer-light{
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(420px circle at var(--mx,70%) var(--my,40%), rgba(114,136,214,.16), transparent 58%);
+  mix-blend-mode:soft-light;
+  transition:background .08s linear;
+}
+html[data-theme="dark"] .ap-pointer-light{
+  background:radial-gradient(520px circle at var(--mx,70%) var(--my,40%), rgba(142,160,224,.22), transparent 62%);
+  mix-blend-mode:screen;
+}
+
+/* ── Diagram stage (frosted orb behind unique SVGs) ── */
+.ap-viz-stage{
+  position:absolute; right:4%; top:50%; transform:translateY(-50%);
+  width:min(44vw, 440px); height:min(44vw, 440px);
+  z-index:1; pointer-events:none; overflow:visible;
+}
+.ap-viz-stage::before{
+  content:''; position:absolute; inset:10%;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 42% 38%, rgba(174,188,240,.28), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(201,177,144,.18), transparent 60%),
+    rgba(26,39,68,.18);
+  filter:blur(28px);
+  animation:viz-breathe 8s ease-in-out infinite;
+}
+.ap-viz-stage::after{
+  content:''; position:absolute; inset:14%;
+  border-radius:50%;
+  border:1px solid rgba(174,188,240,.16);
+  box-shadow:
+    inset 0 0 40px rgba(114,136,214,.12),
+    0 0 80px rgba(114,136,214,.16);
+  pointer-events:none;
+}
+@keyframes viz-breathe{
+  0%,100%{transform:scale(1); opacity:.85}
+  50%{transform:scale(1.06); opacity:1}
+}
+.ap-viz-stage .hero-diagram,
+.ap-viz-stage .hero-orbit,
+.ap-viz-stage .ap-viz{
+  position:relative !important;
+  right:auto !important; top:auto !important;
+  transform:none !important; float:none !important; margin:0 !important;
+  width:100% !important; height:100% !important;
+  max-width:none; pointer-events:auto;
+  filter:drop-shadow(0 0 18px rgba(114,136,214,.22)) drop-shadow(0 28px 60px rgba(10,14,28,.35));
+}
+@media (max-width:960px){
+  .ap-viz-stage{display:none}
+}
+
+/* ── Unique diagram language ── */
+.ap-viz{overflow:visible}
+.ap-viz .ap-link{
+  fill:none; stroke:rgba(174,188,240,.38); stroke-width:1;
+  stroke-dasharray:5 9;
+  animation:diagram-stream 6s linear infinite;
+}
+.ap-viz .ap-link-strong{
+  fill:none; stroke:rgba(174,188,240,.55); stroke-width:1.2;
+  stroke-linecap:round;
+}
+.ap-viz .ap-ring{
+  fill:none; stroke:rgba(174,188,240,.28); stroke-width:1;
+  stroke-dasharray:3 10;
+  transform-origin:center; transform-box:fill-box;
+  animation:dg-rotate 28s linear infinite;
+}
+.ap-viz .ap-ring.reverse{animation-direction:reverse; animation-duration:40s; stroke-opacity:.5}
+.ap-viz .ap-ring-solid{fill:none; stroke:rgba(174,188,240,.12); stroke-width:1}
+.ap-viz .ap-grid-line{stroke:rgba(174,188,240,.08); stroke-width:.6}
+.ap-viz .ap-cross{stroke:rgba(174,188,240,.12); stroke-width:.7}
+
+.ap-node{cursor:pointer; transform-box:fill-box; transform-origin:center}
+.ap-node-halo{
+  fill:none; stroke:rgba(174,188,240,.28); stroke-width:1;
+  animation:diagram-pulse 4.2s ease-in-out infinite;
+}
+.ap-node-disc{
+  fill:rgba(18,24,42,.72); stroke:rgba(174,188,240,.7); stroke-width:1.2;
+  filter:drop-shadow(0 0 10px rgba(114,136,214,.45));
+  transition:fill .25s ease, stroke .25s ease, filter .25s ease;
+}
+.ap-node-ai .ap-node-disc{stroke:#8ea0e0}
+.ap-node-data .ap-node-disc{stroke:#c9b190}
+.ap-node-cloud .ap-node-disc{stroke:#9bb6e8}
+.ap-node-sec .ap-node-disc{stroke:#7d93e0}
+.ap-node-infra .ap-node-disc{stroke:#b8a080}
+
+.ap-node-icon{fill:none; stroke:#eef2ff; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round}
+.ap-node-label{
+  font-family:var(--gh-sans), 'DM Sans', sans-serif;
+  font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  fill:#eef2ff; text-anchor:middle;
+  paint-order:stroke; stroke:rgba(10,14,24,.55); stroke-width:3px;
+}
+.ap-node-sub{
+  font-family:var(--gh-sans), 'DM Sans', sans-serif;
+  font-size:8px; letter-spacing:.18em; text-transform:uppercase;
+  fill:rgba(212,218,240,.62); text-anchor:middle;
+  paint-order:stroke; stroke:rgba(10,14,24,.4); stroke-width:2px;
+}
+.ap-core{
+  fill:url(#vizCore); stroke:#c9d4f5; stroke-width:1.6;
+  filter:drop-shadow(0 0 16px rgba(114,136,214,.8));
+}
+.ap-core-label{
+  font-family:var(--gh-serif), 'Cormorant Garamond', serif;
+  font-style:italic; font-size:13px; fill:#f4f1ea; text-anchor:middle;
+}
+.ap-packet{
+  fill:#d5def8; filter:drop-shadow(0 0 6px #aebcf0);
+  animation:dg-packet 5.2s cubic-bezier(.45,.05,.35,1) infinite;
+}
+.ap-sweep{
+  transform-box:view-box; transform-origin:210px 210px;
+  animation:dg-rotate 6.5s linear infinite;
+}
+.ap-packet{
+  transform-box:fill-box; transform-origin:center;
+}
+.ap-blip{
+  fill:#8ea0e0; opacity:.9;
+  animation:ap-blip 2.8s ease-in-out infinite;
+}
+.ap-blip:nth-child(2n){animation-delay:.6s; fill:#c9b190}
+.ap-blip:nth-child(3n){animation-delay:1.2s}
+@keyframes ap-blip{
+  0%,100%{opacity:.25; transform:scale(.7)}
+  50%{opacity:1; transform:scale(1.15)}
+}
+.ap-scan{
+  animation:ap-scan-move 3.6s ease-in-out infinite;
+}
+@keyframes ap-scan-move{
+  0%{transform:translateY(-28px); opacity:0}
+  18%{opacity:.85}
+  82%{opacity:.85}
+  100%{transform:translateY(28px); opacity:0}
+}
+.ap-hex{fill:none; stroke:rgba(174,188,240,.08); stroke-width:.7}
+
+/* Focus state — hover a node, dim the rest */
+.ap-viz.is-focused .ap-node{opacity:.32; transition:opacity .25s ease}
+.ap-viz.is-focused .ap-node.is-active{opacity:1}
+.ap-viz.is-focused .ap-link, .ap-viz.is-focused .ap-link-strong{opacity:.18}
+.ap-viz .ap-node.is-active .ap-node-disc{
+  fill:rgba(114,136,214,.35);
+  filter:drop-shadow(0 0 16px rgba(174,188,240,.9));
+}
+.ap-viz .ap-node.is-active .ap-node-halo{
+  stroke:rgba(174,188,240,.7);
+  animation:none;
+  transform:scale(1.12);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ap-viz .ap-ring, .ap-viz .ap-sweep, .ap-viz .ap-packet,
+  .ap-viz .ap-link, .ap-node-halo, .ap-blip, .ap-scan,
+  .ap-viz-stage::before{animation:none !important}
+}
+
+/* HUD chips — live as a slim rail, never over headlines */
+.site-mesh-hud{
+  inset:auto 4% 18% auto; top:auto; left:auto; right:4%; bottom:18%;
+  width:min(200px, 22vw); height:auto; padding:0;
+  flex-direction:column; align-items:flex-end; gap:.55rem;
+  z-index:2;
+}
+.ap-viz-stage ~ .site-mesh-hud,
+.hero-diagram ~ .site-mesh-hud,
+.hero-orbit ~ .site-mesh-hud{display:none}
+
+/* ── Dark-mode contrast safety net ──
+   Token reuse (--white as both page bg AND on-navy text, --bg as
+   headline color on navy heroes, --navy as body copy on dark cards)
+   is what was swallowing copy. These rules restore luminous type
+   on dark surfaces and ink on cards — nothing is display:none. */
+html[data-theme="dark"] .services-hero,
+html[data-theme="dark"] .prac-hero,
+html[data-theme="dark"] .contact-hero,
+html[data-theme="dark"] .growth-spotlight,
+html[data-theme="dark"] .approach,
+html[data-theme="dark"] .people-band,
+html[data-theme="dark"] .bottleneck,
+html[data-theme="dark"] .bg-navy,
+html[data-theme="dark"] .closer,
+html[data-theme="dark"] .founder-box,
+html[data-theme="dark"] .pillar-card,
+html[data-theme="dark"] .bench-card,
+html[data-theme="dark"] .detail-card.dark,
+html[data-theme="dark"] .cad-card.now,
+html[data-theme="dark"] .bn-card,
+html[data-theme="dark"] .bn-card.accent,
+html[data-theme="dark"] .side-card:not(.light),
+html[data-theme="dark"] .sub-services-panel,
+html[data-theme="dark"] .service-card.expanded{
+  color:#f3f0ea;
+}
+
+html[data-theme="dark"] .hero-headline,
+html[data-theme="dark"] .prac-hero h1,
+html[data-theme="dark"] .contact-hero h1,
+html[data-theme="dark"] .services-hero h1,
+html[data-theme="dark"] .bg-navy h2,
+html[data-theme="dark"] .closer h2,
+html[data-theme="dark"] .bottleneck h2,
+html[data-theme="dark"] .approach-left h2,
+html[data-theme="dark"] .people-intro h2{
+  color:#f6f3ec !important;
+}
+
+html[data-theme="dark"] .hero-sub,
+html[data-theme="dark"] .prac-hero-sub,
+html[data-theme="dark"] .contact-hero p,
+html[data-theme="dark"] .bg-navy .lede,
+html[data-theme="dark"] .closer .lede,
+html[data-theme="dark"] .people-intro p,
+html[data-theme="dark"] .approach-left p{
+  color:rgba(236,233,226,.72) !important;
+}
+
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-ghost:not(.on-light),
+html[data-theme="dark"] .btn-solid,
+html[data-theme="dark"] .btn-navy,
+html[data-theme="dark"] .site-cta,
+html[data-theme="dark"] .cta-btn,
+html[data-theme="dark"] .btn-submit{
+  color:#f6f3ec;
+}
+
+html[data-theme="dark"] .obj-card h3,
+html[data-theme="dark"] .cad-card:not(.now) h3,
+html[data-theme="dark"] .bound-card h3,
+html[data-theme="dark"] .client-card h3,
+html[data-theme="dark"] .philo-copy .quote-line,
+html[data-theme="dark"] .box-caption,
+html[data-theme="dark"] .box-caption b,
+html[data-theme="dark"] .detail-card:not(.dark) h3,
+html[data-theme="dark"] .detail-card:not(.dark) li,
+html[data-theme="dark"] .approach-name,
+html[data-theme="dark"] .framework-name,
+html[data-theme="dark"] .ladder-name,
+html[data-theme="dark"] .checklist-name,
+html[data-theme="dark"] .industry-name,
+html[data-theme="dark"] .service-name,
+html[data-theme="dark"] .pillar-title,
+html[data-theme="dark"] .form-card h2,
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .side-card.light,
+html[data-theme="dark"] .side-card.light h3,
+html[data-theme="dark"] .side-card.light .side-item a,
+html[data-theme="dark"] .side-card.light .side-item p,
+html[data-theme="dark"] .scheduler-header h2,
+html[data-theme="dark"] .sched-summary strong,
+html[data-theme="dark"] .bound-card.do li,
+html[data-theme="dark"] .bound-card.dont li,
+html[data-theme="dark"] .chk-text,
+html[data-theme="dark"] .sla-row span:last-child{
+  color:var(--ink, var(--text, #ece9e2)) !important;
+}
+
+html[data-theme="dark"] .cad-card.now h3,
+html[data-theme="dark"] .cad-card.now p,
+html[data-theme="dark"] .detail-card.dark h3,
+html[data-theme="dark"] .detail-card.dark li,
+html[data-theme="dark"] .detail-card.dark .sub,
+html[data-theme="dark"] .pillar-card h3,
+html[data-theme="dark"] .pillar-card p,
+html[data-theme="dark"] .bench-card h3,
+html[data-theme="dark"] .bench-card p,
+html[data-theme="dark"] .hstat b,
+html[data-theme="dark"] .hstat span,
+html[data-theme="dark"] .service-card.expanded .service-name,
+html[data-theme="dark"] .service-card.expanded .service-tagline{
+  color:#f6f3ec !important;
+}
+
+html[data-theme="dark"] .hstat span,
+html[data-theme="dark"] .pillar-card p,
+html[data-theme="dark"] .bench-card p,
+html[data-theme="dark"] .cad-card.now p{
+  color:rgba(236,233,226,.7) !important;
+}
+
+html[data-theme="dark"] .pillar-chip.active{
+  background:#eef1fb !important;
+  color:#1a2744 !important;
+}
+html[data-theme="dark"] .pillar-chip:not(.active){
+  color:rgba(245,244,241,.72);
+}
+html[data-theme="dark"] .form-error{color:#f0c4a8}
+html[data-theme="dark"] .btn-ghost.on-light{
+  color:var(--ink, #ece9e2);
+  border-color:rgba(236,233,226,.45);
+}
+html[data-theme="dark"] .a-step-num,
+html[data-theme="dark"] .p-step-num{
+  color:rgba(212,218,240,.22);
+  display:block;
+}
+html[data-theme="dark"] .coverage-item-num,
+html[data-theme="dark"] .service-hero::before{
+  display:revert;
+  color:rgba(236,233,226,.16);
+}
+html[data-theme="dark"] .service-card:hover,
+html[data-theme="dark"] .framework-card:hover,
+html[data-theme="dark"] .industry-card:hover,
+html[data-theme="dark"] .approach-step:hover,
+html[data-theme="dark"] .checklist-card:hover{
+  background:#23252b !important;
+  color:var(--text, #ece9e2);
+}
+html[data-theme="dark"] .service-card:hover .service-name,
+html[data-theme="dark"] .service-card:hover .service-tagline,
+html[data-theme="dark"] .framework-card:hover .framework-name,
+html[data-theme="dark"] .framework-card:hover .framework-desc{
+  color:var(--text, #ece9e2) !important;
+}
+
+html[data-theme="dark"] .obj-card,
+html[data-theme="dark"] .cad-card:not(.now),
+html[data-theme="dark"] .bound-card.do,
+html[data-theme="dark"] .bound-card.dont,
+html[data-theme="dark"] .client-card,
+html[data-theme="dark"] .detail-card:not(.dark),
+html[data-theme="dark"] .diagram{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-color:rgba(255,255,255,.1);
+  color:var(--ink, #ece9e2);
+}
+html[data-theme="dark"] .outside-pill{
+  background:rgba(114,136,214,.12);
+  color:#c9d4f5;
+  border-color:#7288d6;
+}
+html[data-theme="dark"] .inside-pill{color:rgba(236,233,226,.75)}
+html[data-theme="dark"] .framework-pill,
+html[data-theme="dark"] .checklist-count{
+  color:#c9d4f5;
+  background:rgba(114,136,214,.12);
+  border-color:rgba(114,136,214,.28);
+}
+html[data-theme="dark"] .field input,
+html[data-theme="dark"] .field select,
+html[data-theme="dark"] .field textarea{
+  background:var(--bg2, #1c1e24);
+  color:var(--text, #ece9e2);
+  border-color:rgba(255,255,255,.16);
+}
+html[data-theme="dark"] .date-pill,
+html[data-theme="dark"] .time-pill{
+  background:var(--bg2, #1c1e24);
+  color:var(--text, #ece9e2);
+}
+html[data-theme="dark"] .date-pill.is-selected,
+html[data-theme="dark"] .time-pill.is-selected{
+  background:#2e4080;
+  color:#f6f3ec;
+  border-color:#7288d6;
+}
+
+/* Keep navy CTA text cream even when --white is remapped to a dark surface */
+html[data-theme="dark"] .btn-primary{color:#f6f3ec !important}
+html[data-theme="dark"] .closer .tagline{color:#d4c2a2}
+
+/* Overlay copy on the homepage service drawer */
+html[data-theme="dark"] #services-overlay,
+html[data-theme="dark"] .ov-nav,
+html[data-theme="dark"] .ov-sidebar,
+html[data-theme="dark"] .service-hero,
+html[data-theme="dark"] .breadcrumb,
+html[data-theme="dark"] .service-body,
+html[data-theme="dark"] .service-footer{
+  color:var(--text-primary, #ece9e2);
+}
+html[data-theme="dark"] .ov-brand,
+html[data-theme="dark"] .service-hero h1,
+html[data-theme="dark"] .section-block h3,
+html[data-theme="dark"] .section-block h2,
+html[data-theme="dark"] .coverage-item h3,
+html[data-theme="dark"] .step-content h3{
+  color:var(--text-primary, #ece9e2) !important;
+}
+html[data-theme="dark"] .ov-close,
+html[data-theme="dark"] .service-nav-title,
+html[data-theme="dark"] .service-hero-desc,
+html[data-theme="dark"] .section-block p,
+html[data-theme="dark"] .coverage-item p,
+html[data-theme="dark"] .step-content p{
+  color:var(--text-secondary, #c4bfb4) !important;
+}
+
+/* Mesh chips stay readable on both themes */
+.mesh-chip{color:var(--gh-text, #2a2720)}
+html[data-theme="dark"] .mesh-chip{color:#eef2ff}
+
+/* Slightly softer chrome */
+.site-header{
+  backdrop-filter:blur(22px) saturate(160%);
+  -webkit-backdrop-filter:blur(22px) saturate(160%);
+}
+.site-cta, .btn-solid, .btn-navy, .btn-primary, .cta-btn{
+  border-radius:8px;
+}

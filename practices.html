@@ -51,7 +51,7 @@
   .prac-hero-inner{position:relative;z-index:2;max-width:760px}
   .prac-label{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sp-accent);margin-bottom:2rem}
   .prac-label::before{content:'';width:28px;height:1px;background:var(--sp-accent);opacity:.7}
-  .prac-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.3rem);font-weight:300;color:var(--bg);line-height:1.1;margin-bottom:1.5rem}
+  .prac-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.3rem);font-weight:300;color:#f5f4f1;line-height:1.1;margin-bottom:1.5rem}
   .prac-hero h1 em{font-style:italic;color:var(--navy-lt)}
   .prac-hero-sub{font-size:1.02rem;font-weight:300;color:rgba(245,244,241,0.7);max-width:560px;line-height:1.8;margin-bottom:0}
   .prac-hero-sub a{color:var(--navy-lt);text-decoration:underline;text-underline-offset:3px}
@@ -134,7 +134,7 @@
   .btn-navy{background:var(--navy);color:#f5f4f1;padding:.9rem 2.2rem;border-radius:2px;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-block}
   .btn-navy:hover{opacity:.9;transform:translateY(-2px)}
   .btn-outline{border:1px solid var(--border2);color:var(--text);padding:.9rem 2.2rem;border-radius:2px;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-block}
-  .btn-outline:hover{border-color:var(--navy);color:var(--navy)}
+  .btn-outline:hover{border-color:var(--navy-mid);color:var(--navy-mid)}
 
   @media (max-width:900px){
     .prac-hero,.prac-section,.prac-cta{padding-left:1.5rem;padding-right:1.5rem}
@@ -184,46 +184,61 @@
   </div>
 
   <!-- Animated framework layers / shield diagram -->
-  <svg class="hero-diagram" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <svg class="ap-viz hero-diagram" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
     </linearGradient>
-    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
-    </linearGradient>
-  
-    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+    <clipPath id="prShieldClip">
+      <path d="M210 70 L318 108 V188 c0 72-48 128-108 148 C150 316 102 260 102 188 V108 Z"/>
+    </clipPath>
+    <filter id="prBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
   </defs>
-  <circle cx="190" cy="190" r="168" class="dg-ring-soft"/>
-  <circle cx="190" cy="190" r="142" class="dg-ring"/>
-  <circle cx="190" cy="190" r="112" class="dg-ring reverse"/>
-  <circle cx="190" cy="190" r="70" class="dg-ring-soft"/>
-  <circle cx="190" cy="190" r="160" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="24" filter="url(#dgBlur)"/>
-  <line x1="190" y1="190" x2="190" y2="40" class="diagram-line" style="animation-delay:.2s"/>
-  <line x1="190" y1="190" x2="315" y2="119" class="diagram-line" style="animation-delay:.45s"/>
-  <line x1="190" y1="190" x2="315" y2="261" class="diagram-line" style="animation-delay:.7s"/>
-  <line x1="190" y1="190" x2="190" y2="340" class="diagram-line" style="animation-delay:.95s"/>
-  <line x1="190" y1="190" x2="65" y2="261" class="diagram-line" style="animation-delay:1.2s"/>
-  <line x1="190" y1="190" x2="65" y2="119" class="diagram-line" style="animation-delay:1.45s"/>
-  <g><circle cx="190" cy="40" r="24" class="diagram-node dg-node-sec"/><text x="190" y="44" class="dg-label">NIST</text></g>
-  <g><circle cx="315" cy="119" r="24" class="diagram-node dg-node-data"/><text x="315" y="123" class="dg-label">ISO</text></g>
-  <g><circle cx="315" cy="261" r="24" class="diagram-node dg-node-infra"/><text x="315" y="265" class="dg-label">CIS</text></g>
-  <g><circle cx="190" cy="340" r="24" class="diagram-node dg-node-ai"/><text x="190" y="344" class="dg-label">MITRE</text></g>
-  <g><circle cx="65" cy="261" r="24" class="diagram-node dg-node-cloud"/><text x="65" y="265" class="dg-label">DPDP</text></g>
-  <g><circle cx="65" cy="119" r="24" class="diagram-node dg-node-sec"/><text x="65" y="123" class="dg-label">Zero Trust</text></g>
-  <text x="190" y="132" class="dg-sub">IDENTIFY</text>
-  <text x="190" y="164" class="dg-sub">PROTECT</text>
-  <text x="190" y="216" class="dg-sub">DETECT</text>
-  <text x="190" y="248" class="dg-sub">RESPOND</text>
-  <circle cx="190" cy="190" r="30" class="dg-core"/>
-  <text x="190" y="186" class="dg-label" style="font-size:10px">People</text>
-  <text x="190" y="199" class="dg-label" style="font-size:10px">First</text>
-  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:0px;--dy:-150px;animation-delay:.2s"/>
-  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:125px;--dy:-71px;animation-delay:.9s"/>
-  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:125px;--dy:71px;animation-delay:1.7s"/>
-  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:-125px;--dy:71px;animation-delay:2.5s"/>
-  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:-125px;--dy:-71px;animation-delay:3.3s"/>
+  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
+  <circle cx="210" cy="210" r="145" class="ap-ring"/>
+  <circle cx="210" cy="210" r="118" class="ap-ring reverse"/>
+  <path d="M210 58 L338 102 V196 c0 84-56 150-128 174 C110 346 82 280 82 196 V102 Z" fill="none" stroke="rgba(174,188,240,.28)" stroke-width="1.2" filter="url(#prBlur)"/>
+  <path d="M210 70 L318 108 V188 c0 72-48 128-108 148 C150 316 102 260 102 188 V108 Z" fill="rgba(18,24,42,.55)" stroke="#aebcf0" stroke-width="1.4"/>
+  <g clip-path="url(#prShieldClip)">
+    <rect x="102" y="118" width="216" height="18" fill="rgba(114,136,214,.10)"/>
+    <rect x="102" y="154" width="216" height="18" fill="rgba(114,136,214,.10)"/>
+    <rect x="102" y="190" width="216" height="18" fill="rgba(114,136,214,.10)"/>
+    <rect x="102" y="226" width="216" height="18" fill="rgba(114,136,214,.10)"/>
+    <rect x="102" y="262" width="216" height="18" fill="rgba(114,136,214,.10)"/>
+    <rect class="ap-scan" x="102" y="188" width="216" height="3" fill="#c9d4f5" opacity=".7"/>
+  </g>
+  <text class="ap-node-sub" x="210" y="132">Identify</text>
+  <text class="ap-node-sub" x="210" y="168">Protect</text>
+  <text class="ap-node-sub" x="210" y="204">Detect</text>
+  <text class="ap-node-sub" x="210" y="240">Respond</text>
+  <text class="ap-node-sub" x="210" y="276">Recover</text>
+  <g class="ap-node ap-node-sec" transform="translate(210,36)">
+    <title>NIST CSF</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">NIST</text>
+  </g>
+  <g class="ap-node ap-node-data" transform="translate(360,140)">
+    <title>ISO 27001</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">ISO</text>
+  </g>
+  <g class="ap-node ap-node-infra" transform="translate(348,300)">
+    <title>CIS Controls</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">CIS</text>
+  </g>
+  <g class="ap-node ap-node-ai" transform="translate(210,384)">
+    <title>MITRE ATT&amp;CK</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">MITRE</text>
+  </g>
+  <g class="ap-node ap-node-cloud" transform="translate(72,300)">
+    <title>DPDP Act</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">DPDP</text>
+  </g>
+  <g class="ap-node ap-node-sec" transform="translate(60,140)">
+    <title>Zero Trust</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
+    <text class="ap-node-label" y="36">Zero Trust</text>
+  </g>
+  <circle class="ap-core" cx="210" cy="210" r="26"/>
+  <text class="ap-core-label" x="210" y="206">People</text>
+  <text class="ap-core-label" x="210" y="222" style="font-size:12px">First</text>
 </svg>
 
   <div class="scroll-indicator">

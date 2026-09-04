@@ -234,12 +234,24 @@
       host.insertBefore(canvas, host.firstChild);
       var ctx = canvas.getContext('2d');
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var isDark = currentTheme() === 'dark';
-      var lineColor = host.getAttribute('data-mesh-color') ||
-        (isDark ? 'rgba(212,218,240,0.14)' : 'rgba(26,39,68,0.16)');
-      var dotColor  = host.getAttribute('data-mesh-dot') ||
-        (isDark ? 'rgba(212,218,240,0.45)' : 'rgba(46,64,128,0.5)');
       var w = 0, h = 0, nodes = [], linkDist = 130, raf;
+      var mx = -9999, my = -9999;
+      function palette(){
+        var isDark = currentTheme() === 'dark';
+        return {
+          line: host.getAttribute('data-mesh-color') ||
+            (isDark ? 'rgba(212,218,240,0.16)' : 'rgba(26,39,68,0.16)'),
+          dot: host.getAttribute('data-mesh-dot') ||
+            (isDark ? 'rgba(212,218,240,0.5)' : 'rgba(46,64,128,0.5)')
+        };
+      }
+      var colors = palette();
+      host.addEventListener('pointermove', function(e){
+        var r = host.getBoundingClientRect();
+        mx = e.clientX - r.left; my = e.clientY - r.top;
+      }, {passive:true});
+      host.addEventListener('pointerleave', function(){ mx = -9999; my = -9999; });
+      document.addEventListener('ap-theme-change', function(){ colors = palette(); });
 
       function size(){
         w = host.clientWidth; h = host.clientHeight;
@@ -270,17 +282,26 @@
       function frame(){
         ctx.clearRect(0, 0, w, h);
         nodes.forEach(function(n){
+          var ax = n.x - mx, ay = n.y - my;
+          var ad = Math.sqrt(ax * ax + ay * ay) || 1;
+          if(ad < 180){
+            n.vx -= (ax / ad) * 0.018;
+            n.vy -= (ay / ad) * 0.018;
+          }
+          n.vx *= 0.992; n.vy *= 0.992;
+          if(Math.abs(n.vx) < 0.04) n.vx += (Math.random() - 0.5) * 0.02;
+          if(Math.abs(n.vy) < 0.04) n.vy += (Math.random() - 0.5) * 0.02;
           n.x += n.vx; n.y += n.vy;
-          if(n.x < 0 || n.x > w) n.vx *= -1;
-          if(n.y < 0 || n.y > h) n.vy *= -1;
+          if(n.x < 0 || n.x > w){ n.vx *= -1; n.x = Math.max(0, Math.min(w, n.x)); }
+          if(n.y < 0 || n.y > h){ n.vy *= -1; n.y = Math.max(0, Math.min(h, n.y)); }
         });
         for(var i = 0; i < nodes.length; i++){
           for(var j = i + 1; j < nodes.length; j++){
             var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
             var d = Math.sqrt(dx * dx + dy * dy);
             if(d < linkDist){
-              ctx.strokeStyle = lineColor;
-              ctx.globalAlpha = (1 - d / linkDist) * 0.6;
+              ctx.strokeStyle = colors.line;
+              ctx.globalAlpha = (1 - d / linkDist) * 0.65;
               ctx.lineWidth = 1;
               ctx.beginPath();
               ctx.moveTo(nodes[i].x, nodes[i].y);
@@ -290,10 +311,10 @@
           }
         }
         ctx.globalAlpha = 1;
-        ctx.fillStyle = dotColor;
+        ctx.fillStyle = colors.dot;
         nodes.forEach(function(n){
           ctx.beginPath();
-          ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
+          ctx.arc(n.x, n.y, 1.7, 0, Math.PI * 2);
           ctx.fill();
         });
         raf = requestAnimationFrame(frame);

@@ -436,59 +436,91 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
   <div class="hero-band"></div>
   <div class="hero-band-inner dm-hide"></div>
   <div class="hero-ring dm-hide"></div>
-  <svg class="hero-orbit" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <svg class="ap-viz hero-orbit" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
     </linearGradient>
-    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
-    </linearGradient>
-  
-    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+    <radialGradient id="ixGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#7288d6" stop-opacity=".5"/><stop offset="1" stop-color="#7288d6" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="ixBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="10"/></filter>
   </defs>
-  <circle cx="170" cy="170" r="156" class="dg-ring-soft"/>
-  <circle cx="170" cy="170" r="128" class="dg-ring"/>
-  <circle cx="170" cy="170" r="86" class="dg-ring reverse"/>
-  <circle cx="170" cy="170" r="150" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="22" filter="url(#dgBlur)"/>
-  <line x1="170" y1="170" x2="170" y2="45" class="diagram-line" style="animation-delay:.2s"/>
-  <line x1="170" y1="170" x2="288.9" y2="131.4" class="diagram-line" style="animation-delay:.45s"/>
-  <line x1="170" y1="170" x2="243.5" y2="271.1" class="diagram-line" style="animation-delay:.7s"/>
-  <line x1="170" y1="170" x2="96.5" y2="271.1" class="diagram-line" style="animation-delay:.95s"/>
-  <line x1="170" y1="170" x2="51.1" y2="131.4" class="diagram-line" style="animation-delay:1.2s"/>
-  <g>
-    <circle cx="170" cy="45" r="30" class="diagram-node dg-node-ai"/>
-    <circle cx="170" cy="45" r="38" fill="none" stroke="rgba(114,136,214,.25)"/>
-    <text x="170" y="49" class="dg-label">AI</text>
+  <circle cx="210" cy="210" r="168" fill="url(#ixGlow)" filter="url(#ixBlur)"/>
+  <g class="ap-hex-grid" opacity=".7">
+    <polygon class="ap-hex" points="210,78 268,112 268,178 210,212 152,178 152,112"/>
+    <polygon class="ap-hex" points="210,122 248,144 248,188 210,210 172,188 172,144"/>
+    <polygon class="ap-hex" points="96,178 138,202 138,250 96,274 54,250 54,202"/>
+    <polygon class="ap-hex" points="324,178 366,202 366,250 324,274 282,250 282,202"/>
   </g>
-  <g>
-    <circle cx="288.9" cy="131.4" r="30" class="diagram-node dg-node-data"/>
-    <circle cx="288.9" cy="131.4" r="38" fill="none" stroke="rgba(201,177,144,.25)"/>
-    <text x="288.9" y="135.4" class="dg-label">Data</text>
+  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
+  <circle cx="210" cy="210" r="145" class="ap-ring"/>
+  <circle cx="210" cy="210" r="108" class="ap-ring reverse"/>
+  <circle cx="210" cy="210" r="62" class="ap-ring-solid"/>
+  <line class="ap-link-strong" x1="210" y1="210" x2="210" y2="68"/>
+  <line class="ap-link-strong" x1="210" y1="210" x2="347" y2="165"/>
+  <line class="ap-link-strong" x1="210" y1="210" x2="295" y2="332"/>
+  <line class="ap-link-strong" x1="210" y1="210" x2="125" y2="332"/>
+  <line class="ap-link-strong" x1="210" y1="210" x2="73" y2="165"/>
+  <path class="ap-link" d="M210 68 L347 165 L295 332 L125 332 L73 165 Z"/>
+  <g class="ap-node ap-node-ai" transform="translate(210,68)">
+    <title>Artificial Intelligence</title>
+    <circle class="ap-node-halo" r="34"/>
+    <circle class="ap-node-disc" r="22"/>
+    <g class="ap-node-icon" transform="translate(-8,-8) scale(.7)">
+      <circle cx="12" cy="12" r="2.2" fill="#eef2ff" stroke="none"/>
+      <circle cx="12" cy="3" r="1.6" fill="#eef2ff" stroke="none"/>
+      <circle cx="20" cy="17" r="1.6" fill="#eef2ff" stroke="none"/>
+      <circle cx="4" cy="17" r="1.6" fill="#eef2ff" stroke="none"/>
+      <path d="M12 12 L12 3 M12 12 L20 17 M12 12 L4 17"/>
+    </g>
+    <text class="ap-node-label" y="46">AI</text>
   </g>
-  <g>
-    <circle cx="243.5" cy="271.1" r="30" class="diagram-node dg-node-cloud"/>
-    <circle cx="243.5" cy="271.1" r="38" fill="none" stroke="rgba(142,160,224,.25)"/>
-    <text x="243.5" y="275.1" class="dg-label">Cloud</text>
+  <g class="ap-node ap-node-data" transform="translate(347,165)">
+    <title>Data platforms</title>
+    <circle class="ap-node-halo" r="34"/>
+    <circle class="ap-node-disc" r="22"/>
+    <g class="ap-node-icon" transform="translate(-8,-9)">
+      <rect x="2" y="8" width="3.2" height="8" fill="#eef2ff" stroke="none" rx=".4"/>
+      <rect x="6.4" y="4" width="3.2" height="12" fill="#eef2ff" stroke="none" rx=".4"/>
+      <rect x="10.8" y="6.5" width="3.2" height="9.5" fill="#eef2ff" stroke="none" rx=".4"/>
+    </g>
+    <text class="ap-node-label" y="46">Data</text>
   </g>
-  <g>
-    <circle cx="96.5" cy="271.1" r="30" class="diagram-node dg-node-sec"/>
-    <circle cx="96.5" cy="271.1" r="38" fill="none" stroke="rgba(114,136,214,.25)"/>
-    <text x="96.5" y="275.1" class="dg-label">Security</text>
+  <g class="ap-node ap-node-cloud" transform="translate(295,332)">
+    <title>Cloud architecture</title>
+    <circle class="ap-node-halo" r="34"/>
+    <circle class="ap-node-disc" r="22"/>
+    <path class="ap-node-icon" d="M-8 3c-3 0-5-2.2-5-5s2.4-5 5.4-5c.7-3.2 3.4-5.5 6.7-5.5 3.4 0 6.2 2.5 6.7 5.7 2.4.2 4.2 2.2 4.2 4.6 0 2.6-2.1 4.7-4.7 4.7z" transform="translate(0,4)"/>
+    <text class="ap-node-label" y="46">Cloud</text>
   </g>
-  <g>
-    <circle cx="51.1" cy="131.4" r="30" class="diagram-node dg-node-infra"/>
-    <circle cx="51.1" cy="131.4" r="38" fill="none" stroke="rgba(184,160,128,.25)"/>
-    <text x="51.1" y="135.4" class="dg-label">Infra</text>
+  <g class="ap-node ap-node-sec" transform="translate(125,332)">
+    <title>Cybersecurity</title>
+    <circle class="ap-node-halo" r="34"/>
+    <circle class="ap-node-disc" r="22"/>
+    <path class="ap-node-icon" d="M0 -10 L10 -6.5 V1.5c0 6.2-4.2 11.2-10 12.8C-4.2 12.7-10 7.7-10 1.5V-6.5Z"/>
+    <path class="ap-node-icon" d="M-4 1 l3 3 6-6"/>
+    <text class="ap-node-label" y="46">Security</text>
   </g>
-  <circle cx="170" cy="170" r="28" class="dg-core"/>
-  <text x="170" y="166" class="dg-label" style="font-size:11px">Anthro</text>
-  <text x="170" y="180" class="dg-label" style="font-size:11px">Prime</text>
-  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:0px;--dy:-125px;animation-delay:.2s"/>
-  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:118.9px;--dy:-38.6px;animation-delay:.92s"/>
-  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:73.5px;--dy:101.1px;animation-delay:1.64s"/>
-  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:-73.5px;--dy:101.1px;animation-delay:2.36s"/>
-  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:-118.9px;--dy:-38.6px;animation-delay:3.08s"/>
+  <g class="ap-node ap-node-infra" transform="translate(73,165)">
+    <title>AI Infrastructure</title>
+    <circle class="ap-node-halo" r="34"/>
+    <circle class="ap-node-disc" r="22"/>
+    <g class="ap-node-icon">
+      <rect x="-7" y="-7" width="14" height="14" rx="2"/>
+      <rect x="-3" y="-3" width="6" height="6" rx="1"/>
+      <path d="M-7 -11 v3 M0 -11 v3 M7 -11 v3 M-7 8 v3 M0 8 v3 M7 8 v3 M-11 -7 h3 M-11 7 h3 M8 -7 h3 M8 7 h3"/>
+    </g>
+    <text class="ap-node-label" y="46">Infra</text>
+  </g>
+  <circle class="ap-core" cx="210" cy="210" r="28"/>
+  <text class="ap-core-label" x="210" y="206">Anthro</text>
+  <text class="ap-core-label" x="210" y="222" style="font-size:12px">Prime</text>
+  <circle class="ap-packet" cx="210" cy="210" r="3.4" style="--dx:0px;--dy:-142px;animation-delay:.15s"/>
+  <circle class="ap-packet" cx="210" cy="210" r="3.4" style="--dx:137px;--dy:-45px;animation-delay:.95s"/>
+  <circle class="ap-packet" cx="210" cy="210" r="3.4" style="--dx:85px;--dy:122px;animation-delay:1.75s"/>
+  <circle class="ap-packet" cx="210" cy="210" r="3.4" style="--dx:-85px;--dy:122px;animation-delay:2.55s"/>
+  <circle class="ap-packet" cx="210" cy="210" r="3.4" style="--dx:-137px;--dy:-45px;animation-delay:3.35s"/>
 </svg>
   <div class="hero-content" data-reveal>
     <div class="hero-tag" data-typewriter="AI · Data · Cloud · Cybersecurity · AI Infrastructure">AI · Data · Cloud · Cybersecurity · AI Infrastructure</div>

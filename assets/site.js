@@ -22,10 +22,14 @@
     return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
   function setTheme(theme){
+    // Add transition class for smooth theme switch
+    root.classList.add('theme-transitioning');
     root.setAttribute('data-theme', theme);
     try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
     var btn = document.querySelector('.theme-toggle');
     if(btn){ btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false'); }
+    // Remove transition class after animation completes
+    setTimeout(function(){ root.classList.remove('theme-transitioning'); }, 500);
   }
 
   var siteRight = document.querySelector('.site-right');

@@ -80,7 +80,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:4rem 3.5rem 5rem;position:relative;overflow:hidden;background:var(--surface)}
 .hero-band{position:absolute;top:0;right:0;width:38%;height:100%;background:var(--navy);clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);pointer-events:none;opacity:0.97}
 .hero-band-inner{position:absolute;top:0;right:0;width:36%;height:100%;background:var(--navy2);clip-path:polygon(18% 0,100% 0,100% 100%,6% 100%);pointer-events:none;opacity:0.5}
-.hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none}
+.hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none;animation:ring-breathe 8s ease-in-out infinite}
+@keyframes ring-breathe{0%,100%{transform:translateY(-50%) scale(1);opacity:0.8}50%{transform:translateY(-50%) scale(1.04);opacity:1}}
 .hero-ring::before{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(212,218,240,0.1)}
 .hero-content{display:flex;flex-direction:column;justify-content:center;max-width:600px;position:relative;z-index:1}
 .hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:2.5rem}

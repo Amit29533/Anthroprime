@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnthroPrime Technology — Services in AI, Data, Cloud &amp; Cybersecurity</title>
+<meta name="description" content="Five integrated service lines from AnthroPrime Technology — cybersecurity, AI systems, data, cloud, and AI infrastructure consulting — built for enterprises, government bodies, and critical infrastructure."/>
+<link rel="icon" href="assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AnthroPrime Technology"/>
+<meta property="og:title" content="AnthroPrime Technology — Services in AI, Data, Cloud &amp; Cybersecurity"/>
+<meta property="og:description" content="Five integrated service lines from AnthroPrime Technology — cybersecurity, AI systems, data, cloud, and AI infrastructure consulting — built for enterprises, government bodies, and critical infrastructure."/>
+<meta property="og:url" content="https://www.anthroprime.com/anthroprime_services.html"/>
+<meta property="og:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AnthroPrime Technology — Services in AI, Data, Cloud &amp; Cybersecurity"/>
+<meta name="twitter:description" content="Five integrated service lines from AnthroPrime Technology — cybersecurity, AI systems, data, cloud, and AI infrastructure consulting — built for enterprises, government bodies, and critical infrastructure."/>
+<meta name="twitter:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<script>(function(){try{var t=localStorage.getItem('ap-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="assets/site.css" rel="stylesheet">
+<style>
+  :root {
+    /* ── INDEX2 THEME TOKENS ── */
+    --bg: #f5f4f1;
+    --bg2: #eeecea;
+    --bg3: #e7e5e0;
+    --surface: #faf9f7;
+    --border: rgba(80,75,65,0.12);
+    --border2: rgba(80,75,65,0.22);
+    --text: #2a2720;
+    --muted: #7a756a;
+    --faint: #b0aa9e;
+    --navy: #1a2744;
+    --navy2: #22336b;
+    --navy-mid: #2e4080;
+    --navy-lt: #d4daf0;
+    --sp-accent: #b8a080;
+    --sp-accent-dark: #8c7a5e;
+    --cream: #f5f2ed;
+    --warm-white: #faf8f5;
+    
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ── DARK MODE ── */
+  html[data-theme="dark"] {
+    --bg: #15161b; --bg2: #1c1e24; --bg3: #24262d; --surface: #1a1b20;
+    --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.16);
+    --text: #ece9e2; --muted: #a8a297; --faint: #6f6a60;
+    --navy-mid: #7288d6;
+    --sp-accent: #c9b190; --sp-accent-dark: #a58f6c;
+    --cream: #1c1d22; --warm-white: #1a1b1f;
+  }
+  html[data-theme="dark"] .service-card:hover,
+  html[data-theme="dark"] .approach-step:hover,
+  html[data-theme="dark"] .industry-card:hover { background: #23252b; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Nav now lives in assets/site.css (.site-header / .site-nav) — shared across pages */
+
+  /* ── HERO SECTION (Lively & Themed) ── */
+  .services-hero {
+    background: var(--navy);
+    padding: 76px 3.5rem 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-band {
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: var(--navy2);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .hero-ring {
+    position: absolute;
+    right: 10%; top: 50%;
+    transform: translateY(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,218,240,0.1);
+    pointer-events: none;
+    animation: pulseRing 6s infinite alternate ease-in-out;
+  }
+  .hero-ring::before {
+    content: ''; position: absolute; inset: 40px;
+    border-radius: 50%; border: 1px solid rgba(212,218,240,0.05);
+  }
+  @keyframes pulseRing {
+    0% { transform: translateY(-50%) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-50%) scale(1.05); opacity: 1; }
+  }
+
+  .hero-content-inner { position: relative; z-index: 2; max-width: 900px; }
+  
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sp-accent);
+    margin-bottom: 2rem;
+  }
+  .hero-label::before {
+    content: ''; width: 28px; height: 1px;
+    background: var(--sp-accent); opacity: 0.7;
+  }
+  
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--bg);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--navy-lt);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(245,244,241,0.7);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── THREE PILLARS STRIP ── */
+  .pillars-strip {
+    display: flex;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 960px;
+    position: relative;
+    z-index: 2;
+  }
+  .pillar-chip {
+    flex: 1;
+    padding: 1.2rem 1.5rem;
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.5);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .pillar-chip:last-child { border-right: none; }
+  .pillar-chip:nth-child(5) { flex: 1.7; }
+  .pillar-chip:hover { background: rgba(255,255,255,0.05); color: var(--bg); }
+  .pillar-chip.active {
+    background: var(--surface);
+    color: var(--navy);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .services-body { max-width: 1360px; margin: 0 auto; padding: 2rem 3.5rem 6rem; }
+
+  /* ── PILLAR PANELS ── */
+  .pillar-panel { display: none; animation: slideUpFade 0.5s ease forwards; }
+  .pillar-panel.active { display: block; }
+
+  @keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── PILLAR HEADER ── */
+  .pillar-header {
+    padding: 4rem 0 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .pillar-header-left { max-width: 600px; }
+  .pillar-number {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--sp-accent-dark);
+    margin-bottom: 0.5rem;
+  }
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3vw, 3rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+  .pillar-title em { font-style: italic; color: var(--navy-mid); }
+  .pillar-tagline {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .pillar-framework {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .framework-word {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--bg2);
+  }
+  .framework-word.accent {
+    background: var(--navy);
+    color: var(--bg);
+    border-color: var(--navy);
+  }
+
+  /* ── SERVICE GRID (Lively Hover Effects) ── */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 4rem;
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Themed hover animation */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--navy-mid);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover { 
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px rgba(26,39,68,0.16);
+    z-index: 10;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-card.expanded { background: var(--navy); transform: none; box-shadow: none; z-index:1; }
+  .service-card.expanded::after { transform: scaleX(1); background: var(--sp-accent); }
+
+  .service-number {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--faint);
+    margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+  .service-card.expanded .service-number { color: rgba(212,218,240,0.5); }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    transition: color 0.3s;
+  }
+  .service-card.expanded .service-name { color: var(--bg); }
+
+  .service-tagline {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    transition: color 0.3s;
+  }
+  .service-card.expanded .service-tagline { color: rgba(245,244,241,0.7); }
+
+  .service-expand-indicator {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .indicator-text {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+  .service-card:hover .indicator-text { opacity: 1; transform: translateX(0); }
+  .service-card.expanded .indicator-text { opacity: 1; color: var(--sp-accent); transform: translateX(0); content: 'Close'; }
+  
+  .indicator-icon svg { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); stroke: var(--faint); }
+  .service-card:hover .indicator-icon svg { stroke: var(--navy-mid); }
+  .service-card.expanded .indicator-icon svg { transform: rotate(45deg); stroke: var(--sp-accent); }
+
+  /* ── EXPANDED SUB-SERVICES (Deep Navy Panel) ── */
+  .sub-services-panel {
+    display: none;
+    grid-column: 1 / -1;
+    background: var(--navy);
+    padding: 4rem;
+    animation: fadeUp 0.4s ease;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .sub-services-panel.active { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4rem; }
+
+  .sub-group-title {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sp-accent);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(212,218,240,0.1);
+  }
+
+  .sub-list { list-style: none; }
+  .sub-list li {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(245,244,241,0.7);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(212,218,240,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+  }
+  .sub-list li::before {
+    content: '→';
+    color: var(--navy-mid);
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--sp-accent);
+    flex-shrink: 0;
+  }
+  .sub-list li:last-child { border-bottom: none; }
+
+  /* ── APPROACH STRIP ── */
+  .approach-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin: 2rem 0 6rem;
+  }
+  .approach-step {
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .approach-step:hover { background: #fff; }
+  .approach-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--sp-accent-dark);
+    z-index: 2;
+    background: var(--surface);
+    padding: 4px;
+    border-radius: 50%;
+  }
+  .approach-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--border2);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .approach-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .approach-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── INDUSTRY SERVICES layout ── */
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0 6rem;
+  }
+  .industry-card {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .industry-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--navy-mid);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .industry-card:hover { 
+    background: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(26,39,68,0.18);
+    border-color: var(--border2);
+  }
+  .industry-card:hover::before { transform: scaleY(1); }
+  
+  .industry-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sp-accent-dark);
+    margin-bottom: 1.5rem;
+  }
+  .industry-name {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .industry-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .industry-sub-list { list-style: none; }
+  .industry-sub-list li {
+    font-size: 0.85rem;
+    color: var(--text);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .industry-sub-list li:last-child { border-bottom: none; }
+  .industry-sub-list li::before {
+    content: '→';
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--navy-mid);
+    flex-shrink: 0;
+  }
+
+  /* ── CTA BAR & FOOTER ── */
+  .cta {
+    padding: 7rem 3.5rem;
+    background: var(--bg3);
+    text-align: center;
+  }
+  .cta .section-tag {
+    color: var(--navy-mid);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+  .cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .cta h2 em { font-style: italic; color: var(--navy-mid); }
+  .cta p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    max-width: 440px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.85;
+  }
+  .btn-navy {
+    background: var(--navy);
+    color: #f5f4f1;
+    padding: 0.9rem 2.2rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-navy:hover { opacity: 0.9; transform: translateY(-2px); }
+
+  /* Footer now lives in assets/site.css (.site-footer) */
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .services-hero, .services-body, .cta { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .service-grid { grid-template-columns: 1fr 1fr; }
+    .approach-strip { grid-template-columns: 1fr 1fr; }
+    .industry-grid { grid-template-columns: 1fr; }
+    .pillar-header { flex-direction: column; align-items: flex-start; gap: 2rem;}
+    .sub-services-panel.active { grid-template-columns: 1fr 1fr; padding: 2.5rem;}
+    .hero-band, .hero-ring { display: none; }
+  }
+  @media (max-width: 600px) {
+    .service-grid { grid-template-columns: 1fr; }
+    .sub-services-panel.active { grid-template-columns: 1fr; padding: 2rem 1.5rem;}
+    .pillars-strip { flex-direction: column; }
+    .pillar-chip { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .approach-strip { grid-template-columns: 1fr; }
+    .approach-step:not(:last-child)::after { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="site-progress"></div>
+<div id="page-transition"></div>
+
+<!-- NAV -->
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo"><img src="assets/logo-badge.png" alt="AnthroPrime Technology" class="site-logo-mark" width="48" height="48"/><span class="site-logo-word">Anthro<em>Prime</em> Technology</span></a>
+    <ul class="site-links">
+      <li><a href="anthroprime_services.html">Services</a></li>
+      <li><a href="practices.html">Practice</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="strategic-growth-advisor.html">Growth Advisory</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://ecod.anthroprime.com" target="_blank" rel="noopener">ECOD Lab</a></li>
+      <li><a href="contact.html" class="site-cta-mobile">Get in touch</a></li>
+    </ul>
+    <div class="site-right">
+      <a href="contact.html" class="site-cta">Get in touch</a>
+      <button class="site-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="services-hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
+  <div class="hero-band"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-content-inner" data-reveal>
+    <div class="hero-label">Our Services</div>
+    <h1 class="hero-headline">Technology that starts<br>with <em>people.</em></h1>
+    <p class="hero-sub">Five integrated services — cybersecurity, AI, data, cloud, and AI infrastructure consulting — built for enterprises, government bodies, and critical infrastructure. Looking for the standards behind the work? See our <a href="practices.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Practice</a> page.</p>
+
+    <div class="pillars-strip" data-reveal>
+      <button class="pillar-chip active" onclick="switchPillar('cyber', this)">01 / Cybersecurity</button>
+      <button class="pillar-chip" onclick="switchPillar('ai', this)">02 / AI Systems</button>
+      <button class="pillar-chip" onclick="switchPillar('data', this)">03 / Data</button>
+      <button class="pillar-chip" onclick="switchPillar('cloud', this)">04 / Cloud</button>
+      <button class="pillar-chip" onclick="switchPillar('infra', this)">05 / AI Infrastructure Consulting</button>
+    </div>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="services-body">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PILLAR 1: CYBERSECURITY                   -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="pillar-panel active" id="panel-cyber">
+
+    <div class="pillar-header" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Service 01</div>
+        <h2 class="pillar-title">Full-spectrum <em>cybersecurity</em><br>across every layer.</h2>
+        <p class="pillar-tagline">From audit and adversarial simulation to managed detection and forensics — covering the complete security lifecycle for modern enterprises and critical infrastructure.</p>
+      </div>
+      <div class="pillar-framework">
+        <span class="framework-word accent">Protect</span>
+        <span class="framework-word">Detect</span>
+        <span class="framework-word">Respond</span>
+      </div>
+    </div>
+
+    <div class="service-grid" id="grid-cyber" data-reveal-group>
+
+      <!-- 1.1 IS Auditing -->
+      <div class="service-card" onclick="toggleService('cyber-1', this)">
+        <div class="service-number">1.1</div>
+        <div class="service-name">Information Security Auditing</div>
+        <div class="service-tagline">CERT-IN aligned audits across network, application, cloud, and organisational controls.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-1">
+        <div>
+          <div class="sub-group-title">Compliance & Regulatory</div>
+          <ul class="sub-list">
+            <li>CERT-IN compliance assessment</li>
+            <li>ISO 27001 readiness & internal audits</li>
+            <li>DPDP Act compliance assessment</li>
+            <li>RBI, SEBI, IRDAI regulatory audits</li>
+            <li>GDPR and global privacy alignment</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Technical Security Audits</div>
+          <ul class="sub-list">
+            <li>Network security audit</li>
+            <li>Application security audit</li>
+            <li>Cloud security audit (AWS, Azure, GCP)</li>
+            <li>Wireless network security assessment</li>
+            <li>Container & endpoint security assessment</li>
+            <li>Active Directory & IAM audit</li>
+            <li>Firewall security review</li>
+            <li>Configuration & hardening assessment</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Governance & Risk</div>
+          <ul class="sub-list">
+            <li>Attack surface discovery</li>
+            <li>Breach & attack simulations</li>
+            <li>Patch management review</li>
+            <li>Security policy & governance review</li>
+            <li>Vendor risk management assessment</li>
+            <li>Incident response readiness assessment</li>
+            <li>Source code review</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1.2 Pentest -->
+      <div class="service-card" onclick="toggleService('cyber-2', this)">
+        <div class="service-number">1.2</div>
+        <div class="service-name">Penetration Testing</div>
+        <div class="service-tagline">Adversarial simulation across web, mobile, API, network, cloud, and OT/SCADA.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-2">
+        <div>
+          <div class="sub-group-title">Application & API</div>
+          <ul class="sub-list">
+            <li>Web application pentest (OWASP Top 10)</li>
+            <li>Mobile application pentest (Android/iOS)</li>
+            <li>API & web services security testing</li>
+            <li>Database security assessment</li>
+            <li>Grey box & black box testing</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Network & Infrastructure</div>
+          <ul class="sub-list">
+            <li>Internal network penetration testing</li>
+            <li>External network penetration testing</li>
+            <li>Cloud penetration testing</li>
+            <li>Wireless network security testing</li>
+            <li>OT / SCADA security testing</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Reporting & Closure</div>
+          <ul class="sub-list">
+            <li>Evidence-based reporting with PoC</li>
+            <li>Business impact assessment</li>
+            <li>Prioritised remediation guidance</li>
+            <li>Retest & closure attestation letter</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1.3 Red Team -->
+      <div class="service-card" onclick="toggleService('cyber-3', this)">
+        <div class="service-number">1.3</div>
+        <div class="service-name">Red Team & Simulation</div>
+        <div class="service-tagline">Full-scope red team operations, phishing campaigns, and ransomware resiliency testing.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-3">
+        <div>
+          <div class="sub-group-title">Simulation & Testing</div>
+          <ul class="sub-list">
+            <li>Red team attack simulation</li>
+            <li>Phishing campaign & simulation</li>
+            <li>Social engineering exercises</li>
+            <li>Physical security testing</li>
+            <li>Breach & attack simulation (BAS)</li>
+            <li>Ransomware resiliency testing</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Drill & Exercises</div>
+          <ul class="sub-list">
+            <li>CyberDrill exercises</li>
+            <li>Tabletop exercises (TTX)</li>
+            <li>Red team vs. Blue team exercises</li>
+            <li>Executive crisis simulation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Outcomes</div>
+          <ul class="sub-list">
+            <li>Real attacker pathways documented</li>
+            <li>Board-ready reporting</li>
+            <li>Closure attestation post-remediation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1.4 MDR -->
+      <div class="service-card" onclick="toggleService('cyber-4', this)">
+        <div class="service-number">1.4</div>
+        <div class="service-name">Managed Detection & Response</div>
+        <div class="service-tagline">24/7 SOC-as-a-Service, SIEM, UEBA, threat hunting, and SLA-tracked incident response.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-4">
+        <div>
+          <div class="sub-group-title">Detection & Monitoring</div>
+          <ul class="sub-list">
+            <li>24/7 SOC-as-a-Service</li>
+            <li>Managed Endpoint Detection & Response</li>
+            <li>SIEM & log management</li>
+            <li>UEBA — User & Entity Behaviour Analytics</li>
+            <li>Network Detection & Response (NDR)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Managed Operations</div>
+          <ul class="sub-list">
+            <li>Managed cloud security</li>
+            <li>Managed AppSec & network security</li>
+            <li>SOAR — Security Orchestration & Automation</li>
+            <li>Security infrastructure management</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Proactive Defence</div>
+          <ul class="sub-list">
+            <li>Proactive threat hunting</li>
+            <li>Vulnerability management</li>
+            <li>Curated threat intelligence</li>
+            <li>SLA-tracked incident response</li>
+            <li>Executive dashboards & KPIs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1.5 IR & Forensics -->
+      <div class="service-card" onclick="toggleService('cyber-5', this)">
+        <div class="service-number">1.5</div>
+        <div class="service-name">Incident Response & Forensics</div>
+        <div class="service-tagline">Rapid breach containment, crisis management, and litigation-ready forensic investigation.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-5">
+        <div>
+          <div class="sub-group-title">Incident Response</div>
+          <ul class="sub-list">
+            <li>Incident & breach response</li>
+            <li>Cyber crisis management</li>
+            <li>Compromise assessment</li>
+            <li>Malware analysis & eradication</li>
+            <li>IR retainer services</li>
+            <li>IR readiness assessment & playbooks</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Digital Forensics</div>
+          <ul class="sub-list">
+            <li>Device & mobile forensics (Android/iOS)</li>
+            <li>Computer forensics & data recovery</li>
+            <li>Log analysis & RAM dump analysis</li>
+            <li>Malware reverse engineering</li>
+            <li>OSINT & dark web intelligence</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Legal & Lab</div>
+          <ul class="sub-list">
+            <li>Expert witness & litigation support</li>
+            <li>Chain of custody management</li>
+            <li>Forensic lab design & setup</li>
+            <li>Forensic team training & certification</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 1.6 DevSecOps -->
+      <div class="service-card" onclick="toggleService('cyber-6', this)">
+        <div class="service-number">1.6</div>
+        <div class="service-name">DevSecOps & Cloud Security</div>
+        <div class="service-tagline">Security embedded into CI/CD pipelines, Zero Trust architecture, and cloud-native environments.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-6">
+        <div>
+          <div class="sub-group-title">DevSecOps</div>
+          <ul class="sub-list">
+            <li>DevSecOps programme design & implementation</li>
+            <li>CI/CD pipeline security integration</li>
+            <li>SAST / DAST / SCA toolchain setup</li>
+            <li>Secure SDLC framework</li>
+            <li>Developer security training</li>
+            <li>Container & Kubernetes security</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Cloud & Architecture</div>
+          <ul class="sub-list">
+            <li>Zero Trust architecture design</li>
+            <li>Cloud migration security</li>
+            <li>Cloud-native workload security</li>
+            <li>DDoS assessment</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Transformation</div>
+          <ul class="sub-list">
+            <li>Digital transformation advisory</li>
+            <li>Security framework alignment (NIST, ISO, CIS)</li>
+            <li>Technology roadmap advisory</li>
+            <li>Vendor / OEM technology selection</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('cyber-7', this)">
+        <div class="service-number">1.7</div>
+        <div class="service-name">Cyber Risk Quantification</div>
+        <div class="service-tagline">FAIR-based financial modelling that converts technical risk into loss exposure estimates.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-7">
+        <div>
+          <div class="sub-group-title">Risk Modelling</div>
+          <ul class="sub-list">
+            <li>FAIR-based financial risk modelling</li>
+            <li>Ransomware & data breach impact modelling</li>
+            <li>Insider threat scenario analysis</li>
+            <li>Control effectiveness analysis</li>
+            <li>Monte Carlo scenario simulation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Reporting</div>
+          <ul class="sub-list">
+            <li>Executive risk dashboards & heatmaps</li>
+            <li>Board-ready risk reporting</li>
+            <li>Residual risk analysis</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Investment Advisory</div>
+          <ul class="sub-list">
+            <li>Cyber insurance readiness assessment</li>
+            <li>Coverage gap analysis</li>
+            <li>Security investment ROI (ROSI) analysis</li>
+            <li>Budget prioritisation support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('cyber-8', this)">
+        <div class="service-number">1.8</div>
+        <div class="service-name">GRC & Compliance</div>
+        <div class="service-tagline">End-to-end governance, risk, and compliance across international and Indian regulatory frameworks.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-8">
+        <div>
+          <div class="sub-group-title">International Frameworks</div>
+          <ul class="sub-list">
+            <li>ISO 27001 compliance audit</li>
+            <li>ISO 27701 compliance audit</li>
+            <li>SOC 2 compliance audit</li>
+            <li>PCI DSS compliance audit</li>
+            <li>GDPR compliance audit</li>
+            <li>HIPAA / SAMA advisory</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Indian Regulatory — RBI</div>
+          <ul class="sub-list">
+            <li>RBI Information Security audit</li>
+            <li>RBI NBFC / Account Aggregator / PPI / PSS audit</li>
+            <li>RBI P2P lending & Co-operative Bank IS audit</li>
+            <li>RBI Payment Aggregators & Gateway audit</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Indian Regulatory — SEBI / Others</div>
+          <ul class="sub-list">
+            <li>SEBI system & cyber security framework audit</li>
+            <li>IRDAI ISNP audit</li>
+            <li>NPCI / UPI audit</li>
+            <li>UIDAI AUA/KUA (Aadhaar) audit</li>
+            <li>DPDP Act compliance assessment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('cyber-9', this)">
+        <div class="service-number">1.9</div>
+        <div class="service-name">Government & PSU Advisory</div>
+        <div class="service-tagline">Strategic cybersecurity guidance for central bodies, PSUs, and critical national infrastructure.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cyber-9">
+        <div>
+          <div class="sub-group-title">Policy & Compliance</div>
+          <ul class="sub-list">
+            <li>Cybersecurity policy drafting</li>
+            <li>CERT-IN / MeitY regulatory alignment</li>
+            <li>Critical infrastructure security assessment</li>
+            <li>Sectoral compliance support</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Program & SOC Setup</div>
+          <ul class="sub-list">
+            <li>Government SOC setup & advisory</li>
+            <li>Cybersecurity strategy & roadmap for PSUs</li>
+            <li>Security architecture for large-scale govt. systems</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Risk & Incident</div>
+          <ul class="sub-list">
+            <li>Third-party / vendor risk assessment</li>
+            <li>Cyber crisis management</li>
+            <li>Incident response planning</li>
+            <li>Threat intelligence landscape alignment</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /service-grid -->
+
+    <!-- SPECIALIST INDUSTRY SECURITY -->
+    <div class="pillar-header" style="padding-top:0" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Specialist Practice</div>
+        <h2 class="pillar-title" style="font-size:clamp(1.6rem,2.4vw,2.1rem)">Domain expertise for <em>specialist environments.</em></h2>
+        <p class="pillar-tagline">Three vertical practices requiring deep sector knowledge — where generic cybersecurity approaches fall short.</p>
+      </div>
+    </div>
+
+    <div class="industry-grid" data-reveal-group>
+
+      <div class="industry-card">
+        <div class="industry-badge">Cybersecurity 1.10</div>
+        <div class="industry-name">OT / ICS & IoT Security</div>
+        <div class="industry-desc">Securing operational technology, industrial control systems, and connected device environments — with operational safety as a primary constraint.</div>
+        <ul class="industry-sub-list">
+          <li>OT / ICS security assessment</li>
+          <li>SCADA security testing</li>
+          <li>Industrial network segmentation review</li>
+          <li>OT vulnerability assessment & risk modelling</li>
+          <li>OT security architecture design (IEC 62443)</li>
+          <li>Cloud-native workload security for OT</li>
+        </ul>
+      </div>
+
+      <div class="industry-card">
+        <div class="industry-badge">Cybersecurity 1.11</div>
+        <div class="industry-name">Telecom Security</div>
+        <div class="industry-desc">End-to-end security across 5G core, signaling, fraud, and telecom network infrastructure — for operators navigating next-generation network complexity.</div>
+        <ul class="industry-sub-list">
+          <li>5G core & RAN security assessment</li>
+          <li>SS7 / Diameter signaling security</li>
+          <li>Telecom fraud risk assessment</li>
+          <li>API & roaming security testing</li>
+          <li>Network Exposure Function (NEF) testing</li>
+          <li>Telecom SOC design & advisory</li>
+        </ul>
+      </div>
+
+      <div class="industry-card">
+        <div class="industry-badge">Cybersecurity 1.12</div>
+        <div class="industry-name">Automotive Security</div>
+        <div class="industry-desc">Securing the full vehicle lifecycle — from embedded systems and OTA to Automotive SOC and ISO 21434 compliance — for OEMs and Tier 1 suppliers.</div>
+        <ul class="industry-sub-list">
+          <li>Automotive TARA (Threat Analysis & Risk)</li>
+          <li>ECU / CAN bus VAPT</li>
+          <li>ISO 21434 & UNECE R155/R156 compliance</li>
+          <li>OTA security assessment</li>
+          <li>Secure SDLC for automotive (AUTOSAR)</li>
+          <li>Automotive SOC design & implementation</li>
+        </ul>
+      </div>
+
+    </div><!-- /industry-grid -->
+
+    <!-- APPROACH -->
+    <div class="approach-strip" data-reveal-group>
+      <div class="approach-step">
+        <div class="approach-num">01</div>
+        <div class="approach-name">Discover</div>
+        <div class="approach-desc">We map your threat surface, regulatory obligations, and people before prescribing anything.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">02</div>
+        <div class="approach-name">Assess</div>
+        <div class="approach-desc">Technical audits and FAIR-based modelling translate vulnerabilities into business impact.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">03</div>
+        <div class="approach-name">Remediate</div>
+        <div class="approach-desc">Prioritised, actionable roadmaps — not just reports. We work alongside your team through execution.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-num">04</div>
+        <div class="approach-name">Sustain</div>
+        <div class="approach-desc">Ongoing advisory that evolves as your organisation and the threat landscape change.</div>
+      </div>
+    </div>
+
+  </div><!-- /panel-cyber -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PILLAR 2: AI                               -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="pillar-panel" id="panel-ai">
+
+    <div class="pillar-header" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Service 02</div>
+        <h2 class="pillar-title">AI that secures, automates,<br>and <em>informs.</em></h2>
+        <p class="pillar-tagline">From securing AI systems to deploying autonomous agents and intelligence platforms — real enterprise outcomes, not pilots.</p>
+      </div>
+      <div class="pillar-framework">
+        <span class="framework-word accent">Secure</span>
+        <span class="framework-word">Deploy</span>
+        <span class="framework-word">Govern</span>
+      </div>
+    </div>
+
+    <div class="service-grid" id="grid-ai" data-reveal-group>
+
+      <div class="service-card" onclick="toggleService('ai-1', this)">
+        <div class="service-number">2.1</div>
+        <div class="service-name">AI Security & Red-Teaming</div>
+        <div class="service-tagline">Adversarial testing, prompt injection assessment, and governance for AI-powered systems.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="ai-1">
+        <div>
+          <div class="sub-group-title">Assessment</div>
+          <ul class="sub-list">
+            <li>LLM & generative AI risk assessment</li>
+            <li>Adversarial prompt injection testing</li>
+            <li>AI model security evaluation</li>
+            <li>AI supply chain risk assessment</li>
+            <li>Bias, hallucination & output risk review</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Governance</div>
+          <ul class="sub-list">
+            <li>AI risk policy & regulatory alignment</li>
+            <li>Responsible AI framework design</li>
+            <li>AI vendor & model evaluation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Why it matters</div>
+          <ul class="sub-list">
+            <li>AI systems introduce new attack surfaces</li>
+            <li>Prompt injection is the new SQL injection</li>
+            <li>Boards need defensible AI governance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('ai-2', this)">
+        <div class="service-number">2.2</div>
+        <div class="service-name">Agentic AI for Business</div>
+        <div class="service-tagline">Autonomous AI agents driving acquisition, conversion, retention, and support at scale.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="ai-2">
+        <div>
+          <div class="sub-group-title">Agent Capabilities</div>
+          <ul class="sub-list">
+            <li>Customer acquisition & conversion agents</li>
+            <li>AI-driven retention & support automation</li>
+            <li>Drop-off detection & recovery workflows</li>
+            <li>Autonomous sales & upsell agents</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Channels & Deployment</div>
+          <ul class="sub-list">
+            <li>WhatsApp, SMS & email automation</li>
+            <li>Voice agent deployment</li>
+            <li>Web & app channel integration</li>
+            <li>Multilingual support</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Control & Observability</div>
+          <ul class="sub-list">
+            <li>AI agent observability & traceability</li>
+            <li>Guardrails & prompt security</li>
+            <li>Performance tracking & testing automation</li>
+            <li>Human escalation workflows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('ai-3', this)">
+        <div class="service-number">2.3</div>
+        <div class="service-name">Data & Business Intelligence</div>
+        <div class="service-tagline">Natural language querying, predictive analytics, and AI-powered decision intelligence.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="ai-3">
+        <div>
+          <div class="sub-group-title">Intelligence Platform</div>
+          <ul class="sub-list">
+            <li>Natural language querying of operational data</li>
+            <li>Predictive analytics & anomaly detection</li>
+            <li>Live data aggregation across platforms</li>
+            <li>AI-powered decision intelligence</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Reporting & Automation</div>
+          <ul class="sub-list">
+            <li>Automated reporting & executive dashboards</li>
+            <li>Instant alerts & event-based triggers</li>
+            <li>Smart charts & visual reports</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Integration</div>
+          <ul class="sub-list">
+            <li>CRM, ERP & core banking integration</li>
+            <li>Cloud & on-premise deployment</li>
+            <li>Role-based access & data governance</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /grid-ai -->
+
+    <div class="approach-strip" data-reveal-group>
+      <div class="approach-step"><div class="approach-num">01</div><div class="approach-name">Assess</div><div class="approach-desc">Evaluate data maturity, infrastructure, and organisational readiness for AI deployment.</div></div>
+      <div class="approach-step"><div class="approach-num">02</div><div class="approach-name">Design</div><div class="approach-desc">Architect solutions — agents, platforms, or frameworks — tailored to your context.</div></div>
+      <div class="approach-step"><div class="approach-num">03</div><div class="approach-name">Deploy</div><div class="approach-desc">Implement with security-first principles, guardrails, and observability built in.</div></div>
+      <div class="approach-step"><div class="approach-num">04</div><div class="approach-name">Evolve</div><div class="approach-desc">Continuously improve agents and models through measured outcomes and automated testing.</div></div>
+    </div>
+
+  </div><!-- /panel-ai -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PILLAR 3: DATA                             -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="pillar-panel" id="panel-data">
+
+    <div class="pillar-header" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Service 03</div>
+        <h2 class="pillar-title">Data infrastructure that becomes<br>a <em>decision advantage.</em></h2>
+        <p class="pillar-tagline">From fragmented systems to a single source of truth — architecture, governance, and analytics built to scale with the business.</p>
+      </div>
+      <div class="pillar-framework">
+        <span class="framework-word accent">Model</span>
+        <span class="framework-word">Govern</span>
+        <span class="framework-word">Activate</span>
+      </div>
+    </div>
+
+    <div class="service-grid" id="grid-data" data-reveal-group>
+
+      <div class="service-card" onclick="toggleService('data-1', this)">
+        <div class="service-number">3.1</div>
+        <div class="service-name">Data Architecture &amp; Engineering</div>
+        <div class="service-tagline">Modern data platforms, pipelines, and warehousing built for reliability and scale.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="data-1">
+        <div>
+          <div class="sub-group-title">Platform &amp; Pipelines</div>
+          <ul class="sub-list">
+            <li>ETL / ELT pipeline design</li>
+            <li>Data warehouse &amp; lakehouse architecture</li>
+            <li>Real-time streaming pipelines</li>
+            <li>Legacy data migration</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Modelling &amp; Storage</div>
+          <ul class="sub-list">
+            <li>Dimensional &amp; data vault modelling</li>
+            <li>Master data management</li>
+            <li>Data quality &amp; lineage tooling</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Reliability</div>
+          <ul class="sub-list">
+            <li>Data observability &amp; monitoring</li>
+            <li>Backup &amp; disaster recovery design</li>
+            <li>Cost &amp; performance optimisation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('data-2', this)">
+        <div class="service-number">3.2</div>
+        <div class="service-name">Data Governance &amp; Compliance</div>
+        <div class="service-tagline">Policy, access control, and regulatory alignment for data you can trust and defend.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="data-2">
+        <div>
+          <div class="sub-group-title">Governance Framework</div>
+          <ul class="sub-list">
+            <li>Data governance policy design</li>
+            <li>Data classification &amp; cataloguing</li>
+            <li>Role-based access &amp; stewardship models</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Regulatory</div>
+          <ul class="sub-list">
+            <li>DPDP Act &amp; GDPR data mapping</li>
+            <li>Data retention &amp; residency review</li>
+            <li>Third-party data sharing agreement review</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Trust</div>
+          <ul class="sub-list">
+            <li>Data quality scorecards</li>
+            <li>Privacy impact assessments</li>
+            <li>Consent &amp; preference management</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('data-3', this)">
+        <div class="service-number">3.3</div>
+        <div class="service-name">Analytics &amp; Business Intelligence</div>
+        <div class="service-tagline">Dashboards, models, and self-serve analytics that turn data into decisions.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="data-3">
+        <div>
+          <div class="sub-group-title">Reporting</div>
+          <ul class="sub-list">
+            <li>Executive dashboards &amp; scorecards</li>
+            <li>Self-serve BI enablement</li>
+            <li>Automated reporting pipelines</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Modelling</div>
+          <ul class="sub-list">
+            <li>Statistical &amp; predictive modelling</li>
+            <li>Cohort, funnel &amp; retention analysis</li>
+            <li>Forecasting &amp; scenario planning</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Enablement</div>
+          <ul class="sub-list">
+            <li>Analytics tooling rollout (Looker, Power BI, Tableau)</li>
+            <li>Data literacy training</li>
+            <li>KPI framework design</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /grid-data -->
+
+    <div class="approach-strip" data-reveal-group>
+      <div class="approach-step"><div class="approach-num">01</div><div class="approach-name">Assess</div><div class="approach-desc">Evaluate data maturity, sources, and quality across the organisation.</div></div>
+      <div class="approach-step"><div class="approach-num">02</div><div class="approach-name">Architect</div><div class="approach-desc">Design the platform, models, and governance structure the business actually needs.</div></div>
+      <div class="approach-step"><div class="approach-num">03</div><div class="approach-name">Implement</div><div class="approach-desc">Build pipelines, warehouses, and dashboards with reliability and lineage built in.</div></div>
+      <div class="approach-step"><div class="approach-num">04</div><div class="approach-name">Govern</div><div class="approach-desc">Sustain quality, access control, and compliance as the data estate grows.</div></div>
+    </div>
+
+  </div><!-- /panel-data -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PILLAR 4: CLOUD                            -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="pillar-panel" id="panel-cloud">
+
+    <div class="pillar-header" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Service 04</div>
+        <h2 class="pillar-title">Cloud built around how<br>your teams <em>actually work.</em></h2>
+        <p class="pillar-tagline">Strategy, migration, and architecture across AWS, Azure, and GCP — designed for performance, cost, and resilience, not just uptime.</p>
+      </div>
+      <div class="pillar-framework">
+        <span class="framework-word accent">Strategise</span>
+        <span class="framework-word">Migrate</span>
+        <span class="framework-word">Optimise</span>
+      </div>
+    </div>
+
+    <div class="service-grid" id="grid-cloud" data-reveal-group>
+
+      <div class="service-card" onclick="toggleService('cloud-1', this)">
+        <div class="service-number">4.1</div>
+        <div class="service-name">Cloud Strategy &amp; Architecture</div>
+        <div class="service-tagline">Landing zones, reference architectures, and multi-cloud strategy aligned to business goals.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cloud-1">
+        <div>
+          <div class="sub-group-title">Strategy</div>
+          <ul class="sub-list">
+            <li>Cloud readiness assessment</li>
+            <li>Multi-cloud &amp; hybrid strategy</li>
+            <li>Total cost of ownership modelling</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Architecture</div>
+          <ul class="sub-list">
+            <li>Landing zone design</li>
+            <li>Well-architected framework reviews</li>
+            <li>Disaster recovery &amp; business continuity architecture</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Governance</div>
+          <ul class="sub-list">
+            <li>Cloud governance &amp; tagging standards</li>
+            <li>Cost allocation &amp; chargeback models</li>
+            <li>Cloud policy &amp; guardrail design</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('cloud-2', this)">
+        <div class="service-number">4.2</div>
+        <div class="service-name">Migration &amp; Modernisation</div>
+        <div class="service-tagline">Lift-and-shift, replatforming, and application modernisation with minimal disruption.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cloud-2">
+        <div>
+          <div class="sub-group-title">Migration</div>
+          <ul class="sub-list">
+            <li>Workload discovery &amp; dependency mapping</li>
+            <li>Lift-and-shift &amp; replatforming</li>
+            <li>Database migration &amp; modernisation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Modernisation</div>
+          <ul class="sub-list">
+            <li>Containerisation &amp; Kubernetes adoption</li>
+            <li>Serverless &amp; microservices migration</li>
+            <li>Legacy application refactoring</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Cutover</div>
+          <ul class="sub-list">
+            <li>Migration runbooks &amp; rollback planning</li>
+            <li>Cutover testing &amp; validation</li>
+            <li>Post-migration performance tuning</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card" onclick="toggleService('cloud-3', this)">
+        <div class="service-number">4.3</div>
+        <div class="service-name">Cloud Operations &amp; FinOps</div>
+        <div class="service-tagline">Ongoing optimisation for cost, performance, and reliability at scale.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="cloud-3">
+        <div>
+          <div class="sub-group-title">FinOps</div>
+          <ul class="sub-list">
+            <li>Cost visibility &amp; FinOps practice setup</li>
+            <li>Reserved instance &amp; savings plan strategy</li>
+            <li>Idle resource identification</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Operations</div>
+          <ul class="sub-list">
+            <li>Infrastructure as code (Terraform, CDK)</li>
+            <li>CI/CD pipeline design</li>
+            <li>Site reliability engineering support</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Resilience</div>
+          <ul class="sub-list">
+            <li>Auto-scaling &amp; performance tuning</li>
+            <li>Multi-region resilience design</li>
+            <li>Cloud security posture management</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /grid-cloud -->
+
+    <div class="approach-strip" data-reveal-group>
+      <div class="approach-step"><div class="approach-num">01</div><div class="approach-name">Assess</div><div class="approach-desc">Baseline current infrastructure, spend, and workload dependencies.</div></div>
+      <div class="approach-step"><div class="approach-num">02</div><div class="approach-name">Design</div><div class="approach-desc">Architect landing zones and target-state environments built for the business.</div></div>
+      <div class="approach-step"><div class="approach-num">03</div><div class="approach-name">Migrate</div><div class="approach-desc">Move and modernise workloads with tested runbooks and minimal downtime.</div></div>
+      <div class="approach-step"><div class="approach-num">04</div><div class="approach-name">Operate</div><div class="approach-desc">Continuously tune cost, performance, and resilience post-migration.</div></div>
+    </div>
+
+  </div><!-- /panel-cloud -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PILLAR 5: AI INFRASTRUCTURE CONSULTING     -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="pillar-panel" id="panel-infra">
+
+    <div class="pillar-header" data-reveal>
+      <div class="pillar-header-left">
+        <div class="pillar-number">Service 05</div>
+        <h2 class="pillar-title">Verified GPU capacity,<br>from workload to <em>deployment.</em></h2>
+        <p class="pillar-tagline">From workload specification to verified sourcing and post-deployment governance — a controlled process for enterprise GPU capacity, not a supplier list.</p>
+      </div>
+      <div class="pillar-framework">
+        <span class="framework-word accent">Diagnose</span>
+        <span class="framework-word">Source</span>
+        <span class="framework-word">Verify</span>
+        <span class="framework-word">Govern</span>
+      </div>
+    </div>
+
+    <div class="service-grid" id="grid-infra" data-reveal-group>
+
+      <!-- 5.1 Capacity Readiness Diagnostic -->
+      <div class="service-card" onclick="toggleService('infra-1', this)">
+        <div class="service-number">5.1</div>
+        <div class="service-name">Capacity Readiness Diagnostic</div>
+        <div class="service-tagline">Translate a workload into a comparable spec, TCO range and sourcing plan — in days, not weeks.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="infra-1">
+        <div>
+          <div class="sub-group-title">Workload Analysis</div>
+          <ul class="sub-list">
+            <li>Workload specification &amp; sizing</li>
+            <li>GPU / accelerator requirement modelling</li>
+            <li>Comparable spec generation across providers</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Cost &amp; Planning</div>
+          <ul class="sub-list">
+            <li>TCO range modelling</li>
+            <li>Budget &amp; timeline planning</li>
+            <li>Sourcing plan development</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Output</div>
+          <ul class="sub-list">
+            <li>Comparable spec sheet</li>
+            <li>TCO range estimate</li>
+            <li>Sourcing roadmap, delivered in days</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5.2 GPU Sourcing -->
+      <div class="service-card" onclick="toggleService('infra-2', this)">
+        <div class="service-number">5.2</div>
+        <div class="service-name">GPU Sourcing</div>
+        <div class="service-tagline">A controlled RFQ across a vetted provider panel, negotiated to close on your behalf.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="infra-2">
+        <div>
+          <div class="sub-group-title">Sourcing Process</div>
+          <ul class="sub-list">
+            <li>Vetted provider panel curation</li>
+            <li>Controlled RFQ management</li>
+            <li>Competitive, on-your-behalf negotiation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Provider Coverage</div>
+          <ul class="sub-list">
+            <li>Hyperscalers &amp; neoclouds</li>
+            <li>GPU-specialist &amp; colocation providers</li>
+            <li>Bare-metal &amp; managed capacity options</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Outcome</div>
+          <ul class="sub-list">
+            <li>Negotiated terms, closed on your behalf</li>
+            <li>Transparent, side-by-side pricing comparison</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5.3 Technical & Capacity Assurance -->
+      <div class="service-card" onclick="toggleService('infra-3', this)">
+        <div class="service-number">5.3</div>
+        <div class="service-name">Technical &amp; Capacity Assurance</div>
+        <div class="service-tagline">Independent verification of ownership, topology and live performance before you sign.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="infra-3">
+        <div>
+          <div class="sub-group-title">Verification</div>
+          <ul class="sub-list">
+            <li>Ownership &amp; entitlement verification</li>
+            <li>Network &amp; interconnect topology validation</li>
+            <li>Live performance benchmarking</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Risk Mitigation</div>
+          <ul class="sub-list">
+            <li>SLA &amp; contract review</li>
+            <li>Provider financial &amp; operational due diligence</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Assurance</div>
+          <ul class="sub-list">
+            <li>Independent technical validation report</li>
+            <li>Pre-signature sign-off</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 5.4 Managed Capacity Governance -->
+      <div class="service-card" onclick="toggleService('infra-4', this)">
+        <div class="service-number">5.4</div>
+        <div class="service-name">Managed Capacity Governance</div>
+        <div class="service-tagline">Ongoing SLA, utilization and renewal oversight after deployment.</div>
+        <div class="service-expand-indicator">
+          <span class="indicator-text">Explore</span>
+          <span class="indicator-icon"><svg width="18" height="18" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </div>
+      </div>
+      <div class="sub-services-panel" id="infra-4">
+        <div>
+          <div class="sub-group-title">Ongoing Oversight</div>
+          <ul class="sub-list">
+            <li>SLA monitoring &amp; enforcement</li>
+            <li>Utilization tracking &amp; optimisation</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Lifecycle Management</div>
+          <ul class="sub-list">
+            <li>Renewal negotiation support</li>
+            <li>Capacity scaling advisory</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sub-group-title">Reporting</div>
+          <ul class="sub-list">
+            <li>Governance dashboards</li>
+            <li>Quarterly capacity reviews</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /grid-infra -->
+
+    <div class="approach-strip" data-reveal-group>
+      <div class="approach-step"><div class="approach-num">01</div><div class="approach-name">Diagnose</div><div class="approach-desc">Translate the workload into a comparable spec, TCO range, and sourcing plan.</div></div>
+      <div class="approach-step"><div class="approach-num">02</div><div class="approach-name">Source</div><div class="approach-desc">Run a controlled RFQ across a vetted GPU provider panel, negotiated on your behalf.</div></div>
+      <div class="approach-step"><div class="approach-num">03</div><div class="approach-name">Verify</div><div class="approach-desc">Independently verify ownership, topology, and live performance before you sign.</div></div>
+      <div class="approach-step"><div class="approach-num">04</div><div class="approach-name">Govern</div><div class="approach-desc">Provide ongoing SLA, utilization, and renewal oversight after deployment.</div></div>
+    </div>
+
+  </div><!-- /panel-infra -->
+
+
+</div><!-- /services-body -->
+
+<!-- CTA -->
+<div class="cta" data-reveal>
+  <div class="section-tag">Next Steps</div>
+  <h2>Ready to put <em>people</em><br/>at the centre of technology?</h2>
+  <p>Whether you're preparing for a CERT-IN audit, building an AI capability, modernising your data estate, migrating to the cloud, or sourcing verified GPU capacity — we're here.</p>
+  <a href="contact.html" class="btn-navy">Schedule a consultation</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>
+    <div class="site-footer-brand"><img src="assets/logo-mark-white.png" alt="" class="site-footer-mark"/>Anthro<em>Prime</em> Technology</div>
+    <div class="site-footer-copy">Human First &nbsp;·&nbsp; © 2026 AnthroPrime Technology</div>
+  </div>
+  <div class="site-footer-links">
+    <a href="anthroprime_services.html">Services</a>
+    <a href="practices.html">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="strategic-growth-advisor.html">Growth Advisory</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+<script>
+  // Switch pillar tabs
+  function switchPillar(pillar, btn) {
+    // Deactivate all panels and chips
+    document.querySelectorAll('.pillar-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pillar-chip').forEach(c => c.classList.remove('active'));
+    
+    // Close any open service cards
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('expanded'));
+    document.querySelectorAll('.sub-services-panel').forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
+    });
+    
+    // Activate selected (re-triggering animation)
+    const activePanel = document.getElementById('panel-' + pillar);
+    activePanel.style.animation = 'none';
+    activePanel.offsetHeight; /* trigger reflow */
+    activePanel.style.animation = null;
+    activePanel.classList.add('active');
+    
+    btn.classList.add('active');
+  }
+
+  // Toggle service card expansion
+  function toggleService(id, card) {
+    const panel = document.getElementById(id);
+    const grid = card.closest('.service-grid');
+    const allCards = grid.querySelectorAll('.service-card');
+    const allPanels = grid.querySelectorAll('.sub-services-panel');
+    const isOpen = card.classList.contains('expanded');
+
+    // Close all in this grid
+    allCards.forEach(c => c.classList.remove('expanded'));
+    allPanels.forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
+    });
+
+    if (!isOpen) {
+      card.classList.add('expanded');
+      // Insert panel after the row containing this card
+      const cardIndex = Array.from(allCards).indexOf(card);
+      const cols = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+      const rowEnd = Math.floor(cardIndex / cols) * cols + cols;
+      const anchorCard = allCards[Math.min(rowEnd - 1, allCards.length - 1)];
+
+      // Move panel to after anchor card's position in DOM
+      anchorCard.parentNode.insertBefore(panel, anchorCard.nextSibling);
+      panel.style.display = 'grid';
+      panel.classList.add('active');
+    }
+  }
+</script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact Us — AnthroPrime Technology</title>
+<meta name="description" content="Get in touch with AnthroPrime Technology for AI, data, cloud and cybersecurity consulting, plus executive advisory. Schedule a consultation directly to your Microsoft calendar."/>
+<link rel="icon" href="assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AnthroPrime Technology"/>
+<meta property="og:title" content="Contact Us — AnthroPrime Technology"/>
+<meta property="og:description" content="Get in touch with AnthroPrime Technology for AI, data, cloud and cybersecurity consulting, plus executive advisory. Schedule a consultation directly to your Microsoft calendar."/>
+<meta property="og:url" content="https://www.anthroprime.com/contact.html"/>
+<meta property="og:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Contact Us — AnthroPrime Technology"/>
+<meta name="twitter:description" content="Get in touch with AnthroPrime Technology for AI, data, cloud and cybersecurity consulting, plus executive advisory. Schedule a consultation directly to your Microsoft calendar."/>
+<meta name="twitter:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<script>(function(){try{var t=localStorage.getItem('ap-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="assets/site.css" rel="stylesheet"/>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── TOKENS (identical to rest of site) ── */
+:root{
+  --bg:#f5f4f1;--bg2:#eeecea;--bg3:#e7e5e0;
+  --surface:#faf9f7;--border:rgba(80,75,65,0.12);--border2:rgba(80,75,65,0.22);
+  --text:#2a2720;--muted:#7a756a;--faint:#b0aa9e;
+  --navy:#1a2744;--navy2:#22336b;--navy-mid:#2e4080;--navy-lt:#d4daf0;
+  --accent:#2e4080;--warm:#c8bfb0;
+  --alert:#8a4a2e;--alert-bg:#f6ece4;--alert-border:rgba(138,74,46,0.28);
+  --ok:#2e6b4a;--ok-bg:#eaf3ee;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+/* ── DARK MODE ── */
+html[data-theme="dark"]{
+  --bg:#15161b;--bg2:#1c1e24;--bg3:#24262d;
+  --surface:#1a1b20;--border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.16);
+  --text:#ece9e2;--muted:#a8a297;--faint:#6f6a60;
+  --navy-mid:#7288d6;--accent:#7288d6;
+  --alert:#d98f66;--alert-bg:#2a1f18;--alert-border:rgba(217,143,102,0.32);
+  --ok:#4f9d74;--ok-bg:#16241d;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* ══════════════════════════════
+   PAGE HERO
+══════════════════════════════ */
+.contact-hero{background:var(--navy);padding:6.5rem 3.5rem 4.5rem;position:relative;overflow:hidden}
+.contact-hero::before{content:'';position:absolute;top:0;right:0;width:42%;height:100%;background:var(--navy2);clip-path:polygon(18% 0,100% 0,100% 100%,4% 100%);opacity:.4;pointer-events:none}
+.contact-hero-inner{position:relative;z-index:1;max-width:760px}
+.section-tag{font-size:.72rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,218,240,.6);margin-bottom:1.25rem;display:inline-flex;align-items:center;gap:.6rem}
+.section-tag::before{content:'';width:28px;height:1px;background:rgba(212,218,240,.6)}
+.contact-hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.1;letter-spacing:-.01em;color:#f5f4f1;margin-bottom:1.4rem}
+.contact-hero h1 em{font-style:italic;color:var(--navy-lt)}
+.contact-hero p{color:rgba(212,218,240,.62);font-size:1rem;font-weight:300;line-height:1.85;max-width:540px}
+.hero-quicklinks{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:2.75rem;position:relative;z-index:1}
+.quicklink{color:rgba(212,218,240,.85);text-decoration:none;font-size:.85rem;display:flex;flex-direction:column;gap:.3rem;transition:opacity .2s}
+.quicklink:hover{opacity:.75}
+.quicklink span:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,218,240,.45)}
+
+/* ══════════════════════════════
+   MAIN GRID — FORM + SIDEBAR
+══════════════════════════════ */
+.contact-wrap{max-width:1480px;margin:0 auto;padding:5.5rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr;gap:4rem;align-items:start}
+
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:3rem}
+.form-card h2{font-family:var(--serif);font-weight:300;font-size:1.9rem;margin-bottom:.5rem;letter-spacing:-.01em}
+.form-card > p.lede{color:var(--muted);font-size:.88rem;font-weight:300;margin-bottom:2.5rem}
+
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.field{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.field label{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field label .req{color:var(--navy-mid)}
+.field input,.field select,.field textarea{
+  font-family:var(--sans);font-size:.92rem;color:var(--text);
+  background:var(--bg);border:1px solid var(--border2);border-radius:2px;
+  padding:.8rem .9rem;transition:border-color .2s,background .2s;width:100%;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy-mid);background:var(--surface)}
+.field textarea{resize:vertical;min-height:120px;line-height:1.6}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><path d='M5 7l5 5 5-5' stroke='%237a756a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.2rem}
+
+/* segmented control — nature of inquiry */
+.segmented{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.segmented input{position:absolute;opacity:0;pointer-events:none}
+.segmented label{
+  border:1px solid var(--border2);border-radius:2px;padding:.75rem .5rem;
+  text-align:center;font-size:.76rem;font-weight:500;letter-spacing:.03em;
+  color:var(--muted);cursor:pointer;transition:all .2s;text-transform:none;
+}
+.segmented input:checked + label{border-color:var(--navy);background:var(--navy);color:#f5f4f1}
+@media(max-width:700px){.segmented{grid-template-columns:repeat(2,1fr)}}
+
+
+.consent{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:2rem}
+.consent input{margin-top:.3rem;accent-color:var(--navy)}
+.consent label{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.6}
+
+.btn-submit{
+  background:var(--navy);color:#f5f4f1;padding:.95rem 2.4rem;border:none;border-radius:2px;
+  font-size:.82rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;
+  transition:opacity .2s,transform .2s;display:inline-flex;align-items:center;gap:.6rem;
+}
+.btn-submit:hover{opacity:.88}
+.btn-submit:disabled{opacity:.5;cursor:not-allowed}
+.btn-submit .spinner{display:none;width:14px;height:14px;border:2px solid rgba(245,244,241,.35);border-top-color:#f5f4f1;border-radius:50%;animation:spin .7s linear infinite}
+.btn-submit.is-loading .spinner{display:inline-block}
+.btn-submit.is-loading .btn-label{opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.form-success{display:none;text-align:center;padding:3.5rem 1rem}
+.form-success.is-visible{display:block}
+.form-success .tick{width:52px;height:52px;border-radius:50%;background:var(--ok-bg);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--ok)}
+.form-success h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;margin-bottom:.6rem}
+.form-success p{color:var(--muted);font-size:.9rem;font-weight:300;max-width:380px;margin:0 auto}
+.form-error{display:none;background:var(--alert-bg);border:1px solid var(--alert-border);color:#6b4630;border-radius:2px;padding:.9rem 1.1rem;font-size:.83rem;margin-bottom:1.5rem}
+.form-error.is-visible{display:block}
+.visually-hidden{position:absolute;left:-9999px;top:-9999px}
+
+/* ── sidebar ── */
+.side-card{background:var(--navy);color:#f5f4f1;border-radius:4px;padding:2.5rem;margin-bottom:1.5rem}
+.side-card h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin-bottom:1.5rem}
+.side-item{display:flex;flex-direction:column;gap:.25rem;padding:1.1rem 0;border-top:1px solid rgba(212,218,240,.12)}
+.side-item:first-of-type{border-top:none}
+.side-item span:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,218,240,.45)}
+.side-item a,.side-item p{color:rgba(212,218,240,.92);font-size:.92rem;text-decoration:none;font-weight:300}
+.side-item a:hover{text-decoration:underline}
+
+.side-card.light{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.side-card.light h3{color:var(--text)}
+.side-card.light .side-item{border-top-color:var(--border)}
+.side-card.light .side-item span:first-child{color:var(--faint)}
+.side-card.light .side-item a,.side-card.light .side-item p{color:var(--text)}
+.sla-row{display:flex;justify-content:space-between;padding:.6rem 0;font-size:.85rem;border-top:1px solid var(--border)}
+.sla-row:first-of-type{border-top:none}
+.sla-row span:first-child{color:var(--muted);font-weight:300}
+.sla-row span:last-child{font-weight:500;color:var(--text)}
+
+/* ══════════════════════════════
+   SCHEDULER
+══════════════════════════════ */
+.scheduler{background:var(--bg2);padding:5.5rem 3.5rem}
+.scheduler-inner{max-width:1480px;margin:0 auto}
+.scheduler-header{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem;align-items:end}
+.scheduler-header .section-tag{color:var(--navy-mid);opacity:.8}
+.scheduler-header .section-tag::before{background:var(--navy-mid)}
+.scheduler-header h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,3.4vw,2.8rem);letter-spacing:-.01em}
+.scheduler-header h2 em{font-style:italic;color:var(--navy-mid)}
+.scheduler-header p{color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.8}
+
+.scheduler-panel{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr}
+.sched-left{padding:2.75rem;border-right:1px solid var(--border)}
+.sched-right{padding:2.75rem;background:var(--bg)}
+.sched-label{font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+
+.date-strip{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.5rem;margin-bottom:2rem}
+.date-pill{
+  flex-shrink:0;border:1px solid var(--border2);border-radius:3px;padding:.7rem .9rem;
+  text-align:center;cursor:pointer;background:var(--bg);transition:all .2s;min-width:64px;
+}
+.date-pill .dow{display:block;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.date-pill .dom{display:block;font-family:var(--serif);font-size:1.3rem;font-weight:500;margin-top:.15rem}
+.date-pill:hover{border-color:var(--navy-mid)}
+.date-pill.is-selected{background:var(--navy);border-color:var(--navy)}
+.date-pill.is-selected .dow{color:rgba(212,218,240,.6)}
+.date-pill.is-selected .dom{color:#f5f4f1}
+
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:2rem}
+.time-pill{
+  border:1px solid var(--border2);border-radius:3px;padding:.65rem;text-align:center;
+  font-size:.83rem;cursor:pointer;background:var(--bg);transition:all .2s;
+}
+.time-pill:hover{border-color:var(--navy-mid)}
+.time-pill.is-selected{background:var(--navy);border-color:var(--navy);color:#f5f4f1}
+.tz-note{font-size:.75rem;color:var(--faint);font-style:italic}
+
+.sched-summary{
+  border:1px dashed var(--border2);border-radius:3px;padding:1.1rem 1.2rem;margin-bottom:1.5rem;
+  font-size:.85rem;color:var(--muted);min-height:56px;display:flex;align-items:center;
+}
+.sched-summary strong{color:var(--text);font-weight:500}
+.sched-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn-outlook,.btn-ics{
+  display:inline-flex;align-items:center;gap:.5rem;border-radius:2px;padding:.75rem 1.2rem;
+  font-size:.78rem;font-weight:500;letter-spacing:.03em;text-decoration:none;cursor:pointer;
+  border:1px solid var(--border2);background:var(--bg);color:var(--text);transition:all .2s;
+}
+.btn-outlook{background:#0f6cbd;border-color:#0f6cbd;color:#fff}
+.btn-outlook:hover{opacity:.9}
+.btn-ics:hover{border-color:var(--navy-mid);color:var(--navy-mid)}
+.btn-outlook[disabled],.btn-ics[disabled]{opacity:.4;pointer-events:none}
+
+.sched-note{font-size:.76rem;color:var(--faint);margin-top:1.25rem;line-height:1.6}
+
+@media(max-width:960px){
+  .contact-wrap{grid-template-columns:1fr;padding:3.5rem 1.5rem}
+  .scheduler{padding:3.5rem 1.5rem}
+  .scheduler-header{grid-template-columns:1fr}
+  .scheduler-panel{grid-template-columns:1fr}
+  .sched-left{border-right:none;border-bottom:1px solid var(--border)}
+  .field-row{grid-template-columns:1fr}
+  .contact-hero{padding:5rem 1.5rem 3.5rem}
+  .form-card{padding:1.75rem}
+}
+</style>
+</head>
+<body>
+<div id="site-progress"></div>
+<div id="page-transition"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo"><img src="assets/logo-badge.png" alt="AnthroPrime Technology" class="site-logo-mark" width="48" height="48"/><span class="site-logo-word">Anthro<em>Prime</em> Technology</span></a>
+    <ul class="site-links">
+      <li><a href="anthroprime_services.html">Services</a></li>
+      <li><a href="practices.html">Practice</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="strategic-growth-advisor.html">Growth Advisory</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://ecod.anthroprime.com" target="_blank" rel="noopener">ECOD Lab</a></li>
+      <li><a href="contact.html" class="site-cta-mobile">Get in touch</a></li>
+    </ul>
+    <div class="site-right">
+      <a href="contact.html" class="site-cta">Get in touch</a>
+      <button class="site-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="contact-hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
+  <div class="contact-hero-inner" data-reveal>
+    <div class="section-tag">Get in touch</div>
+    <h1>Let's talk about <em>your</em> technology roadmap.</h1>
+    <p>Whether you're scoping a CERT-IN audit, building an AI capability, modernising your data estate, migrating to the cloud, or want a board-ready view of risk — tell us where you are, and we'll tell you what a serious engagement looks like.</p>
+    <p style="margin-top:1rem;font-size:.85rem;color:var(--faint,rgba(122,117,106,0.8));font-style:italic;">Technology that starts with people — you'll talk to the people doing the work, not a sales layer.</p>
+  </div>
+  <div class="hero-quicklinks" data-reveal>
+    <a class="quicklink" href="mailto:hello@anthroprime.com"><span>Email</span>hello@anthroprime.com</a>
+    <span class="quicklink"><span>Response time</span>Within 1 business day</span>
+  </div>
+</section>
+
+<section class="contact-wrap">
+  <div class="form-card" data-reveal>
+    <h2>Tell us about your requirement</h2>
+    <p class="lede">Every field below reaches our team directly — nothing here is outsourced or automated beyond this form.</p>
+
+    <div class="form-error" id="formError">Something went wrong sending your message. Please try again, or email us directly at <a href="mailto:hello@anthroprime.com">hello@anthroprime.com</a>.</div>
+
+    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact"/>
+      <p class="visually-hidden"><label>Don't fill this out if you're human: <input name="bot-field"/></label></p>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="Full Name" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label for="workEmail">Work Email <span class="req">*</span></label>
+          <input type="email" id="workEmail" name="Work Email" required autocomplete="email"/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone" autocomplete="tel"/>
+        </div>
+        <div class="field">
+          <label for="company">Company / Organisation <span class="req">*</span></label>
+          <input type="text" id="company" name="Company" required/>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" name="Job Title"/>
+        </div>
+        <div class="field">
+          <label for="companySize">Company Size</label>
+          <select id="companySize" name="Company Size">
+            <option value="">Select…</option>
+            <option>1–50 employees</option>
+            <option>51–200 employees</option>
+            <option>201–1000 employees</option>
+            <option>1000+ employees</option>
+            <option>Government / PSU</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="interest">Area of Interest</label>
+          <select id="interest" name="Area of Interest">
+            <option>Information Security Auditing</option>
+            <option>Penetration Testing</option>
+            <option>Cyber Risk Quantification</option>
+            <option>AI Security &amp; Red-Teaming</option>
+            <option>Agentic AI for Business</option>
+            <option>Data Architecture &amp; Engineering</option>
+            <option>Data Governance &amp; Compliance</option>
+            <option>Cloud Strategy &amp; Architecture</option>
+            <option>Cloud Migration &amp; Modernisation</option>
+            <option>AI Infrastructure &amp; GPU Sourcing</option>
+            <option>Capacity Readiness Diagnostic</option>
+            <option>Government &amp; PSU Advisory</option>
+            <option>Security Team Building</option>
+            <option>Training &amp; Awareness</option>
+            <option>Strategic Growth Advisory</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="preferredContact">Preferred Contact Method</label>
+          <select id="preferredContact" name="Preferred Contact Method">
+            <option>Email</option>
+            <option>Phone</option>
+            <option>Either</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Nature of Inquiry</label>
+        <div class="segmented" id="inquirySegmented">
+          <input type="radio" id="nq1" name="Nature of Inquiry" value="General Inquiry" checked/>
+          <label for="nq1">General Inquiry</label>
+          <input type="radio" id="nq2" name="Nature of Inquiry" value="Request a Proposal"/>
+          <label for="nq2">Request a Proposal</label>
+          <input type="radio" id="nq4" name="Nature of Inquiry" value="Partnership"/>
+          <label for="nq4">Partnership</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="message">Project Details <span class="req">*</span></label>
+        <textarea id="message" name="Message" required placeholder="Tell us about your environment, timeline, and what you're trying to achieve."></textarea>
+      </div>
+
+      <div class="consent">
+        <input type="checkbox" id="consent" name="Consent" required/>
+        <label for="consent">I agree to be contacted by AnthroPrime Technology regarding this inquiry, and understand my details will be handled in line with standard data protection practice.</label>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        <span class="spinner"></span>
+        <span class="btn-label">Send Message</span>
+      </button>
+    </form>
+
+    <div class="form-success" id="formSuccess">
+      <div class="tick">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Message received.</h3>
+      <p>Thank you — our team will get back to you within one business day.</p>
+    </div>
+  </div>
+
+  <aside data-reveal>
+    <div class="side-card">
+      <h3>Direct Contact</h3>
+      <div class="side-item"><span>Email</span><a href="mailto:hello@anthroprime.com">hello@anthroprime.com</a></div>
+    </div>
+    <div class="side-card light">
+      <h3>What to expect</h3>
+      <div class="sla-row"><span>General inquiry</span><span>1 business day</span></div>
+      <div class="sla-row"><span>Proposal request</span><span>2 business days</span></div>
+    </div>
+  </aside>
+</section>
+
+<section class="scheduler" id="schedule">
+  <div class="scheduler-inner">
+    <div class="scheduler-header" data-reveal>
+      <div>
+        <div class="section-tag">Prefer to talk it through?</div>
+        <h2>Schedule a <em>consultation</em> call</h2>
+      </div>
+      <p>Pick a slot below and add it straight to your Microsoft / Outlook calendar. We'll confirm by email once the request reaches our team — this reserves the slot on our side too.</p>
+    </div>
+
+    <div class="scheduler-panel" data-reveal>
+      <div class="sched-left">
+        <div class="sched-label">1 · Choose a date</div>
+        <div class="date-strip" id="dateStrip"></div>
+
+        <div class="sched-label">2 · Choose a time <span class="tz-note">(Indian Standard Time, GMT+5:30)</span></div>
+        <div class="time-grid" id="timeGrid"></div>
+
+        <div class="field-row" style="margin-top:.5rem">
+          <div class="field">
+            <label for="schedName">Your Name <span class="req">*</span></label>
+            <input type="text" id="schedName" placeholder="Full name"/>
+          </div>
+          <div class="field">
+            <label for="schedEmail">Your Email <span class="req">*</span></label>
+            <input type="email" id="schedEmail" placeholder="you@company.com"/>
+          </div>
+        </div>
+        <div class="field">
+          <label for="schedTopic">What would you like to discuss?</label>
+          <input type="text" id="schedTopic" placeholder="e.g. Penetration testing scope for our web app"/>
+        </div>
+      </div>
+
+      <div class="sched-right">
+        <div class="sched-label">Booking summary</div>
+        <div class="sched-summary" id="schedSummary">Select a date and time to continue.</div>
+        <div class="sched-actions">
+          <button class="btn-outlook" id="btnOutlook" disabled type="button">
+            <svg width="15" height="15" viewBox="0 0 23 23" fill="none"><path d="M21.5 5.6v11.8c0 .6-.5 1.1-1.1 1.1H9V4.5h11.4c.6 0 1.1.5 1.1 1.1z" fill="#fff" opacity=".15"/><rect x="1" y="2" width="14" height="19" rx="1.5" fill="#fff"/><path d="M1 7h14M1 12h14M1 17h14" stroke="#0f6cbd" stroke-width="1"/></svg>
+            Add to Outlook
+          </button>
+          <button class="btn-ics" id="btnIcs" disabled type="button">Download .ics</button>
+        </div>
+        <button class="btn-submit" id="btnRequestSlot" disabled type="button" style="margin-top:1.25rem;width:100%;justify-content:center">
+          <span class="spinner"></span>
+          <span class="btn-label">Confirm &amp; Request This Slot</span>
+        </button>
+        <p class="sched-note">"Add to Outlook" and ".ics" place a tentative hold on your own calendar immediately. Clicking "Confirm &amp; Request" also notifies our team so we can lock the slot on our end and follow up with a Teams link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div>
+    <div class="site-footer-brand"><img src="assets/logo-mark-white.png" alt="" class="site-footer-mark"/>Anthro<em>Prime</em> Technology</div>
+    <div class="site-footer-copy">Human First &nbsp;·&nbsp; © 2026 AnthroPrime Technology</div>
+  </div>
+  <div class="site-footer-links">
+    <a href="anthroprime_services.html">Services</a>
+    <a href="practices.html">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="strategic-growth-advisor.html">Growth Advisory</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+<!-- hidden static form so Netlify's build-time bot can detect the schedule-request form -->
+<form name="schedule-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="Name"/><input type="email" name="Email"/><input type="text" name="Topic"/>
+  <input type="text" name="Requested Slot (IST)"/><input type="text" name="bot-field"/>
+</form>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ═══════════ CONTACT FORM — Netlify AJAX submit ═══════════ */
+  var form = document.getElementById('contactForm');
+  var submitBtn = document.getElementById('submitBtn');
+  var successEl = document.getElementById('formSuccess');
+  var errorEl = document.getElementById('formError');
+
+  function encodeForm(data){
+    return Object.keys(data).map(function(k){
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]);
+    }).join('&');
+  }
+
+  function netlifySubmit(name, fields){
+    fields['form-name'] = name;
+    return fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: encodeForm(fields)
+    });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errorEl.classList.remove('is-visible');
+    submitBtn.disabled = true;
+    submitBtn.classList.add('is-loading');
+
+    var fd = new FormData(form);
+    var fields = {};
+    fd.forEach(function(v,k){ fields[k] = v; });
+
+    netlifySubmit('contact', fields)
+      .then(function(res){
+        if(!res.ok) throw new Error('Network response was not ok');
+        form.style.display = 'none';
+        successEl.classList.add('is-visible');
+      })
+      .catch(function(){
+        errorEl.classList.add('is-visible');
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+      });
+  });
+
+  /* ═══════════ SCHEDULER ═══════════ */
+  var IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
+  var SLOT_TIMES = [
+    {label:'10:00 AM', h:10, m:0},
+    {label:'11:30 AM', h:11, m:30},
+    {label:'1:00 PM',  h:13, m:0},
+    {label:'2:30 PM',  h:14, m:30},
+    {label:'4:00 PM',  h:16, m:0},
+    {label:'5:30 PM',  h:17, m:30}
+  ];
+  var DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  function nextBusinessDays(count){
+    var out = [];
+    var d = new Date();
+    d.setHours(0,0,0,0);
+    d.setDate(d.getDate() + 1); // start tomorrow
+    while(out.length < count){
+      var day = d.getDay();
+      if(day !== 0 && day !== 6){ out.push(new Date(d)); }
+      d.setDate(d.getDate() + 1);
+    }
+    return out;
+  }
+
+  var dates = nextBusinessDays(10);
+  var dateStrip = document.getElementById('dateStrip');
+  var timeGrid = document.getElementById('timeGrid');
+  var selectedDate = null, selectedSlot = null;
+
+  dates.forEach(function(d, i){
+    var pill = document.createElement('div');
+    pill.className = 'date-pill';
+    pill.innerHTML = '<span class="dow">' + DOW[d.getDay()] + '</span><span class="dom">' + d.getDate() + '</span>';
+    pill.addEventListener('click', function(){
+      document.querySelectorAll('.date-pill').forEach(function(p){ p.classList.remove('is-selected'); });
+      pill.classList.add('is-selected');
+      selectedDate = d;
+      selectedSlot = null;
+      renderTimes();
+      updateSummary();
+    });
+    dateStrip.appendChild(pill);
+    if(i === 0){ pill.click(); }
+  });
+
+  function renderTimes(){
+    timeGrid.innerHTML = '';
+    SLOT_TIMES.forEach(function(slot){
+      var pill = document.createElement('div');
+      pill.className = 'time-pill';
+      pill.textContent = slot.label;
+      pill.addEventListener('click', function(){
+        document.querySelectorAll('.time-pill').forEach(function(p){ p.classList.remove('is-selected'); });
+        pill.classList.add('is-selected');
+        selectedSlot = slot;
+        updateSummary();
+      });
+      timeGrid.appendChild(pill);
+    });
+  }
+  renderTimes();
+
+  function istToUtc(date, h, m){
+    var y = date.getFullYear(), mo = date.getMonth(), d = date.getDate();
+    return new Date(Date.UTC(y, mo, d, h, m, 0) - IST_OFFSET_MS);
+  }
+  function fmtOutlookDT(dt){
+    return dt.toISOString().split('.')[0];
+  }
+  function fmtIcsDT(dt){
+    return dt.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+  }
+  function fmtDateLabel(d){
+    return d.toLocaleDateString('en-IN', {weekday:'long', day:'numeric', month:'long'});
+  }
+  function escIcs(str){
+    return String(str || '').replace(/([,;])/g,'\\$1').replace(/\n/g,'\\n');
+  }
+
+  var summaryEl = document.getElementById('schedSummary');
+  var btnOutlook = document.getElementById('btnOutlook');
+  var btnIcs = document.getElementById('btnIcs');
+  var btnRequestSlot = document.getElementById('btnRequestSlot');
+
+  function updateSummary(){
+    if(!selectedDate || !selectedSlot){
+      summaryEl.innerHTML = 'Select a date and time to continue.';
+      btnOutlook.disabled = true; btnIcs.disabled = true; btnRequestSlot.disabled = true;
+      return;
+    }
+    summaryEl.innerHTML = '<strong>' + fmtDateLabel(selectedDate) + '</strong>&nbsp;at&nbsp;<strong>' + selectedSlot.label + ' IST</strong> · 30 min consultation';
+    btnOutlook.disabled = false; btnIcs.disabled = false; btnRequestSlot.disabled = false;
+  }
+
+  function buildEventMeta(){
+    var name = document.getElementById('schedName').value.trim();
+    var topic = document.getElementById('schedTopic').value.trim();
+    var start = istToUtc(selectedDate, selectedSlot.h, selectedSlot.m);
+    var end = new Date(start.getTime() + 30*60000);
+    var subject = 'AnthroPrime Technology — Consultation Call' + (name ? ' with ' + name : '');
+    var body = 'Consultation call with AnthroPrime Technology.' + (topic ? '\n\nTopic: ' + topic : '') + '\n\nRequested via anthroprime.com/contact.html';
+    return {start:start, end:end, subject:subject, body:body};
+  }
+
+  btnOutlook.addEventListener('click', function(){
+    if(!selectedDate || !selectedSlot) return;
+    var m = buildEventMeta();
+    var url = 'https://outlook.office.com/calendar/0/deeplink/compose'
+      + '?path=/calendar/action/compose&rru=addevent'
+      + '&startdt=' + encodeURIComponent(fmtOutlookDT(m.start) + 'Z')
+      + '&enddt=' + encodeURIComponent(fmtOutlookDT(m.end) + 'Z')
+      + '&subject=' + encodeURIComponent(m.subject)
+      + '&body=' + encodeURIComponent(m.body)
+      + '&location=' + encodeURIComponent('Microsoft Teams (link to follow)');
+    window.open(url, '_blank', 'noopener');
+  });
+
+  btnIcs.addEventListener('click', function(){
+    if(!selectedDate || !selectedSlot) return;
+    var m = buildEventMeta();
+    var now = new Date();
+    var uid = 'anthroprime-' + now.getTime() + '@anthroprime.com';
+    var ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AnthroPrime Technology//Contact Scheduler//EN',
+      'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
+      'UID:' + uid,
+      'DTSTAMP:' + fmtIcsDT(now),
+      'DTSTART:' + fmtIcsDT(m.start),
+      'DTEND:' + fmtIcsDT(m.end),
+      'SUMMARY:' + escIcs(m.subject),
+      'DESCRIPTION:' + escIcs(m.body),
+      'LOCATION:' + escIcs('Microsoft Teams (link to follow)'),
+      'ORGANIZER;CN=AnthroPrime Technology:mailto:hello@anthroprime.com',
+      'STATUS:TENTATIVE','END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    var blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'AnthroPrime-Consultation.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+  btnRequestSlot.addEventListener('click', function(){
+    var name = document.getElementById('schedName').value.trim();
+    var email = document.getElementById('schedEmail').value.trim();
+    if(!name || !email){
+      alert('Please add your name and email so we can confirm the slot.');
+      return;
+    }
+    if(!selectedDate || !selectedSlot) return;
+
+    btnRequestSlot.disabled = true;
+    btnRequestSlot.classList.add('is-loading');
+
+    var topic = document.getElementById('schedTopic').value.trim();
+    var slotLabel = fmtDateLabel(selectedDate) + ' at ' + selectedSlot.label + ' IST';
+
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: 'form-name=schedule-request'
+        + '&Name=' + encodeURIComponent(name)
+        + '&Email=' + encodeURIComponent(email)
+        + '&Topic=' + encodeURIComponent(topic)
+        + '&' + encodeURIComponent('Requested Slot (IST)') + '=' + encodeURIComponent(slotLabel)
+    })
+    .then(function(res){
+      if(!res.ok) throw new Error('failed');
+      summaryEl.innerHTML = '<strong>Request sent.</strong> We\'ll confirm ' + slotLabel + ' by email shortly.';
+      btnRequestSlot.querySelector('.btn-label').textContent = 'Request Sent ✓';
+    })
+    .catch(function(){
+      alert('Could not send your request — please email hello@anthroprime.com with your preferred slot.');
+      btnRequestSlot.disabled = false;
+    })
+    .finally(function(){
+      btnRequestSlot.classList.remove('is-loading');
+    });
+  });
+
+  updateSummary();
+})();
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

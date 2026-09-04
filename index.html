@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AnthroPrime Technology — Consulting for AI, Data, Cloud &amp; Cybersecurity</title>
+<meta name="description" content="AnthroPrime Technology delivers elite, human-first consulting across AI, data, cloud, and cybersecurity — plus Strategic Growth Advisory for founder-led technology companies."/>
+<link rel="icon" href="assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AnthroPrime Technology"/>
+<meta property="og:title" content="AnthroPrime Technology — Consulting for AI, Data, Cloud &amp; Cybersecurity"/>
+<meta property="og:description" content="AnthroPrime Technology delivers elite, human-first consulting across AI, data, cloud, and cybersecurity — plus Strategic Growth Advisory for founder-led technology companies."/>
+<meta property="og:url" content="https://www.anthroprime.com/"/>
+<meta property="og:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AnthroPrime Technology — Consulting for AI, Data, Cloud &amp; Cybersecurity"/>
+<meta name="twitter:description" content="AnthroPrime Technology delivers elite, human-first consulting across AI, data, cloud, and cybersecurity — plus Strategic Growth Advisory for founder-led technology companies."/>
+<meta name="twitter:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<script>(function(){try{var t=localStorage.getItem('ap-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="assets/site.css" rel="stylesheet"/>
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── MAIN SITE TOKENS ── */
+:root{
+  --bg:#f5f4f1;--bg2:#eeecea;--bg3:#e7e5e0;
+  --surface:#faf9f7;--border:rgba(80,75,65,0.12);--border2:rgba(80,75,65,0.22);
+  --text:#2a2720;--muted:#7a756a;--faint:#b0aa9e;
+  --navy:#1a2744;--navy2:#22336b;--navy-mid:#2e4080;--navy-lt:#d4daf0;
+  --accent:#2e4080;--warm:#c8bfb0;--icon-navy:var(--navy);
+  /* service page tokens */
+  --cream:#f5f2ed;--cream-dark:#ede9e2;--warm-white:#faf8f5;
+  --text-primary:#1a1916;--text-secondary:#6b6760;--text-muted:#9a9690;
+  --sp-accent:#b8a080;--sp-accent-dark:#8c7a5e;
+  --sp-border:rgba(26,25,22,0.12);--sp-border-strong:rgba(26,25,22,0.22);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+}
+
+/* ── DARK MODE ── */
+html[data-theme="dark"]{
+  --bg:#15161b;--bg2:#1c1e24;--bg3:#24262d;
+  --surface:#1a1b20;--border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.16);
+  --text:#ece9e2;--muted:#a8a297;--faint:#6f6a60;
+  --navy-mid:#7288d6;--accent:#7288d6;--warm:#7d7568;
+  --cream:#1c1d22;--cream-dark:#24252b;--warm-white:#1a1b1f;
+  --text-primary:#ece9e2;--text-secondary:#a29c90;--text-muted:#6f6a60;
+  --sp-accent:#c9b190;--sp-accent-dark:#a58f6c;
+  --sp-border:rgba(255,255,255,0.09);--sp-border-strong:rgba(255,255,255,0.16);
+  --icon-navy:#8ea0e0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* Nav now lives in assets/site.css (.site-header / .site-nav) so the
+   header is byte-identical across index.html, services and growth-advisor */
+
+/* ══════════════════════════════
+   MAIN SITE — GROWTH ADVISORY SPOTLIGHT
+══════════════════════════════ */
+.growth-spotlight{background:var(--navy);padding:0.7rem 3.5rem;position:relative;z-index:5}
+.growth-spotlight-inner{display:flex;align-items:center;justify-content:center;gap:1.1rem;flex-wrap:wrap;text-align:center;max-width:1100px;margin:0 auto}
+.growth-spotlight-tag{flex-shrink:0;font-size:0.64rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy-lt);opacity:0.75;white-space:nowrap}
+.growth-spotlight-title{font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.82rem;line-height:1.4;color:rgba(245,244,241,0.82);letter-spacing:0.01em;margin:0}
+.growth-spotlight-title em{font-style:normal;font-weight:500;color:#f5f4f1}
+.growth-spotlight-link{flex-shrink:0;font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--navy-lt);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;gap:0.35rem;transition:color 0.2s}
+.growth-spotlight-link:hover{color:#fff}
+.growth-spotlight-link::after{content:'→';transition:transform 0.2s}
+.growth-spotlight-link:hover::after{transform:translateX(3px)}
+
+/* ══════════════════════════════
+   MAIN SITE — HERO
+══════════════════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:4rem 3.5rem 5rem;position:relative;overflow:hidden;background:var(--surface)}
+.hero-band{position:absolute;top:0;right:0;width:38%;height:100%;background:var(--navy);clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);pointer-events:none;opacity:0.97}
+.hero-band-inner{position:absolute;top:0;right:0;width:36%;height:100%;background:var(--navy2);clip-path:polygon(18% 0,100% 0,100% 100%,6% 100%);pointer-events:none;opacity:0.5}
+.hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none}
+.hero-ring::before{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(212,218,240,0.1)}
+.hero-content{display:flex;flex-direction:column;justify-content:center;max-width:600px;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.75rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:2.5rem}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--navy-mid);opacity:0.7}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.6rem,7.5vw,7.4rem);font-weight:300;line-height:0.98;letter-spacing:-0.02em;color:var(--text);margin-bottom:1.75rem}
+h1 em{font-style:italic;color:var(--sp-accent, var(--navy-mid))}
+.hero-sub{font-size:1rem;color:var(--muted);font-weight:300;max-width:440px;line-height:1.85;margin-bottom:3rem}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-solid{background:var(--navy);color:#f5f4f1;padding:1rem 2.4rem;border-radius:2px;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:transform 0.25s var(--gh-ease,ease),box-shadow 0.25s var(--gh-ease,ease),opacity 0.2s;box-shadow:0 14px 28px -14px rgba(26,39,68,0.5);display:inline-block}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 18px 32px -12px rgba(26,39,68,0.55);opacity:0.96}
+.btn-text{color:var(--muted);font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
+.btn-text:hover{color:var(--text)}
+.btn-text::after{content:'→';transition:transform 0.2s}
+.btn-text:hover::after{transform:translateX(3px)}
+.hero-bottom{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--text);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--faint);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.1em}
+
+/* ── Hero signature visual: five-discipline orbit diagram ── */
+.hero-orbit{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;pointer-events:none}
+.hero-orbit circle.node-circle{fill:rgba(212,218,240,0.1);stroke:rgba(212,218,240,0.42);stroke-width:1}
+.hero-orbit .orbit-hub-circle{fill:rgba(212,218,240,0.2);stroke:rgba(212,218,240,0.55);stroke-width:1}
+.hero-orbit .orbit-hub-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;fill:#eef0f8}
+.hero-orbit .orbit-node-label{font-family:'DM Sans',sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.05em;fill:#eef0f8;text-transform:uppercase}
+.hero-orbit .orbit-line{stroke:rgba(212,218,240,0.32);stroke-width:1;stroke-dasharray:220;stroke-dashoffset:220;animation:orbit-draw 1.6s var(--gh-ease,ease) forwards}
+.hero-orbit .orbit-node circle.node-circle{transform-box:fill-box;transform-origin:center;animation:orbit-pulse 4.5s ease-in-out infinite}
+.hero-orbit .orbit-packet{fill:var(--sp-accent,#b8a080);opacity:0;transform-box:fill-box;transform-origin:center;animation:orbit-packet-travel 3.6s ease-in-out infinite}
+@keyframes orbit-draw{to{stroke-dashoffset:0}}
+@keyframes orbit-pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.09);opacity:1}}
+@keyframes orbit-packet-travel{
+  0%{transform:translate(0,0);opacity:0}
+  10%{opacity:1}
+  80%{opacity:1}
+  100%{transform:translate(var(--pdx),var(--pdy));opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-orbit .orbit-line{stroke-dashoffset:0;animation:none}
+  .hero-orbit .orbit-node circle.node-circle{animation:none}
+  .hero-orbit .orbit-packet{display:none}
+}
+@media (max-width:960px){.hero-orbit{display:none}}
+
+.divider-line{height:1px;background:var(--border);margin:0 3.5rem}
+
+/* ══════════════════════════════
+   MAIN SITE — CAPABILITIES (four disciplines)
+══════════════════════════════ */
+.capabilities{padding:7rem 3.5rem;background:var(--surface)}
+.capabilities-header{max-width:640px;margin-bottom:4rem}
+.capabilities-header .section-tag{font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:1rem;opacity:0.7}
+.capabilities-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em}
+.capabilities-header h2 em{font-style:italic;color:var(--navy-mid)}
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.cap-card{background:var(--bg2);padding:2.25rem 1.75rem;min-height:210px;display:flex;flex-direction:column;gap:0.85rem;position:relative;overflow:hidden;transition:background 0.3s ease}
+.cap-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--navy-mid);transform:scaleX(0);transform-origin:left;transition:transform 0.35s var(--gh-ease,ease)}
+.cap-card:hover{background:var(--surface)}
+.cap-card:hover::before{transform:scaleX(1)}
+.cap-card .cap-num{font-size:0.78rem;color:var(--navy-mid);letter-spacing:0.08em;font-weight:500;text-transform:uppercase}
+.cap-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--text)}
+.cap-card p{font-size:0.85rem;color:var(--muted);line-height:1.75;font-weight:300;margin:0}
+@media(max-width:900px){
+  .capabilities{padding:4rem 1.5rem}
+  .cap-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ══════════════════════════════
+   MAIN SITE — SERVICES SECTION
+══════════════════════════════ */
+.services{padding:7rem 3.5rem;background:var(--bg2)}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4.5rem;align-items:end}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border)}
+.service-card{padding:2.5rem 2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:transparent;transition:background 0.25s;position:relative;overflow:hidden;cursor:pointer}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--navy);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.service-card:hover{background:var(--surface)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-card:nth-child(3n){border-right:none}
+.service-card:nth-last-child(-n+3){border-bottom:none}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:0.9rem;font-weight:300;color:var(--faint);letter-spacing:0.1em;margin-bottom:1.5rem}
+.service-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--text);margin-bottom:0.75rem;line-height:1.3}
+.service-card p{color:var(--muted);font-size:0.85rem;line-height:1.75;font-weight:300}
+.service-card-arrow{display:inline-block;margin-top:1rem;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-mid);opacity:0;transition:opacity 0.25s}
+.service-card:hover .service-card-arrow{opacity:1}
+
+/* ══════════════════════════════
+   MAIN SITE — ABOUT
+══════════════════════════════ */
+.about{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;background:var(--surface)}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.about-text h2 em{font-style:italic;color:var(--navy-mid)}
+.about-text p{color:var(--muted);font-size:0.95rem;line-height:1.85;font-weight:300;margin-bottom:1.25rem}
+.about-pillars{display:flex;flex-direction:column;border:1px solid var(--border)}
+.pillar{padding:1.75rem 2rem;border-bottom:1px solid var(--border);display:flex;gap:1.25rem;align-items:flex-start;transition:background 0.2s}
+.pillar:hover{background:rgba(46,64,128,0.05)}
+.pillar:last-child{border-bottom:none}
+.pillar-letter{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--navy-mid);opacity:0.35;line-height:1;flex-shrink:0;width:36px}
+.pillar h4{font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text);margin-bottom:0.35rem}
+.pillar p{font-size:0.83rem;color:var(--muted);font-weight:300;line-height:1.65}
+
+/* ══════════════════════════════
+   MAIN SITE — APPROACH
+══════════════════════════════ */
+.approach{padding:0;background:var(--navy);display:grid;grid-template-columns:1fr 1fr}
+.approach-left{padding:7rem 4rem;border-right:1px solid rgba(212,218,240,0.1)}
+.approach-left .section-tag{color:rgba(212,218,240,0.5);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.25rem}
+.approach-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em;color:#f5f4f1;margin-bottom:1.5rem}
+.approach-left h2 em{font-style:italic;color:var(--navy-lt)}
+.approach-left p{color:rgba(212,218,240,0.55);font-size:0.9rem;line-height:1.85;font-weight:300}
+.a-step{padding:3rem 3.5rem;border-bottom:1px solid rgba(212,218,240,0.1);position:relative}
+.a-step:last-child{border-bottom:none}
+.a-step-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(212,218,240,0.07);position:absolute;top:1.5rem;right:2rem;line-height:1}
+.a-step h4{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:0.75rem}
+.a-step p{font-size:0.83rem;color:rgba(212,218,240,0.5);line-height:1.7;font-weight:300}
+
+/* ══════════════════════════════
+   MAIN SITE — CTA + FOOTER
+══════════════════════════════ */
+.cta{padding:7rem 3.5rem;background:var(--bg3);text-align:center}
+.cta .section-tag{color:var(--navy-mid);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0.7}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--text);line-height:1.1;letter-spacing:-0.01em;margin-bottom:1.25rem}
+.cta h2 em{font-style:italic;color:var(--navy-mid)}
+.cta p{color:var(--muted);font-size:0.95rem;font-weight:300;max-width:440px;margin:0 auto 2.5rem;line-height:1.85}
+.btn-navy{background:var(--navy);color:#f5f4f1;padding:0.9rem 2.2rem;border-radius:2px;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:opacity 0.2s;display:inline-block}
+.btn-navy:hover{opacity:0.85}
+/* Footer now lives in assets/site.css (.site-footer) */
+
+/* ══════════════════════════════
+   SERVICE DETAIL OVERLAY
+══════════════════════════════ */
+#services-overlay{
+  position:fixed;inset:0;z-index:2000;
+  background:var(--cream);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+}
+#services-overlay.open{display:flex}
+
+/* overlay nav bar */
+.ov-nav{
+  background:var(--warm-white);
+  border-bottom:1px solid var(--sp-border);
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;flex-shrink:0;
+}
+.ov-brand{
+  font-family:var(--serif);font-size:1.05rem;font-weight:500;
+  letter-spacing:0.04em;color:var(--text-primary);text-decoration:none;
+}
+.ov-brand span{color:var(--sp-accent-dark)}
+.ov-close{
+  display:flex;align-items:center;gap:0.5rem;
+  background:none;border:none;cursor:pointer;
+  font-family:var(--sans);font-size:0.78rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--text-secondary);
+  transition:color 0.2s;
+}
+.ov-close:hover{color:var(--text-primary)}
+.ov-close svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* overlay body = sidebar + main */
+.ov-body{display:grid;grid-template-columns:260px 1fr;flex:1;overflow:hidden}
+
+.ov-sidebar{
+  background:var(--warm-white);
+  border-right:1px solid var(--sp-border);
+  padding:2.5rem 0;
+  overflow-y:auto;
+}
+.sidebar-label{
+  font-family:var(--sans);font-size:0.7rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);
+  padding:0 2rem 1rem;display:block;
+}
+.service-nav{list-style:none}
+.service-nav-item{border-bottom:1px solid var(--sp-border)}
+.service-nav-item:first-child{border-top:1px solid var(--sp-border)}
+.service-nav-btn{
+  display:flex;align-items:center;gap:1rem;width:100%;
+  padding:1.1rem 2rem;background:none;border:none;cursor:pointer;
+  text-align:left;transition:background 0.15s;color:var(--text-primary);
+}
+.service-nav-btn:hover{background:var(--cream)}
+.service-nav-btn.active{background:var(--cream-dark)}
+.service-nav-num{font-family:var(--serif);font-size:0.75rem;font-weight:400;color:var(--text-muted);min-width:24px;font-style:italic}
+.service-nav-title{font-family:var(--serif);font-size:1rem;font-weight:400;line-height:1.3}
+
+/* overlay main content */
+.ov-main{overflow-y:auto;padding:0}
+
+.service-page{display:none;animation:fadeIn 0.3s ease}
+.service-page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* breadcrumb */
+.breadcrumb{
+  padding:1rem 4rem;border-bottom:1px solid var(--sp-border);
+  background:var(--warm-white);display:flex;align-items:center;gap:0.5rem;
+  font-size:0.78rem;color:var(--text-muted);
+}
+.breadcrumb span{color:var(--text-primary)}
+
+/* service hero */
+.service-hero{
+  padding:4rem 4rem 3rem;border-bottom:1px solid var(--sp-border);
+  background:var(--warm-white);position:relative;overflow:hidden;
+}
+.service-hero::before{
+  content:attr(data-num);position:absolute;right:3rem;top:2rem;
+  font-family:var(--serif);font-size:7rem;font-weight:300;
+  color:var(--sp-border);line-height:1;font-style:italic;pointer-events:none;
+}
+.service-hero-label{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--sp-accent-dark);margin-bottom:1rem;display:block;
+}
+.service-hero h1{
+  font-family:var(--serif);font-size:2.8rem;font-weight:400;
+  line-height:1.15;margin-bottom:1.25rem;max-width:600px;color:var(--text-primary);
+}
+.service-hero-desc{font-size:1.05rem;color:var(--text-secondary);max-width:560px;line-height:1.7}
+.service-hero-cta{
+  margin-top:2rem;display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--text-primary);background:none;
+  border:none;border-bottom:1px solid var(--text-primary);padding-bottom:2px;
+  cursor:pointer;transition:color 0.2s,border-color 0.2s;
+}
+.service-hero-cta:hover{color:var(--sp-accent-dark);border-color:var(--sp-accent-dark)}
+
+/* service body */
+.service-body{padding:3rem 4rem}
+.section-block{margin-bottom:3rem}
+.section-block h2{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:1rem;color:var(--text-primary)}
+.section-block p{color:var(--text-secondary);line-height:1.8;margin-bottom:0.75rem}
+
+/* coverage grid */
+.coverage-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1px;background:var(--sp-border);border:1px solid var(--sp-border);margin-top:1.5rem;
+}
+.coverage-item{background:var(--warm-white);padding:1.5rem}
+.coverage-item-num{font-family:var(--serif);font-size:0.75rem;color:var(--text-muted);font-style:italic;display:block;margin-bottom:0.5rem}
+.coverage-item h3{font-family:var(--serif);font-size:1rem;font-weight:500;margin-bottom:0.4rem}
+.coverage-item p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin:0}
+
+/* process steps */
+.process-steps{margin-top:1.5rem}
+.process-step{display:grid;grid-template-columns:48px 1fr;gap:1.25rem;margin-bottom:1.5rem;align-items:start}
+.step-num{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--sp-accent);font-style:italic;line-height:1;padding-top:2px}
+.step-content h3{font-family:var(--serif);font-size:1.05rem;font-weight:500;margin-bottom:0.3rem}
+.step-content p{font-size:0.875rem;color:var(--text-secondary);line-height:1.65;margin:0}
+
+/* outcomes row */
+.outcomes-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--sp-border);margin-top:1.5rem}
+.outcome-item{padding:1.5rem;border-right:1px solid var(--sp-border)}
+.outcome-item:last-child{border-right:none}
+.outcome-value{font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;color:var(--text-primary);display:block;margin-bottom:0.25rem}
+.outcome-label{font-size:0.8rem;color:var(--text-secondary);line-height:1.4}
+
+/* audience tags */
+.audience-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
+.audience-tag{font-size:0.75rem;font-weight:400;letter-spacing:0.06em;padding:0.3rem 0.75rem;border:1px solid var(--sp-border-strong);color:var(--text-secondary);background:transparent}
+
+/* hr */
+hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
+
+/* service footer */
+.service-footer{
+  padding:2.5rem 4rem;border-top:1px solid var(--sp-border);
+  background:var(--cream-dark);display:flex;align-items:center;justify-content:space-between;
+}
+.service-footer p{font-family:var(--serif);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--text-secondary);max-width:380px;line-height:1.5}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;
+  background:var(--text-primary);color:var(--warm-white);
+  font-family:var(--sans);font-size:0.78rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;cursor:pointer;border:none;transition:background 0.2s;
+}
+.cta-btn:hover{background:var(--sp-accent-dark)}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .growth-spotlight{padding:6.5rem 1.5rem 1.5rem}
+  .growth-spotlight-inner{flex-direction:column;gap:0.85rem}
+  .growth-spotlight-title{font-size:1.05rem}
+  .hero,.services,.about,.cta,footer{padding-left:1.5rem;padding-right:1.5rem}
+  .hero-band,.hero-band-inner{display:none}
+  .divider-line{margin:0 1.5rem}
+  h1{font-size:3rem}
+  .services-header{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .service-card{border-right:none}
+  .service-card:nth-last-child(-n+3){border-bottom:1px solid var(--border)}
+  .service-card:last-child{border-bottom:none}
+  .about{grid-template-columns:1fr;gap:3rem}
+  .approach{grid-template-columns:1fr}
+  .approach-left{padding:4rem 1.5rem;border-right:none;border-bottom:1px solid rgba(212,218,240,0.1)}
+  .a-step{padding:2rem 1.5rem}
+  /* overlay */
+  .ov-body{grid-template-columns:1fr}
+  .ov-sidebar{display:none}
+  .service-hero{padding:2rem}
+  .service-body{padding:2rem}
+  .service-footer{flex-direction:column;gap:1.5rem;padding:2rem}
+  .outcomes-row{grid-template-columns:1fr}
+  .outcome-item{border-right:none;border-bottom:1px solid var(--sp-border)}
+  .ov-nav{padding:0 1.5rem}
+  .breadcrumb{padding:1rem 2rem}
+}
+</style>
+</head>
+<body>
+<div id="site-progress"></div>
+<div id="page-transition"></div>
+
+<!-- ═══════════════════════════════════════════
+     MAIN SITE
+════════════════════════════════════════════ -->
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo"><img src="assets/logo-badge.png" alt="AnthroPrime Technology" class="site-logo-mark" width="48" height="48"/><span class="site-logo-word">Anthro<em>Prime</em> Technology</span></a>
+    <ul class="site-links">
+      <li><a href="anthroprime_services.html">Services</a></li>
+      <li><a href="practices.html">Practice</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="strategic-growth-advisor.html">Growth Advisory</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://ecod.anthroprime.com" target="_blank" rel="noopener">ECOD Lab</a></li>
+      <li><a href="contact.html" class="site-cta-mobile">Get in touch</a></li>
+    </ul>
+    <div class="site-right">
+      <a href="contact.html" class="site-cta">Get in touch</a>
+      <button class="site-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="growth-spotlight" id="growth-advisory">
+  <div class="growth-spotlight-inner">
+    <span class="growth-spotlight-tag">New</span>
+    <p class="growth-spotlight-title">Strategic Growth Advisory — a long-term partnership for founder-led technology companies.</p>
+    <a href="strategic-growth-advisor.html" class="growth-spotlight-link">Explore</a>
+  </div>
+</section>
+
+<section class="hero" data-mesh-bg>
+  <div class="hero-band"></div>
+  <div class="hero-band-inner"></div>
+  <div class="hero-ring"></div>
+  <svg class="hero-orbit" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <line x1="170" y1="170" x2="170" y2="45" class="orbit-line" style="animation-delay:.2s"/>
+    <line x1="170" y1="170" x2="288.9" y2="131.4" class="orbit-line" style="animation-delay:.45s"/>
+    <line x1="170" y1="170" x2="243.5" y2="271.1" class="orbit-line" style="animation-delay:.7s"/>
+    <line x1="170" y1="170" x2="96.5" y2="271.1" class="orbit-line" style="animation-delay:.95s"/>
+    <line x1="170" y1="170" x2="51.1" y2="131.4" class="orbit-line" style="animation-delay:1.2s"/>
+    <circle cx="170" cy="170" r="27" class="orbit-hub-circle"/>
+    <text x="170" y="175" text-anchor="middle" class="orbit-hub-label">AP</text>
+    <g class="orbit-node" style="animation-delay:0s">
+      <circle cx="170" cy="45" r="30" class="node-circle"/>
+      <text x="170" y="49" text-anchor="middle" class="orbit-node-label">AI</text>
+    </g>
+    <g class="orbit-node" style="animation-delay:.72s">
+      <circle cx="288.9" cy="131.4" r="30" class="node-circle"/>
+      <text x="288.9" y="135.4" text-anchor="middle" class="orbit-node-label">Data</text>
+    </g>
+    <g class="orbit-node" style="animation-delay:1.44s">
+      <circle cx="243.5" cy="271.1" r="30" class="node-circle"/>
+      <text x="243.5" y="275.1" text-anchor="middle" class="orbit-node-label">Cloud</text>
+    </g>
+    <g class="orbit-node" style="animation-delay:2.16s">
+      <circle cx="96.5" cy="271.1" r="30" class="node-circle"/>
+      <text x="96.5" y="275.1" text-anchor="middle" class="orbit-node-label">Security</text>
+    </g>
+    <g class="orbit-node" style="animation-delay:2.88s">
+      <circle cx="51.1" cy="131.4" r="30" class="node-circle"/>
+      <text x="51.1" y="135.4" text-anchor="middle" class="orbit-node-label">Infra</text>
+    </g>
+    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:0px;--pdy:-125px;animation-delay:.2s"/>
+    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:118.9px;--pdy:-38.6px;animation-delay:.92s"/>
+    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:73.5px;--pdy:101.1px;animation-delay:1.64s"/>
+    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:-73.5px;--pdy:101.1px;animation-delay:2.36s"/>
+    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:-118.9px;--pdy:-38.6px;animation-delay:3.08s"/>
+  </svg>
+  <div class="hero-content" data-reveal>
+    <div class="hero-tag">AI · Data · Cloud · Cybersecurity · AI Infrastructure</div>
+    <h1>Technology that<br/>starts with <em>people.</em></h1>
+    <p class="hero-sub">AnthroPrime Technology delivers elite consulting across AI, data, cloud, and cybersecurity — built on a simple conviction: lasting advantage comes from standing shoulder to shoulder with our clients, starting with your problem, not our product.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-solid">Schedule a consultation</a>
+      <a href="#capabilities" class="btn-text">Explore capabilities</a>
+    </div>
+  </div>
+  <div class="hero-bottom" data-reveal>
+    <div><div class="stat-num">Human First</div><div class="stat-label">Our founding principle</div></div>
+    <div><div class="stat-num">5 Disciplines</div><div class="stat-label">AI, Data, Cloud, Security &amp; Infrastructure</div></div>
+    <div><div class="stat-num">Gov + PSU</div><div class="stat-label">Sector pipeline</div></div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<section class="capabilities" id="capabilities">
+  <div class="capabilities-header" data-reveal>
+    <div class="section-tag">— What We Do</div>
+    <h2>Five disciplines. <em>One</em> point of view.</h2>
+  </div>
+  <div class="cap-grid" data-reveal-group>
+    <div class="cap-card">
+      <svg class="cap-icon cap-icon-ai" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <line x1="16" y1="16" x2="16" y2="5" stroke="var(--navy-mid)" stroke-width="1" opacity=".35"/>
+        <line x1="16" y1="16" x2="26" y2="22" stroke="var(--navy-mid)" stroke-width="1" opacity=".35"/>
+        <line x1="16" y1="16" x2="6" y2="22" stroke="var(--navy-mid)" stroke-width="1" opacity=".35"/>
+        <circle class="ai-node" cx="16" cy="16" r="3.6" fill="var(--icon-navy)"/>
+        <circle class="ai-node" cx="16" cy="5" r="2.6" fill="var(--navy-mid)"/>
+        <circle class="ai-node" cx="26" cy="22" r="2.6" fill="var(--navy-mid)"/>
+        <circle class="ai-node" cx="6" cy="22" r="2.6" fill="var(--navy-mid)"/>
+      </svg>
+      <span class="cap-num">01 / AI</span>
+      <h3>AI</h3>
+      <p>We help you build AI capability and scale applied AI responsibly — from identifying where it creates real value to deploying and governing it across the business.</p>
+    </div>
+    <div class="cap-card">
+      <svg class="cap-icon cap-icon-data" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect class="data-bar" x="5" y="12" width="5" height="16" fill="var(--navy-mid)" opacity=".55"/>
+        <rect class="data-bar" x="13.5" y="6" width="5" height="22" fill="var(--icon-navy)"/>
+        <rect class="data-bar" x="22" y="16" width="5" height="12" fill="var(--navy-mid)" opacity=".75"/>
+      </svg>
+      <span class="cap-num">02 / Data</span>
+      <h3>Data</h3>
+      <p>We strengthen the data foundations that turn scattered information into lasting advantage — architecture, governance, and analytics that scale with you.</p>
+    </div>
+    <div class="cap-card">
+      <svg class="cap-icon cap-icon-cloud" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle class="cloud-pulse" cx="16" cy="15" r="11" fill="var(--navy-mid)" opacity=".15"/>
+        <path class="cloud-shape" d="M9 21c-2.4 0-4.3-1.8-4.3-4.1 0-2.1 1.6-3.8 3.7-4.1.5-3 3.1-5.3 6.3-5.3 3.1 0 5.7 2.2 6.2 5.1 2.2.3 3.9 2.1 3.9 4.3 0 2.4-2 4.1-4.3 4.1H9z" fill="var(--icon-navy)"/>
+      </svg>
+      <span class="cap-num">03 / Cloud</span>
+      <h3>Cloud</h3>
+      <p>We build cloud capability designed around how your teams actually work — strategy, migration, and architecture that strengthen performance.</p>
+    </div>
+    <div class="cap-card">
+      <svg class="cap-icon cap-icon-security" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <clipPath id="shieldClip"><path d="M16 4l10 3.6v7.2c0 6.4-4.3 11.6-10 13.2C10.3 26.4 6 21.2 6 14.8V7.6L16 4z"/></clipPath>
+        <path d="M16 4l10 3.6v7.2c0 6.4-4.3 11.6-10 13.2C10.3 26.4 6 21.2 6 14.8V7.6L16 4z" fill="var(--icon-navy)"/>
+        <path d="M12 16.2l2.6 2.6 5.4-5.4" stroke="#eef0f8" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+        <g clip-path="url(#shieldClip)">
+          <rect class="scan-line" x="6" y="14" width="20" height="2" fill="#eef0f8" opacity="0"/>
+        </g>
+      </svg>
+      <span class="cap-num">04 / Security</span>
+      <h3>Cybersecurity</h3>
+      <p>We strengthen resilience the same way we build every capability — standing shoulder to shoulder on risk and readiness, without the fear-based pitch.</p>
+    </div>
+    <div class="cap-card">
+      <svg class="cap-icon cap-icon-infra" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect x="10" y="10" width="12" height="12" rx="1.5" fill="var(--icon-navy)"/>
+        <rect x="13.5" y="13.5" width="5" height="5" rx="0.75" fill="var(--navy-mid)" opacity=".55"/>
+        <line x1="10" y1="6" x2="10" y2="9" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="16" y1="6" x2="16" y2="9" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+        <line x1="22" y1="6" x2="22" y2="9" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="10" y1="23" x2="10" y2="26" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="16" y1="23" x2="16" y2="26" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>
+        <line x1="22" y1="23" x2="22" y2="26" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="6" y1="10" x2="9" y2="10" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="6" y1="22" x2="9" y2="22" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="23" y1="10" x2="26" y2="10" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="23" y1="22" x2="26" y2="22" stroke="var(--navy-mid)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="cap-num">05 / Infrastructure</span>
+      <h3>AI Infrastructure</h3>
+      <p>We take GPU capacity from workload spec to verified, deployed reality — controlled sourcing and independent technical assurance, not a supplier list.</p>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-header" data-reveal>
+    <div>
+      <div style="font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:1rem;opacity:0.7">Inside our cybersecurity practice</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;letter-spacing:-0.01em">Full-spectrum security <em style="font-style:italic;color:var(--navy-mid)">consulting</em></h2>
+    </div>
+    <p style="color:var(--muted);font-size:0.9rem;line-height:1.85;font-weight:300;align-self:end">One of our five disciplines, in depth. From audit and compliance to risk quantification and team building — our capabilities span the complete security lifecycle for enterprises, government bodies, and critical infrastructure.</p>
+  </div>
+  <div class="services-grid" data-reveal-group>
+    <div class="service-card" data-service="s1"><div class="svc-num">01</div><h3>Information Security Auditing</h3><p>Comprehensive IS audits aligned to CERT-IN frameworks, covering network infrastructure, application security, and organisational controls.</p><span class="service-card-arrow">Learn more →</span></div>
+    <div class="service-card" data-service="s2"><div class="svc-num">02</div><h3>Penetration Testing</h3><p>Red team and grey-box assessments across web, mobile, API, cloud, and OT/SCADA environments — surfacing real attacker pathways.</p><span class="service-card-arrow">Learn more →</span></div>
+    <div class="service-card" data-service="s3"><div class="svc-num">03</div><h3>Cyber Risk Quantification</h3><p>FAIR-based financial modelling translates technical risk into business language — for boards, CISOs, and insurers who need clarity.</p><span class="service-card-arrow">Learn more →</span></div>
+    <div class="service-card" data-service="s4"><div class="svc-num">04</div><h3>Government & PSU Advisory</h3><p>Strategic cybersecurity guidance for central and state bodies, PSUs, and critical national infrastructure — navigating regulatory complexity.</p><span class="service-card-arrow">Learn more →</span></div>
+    <div class="service-card" data-service="s5"><div class="svc-num">05</div><h3>Security Team Building</h3><p>End-to-end talent acquisition, university partnerships, and team structuring for organisations scaling their internal security function.</p><span class="service-card-arrow">Learn more →</span></div>
+    <div class="service-card" data-service="s6"><div class="svc-num">06</div><h3>Training & Awareness</h3><p>Customised cybersecurity training for employees, leadership, and technical teams — plus university engagement for emerging talent pipelines.</p><span class="service-card-arrow">Learn more →</span></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-text" data-reveal>
+    <div style="font-size:0.72rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--navy-mid);margin-bottom:1.25rem;opacity:0.7">Our conviction</div>
+    <h2><em>People</em> first.<br/>Technology second.</h2>
+    <p>AnthroPrime Technology delivers elite consulting across AI, data, cloud, and cybersecurity — built on a simple conviction: lasting advantage comes from standing shoulder to shoulder with our clients, not handing over a deck. Adopters are human, systems are built by humans, and the organisations we work with are made of people.</p>
+    <p>We're deliberately selective, so every engagement gets senior attention and enterprise-grade technical rigour — paired with the organisational empathy that makes recommendations actually stick.</p>
+  </div>
+  <div class="about-pillars" data-reveal>
+    <div class="pillar"><div class="pillar-letter">A</div><div><h4>Anthropic — Human First</h4><p>Every engagement begins with understanding the people, culture, and context of the organisation we're working with.</p></div></div>
+    <div class="pillar"><div class="pillar-letter">P</div><div><h4>Prime — Uncompromising excellence</h4><p>We operate at the highest standards of technical depth, advisory quality, and honest communication — across every discipline, without exception.</p></div></div>
+    <div class="pillar"><div class="pillar-letter">T</div><div><h4>Technology — Rigorous craft</h4><p>Deep technical expertise across AI, data, cloud, and security — one point of view spanning the full modern stack.</p></div></div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="approach-left" data-reveal>
+    <div class="section-tag">How we work</div>
+    <h2>Shoulder to shoulder, <em>not</em> at arm's length</h2>
+    <p>No fixed methodology gets forced onto your business. Every engagement — in AI, data, cloud, or security — begins with listening to your context, your constraints, and your people, before we prescribe a single solution.</p>
+  </div>
+  <div style="display:grid;grid-template-rows:1fr 1fr" data-reveal-group>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(212,218,240,0.1)">
+      <div class="a-step" style="border-right:1px solid rgba(212,218,240,0.1)"><div class="a-step-num">1</div><h4>Discover</h4><p>We map your organisational context, technical landscape, and regulatory obligations before prescribing anything.</p></div>
+      <div class="a-step"><div class="a-step-num">2</div><h4>Assess</h4><p>Technical audits and structured risk or opportunity modelling translate findings into financial and business impact.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr">
+      <div class="a-step" style="border-right:1px solid rgba(212,218,240,0.1)"><div class="a-step-num">3</div><h4>Build</h4><p>Prioritised, actionable roadmaps — not just reports. Senior people build the capability alongside your team, not for you.</p></div>
+      <div class="a-step"><div class="a-step-num">4</div><h4>Sustain</h4><p>Ongoing advisory relationships that evolve as your organisation, your stack, and the landscape change.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div data-reveal>
+  <div class="section-tag">Start the conversation</div>
+  <h2>Ready to put <em>people</em><br/>at the centre of technology?</h2>
+  <p>Whether you're scaling applied AI, strengthening your data foundations, modernising your cloud, or preparing for a security audit — we're here.</p>
+  <div class="hero-actions" style="justify-content:center">
+    <a href="contact.html" class="btn-navy">Schedule a consultation</a>
+    <a href="mailto:hello@anthroprime.com" class="btn-text">hello@anthroprime.com</a>
+  </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div>
+    <div class="site-footer-brand"><img src="assets/logo-mark-white.png" alt="" class="site-footer-mark"/>Anthro<em>Prime</em> Technology</div>
+    <div class="site-footer-copy">Human First &nbsp;·&nbsp; © 2026 AnthroPrime Technology</div>
+  </div>
+  <div class="site-footer-links">
+    <a href="anthroprime_services.html">Services</a>
+    <a href="practices.html">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="strategic-growth-advisor.html">Growth Advisory</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICE DETAIL OVERLAY
+════════════════════════════════════════════ -->
+<div id="services-overlay">
+
+  <!-- overlay nav -->
+  <div class="ov-nav">
+    <span class="ov-brand">Anthro<span>Prime</span> Technology</span>
+    <button class="ov-close" id="overlayClose">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      Back to site
+    </button>
+  </div>
+
+  <!-- sidebar + main -->
+  <div class="ov-body">
+
+    <!-- sidebar -->
+    <aside class="ov-sidebar">
+      <span class="sidebar-label">Our Services</span>
+      <ul class="service-nav" id="serviceNav">
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s1"><span class="service-nav-num">01</span><span class="service-nav-title">Information Security Auditing</span></button></li>
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s2"><span class="service-nav-num">02</span><span class="service-nav-title">Penetration Testing</span></button></li>
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s3"><span class="service-nav-num">03</span><span class="service-nav-title">Cyber Risk Quantification</span></button></li>
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s4"><span class="service-nav-num">04</span><span class="service-nav-title">Government & PSU Advisory</span></button></li>
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s5"><span class="service-nav-num">05</span><span class="service-nav-title">Security Team Building</span></button></li>
+        <li class="service-nav-item"><button class="service-nav-btn" data-target="s6"><span class="service-nav-num">06</span><span class="service-nav-title">Training & Awareness</span></button></li>
+      </ul>
+    </aside>
+
+    <!-- main content -->
+    <main class="ov-main" id="ovMain">
+
+      <!-- ── SERVICE 1: Information Security Auditing ── -->
+      <section class="service-page" id="s1">
+        <div class="breadcrumb">Services <span>/ Information Security Auditing</span></div>
+        <div class="service-hero" data-num="01">
+          <span class="service-hero-label">Service 01</span>
+          <h1>Information Security Auditing</h1>
+          <p class="service-hero-desc">Comprehensive IS audits aligned to CERT-IN frameworks, covering network infrastructure, application security, and organisational controls — providing the assurance your stakeholders require.</p>
+          <button class="service-hero-cta">Request an Audit ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>What We Audit</h2>
+            <p>Our IS audits go beyond checkbox compliance. We assess your security posture with the depth that regulatory bodies and enterprise boards expect, producing findings that are actionable, not merely documented.</p>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>Network Infrastructure</h3><p>Perimeter defences, segmentation, firewall rulesets, and internal traffic flows.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Application Security</h3><p>Web, mobile, and API-layer security review against OWASP and custom threat models.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>Organisational Controls</h3><p>Policies, access governance, vendor risk, and incident response maturity.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Cloud & Hybrid Environments</h3><p>Configuration review for AWS, Azure, GCP, and private cloud deployments.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>Compliance Alignment</h3><p>Gap assessment against CERT-IN, ISO 27001, RBI guidelines, and sectoral mandates.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>Third-Party & Supply Chain</h3><p>Vendor security posture and supply chain exposure review.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Our Methodology</h2>
+            <div class="process-steps">
+              <div class="process-step"><span class="step-num">01</span><div class="step-content"><h3>Scoping & Asset Discovery</h3><p>We define audit boundaries in collaboration with your team, cataloguing systems, data flows, and critical assets to ensure nothing material is out of scope.</p></div></div>
+              <div class="process-step"><span class="step-num">02</span><div class="step-content"><h3>Evidence Collection & Review</h3><p>Configuration review, documentation analysis, and stakeholder interviews form the evidential base — supplemented by technical testing where required.</p></div></div>
+              <div class="process-step"><span class="step-num">03</span><div class="step-content"><h3>Risk-Rated Findings</h3><p>Every finding is rated by severity and business impact, with remediation guidance prioritised by risk exposure rather than ease of fix.</p></div></div>
+              <div class="process-step"><span class="step-num">04</span><div class="step-content"><h3>Audit Report & Walkthrough</h3><p>A detailed report for your technical team and an executive summary for leadership — both delivered with a debrief session.</p></div></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Who This Is For</h2>
+            <p>Organisations required to demonstrate IS compliance — or those seeking independent assurance before major transactions, audits, or regulatory interactions.</p>
+            <div class="audience-tags">
+              <span class="audience-tag">Banks & NBFCs</span>
+              <span class="audience-tag">Insurance Companies</span>
+              <span class="audience-tag">Listed Enterprises</span>
+              <span class="audience-tag">Central PSUs</span>
+              <span class="audience-tag">Critical Infrastructure</span>
+              <span class="audience-tag">Healthcare Providers</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"Compliance is the floor, not the ceiling — we help you understand the distance between the two."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+      <!-- ── SERVICE 2: Penetration Testing ── -->
+      <section class="service-page" id="s2">
+        <div class="breadcrumb">Services <span>/ Penetration Testing</span></div>
+        <div class="service-hero" data-num="02">
+          <span class="service-hero-label">Service 02</span>
+          <h1>Penetration Testing</h1>
+          <p class="service-hero-desc">Red team and grey-box assessments across web, mobile, API, cloud, and OT/SCADA environments — surfacing real attacker pathways before adversaries do.</p>
+          <button class="service-hero-cta">Request a Pentest ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>Assessment Types</h2>
+            <p>We adapt our methodology to your environment and threat model, not the other way around. Every engagement is scoped to surface the pathways that matter to your adversaries.</p>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>Web Application</h3><p>Full OWASP-aligned assessment including business logic flaws, auth bypass, and injection vulnerabilities.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Mobile (Android & iOS)</h3><p>Static and dynamic analysis of mobile applications, including secure storage and API communication.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>API Security</h3><p>REST, GraphQL, and SOAP endpoint assessment — authentication, rate limiting, and data exposure.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Network & Infrastructure</h3><p>External and internal network penetration testing, Active Directory review, and lateral movement analysis.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>Cloud Environments</h3><p>AWS, Azure, and GCP configuration exploitation, privilege escalation, and data exfiltration pathways.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>OT / SCADA</h3><p>Industrial control system assessment with operational safety as a primary constraint throughout.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Our Engagement Process</h2>
+            <div class="process-steps">
+              <div class="process-step"><span class="step-num">01</span><div class="step-content"><h3>Threat Modelling</h3><p>We begin by profiling your likely adversaries — nation-state, criminal, or insider — to ensure the engagement simulates realistic attack scenarios, not theoretical ones.</p></div></div>
+              <div class="process-step"><span class="step-num">02</span><div class="step-content"><h3>Controlled Exploitation</h3><p>Vulnerabilities are chained to demonstrate real business impact. We pursue attacker pathways end-to-end where permitted by scope.</p></div></div>
+              <div class="process-step"><span class="step-num">03</span><div class="step-content"><h3>Evidence-Based Reporting</h3><p>Every finding includes proof-of-concept evidence, business impact assessment, and prioritised remediation guidance — not just CVSS scores.</p></div></div>
+              <div class="process-step"><span class="step-num">04</span><div class="step-content"><h3>Retest & Closure</h3><p>Following remediation, we retest critical findings and issue a closure attestation letter for compliance and board reporting.</p></div></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Engagement Outcomes</h2>
+            <div class="outcomes-row">
+              <div class="outcome-item"><span class="outcome-value">Real</span><span class="outcome-label">attacker pathways documented, not hypothetical risks</span></div>
+              <div class="outcome-item"><span class="outcome-value">Board-ready</span><span class="outcome-label">reporting for leadership and compliance stakeholders</span></div>
+              <div class="outcome-item"><span class="outcome-value">Closure</span><span class="outcome-label">attestation letter issued post-remediation retest</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"Security gaps don't announce themselves. Our job is to find them before someone else does."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+      <!-- ── SERVICE 3: Cyber Risk Quantification ── -->
+      <section class="service-page" id="s3">
+        <div class="breadcrumb">Services <span>/ Cyber Risk Quantification</span></div>
+        <div class="service-hero" data-num="03">
+          <span class="service-hero-label">Service 03</span>
+          <h1>Cyber Risk Quantification</h1>
+          <p class="service-hero-desc">FAIR-based financial modelling that translates technical risk into the language of business — giving boards, CISOs, and insurers the clarity to make informed decisions.</p>
+          <button class="service-hero-cta">Request a Risk Model ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>Why Quantification Matters</h2>
+            <p>Most organisations understand they have cyber risk. Few can answer the question their boards and insurers are asking: how much, and what would it cost? Colour-coded risk matrices don't answer that question. Quantified financial models do.</p>
+            <p>We use the FAIR (Factor Analysis of Information Risk) methodology — the international standard for cyber risk quantification — to produce defensible, board-presentable loss exposure models.</p>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>What We Model</h2>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>Primary Loss Exposure</h3><p>Direct financial impact of security events including operational disruption, data loss, and recovery costs.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Secondary Risk</h3><p>Regulatory fines, reputational damage, customer attrition, and third-party liability exposure.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>Control Effectiveness</h3><p>Quantified assessment of how current controls reduce loss exposure across the risk landscape.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Scenario Modelling</h3><p>Monte Carlo simulation of breach, ransomware, and supply-chain attack scenarios specific to your sector.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>Insurance Optimisation</h3><p>Coverage gap analysis and premium justification for cyber insurance procurement and renewal.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>Investment Prioritisation</h3><p>Return-on-security-investment (ROSI) modelling to guide budget allocation decisions.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Who This Is For</h2>
+            <p>Organisations seeking to move beyond qualitative risk assessments and give leadership a financially defensible view of their cyber exposure.</p>
+            <div class="audience-tags">
+              <span class="audience-tag">CISOs & Risk Officers</span>
+              <span class="audience-tag">CFOs & Finance Teams</span>
+              <span class="audience-tag">Audit Committees</span>
+              <span class="audience-tag">Insurance Underwriters</span>
+              <span class="audience-tag">Private Equity & M&A Teams</span>
+              <span class="audience-tag">Boards of Directors</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"Risk without numbers is a feeling. With numbers, it becomes a decision."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+      <!-- ── SERVICE 4: Government & PSU Advisory ── -->
+      <section class="service-page" id="s4">
+        <div class="breadcrumb">Services <span>/ Government & PSU Advisory</span></div>
+        <div class="service-hero" data-num="04">
+          <span class="service-hero-label">Service 04</span>
+          <h1>Government & PSU Advisory</h1>
+          <p class="service-hero-desc">Strategic cybersecurity guidance for central and state bodies, PSUs, and critical national infrastructure — navigating regulatory complexity with sector-specific depth.</p>
+          <button class="service-hero-cta">Request Advisory ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>Our Positioning</h2>
+            <p>Government and public sector cybersecurity demands a different lens — one attuned to procurement constraints, regulatory overlaps, political accountability, and the complexity of legacy infrastructure. We have worked across these environments and understand their operating realities.</p>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Advisory Domains</h2>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>CERT-IN Compliance</h3><p>Alignment to CERT-IN directions on information security practices, reporting obligations, and audit requirements.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Critical Infrastructure Protection</h3><p>Cybersecurity frameworks for power, transport, water, and telecommunications critical infrastructure.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>Policy & Regulatory Drafting</h3><p>Technical advisory support for cybersecurity policy formulation and regulatory framework development.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Procurement Advisory</h3><p>Technical evaluation support for cybersecurity procurement — RFPs, vendor assessment, and due diligence.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>CISO & Leadership Advisory</h3><p>Retained advisory for government CISOs and IT leadership on strategic security posture and incident response.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>OT & Industrial Security</h3><p>Cybersecurity advisory for operational technology environments in PSU manufacturing, utilities, and defence.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Our Engagement Model</h2>
+            <div class="process-steps">
+              <div class="process-step"><span class="step-num">01</span><div class="step-content"><h3>Mandate Understanding</h3><p>We begin by mapping the regulatory and institutional context specific to the body — understanding accountability lines, existing frameworks, and political constraints.</p></div></div>
+              <div class="process-step"><span class="step-num">02</span><div class="step-content"><h3>Gap & Risk Assessment</h3><p>Current-state security posture assessment benchmarked against applicable national and sectoral standards.</p></div></div>
+              <div class="process-step"><span class="step-num">03</span><div class="step-content"><h3>Roadmap Development</h3><p>A phased, implementable roadmap — sequenced by risk priority and aligned to budget and procurement realities.</p></div></div>
+              <div class="process-step"><span class="step-num">04</span><div class="step-content"><h3>Implementation Support</h3><p>Retained advisory support through implementation — providing continuity from strategy to execution.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"Public sector security requires institutional understanding, not just technical expertise."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+      <!-- ── SERVICE 5: Security Team Building ── -->
+      <section class="service-page" id="s5">
+        <div class="breadcrumb">Services <span>/ Security Team Building</span></div>
+        <div class="service-hero" data-num="05">
+          <span class="service-hero-label">Service 05</span>
+          <h1>Security Team Building</h1>
+          <p class="service-hero-desc">End-to-end talent acquisition, university partnerships, and team structuring for organisations scaling their internal security function — from first hire to mature SOC.</p>
+          <button class="service-hero-cta">Start Building ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>The Challenge We Solve</h2>
+            <p>Hiring in cybersecurity is uniquely difficult. The candidate pool is shallow, credentials are unreliable signals, and the cost of a poor hire in a security function is outsized. Organisations building or scaling security teams need a partner who understands both the domain and the talent landscape.</p>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>What We Provide</h2>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>Team Structure Design</h3><p>Role definition, reporting lines, and team topology design aligned to your threat environment and maturity stage.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Talent Acquisition</h3><p>End-to-end hiring support — sourcing, technical assessment, and onboarding — with domain-specific evaluation criteria.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>University Partnerships</h3><p>Structured engagement with engineering and cybersecurity programmes to build early talent pipelines.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Leadership Hiring</h3><p>CISO, Head of Security, and senior SOC lead search — with executive assessment and reference validation.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>Capability Assessment</h3><p>Assessment of existing team capability gaps and skill development roadmaps for current security personnel.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>SOC Buildout</h3><p>Full Security Operations Centre design — people, process, and technology — from green field to operational.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Our Approach</h2>
+            <div class="process-steps">
+              <div class="process-step"><span class="step-num">01</span><div class="step-content"><h3>Current State & Ambition</h3><p>We map where you are — headcount, capability, tooling — against where your threat environment and business ambition require you to be.</p></div></div>
+              <div class="process-step"><span class="step-num">02</span><div class="step-content"><h3>Target Operating Model</h3><p>A concrete team design: roles, responsibilities, and the sequencing of hires to build capability without redundancy.</p></div></div>
+              <div class="process-step"><span class="step-num">03</span><div class="step-content"><h3>Talent Sourcing & Assessment</h3><p>Domain-literate sourcing and structured technical evaluation — we assess candidates as practitioners, not recruiters.</p></div></div>
+              <div class="process-step"><span class="step-num">04</span><div class="step-content"><h3>Onboarding & Retention</h3><p>Structured onboarding programmes and retention frameworks designed for the particular demands of security talent.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"A security programme is only as strong as the people behind it."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+      <!-- ── SERVICE 6: Training & Awareness ── -->
+      <section class="service-page" id="s6">
+        <div class="breadcrumb">Services <span>/ Training & Awareness</span></div>
+        <div class="service-hero" data-num="06">
+          <span class="service-hero-label">Service 06</span>
+          <h1>Training & Awareness</h1>
+          <p class="service-hero-desc">Customised cybersecurity training for employees, leadership, and technical teams — plus university engagement for emerging talent pipelines across the sector.</p>
+          <button class="service-hero-cta">Design a Programme ↗</button>
+        </div>
+        <div class="service-body">
+          <div class="section-block">
+            <h2>Why Human Risk Matters</h2>
+            <p>The majority of successful breaches involve a human element — phishing, social engineering, misconfiguration, or process failure. Technical controls are necessary but not sufficient. A security culture, built through consistent and contextually relevant training, is what closes the gap.</p>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Training Programmes</h2>
+            <div class="coverage-grid">
+              <div class="coverage-item"><span class="coverage-item-num">a</span><h3>Employee Awareness</h3><p>Phishing simulation, social engineering awareness, and safe digital behaviour — tailored to your organisation's threat profile.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">b</span><h3>Leadership & Board</h3><p>Cyber risk literacy for senior leaders — translating technical threats into governance and strategic decision-making.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">c</span><h3>Technical Deep-Dives</h3><p>Role-specific training for developers, system administrators, and SOC analysts — hands-on and scenario-driven.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">d</span><h3>Incident Response Drills</h3><p>Tabletop exercises and live simulations for security and leadership teams — testing process under realistic pressure.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">e</span><h3>University Programmes</h3><p>Structured engagement with engineering institutions — guest lectures, workshops, and curriculum advisory.</p></div>
+              <div class="coverage-item"><span class="coverage-item-num">f</span><h3>Compliance Training</h3><p>Role-specific training aligned to CERT-IN, ISO 27001, RBI, and DPDP Act obligations for audit readiness.</p></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Our Delivery Model</h2>
+            <div class="process-steps">
+              <div class="process-step"><span class="step-num">01</span><div class="step-content"><h3>Needs Assessment</h3><p>We assess your current training baseline, threat profile, and compliance obligations to design a programme that addresses real gaps, not generic risks.</p></div></div>
+              <div class="process-step"><span class="step-num">02</span><div class="step-content"><h3>Programme Design</h3><p>Content is built around your sector, systems, and team profiles — not repurposed generic modules. Each programme is custom-built.</p></div></div>
+              <div class="process-step"><span class="step-num">03</span><div class="step-content"><h3>Delivery & Simulation</h3><p>Instructor-led sessions, phishing simulations, and tabletop exercises delivered in-person or virtually — with measurable participation metrics.</p></div></div>
+              <div class="process-step"><span class="step-num">04</span><div class="step-content"><h3>Measurement & Iteration</h3><p>Post-training assessment, simulation results tracking, and annual programme reviews to ensure sustained effectiveness.</p></div></div>
+            </div>
+          </div>
+          <hr class="sp-divider">
+          <div class="section-block">
+            <h2>Who This Is For</h2>
+            <div class="audience-tags">
+              <span class="audience-tag">All Employees</span>
+              <span class="audience-tag">C-Suite & Boards</span>
+              <span class="audience-tag">Development Teams</span>
+              <span class="audience-tag">SOC Analysts</span>
+              <span class="audience-tag">System Administrators</span>
+              <span class="audience-tag">University Students</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-footer">
+          <p>"Technology secures systems. People secure organisations."</p>
+          <button class="cta-btn">Speak to Our Team</button>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /.ov-body -->
+</div><!-- /#services-overlay -->
+
+
+<script>
+(function(){
+  const overlay   = document.getElementById('services-overlay');
+  const ovMain    = document.getElementById('ovMain');
+  const navBtns   = document.querySelectorAll('.service-nav-btn');
+  const pages     = document.querySelectorAll('.service-page');
+  const closeBtn  = document.getElementById('overlayClose');
+
+  function showService(id){
+    navBtns.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+    pages.forEach(p => p.classList.toggle('active', p.id === id));
+    ovMain.scrollTop = 0;
+  }
+
+  function openOverlay(serviceId){
+    showService(serviceId);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOverlay(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // service cards on homepage open overlay
+  document.querySelectorAll('.service-card[data-service]').forEach(card => {
+    card.addEventListener('click', () => openOverlay(card.dataset.service));
+  });
+
+  // sidebar nav switches pages within overlay
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => showService(btn.dataset.target));
+  });
+
+  // close button
+  closeBtn.addEventListener('click', closeOverlay);
+
+  // close on Escape
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeOverlay();
+  });
+
+  // CTA buttons inside service pages → scroll to contact
+  document.querySelectorAll('.cta-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeOverlay();
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
+      }, 200);
+    });
+  });
+
+  // service-hero CTA buttons → scroll to contact
+  document.querySelectorAll('.service-hero-cta').forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeOverlay();
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({behavior:'smooth'});
+      }, 200);
+    });
+  });
+})();
+</script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

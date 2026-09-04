@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnthroPrime Technology — Our Practice</title>
+<meta name="description" content="The frameworks, standards, and checklists AnthroPrime Technology builds every engagement on — NIST CSF, Zero Trust, ISO 27001, CIS Controls, MITRE ATT&amp;CK, and practical hardening checklists.">
+<link rel="icon" href="assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AnthroPrime Technology"/>
+<meta property="og:title" content="AnthroPrime Technology — Our Practice"/>
+<meta property="og:description" content="The frameworks, standards, and checklists AnthroPrime Technology builds every engagement on — NIST CSF, Zero Trust, ISO 27001, CIS Controls, MITRE ATT&amp;CK, and practical hardening checklists."/>
+<meta property="og:url" content="https://www.anthroprime.com/practices.html"/>
+<meta property="og:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AnthroPrime Technology — Our Practice"/>
+<meta name="twitter:description" content="The frameworks, standards, and checklists AnthroPrime Technology builds every engagement on — NIST CSF, Zero Trust, ISO 27001, CIS Controls, MITRE ATT&amp;CK, and practical hardening checklists."/>
+<meta name="twitter:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<script>(function(){try{var t=localStorage.getItem('ap-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="assets/site.css" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f4f1; --bg2:#eeecea; --bg3:#e7e5e0; --surface:#faf9f7;
+    --border:rgba(80,75,65,0.12); --border2:rgba(80,75,65,0.22);
+    --text:#2a2720; --muted:#7a756a; --faint:#b0aa9e;
+    --navy:#1a2744; --navy2:#22336b; --navy-mid:#2e4080; --navy-lt:#d4daf0;
+    --sp-accent:#b8a080; --sp-accent-dark:#8c7a5e;
+    --serif:'Cormorant Garamond', Georgia, serif; --sans:'DM Sans', system-ui, sans-serif;
+  }
+  /* ── DARK MODE ── */
+  html[data-theme="dark"]{
+    --bg:#15161b; --bg2:#1c1e24; --bg3:#24262d; --surface:#1a1b20;
+    --border:rgba(255,255,255,0.09); --border2:rgba(255,255,255,0.16);
+    --text:#ece9e2; --muted:#a8a297; --faint:#6f6a60;
+    --navy-mid:#7288d6;
+    --sp-accent:#c9b190; --sp-accent-dark:#a58f6c;
+  }
+  html[data-theme="dark"] .framework-card:hover{background:#23252b}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;overflow-x:hidden}
+
+  /* ── HERO ── */
+  .prac-hero{background:var(--navy);padding:76px 3.5rem 84px;position:relative;overflow:hidden}
+  .prac-hero .hero-band{position:absolute;top:0;right:0;width:45%;height:100%;background:var(--navy2);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);pointer-events:none;opacity:.4}
+  .prac-hero .hero-ring{position:absolute;right:8%;top:50%;transform:translateY(-50%);width:380px;height:380px;border-radius:50%;border:1px solid rgba(212,218,240,0.1);pointer-events:none}
+  .prac-hero .hero-ring::before{content:'';position:absolute;inset:40px;border-radius:50%;border:1px solid rgba(212,218,240,0.05)}
+  .prac-hero-inner{position:relative;z-index:2;max-width:760px}
+  .prac-label{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sp-accent);margin-bottom:2rem}
+  .prac-label::before{content:'';width:28px;height:1px;background:var(--sp-accent);opacity:.7}
+  .prac-hero h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.3rem);font-weight:300;color:var(--bg);line-height:1.1;margin-bottom:1.5rem}
+  .prac-hero h1 em{font-style:italic;color:var(--navy-lt)}
+  .prac-hero-sub{font-size:1.02rem;font-weight:300;color:rgba(245,244,241,0.7);max-width:560px;line-height:1.8;margin-bottom:0}
+  .prac-hero-sub a{color:var(--navy-lt);text-decoration:underline;text-underline-offset:3px}
+
+  /* ── PEOPLE-FIRST BAND ── */
+  .people-band{background:var(--navy);padding:6rem 3.5rem;position:relative;overflow:hidden}
+  .people-intro{max-width:640px;margin:0 auto 3.5rem;text-align:center;position:relative;z-index:1}
+  .people-intro h2{font-family:var(--serif);font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:300;line-height:1.2;letter-spacing:-.01em;color:#f5f4f1;margin:1rem 0 1.25rem}
+  .people-intro h2 em{font-style:italic;color:var(--navy-lt)}
+  .people-intro p{color:rgba(212,218,240,0.6);font-size:.92rem;line-height:1.85;font-weight:300}
+  .people-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(212,218,240,0.1);border:1px solid rgba(212,218,240,0.1);position:relative;z-index:1}
+  .p-step{background:rgba(255,255,255,0.02);padding:2.5rem 2rem;position:relative}
+  .p-step-num{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:rgba(212,218,240,0.14);line-height:1;margin-bottom:.75rem}
+  .p-step h4{font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-lt);margin-bottom:.75rem}
+  .p-step p{font-size:.85rem;color:rgba(212,218,240,0.55);line-height:1.75;font-weight:300}
+  @media (max-width:900px){
+    .people-band{padding:4rem 1.5rem}
+    .people-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .people-grid{grid-template-columns:1fr}
+  }
+
+  /* ── SHARED SECTION SCAFFOLD ── */
+  .prac-section{max-width:1360px;margin:0 auto;padding:6rem 3.5rem}
+  .prac-section-header{max-width:680px;margin-bottom:3.5rem}
+  .section-tag{font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-mid);opacity:.75;margin-bottom:1rem}
+  .prac-section-header h2{font-family:var(--serif);font-size:clamp(2rem,3.4vw,3rem);font-weight:300;line-height:1.15;letter-spacing:-.01em;margin-bottom:1.1rem}
+  .prac-section-header h2 em{font-style:italic;color:var(--navy-mid)}
+  .prac-section-header p{color:var(--muted);font-size:.95rem;font-weight:300;line-height:1.8}
+  .prac-section.alt{background:var(--bg2)}
+
+  /* ── FRAMEWORK GRID ── */
+  .framework-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .framework-card{background:var(--surface);padding:2.5rem 2.25rem;position:relative;overflow:hidden;transition:background .3s ease}
+  .framework-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--navy-mid);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+  .framework-card:hover{background:#fff}
+  .framework-card:hover::after{transform:scaleX(1)}
+  .framework-badge{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--sp-accent-dark);margin-bottom:1.1rem}
+  .framework-name{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--text);margin-bottom:.85rem;line-height:1.25}
+  .framework-desc{font-size:.87rem;color:var(--muted);font-weight:300;line-height:1.75;margin-bottom:1.5rem}
+  .framework-pillars{display:flex;flex-wrap:wrap;gap:.45rem}
+  .framework-pill{font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--navy-mid);background:rgba(46,64,128,0.08);border:1px solid rgba(46,64,128,0.16);padding:.32rem .65rem;border-radius:20px}
+
+  /* ── CHECKLISTS ── */
+  .checklist-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .checklist-card{background:var(--surface);border:1px solid var(--border);padding:2.5rem 2.25rem;position:relative;overflow:hidden;transition:box-shadow .3s ease, border-color .3s ease}
+  .checklist-card:hover{border-color:var(--border2);box-shadow:0 14px 30px -18px rgba(26,39,68,.18)}
+  .checklist-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.6rem}
+  .checklist-name{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--text);line-height:1.25}
+  .checklist-count{flex-shrink:0;font-size:.7rem;font-weight:500;letter-spacing:.06em;color:var(--navy-mid);background:rgba(46,64,128,0.08);border:1px solid rgba(46,64,128,0.16);border-radius:20px;padding:.3rem .7rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .checklist-desc{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.5rem}
+  .checklist-items{list-style:none;display:flex;flex-direction:column;gap:.15rem}
+  .checklist-items li{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+  .checklist-items li:last-child{border-bottom:none}
+  .chk-box{flex-shrink:0;width:18px;height:18px;margin-top:.15rem;border-radius:4px;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:background .2s ease,border-color .2s ease}
+  .chk-box svg{width:11px;height:11px;opacity:0;transform:scale(.5);transition:opacity .18s ease,transform .18s ease}
+  .checklist-items li.done .chk-box{background:var(--navy-mid);border-color:var(--navy-mid)}
+  .checklist-items li.done .chk-box svg{opacity:1;transform:scale(1)}
+  .chk-text{font-size:.87rem;color:var(--text);font-weight:300;line-height:1.55;transition:color .2s ease,opacity .2s ease}
+  .checklist-items li.done .chk-text{color:var(--faint);text-decoration:line-through;opacity:.75}
+
+  /* ── MATURITY LADDER ── */
+  .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .ladder-step{background:var(--surface);padding:2rem 1.5rem 1.75rem;position:relative}
+  .ladder-bar{height:5px;border-radius:3px;background:var(--border2);margin-bottom:1.1rem;overflow:hidden}
+  .ladder-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--navy-mid),var(--sp-accent))}
+  .ladder-num{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--sp-accent-dark);margin-bottom:.4rem}
+  .ladder-name{font-size:.85rem;font-weight:500;letter-spacing:.03em;color:var(--text);margin-bottom:.5rem}
+  .ladder-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.6}
+
+  /* ── CTA ── */
+  .prac-cta{padding:7rem 3.5rem;background:var(--bg3);text-align:center}
+  .prac-cta .section-tag{margin-bottom:1.5rem}
+  .prac-cta h2{font-family:var(--serif);font-size:clamp(2.3rem,4.6vw,3.8rem);font-weight:300;color:var(--text);line-height:1.12;margin-bottom:1.25rem}
+  .prac-cta h2 em{font-style:italic;color:var(--navy-mid)}
+  .prac-cta p{color:var(--muted);font-size:.95rem;font-weight:300;max-width:480px;margin:0 auto 2.5rem;line-height:1.85}
+  .prac-cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-navy{background:var(--navy);color:#f5f4f1;padding:.9rem 2.2rem;border-radius:2px;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-block}
+  .btn-navy:hover{opacity:.9;transform:translateY(-2px)}
+  .btn-outline{border:1px solid var(--border2);color:var(--text);padding:.9rem 2.2rem;border-radius:2px;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s;display:inline-block}
+  .btn-outline:hover{border-color:var(--navy);color:var(--navy)}
+
+  @media (max-width:900px){
+    .prac-hero,.prac-section,.prac-cta{padding-left:1.5rem;padding-right:1.5rem}
+    .framework-grid{grid-template-columns:1fr 1fr}
+    .checklist-grid{grid-template-columns:1fr}
+    .ladder{grid-template-columns:1fr 1fr}
+    .hero-band,.hero-ring{display:none}
+  }
+  @media (max-width:600px){
+    .framework-grid{grid-template-columns:1fr}
+    .ladder{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div id="site-progress"></div>
+<div id="page-transition"></div>
+
+<!-- NAV -->
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo"><img src="assets/logo-badge.png" alt="AnthroPrime Technology" class="site-logo-mark" width="48" height="48"/><span class="site-logo-word">Anthro<em>Prime</em> Technology</span></a>
+    <ul class="site-links">
+      <li><a href="anthroprime_services.html">Services</a></li>
+      <li><a href="practices.html">Practice</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="strategic-growth-advisor.html">Growth Advisory</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://ecod.anthroprime.com" target="_blank" rel="noopener">ECOD Lab</a></li>
+      <li><a href="contact.html" class="site-cta-mobile">Get in touch</a></li>
+    </ul>
+    <div class="site-right">
+      <a href="contact.html" class="site-cta">Get in touch</a>
+      <button class="site-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="prac-hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
+  <div class="hero-band"></div>
+  <div class="hero-ring"></div>
+  <div class="prac-hero-inner" data-reveal>
+    <div class="prac-label">Our Practice</div>
+    <h1>The standards we build to —<br>not just <em>sell.</em></h1>
+    <p class="prac-hero-sub">Every engagement is anchored to the same recognised frameworks, whether or not it's billable. This page is the reference — the frameworks we practice, and the checklists we hand to clients for free. Looking for what we deliver? See our <a href="anthroprime_services.html">Services</a>.</p>
+  </div>
+</section>
+
+<!-- PEOPLE-FIRST PRINCIPLES -->
+<section class="people-band" data-mesh-bg data-mesh-color="rgba(212,218,240,0.16)" data-mesh-dot="rgba(212,218,240,0.4)">
+  <div class="people-intro" data-reveal>
+    <div class="section-tag" style="color:rgba(212,218,240,0.55)">Why It's Called a Practice</div>
+    <h2>Frameworks are the tools.<br><em>People are the practice.</em></h2>
+    <p>NIST, ISO, and CIS tell you what "good" looks like. They don't patch a server, report a phishing email, or say no to a risky shortcut under deadline pressure — your people do. Every checklist above exists to make that easier for them, not to replace them.</p>
+  </div>
+  <div class="people-grid" data-reveal-group>
+    <div class="p-step">
+      <div class="p-step-num">01</div>
+      <h4>Listen First</h4>
+      <p>Every engagement starts with the people, culture, and constraints inside your organisation — not a framework checklist applied blind.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">02</div>
+      <h4>Plain Language</h4>
+      <p>We translate ISO clauses and NIST functions into instructions a non-security employee can actually follow — jargon protects no one.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">03</div>
+      <h4>Train the Humans</h4>
+      <p>Firewalls don't click phishing links or reuse passwords. We invest as much in awareness and culture as we do in tooling.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-num">04</div>
+      <h4>Stay Alongside</h4>
+      <p>Retained advisory through implementation, not a report handed over and forgotten — the same people who assess you help you fix it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORKS -->
+<section class="prac-section">
+  <div class="prac-section-header" data-reveal>
+    <div class="section-tag">Frameworks We Practice</div>
+    <h2>A shared vocabulary for <em>security posture.</em></h2>
+    <p>We map every audit, assessment, and roadmap back to a recognised standard — so findings are defensible to a board, a regulator, or an auditor, not just to us.</p>
+  </div>
+
+  <div class="framework-grid" data-reveal-group>
+
+    <div class="framework-card">
+      <div class="framework-badge">Framework</div>
+      <div class="framework-name">NIST Cybersecurity<br>Framework 2.0</div>
+      <div class="framework-desc">Our baseline structure for assessing and communicating security posture in language leadership can act on.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Govern</span>
+        <span class="framework-pill">Identify</span>
+        <span class="framework-pill">Protect</span>
+        <span class="framework-pill">Detect</span>
+        <span class="framework-pill">Respond</span>
+        <span class="framework-pill">Recover</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Architecture</div>
+      <div class="framework-name">Zero Trust Architecture<br>(NIST SP 800-207)</div>
+      <div class="framework-desc">Never trust, always verify. The default posture for every network and identity design we recommend.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Verify Explicitly</span>
+        <span class="framework-pill">Least Privilege</span>
+        <span class="framework-pill">Assume Breach</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Management System</div>
+      <div class="framework-name">ISO/IEC 27001:2022</div>
+      <div class="framework-desc">The international benchmark for an information security management system — what we audit against and help build.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Risk Assessment</span>
+        <span class="framework-pill">Annex A Controls</span>
+        <span class="framework-pill">ISMS</span>
+        <span class="framework-pill">Continual Improvement</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Controls</div>
+      <div class="framework-name">CIS Critical Security<br>Controls v8</div>
+      <div class="framework-desc">Prioritised, practical safeguards mapped to real-world attack patterns — our default hardening baseline.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Basic</span>
+        <span class="framework-pill">Foundational</span>
+        <span class="framework-pill">Organizational</span>
+        <span class="framework-pill">18 Controls</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Threat Model</div>
+      <div class="framework-name">MITRE ATT&amp;CK</div>
+      <div class="framework-desc">How we model adversary behaviour in red-team engagements and detection engineering.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Tactics</span>
+        <span class="framework-pill">Techniques</span>
+        <span class="framework-pill">Procedures</span>
+        <span class="framework-pill">Threat-Informed Defense</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Regulation — India</div>
+      <div class="framework-name">Digital Personal Data<br>Protection Act, 2023</div>
+      <div class="framework-desc">India's data protection law, and what it concretely means for how our clients collect, store, and process data.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Consent</span>
+        <span class="framework-pill">Fiduciary Duties</span>
+        <span class="framework-pill">Data Principal Rights</span>
+        <span class="framework-pill">Breach Notification</span>
+      </div>
+    </div>
+
+    <div class="framework-card">
+      <div class="framework-badge">Human Risk</div>
+      <div class="framework-name">Security Culture &amp;<br>Human Risk Management</div>
+      <div class="framework-desc">The framework behind our people-first belief — because most of the frameworks above only work if the humans using them buy in.</div>
+      <div class="framework-pillars">
+        <span class="framework-pill">Awareness</span>
+        <span class="framework-pill">Behaviour</span>
+        <span class="framework-pill">Culture</span>
+        <span class="framework-pill">Security Champions</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHECKLISTS -->
+<section class="prac-section alt">
+  <div class="prac-section-header" data-reveal>
+    <div class="section-tag">Practical Checklists</div>
+    <h2>Best practice you can act on <em>this week.</em></h2>
+    <p>No audit required. These are the checks we run first on every engagement — tick them off as you go through your own environment.</p>
+  </div>
+
+  <div class="checklist-grid" data-reveal-group>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Identity &amp; Access Hygiene</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">Identity is the perimeter now — most breaches start with a compromised or over-privileged account.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Enforce MFA on all privileged and external-facing accounts</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Apply least-privilege / just-in-time access via PIM</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Review and remove stale accounts &amp; guest access quarterly</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Enable Conditional Access based on risk signals</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Rotate and vault all service account credentials</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Email &amp; Phishing Defense</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">Still the single most common way in — the fixes are cheap relative to the risk they close.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Enforce SPF, DKIM, and DMARC (reject policy) on all sending domains</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Enable Safe Links / Safe Attachments or equivalent sandboxing</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Run quarterly phishing simulations with tracked click-rates</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Flag external senders visibly in the inbox</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Maintain a one-click "report phishing" workflow</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Patch &amp; Vulnerability Management</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">Attackers overwhelmingly exploit known, unpatched vulnerabilities — not novel zero-days.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Maintain an accurate, current asset inventory</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Patch critical/high CVEs within a defined SLA</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Run authenticated vulnerability scans monthly</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Track exceptions with compensating controls, not silence</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Prioritise by exploitability, not CVSS score alone</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Backup &amp; Ransomware Recovery</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">A backup you haven't tested restoring isn't a backup — it's a hope.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Follow the 3-2-1 rule: 3 copies, 2 media types, 1 offsite</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Test full restores quarterly, not just backup completion</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Keep at least one immutable or air-gapped copy</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Document and rehearse a recovery runbook with RTO/RPO targets</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Separate backup admin credentials from domain admin</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Cloud Configuration Baseline</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">Most cloud incidents trace back to misconfiguration, not a novel exploit.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">No public storage buckets or open management ports by default</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Enforce MFA and Conditional Access at the identity provider layer</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Centralise logging with defined retention</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Apply CIS Benchmarks for each cloud provider in use</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Tag and review unused or orphaned resources monthly</span></li>
+      </ul>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-top">
+        <div class="checklist-name">Incident Response Readiness</div>
+        <div class="checklist-count" data-count>0/5</div>
+      </div>
+      <p class="checklist-desc">The plan you write during an incident is worse than the plan you wrote and rehearsed beforehand.</p>
+      <ul class="checklist-items">
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Maintain a written, tested IR plan with named roles</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Pre-establish legal, forensics, and PR contacts before an incident</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Define severity tiers and escalation timelines (NIST SP 800-61)</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Run at least one tabletop exercise per year</span></li>
+        <li><span class="chk-box"><svg viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="chk-text">Keep an offline copy of the IR plan itself</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- MATURITY LADDER -->
+<section class="prac-section">
+  <div class="prac-section-header" data-reveal>
+    <div class="section-tag">Where You Stand</div>
+    <h2>A common language for <em>maturity.</em></h2>
+    <p>Every assessment we run places you somewhere on this ladder — and gives you the specific, sequenced steps to move up it.</p>
+  </div>
+
+  <div class="ladder" data-reveal-group>
+    <div class="ladder-step">
+      <div class="ladder-bar"><span style="width:20%"></span></div>
+      <div class="ladder-num">01</div>
+      <div class="ladder-name">Ad Hoc</div>
+      <div class="ladder-desc">Reactive, undocumented, dependent on individuals.</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-bar"><span style="width:40%"></span></div>
+      <div class="ladder-num">02</div>
+      <div class="ladder-name">Repeatable</div>
+      <div class="ladder-desc">Informal but consistent practices, not yet written down.</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-bar"><span style="width:60%"></span></div>
+      <div class="ladder-num">03</div>
+      <div class="ladder-name">Defined</div>
+      <div class="ladder-desc">Documented and standardised across the organisation.</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-bar"><span style="width:80%"></span></div>
+      <div class="ladder-num">04</div>
+      <div class="ladder-name">Managed</div>
+      <div class="ladder-desc">Measured and monitored against defined KPIs.</div>
+    </div>
+    <div class="ladder-step">
+      <div class="ladder-bar"><span style="width:100%"></span></div>
+      <div class="ladder-num">05</div>
+      <div class="ladder-name">Optimized</div>
+      <div class="ladder-desc">Continuously improved, threat-informed, board-visible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="prac-cta" data-reveal>
+  <div class="section-tag">Next Steps</div>
+  <h2>Ready to put <em>people</em><br>at the centre of your practice?</h2>
+  <p>If you'd rather have our people run the assessment — and train yours — than run it yourself, that's what our Cybersecurity practice is for.</p>
+  <div class="prac-cta-actions">
+    <a href="contact.html" class="btn-navy">Schedule a consultation</a>
+    <a href="anthroprime_services.html" class="btn-outline">See our services</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div>
+    <div class="site-footer-brand"><img src="assets/logo-mark-white.png" alt="" class="site-footer-mark"/>Anthro<em>Prime</em> Technology</div>
+    <div class="site-footer-copy">Human First &nbsp;·&nbsp; © 2026 AnthroPrime Technology</div>
+  </div>
+  <div class="site-footer-links">
+    <a href="anthroprime_services.html">Services</a>
+    <a href="practices.html">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="strategic-growth-advisor.html">Growth Advisory</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+<script>
+  // Interactive checklist: click a line item to check it off, update the counter.
+  document.querySelectorAll('.checklist-card').forEach(function(card){
+    var items = card.querySelectorAll('.checklist-items li');
+    var counter = card.querySelector('[data-count]');
+    var total = items.length;
+    function refresh(){
+      var done = card.querySelectorAll('.checklist-items li.done').length;
+      if(counter) counter.textContent = done + '/' + total;
+    }
+    items.forEach(function(li){
+      li.addEventListener('click', function(){
+        li.classList.toggle('done');
+        refresh();
+      });
+    });
+    refresh();
+  });
+</script>
+<script src="assets/site.js"></script>
+
+</body>
+</html>

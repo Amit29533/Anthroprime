@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Growth Advisor — AnthroPrime Technology</title>
+<meta name="description" content="Strategic Growth Advisory from AnthroPrime Technology — ongoing founder and executive advisory, representation, and a long-term growth partnership for founder-led cybersecurity, AI, data, cloud and OT technology companies.">
+<link rel="icon" href="assets/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo-192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo-512.png"/>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="AnthroPrime Technology"/>
+<meta property="og:title" content="Strategic Growth Advisor — AnthroPrime Technology"/>
+<meta property="og:description" content="Strategic Growth Advisory from AnthroPrime Technology — ongoing founder and executive advisory, representation, and a long-term growth partnership for founder-led technology companies."/>
+<meta property="og:url" content="https://www.anthroprime.com/strategic-growth-advisor.html"/>
+<meta property="og:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Strategic Growth Advisor — AnthroPrime Technology"/>
+<meta name="twitter:description" content="Strategic Growth Advisory from AnthroPrime Technology — ongoing founder and executive advisory, representation, and a long-term growth partnership for founder-led technology companies."/>
+<meta name="twitter:image" content="https://www.anthroprime.com/assets/logo-512.png"/>
+<script>(function(){try{var t=localStorage.getItem('ap-theme');if(!t){t='light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="assets/site.css" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2744;
+    --navy-2:#21304f;
+    --navy-3:#2a3a5c;
+    --navy-lt:#d4daf0;
+    --blue:#2e4080;
+    --blue-light:#eef0f8;
+    --tan:#917f65;
+    --cream:#f5f4f1;
+    --white:#faf9f7;
+    --ink:#2a2720;
+    --muted:#7a756a;
+    --muted-light:#b4b7bd;
+    --line:#e6e3dd;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --maxw: 1180px;
+  }
+
+  /* ── DARK MODE ── */
+  html[data-theme="dark"]{
+    --blue:#7288d6;
+    --blue-light:#1c2236;
+    --tan:#ab9877;
+    --cream:#15161b;
+    --white:#1a1b20;
+    --ink:#ece9e2;
+    --muted:#a8a297;
+    --muted-light:#7d7f88;
+    --line:rgba(255,255,255,0.09);
+  }
+  html[data-theme="dark"] .bound-card.dont{background:#23252b}
+  html[data-theme="dark"] .btn-primary:hover{background:#3d51a8}
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--tan);
+    margin:0 0 14px;
+  }
+  .eyebrow.blue{color:var(--blue);}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-0.01em;}
+  em{font-style:italic;color:inherit;}
+  .lede{color:var(--muted);font-size:18px;line-height:1.7;max-width:640px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:3px;
+    font-size:14px;font-weight:600;letter-spacing:0.01em;
+    border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--blue);color:var(--white);}
+  .btn-primary:hover{background:#1f2e60;transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(46,64,128,.45);}
+  .btn-ghost{border-color:rgba(255,255,255,.3);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--tan);color:var(--tan);}
+  .btn-ghost.on-light{border-color:var(--navy);color:var(--navy);}
+  .btn-ghost.on-light:hover{border-color:var(--blue);color:var(--blue);}
+
+  /* Header/nav now lives in assets/site.css (.site-header / .site-nav) — shared across pages */
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--navy);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 110px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;top:-160px;right:-120px;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(46,64,128,.28), transparent 70%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;bottom:-220px;left:-160px;
+    width:460px;height:460px;border-radius:50%;
+    background:radial-gradient(circle at 60% 40%, rgba(145,127,101,.16), transparent 70%);
+  }
+  .hero .wrap{position:relative;}
+  .hero h1{font-size:50px;line-height:1.08;max-width:780px;}
+  .hero .lede{color:var(--muted-light);margin-top:22px;font-size:19px;max-width:600px;}
+  .hero .ctas{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-stats{
+    margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);
+    gap:28px;max-width:920px;border-top:1px solid rgba(255,255,255,.12);padding-top:32px;
+  }
+  .hstat b{display:block;font-family:var(--serif);font-size:15px;color:var(--tan);margin-bottom:4px;}
+  .hstat span{font-size:13px;color:var(--muted-light);}
+  @media (max-width:900px){
+    .hero h1{font-size:38px;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);}
+  }
+
+  section{padding:96px 0;}
+  .section-head{max-width:680px;margin-bottom:56px;}
+  .section-head h2{font-size:34px;line-height:1.18;}
+  .section-head .lede{margin-top:16px;font-size:16px;}
+  .bg-cream{background:var(--cream);}
+  .bg-navy{background:var(--navy);color:var(--white);}
+  .bg-navy .section-head .lede{color:var(--muted-light);}
+
+  /* ---------- Philosophy / diagram ---------- */
+  .philosophy{background:var(--white);}
+  .philosophy-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;}
+  .philo-copy p{color:var(--muted);font-size:16px;line-height:1.75;margin:0 0 18px;}
+  .philo-copy .quote-line{
+    font-family:var(--serif);font-style:italic;font-size:21px;color:var(--navy);
+    border-left:3px solid var(--tan);padding-left:18px;margin:28px 0;
+  }
+  .diagram{
+    background:var(--cream);border-radius:6px;padding:40px 32px;
+    border:1px solid var(--line);
+  }
+  .diagram .label{
+    text-align:center;font-size:11px;font-weight:700;letter-spacing:.16em;
+    color:var(--blue);margin-bottom:16px;
+  }
+  .outside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px;}
+  .outside-pill{
+    background:var(--blue-light);border:1px solid var(--blue);color:var(--blue);
+    border-radius:30px;padding:10px 8px;text-align:center;font-size:12.5px;font-weight:600;
+  }
+  .arrow-down{
+    display:flex;justify-content:center;margin:6px 0;
+    color:var(--tan);font-size:20px;line-height:1;
+  }
+  .founder-box{
+    background:var(--navy);border-radius:6px;padding:26px 22px;color:var(--white);
+  }
+  .founder-box .title{
+    text-align:center;font-family:var(--serif);font-weight:700;letter-spacing:.06em;
+    font-size:15px;margin-bottom:16px;
+  }
+  .inside-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .inside-pill{
+    background:var(--navy-2);border-radius:20px;padding:8px 4px;text-align:center;
+    font-size:11.5px;color:var(--muted-light);
+  }
+  .box-caption{
+    text-align:center;font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:14px;margin-top:20px;line-height:1.6;
+  }
+  .box-caption b{color:var(--navy);font-style:italic;}
+  @media (max-width:900px){
+    .philosophy-grid{grid-template-columns:1fr;gap:40px;}
+    .inside-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ---------- Bottleneck panel ---------- */
+  .bottleneck{background:var(--navy);color:var(--white);}
+  .bottleneck .section-head h2{color:var(--white);}
+  .bn-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:28px;align-items:stretch;}
+  .bn-card{
+    background:var(--navy-2);border-radius:6px;padding:32px;
+  }
+  .bn-card .pretext{font-size:14px;color:var(--muted-light);font-style:italic;margin-bottom:20px;}
+  .role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .role-pill{
+    background:rgba(255,255,255,.05);border-radius:6px;padding:11px 14px;
+    display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;
+  }
+  .role-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+  .bn-card.accent{background:var(--blue);display:flex;flex-direction:column;justify-content:center;}
+  .bn-card.accent .pretext{color:rgba(255,255,255,.75);}
+  .bn-card.accent .big-line{
+    font-family:var(--serif);font-size:22px;line-height:1.35;font-weight:700;margin-bottom:22px;
+  }
+  .bn-card.accent .rule{width:46px;height:2px;background:var(--tan);margin-bottom:22px;}
+  .bn-card.accent .closing{font-style:italic;font-weight:700;font-size:14.5px;}
+  @media (max-width:900px){
+    .bn-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Objectives ---------- */
+  .obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .obj-card{
+    background:var(--blue-light);border-radius:6px;padding:26px;
+  }
+  .obj-card .icon{font-size:22px;margin-bottom:14px;}
+  .obj-card h3{font-family:var(--sans);font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+  .obj-card p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5;}
+  @media (max-width:900px){.obj-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){.obj-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Scope pillars ---------- */
+  .pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .pillar-card{
+    background:var(--navy-2);border-radius:6px;padding:24px 20px;color:var(--white);
+    position:relative;
+  }
+  .pillar-card .num{
+    position:absolute;top:18px;right:18px;font-family:var(--serif);font-size:13px;
+    color:var(--blue);font-weight:700;
+  }
+  .pillar-card .icon{font-size:20px;color:var(--tan);margin-bottom:18px;}
+  .pillar-card h3{font-family:var(--sans);font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.3;}
+  .pillar-card p{font-size:11.5px;color:var(--muted-light);margin:0;line-height:1.45;}
+  @media (max-width:980px){.pillar-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.pillar-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Detail accordion-like blocks ---------- */
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .detail-card{
+    background:var(--white);border:1px solid var(--line);border-radius:6px;padding:30px;
+    box-shadow:0 2px 14px -8px rgba(20,30,50,.12);
+  }
+  .detail-card.dark{background:var(--navy);border:none;color:var(--white);}
+  .detail-card .head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .detail-card .head .ico{font-size:20px;color:var(--blue);}
+  .detail-card.dark .head .ico{color:var(--tan);}
+  .detail-card h3{font-family:var(--serif);font-size:18px;}
+  .detail-card .sub{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:16px;line-height:1.5;}
+  .detail-card.dark .sub{color:var(--muted-light);}
+  .detail-card ul{margin:0;padding:0;list-style:none;}
+  .detail-card li{
+    font-size:13.5px;padding:8px 0 8px 18px;position:relative;color:var(--ink);
+    border-top:1px solid #f0f1f3;
+  }
+  .detail-card.dark li{color:var(--white);border-top:1px solid rgba(255,255,255,.08);}
+  .detail-card li:first-child{border-top:none;}
+  .detail-card li::before{
+    content:"";position:absolute;left:0;top:16px;width:6px;height:6px;border-radius:50%;
+    background:var(--blue);
+  }
+  .detail-card.dark li::before{background:var(--tan);}
+  .mandate-note{
+    margin-top:16px;background:var(--navy-2);border:1px solid var(--tan);border-radius:6px;
+    padding:16px 18px;font-size:12.5px;color:var(--muted-light);font-style:italic;line-height:1.55;
+  }
+  @media (max-width:900px){.detail-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Engagement cadence ---------- */
+  .cadence-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .cad-card{
+    border-radius:6px;padding:26px 22px;background:var(--blue-light);
+  }
+  .cad-card.now{background:var(--blue);color:var(--white);}
+  .cad-card .freq{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--blue);margin-bottom:14px;}
+  .cad-card.now .freq{color:var(--tan);}
+  .cad-card h3{font-family:var(--serif);font-size:17px;color:var(--navy);margin-bottom:14px;line-height:1.3;}
+  .cad-card.now h3{color:var(--white);}
+  .cad-card .rule{width:34px;height:2px;background:var(--blue);margin-bottom:14px;opacity:.5;}
+  .cad-card.now .rule{background:var(--tan);opacity:.8;}
+  .cad-card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.5;}
+  .cad-card.now p{color:rgba(255,255,255,.85);}
+  @media (max-width:900px){.cadence-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.cadence-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Deliverables / boundaries ---------- */
+  .bound-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .bound-card{border-radius:6px;padding:30px;}
+  .bound-card.do{background:var(--blue-light);}
+  .bound-card.dont{background:#f4f4f5;}
+  .bound-card .head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .bound-card .badge{
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:15px;color:var(--white);flex-shrink:0;
+  }
+  .bound-card.do .badge{background:var(--blue);}
+  .bound-card.dont .badge{background:#9aa0a6;}
+  .bound-card h3{font-family:var(--serif);font-size:17px;color:var(--navy);}
+  .bound-card .note{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:14px;}
+  .bound-card ul{margin:0;padding:0;list-style:none;}
+  .bound-card li{font-size:13.5px;padding:6px 0 6px 18px;position:relative;}
+  .bound-card.do li{color:var(--ink);}
+  .bound-card.dont li{color:var(--muted);}
+  .bound-card li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;}
+  .bound-card.do li::before{background:var(--blue);}
+  .bound-card.dont li::before{background:#9aa0a6;}
+  .footnote{font-size:11.5px;color:#9aa0a6;font-style:italic;margin-top:14px;line-height:1.5;}
+  @media (max-width:900px){.bound-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Network / bench ---------- */
+  .bench-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .bench-grid .wide{grid-column:span 1;}
+  .bench-card{
+    background:var(--navy-2);border-radius:6px;padding:26px;color:var(--white);
+  }
+  .bench-card .icon{font-size:20px;color:var(--tan);margin-bottom:16px;}
+  .bench-card h3{font-family:var(--sans);font-size:15px;font-weight:700;margin-bottom:8px;}
+  .bench-card p{font-size:12.5px;color:var(--muted-light);margin:0;line-height:1.5;}
+  @media (max-width:900px){.bench-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.bench-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Ideal clients ---------- */
+  .client-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .client-card{
+    background:var(--white);border:1px solid var(--line);border-radius:6px;padding:24px;
+    box-shadow:0 2px 14px -10px rgba(20,30,50,.12);
+  }
+  .client-card .icon{font-size:19px;color:var(--blue);margin-bottom:14px;}
+  .client-card h3{font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+  .client-card p{font-size:12.5px;color:var(--muted);margin:0;}
+  @media (max-width:900px){.client-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.client-grid{grid-template-columns:1fr;}}
+
+  /* ---------- Closing CTA ---------- */
+  .closer{
+    background:var(--navy);color:var(--white);position:relative;overflow:hidden;
+    padding:110px 0;
+  }
+  .closer::before{
+    content:"";position:absolute;top:-180px;left:-140px;width:480px;height:480px;border-radius:50%;
+    background:radial-gradient(circle, rgba(46,64,128,.24), transparent 70%);
+  }
+  .closer .wrap{position:relative;}
+  .closer h2{font-size:36px;max-width:760px;line-height:1.25;}
+  .closer .lede{color:var(--muted-light);max-width:640px;margin-top:18px;font-size:16px;}
+  .closer .tagline{
+    font-family:var(--serif);font-style:italic;font-size:21px;color:var(--tan);
+    margin:32px 0 36px;border-left:3px solid var(--tan);padding-left:18px;
+  }
+  .closer .ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* Footer now lives in assets/site.css (.site-footer) */
+
+  @media (max-width:780px){
+    section{padding:64px 0;}
+    .wrap{padding:0 22px;}
+    .section-head h2{font-size:27px;}
+    .closer h2{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+<div id="site-progress"></div>
+<div id="page-transition"></div>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="site-logo"><img src="assets/logo-badge.png" alt="AnthroPrime Technology" class="site-logo-mark" width="48" height="48"/><span class="site-logo-word">Anthro<em>Prime</em> Technology</span></a>
+    <ul class="site-links">
+      <li><a href="anthroprime_services.html">Services</a></li>
+      <li><a href="practices.html">Practice</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="strategic-growth-advisor.html">Growth Advisory</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://ecod.anthroprime.com" target="_blank" rel="noopener">ECOD Lab</a></li>
+      <li><a href="contact.html" class="site-cta-mobile">Get in touch</a></li>
+    </ul>
+    <div class="site-right">
+      <a href="contact.html" class="site-cta">Get in touch</a>
+      <button class="site-burger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
+  <div class="wrap" data-reveal>
+    <p class="eyebrow">Founder &amp; Executive Advisory</p>
+    <h1>Strategic Growth <em>Advisor</em></h1>
+    <p class="lede">Executive advisory for founder-led cybersecurity, AI, data, cloud &amp; OT technology companies — built for founders who need a partner, not another report.</p>
+    <div class="ctas">
+      <a href="contact.html" class="btn btn-primary">Schedule a consultation</a>
+      <a href="#scope" class="btn btn-ghost">See the scope of advisory</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><b>Weekly</b><span>Founder strategy sessions</span></div>
+      <div class="hstat"><b>8 Pillars</b><span>Of ongoing engagement</span></div>
+      <div class="hstat"><b>Through Close</b><span>Pitch &amp; proposal support</span></div>
+      <div class="hstat"><b>Retainer</b><span>Not hours billed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Why this exists</p>
+      <h2>Why every founder needs an external <em>perspective.</em></h2>
+    </div>
+    <div class="philosophy-grid" data-reveal-group>
+      <div class="philo-copy">
+        <p>No matter how capable we are, we cannot objectively see the system we are inside. As a founder grows the business, they become immersed in customers, employees, delivery, hiring, cash flow, firefighting, investor expectations, and daily decisions.</p>
+        <p>Over time, the business begins to consume the founder's attention. The result isn't a lack of intelligence — it's a lack of perspective.</p>
+        <p class="quote-line">The role of a Strategic Growth Advisor is not to work harder than the founder. It is to help the founder see what they cannot see from within the business.</p>
+      </div>
+      <div class="diagram">
+        <p class="label">Outside</p>
+        <div class="outside-grid">
+          <div class="outside-pill">New Ideas</div>
+          <div class="outside-pill">Market Signals</div>
+          <div class="outside-pill">Partnerships</div>
+          <div class="outside-pill">Strategic Thinking</div>
+          <div class="outside-pill">Industry Network</div>
+          <div class="outside-pill">Best Practices</div>
+        </div>
+        <div class="arrow-down">&#8595;</div>
+        <div class="founder-box">
+          <p class="title">THE FOUNDER</p>
+          <div class="inside-grid">
+            <div class="inside-pill">Sales</div>
+            <div class="inside-pill">Hiring</div>
+            <div class="inside-pill">Delivery</div>
+            <div class="inside-pill">Finance</div>
+            <div class="inside-pill">Clients</div>
+            <div class="inside-pill">Employees</div>
+            <div class="inside-pill">Operations</div>
+            <div class="inside-pill">Compliance</div>
+          </div>
+        </div>
+        <p class="box-caption">The founder can see everything inside the box…<br><b>…but rarely sees the box itself.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTLENECK -->
+<section class="bottleneck">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why this matters</p>
+      <h2>The biggest constraint on growth usually isn't <em>effort.</em></h2>
+      <p class="lede" style="font-style:italic;color:var(--tan);">It's how much the founder is carrying alone — and how much room that leaves to think.</p>
+    </div>
+    <div class="bn-grid">
+      <div class="bn-card">
+        <p class="pretext">As the company grows, the founder becomes:</p>
+        <div class="role-grid">
+          <div class="role-pill"><span class="dot"></span>CEO</div>
+          <div class="role-pill"><span class="dot"></span>Sales Head</div>
+          <div class="role-pill"><span class="dot"></span>Delivery Head</div>
+          <div class="role-pill"><span class="dot"></span>Recruiter</div>
+          <div class="role-pill"><span class="dot"></span>Marketing Head</div>
+          <div class="role-pill"><span class="dot"></span>Finance Reviewer</div>
+          <div class="role-pill"><span class="dot"></span>Escalation Manager</div>
+          <div class="role-pill"><span class="dot"></span>Product Manager</div>
+          <div class="role-pill"><span class="dot"></span>HR</div>
+          <div class="role-pill"><span class="dot"></span>Strategy</div>
+        </div>
+      </div>
+      <div class="bn-card accent">
+        <p class="pretext">Eventually…</p>
+        <p class="big-line">When everyone — including the founder — is busy running the business, no one is left to think about it.</p>
+        <div class="rule"></div>
+        <p class="closing">That is exactly the space a Strategic Growth Advisor creates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Objectives</p>
+      <h2>What the engagement is built to <em>achieve.</em></h2>
+    </div>
+    <div class="obj-grid">
+      <div class="obj-card"><div class="icon">&#128200;</div><h3>Accelerate growth</h3><p>Sustainable growth across security, AI, data, cloud, and technology markets.</p></div>
+      <div class="obj-card"><div class="icon">&#127970;</div><h3>Strengthen positioning</h3><p>Sharper standing against category competitors and within target markets.</p></div>
+      <div class="obj-card"><div class="icon">&#129309;</div><h3>Win enterprise &amp; government accounts</h3><p>Stronger key-account strategy, including PSU pursuits.</p></div>
+      <div class="obj-card"><div class="icon">&#127760;</div><h3>Build partnerships</h3><p>Strategic technology, channel, and ecosystem alliances.</p></div>
+      <div class="obj-card"><div class="icon">&#129513;</div><h3>Develop differentiated services</h3><p>New, defensible offerings and adjacent verticals.</p></div>
+      <div class="obj-card"><div class="icon">&#9878;&#65039;</div><h3>Sharpen decision-making</h3><p>Better calls under regulatory and compliance pressure.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE OVERVIEW -->
+<section class="bg-navy" id="scope">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Scope of advisory</p>
+      <h2>Eight areas of ongoing <em>engagement.</em></h2>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card"><span class="num">01</span><div class="icon">&#128200;</div><h3>Business Strategy</h3><p>Planning, roadmap, competitive positioning</p></div>
+      <div class="pillar-card"><span class="num">02</span><div class="icon">&#128640;</div><h3>Revenue &amp; Growth</h3><p>Enterprise, government &amp; PSU pursuits</p></div>
+      <div class="pillar-card"><span class="num">03</span><div class="icon">&#129309;</div><h3>Strategic Partnerships</h3><p>Technology, channel &amp; ecosystem alliances</p></div>
+      <div class="pillar-card"><span class="num">04</span><div class="icon">&#128209;</div><h3>Service &amp; Portfolio Development</h3><p>New, productized, differentiated offerings</p></div>
+      <div class="pillar-card"><span class="num">05</span><div class="icon">&#128101;</div><h3>Talent &amp; Leadership Hiring</h3><p>Curated network, strategic introductions</p></div>
+      <div class="pillar-card"><span class="num">06</span><div class="icon">&#128227;</div><h3>Digital Marketing</h3><p>LinkedIn &amp; market presence management</p></div>
+      <div class="pillar-card"><span class="num">07</span><div class="icon">&#128100;</div><h3>Founder Advisory</h3><p>Critical decisions, hiring, risk, negotiation</p></div>
+      <div class="pillar-card"><span class="num">08</span><div class="icon">&#127908;</div><h3>Representation, Pitching &amp; Proposals</h3><p>Partners with you through to close</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE DETAIL 1 -->
+<section class="bg-cream">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Scope of advisory — 1/3</p>
+      <h2>Business strategy &amp; revenue <em>growth.</em></h2>
+    </div>
+    <div class="detail-grid" data-reveal-group>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128200;</span><h3>Business Strategy</h3></div>
+        <ul>
+          <li>Annual &amp; quarterly strategic planning</li>
+          <li>Business model refinement</li>
+          <li>Growth roadmap development</li>
+          <li>Competitive positioning in cyber, AI &amp; OT markets</li>
+          <li>Market expansion strategy</li>
+          <li>Business prioritization</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128640;</span><h3>Revenue &amp; Growth</h3></div>
+        <ul>
+          <li>Enterprise sales strategy</li>
+          <li>Government, PSU &amp; CERT-In sector accounts</li>
+          <li>Pipeline review &amp; prioritization</li>
+          <li>Pricing strategy for security &amp; advisory work</li>
+          <li>Opportunity qualification</li>
+          <li>Recurring revenue (retainers, managed services)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE DETAIL 2 -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Scope of advisory — 2/3</p>
+      <h2>Partnerships &amp; service <em>development.</em></h2>
+    </div>
+    <div class="detail-grid" data-reveal-group>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#129309;</span><h3>Strategic Partnerships</h3></div>
+        <ul>
+          <li>Technology alliances (security, AI, OT/ICS vendors)</li>
+          <li>Channel partnerships</li>
+          <li>System integrator partnerships</li>
+          <li>OEM relationships</li>
+          <li>Industry &amp; standards-body collaborations</li>
+          <li>Ecosystem development</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128209;</span><h3>Service &amp; Portfolio Development</h3></div>
+        <ul>
+          <li>New offerings across cyber, AI &amp; risk advisory</li>
+          <li>Productization (assessment tools, quantification platforms)</li>
+          <li>Packaging &amp; positioning for executive buyers</li>
+          <li>Market differentiation</li>
+          <li>High-margin service development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCOPE DETAIL 3 -->
+<section class="bg-cream">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Scope of advisory — 3/3</p>
+      <h2>Talent, hiring &amp; market <em>presence.</em></h2>
+    </div>
+    <div class="detail-grid" data-reveal-group>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128101;</span><h3>Talent &amp; Leadership Hiring</h3></div>
+        <p class="sub">People First: relationships and talent drive growth as much as strategy does.</p>
+        <ul>
+          <li>Access to a curated network of industry leaders and subject matter experts</li>
+          <li>Established relationships across the cybersecurity, technology &amp; enterprise ecosystem</li>
+          <li>Strategic introductions, facilitated where appropriate</li>
+          <li>Support identifying and engaging experienced leadership talent</li>
+          <li>Hiring strategy and role definition for critical positions</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128227;</span><h3>Digital Marketing &amp; Market Presence</h3></div>
+        <p class="sub">Building visibility in parallel with the strategic and revenue work.</p>
+        <ul>
+          <li>Ongoing management of LinkedIn &amp; digital marketing channels</li>
+          <li>Thought leadership content aligned to firm positioning</li>
+          <li>Brand visibility and market presence building</li>
+          <li>Content calendar and channel strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER ADVISORY + REPRESENTATION -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Scope of advisory — founder-facing</p>
+      <h2>Founder advisory &amp; joint <em>representation.</em></h2>
+    </div>
+    <div class="detail-grid" data-reveal-group>
+      <div class="detail-card">
+        <div class="head"><span class="ico">&#128100;</span><h3>Founder Advisory</h3></div>
+        <p class="sub">Ongoing strategic guidance on:</p>
+        <ul>
+          <li>Critical business decisions</li>
+          <li>Organizational structure &amp; leadership hiring</li>
+          <li>Investment priorities</li>
+          <li>Risk management</li>
+          <li>Negotiation strategy</li>
+          <li>Regulatory &amp; compliance shifts affecting the firm</li>
+        </ul>
+      </div>
+      <div class="detail-card dark">
+        <div class="head"><span class="ico">&#127908;</span><h3>Representation, Pitching &amp; Proposals</h3></div>
+        <p class="sub">We stay in the room through the close — not just the introduction:</p>
+        <ul>
+          <li>Proposal development &amp; review for key pursuits</li>
+          <li>Executive sales &amp; strategic client discussions</li>
+          <li>Client pitches and meetings, end to end through closure</li>
+        </ul>
+        <div class="mandate-note">Every instance of representation is scoped to an explicit, written mandate. AnthroPrime does not act, negotiate, or commit on the company's behalf beyond what has been specifically agreed in advance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODEL -->
+<section class="bg-cream" id="engagement">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Engagement model</p>
+      <h2>A long-term strategic partnership, not project <em>work.</em></h2>
+      <p class="lede">The engagement is structured as a long-term strategic partnership rather than project-based consulting, with a consistent cadence of access and review.</p>
+    </div>
+    <div class="cadence-grid" data-reveal-group>
+      <div class="cad-card">
+        <p class="freq">WEEKLY</p>
+        <h3>Founder Strategy Session</h3>
+        <div class="rule"></div>
+        <p>Direct, recurring access to think through live decisions.</p>
+      </div>
+      <div class="cad-card">
+        <p class="freq">MONTHLY</p>
+        <h3>Leadership Review</h3>
+        <div class="rule"></div>
+        <p>Progress against priorities with the leadership team.</p>
+      </div>
+      <div class="cad-card">
+        <p class="freq">QUARTERLY</p>
+        <h3>Business Strategy Workshop</h3>
+        <div class="rule"></div>
+        <p>Step back and reset the roadmap for the quarter ahead.</p>
+      </div>
+      <div class="cad-card now">
+        <p class="freq">ONGOING</p>
+        <h3>Strategic Discussions</h3>
+        <div class="rule"></div>
+        <p>As-needed input on key opportunities &amp; decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES + BOUNDARIES -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Deliverables &amp; boundaries</p>
+      <h2>What you receive — and what stays out of <em>scope.</em></h2>
+    </div>
+    <div class="bound-grid" data-reveal-group>
+      <div class="bound-card do">
+        <div class="head"><span class="badge">&#10003;</span><h3>Deliverables</h3></div>
+        <ul>
+          <li>Strategic business roadmap</li>
+          <li>Quarterly growth plans</li>
+          <li>Market expansion recommendations</li>
+          <li>Sales &amp; partnership strategy</li>
+          <li>Service portfolio recommendations</li>
+          <li>Talent pipeline &amp; hiring shortlists</li>
+          <li>LinkedIn / digital marketing calendar</li>
+          <li>Proposal &amp; pitch support for key pursuits</li>
+          <li>Executive decision support</li>
+          <li>Strategic opportunity assessments</li>
+          <li>Business review reports</li>
+        </ul>
+      </div>
+      <div class="bound-card dont">
+        <div class="head"><span class="badge">&#10005;</span><h3>Outside the Scope</h3></div>
+        <p class="note">Unless separately agreed:</p>
+        <ul>
+          <li>Project execution</li>
+          <li>Operational management</li>
+          <li>Delivery management</li>
+          <li>HR administration (payroll, statutory compliance)</li>
+          <li>Financial accounting</li>
+          <li>Routine sales administration (CRM, scheduling)</li>
+          <li>Day-to-day operational responsibilities</li>
+        </ul>
+        <p class="footnote">Note: hiring &amp; proposal strategy support (left) is distinct from ongoing HR and sales administration above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BENCH -->
+<section class="bg-navy">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The bench behind AnthroPrime</p>
+      <h2>A network built on pedigree and real operating <em>experience.</em></h2>
+      <p class="lede">The relationships and introductions referenced earlier draw on a network spanning:</p>
+    </div>
+    <div class="bench-grid" data-reveal-group>
+      <div class="bench-card"><div class="icon">&#127891;</div><h3>IIT Startup Founders</h3><p>Operators who have built and scaled technology ventures from the ground up</p></div>
+      <div class="bench-card"><div class="icon">&#128214;</div><h3>IIT Faculty</h3><p>Academic and research depth across engineering and emerging technology</p></div>
+      <div class="bench-card"><div class="icon">&#128188;</div><h3>IIM Alumni</h3><p>Management and strategy grounding from India's leading business schools</p></div>
+      <div class="bench-card"><div class="icon">&#128225;</div><h3>Telecom &amp; IT Veterans</h3><p>Senior operators with deep sector experience in telecom and enterprise IT</p></div>
+      <div class="bench-card"><div class="icon">&#127760;</div><h3>Global CXOs</h3><p>C-suite leaders with operating experience inside and outside India</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IDEAL CLIENTS -->
+<section class="bg-cream">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow blue">Ideal clients</p>
+      <h2>Best suited for founder-led organizations <em>in.</em></h2>
+    </div>
+    <div class="client-grid" data-reveal-group>
+      <div class="client-card"><div class="icon">&#128274;</div><h3>Cybersecurity Firms</h3><p>VAPT, GRC, SOC, audit &amp; advisory</p></div>
+      <div class="client-card"><div class="icon">&#129504;</div><h3>AI Companies</h3><p>AI-enabled service providers</p></div>
+      <div class="client-card"><div class="icon">&#128202;</div><h3>Data &amp; Cloud Platforms</h3><p>Analytics, infrastructure &amp; managed cloud providers</p></div>
+      <div class="client-card"><div class="icon">&#127981;</div><h3>OT &amp; Industrial Technology</h3><p>ICS/SCADA, critical infrastructure</p></div>
+      <div class="client-card"><div class="icon">&#128225;</div><h3>Telecom &amp; Digital Infrastructure</h3><p>Network &amp; connectivity providers</p></div>
+      <div class="client-card"><div class="icon">&#128209;</div><h3>Technology Product Companies</h3><p>Platform &amp; product-led businesses</p></div>
+      <div class="client-card"><div class="icon">&#129309;</div><h3>Engineering &amp; Consulting Firms</h3><p>Technical advisory organizations</p></div>
+    </div>
+    <p style="margin-top:24px;font-size:13.5px;color:var(--blue);font-style:italic;">Also well suited for businesses preparing for rapid growth, investment, or market expansion.</p>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer" id="contact">
+  <div class="wrap" data-reveal>
+    <p class="eyebrow">Why AnthroPrime</p>
+    <h2>An advisor who has built in your category — <em>not alongside it.</em></h2>
+    <p class="lede">AnthroPrime combines operator-level leadership experience across cybersecurity, AI, data, cloud, and OT advisory with deep expertise in digital transformation, strategic partnerships, enterprise and government sales, governance, and business growth — backed by a bench of industry veterans and qualified specialists supporting hiring, marketing, and go-to-market execution alongside the advisory itself.</p>
+    <p class="lede" style="color:var(--tan);font-style:italic;">We don't step back once the introduction is made or the strategy is set. We stay in the room — through the pitch, the proposal, and the close.</p>
+    <p class="tagline">A catalyst and partner in your growth journey.</p>
+    <div class="ctas">
+      <a href="contact.html" class="btn btn-primary">Schedule a consultation</a>
+      <a href="anthroprime_services.html" class="btn btn-ghost">Explore all services</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div>
+    <div class="site-footer-brand"><img src="assets/logo-mark-white.png" alt="" class="site-footer-mark"/>Anthro<em>Prime</em> Technology</div>
+    <div class="site-footer-copy">Human First &nbsp;·&nbsp; © 2026 AnthroPrime Technology</div>
+  </div>
+  <div class="site-footer-links">
+    <a href="anthroprime_services.html">Services</a>
+    <a href="practices.html">Practice</a>
+    <a href="index.html#approach">Approach</a>
+    <a href="strategic-growth-advisor.html">Growth Advisory</a>
+    <a href="index.html#about">About</a>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+
+</body>
+</html>

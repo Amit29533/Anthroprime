@@ -1399,3 +1399,171 @@ html[data-theme="dark"] .mesh-chip{color:#eef2ff}
 .site-cta, .btn-solid, .btn-navy, .btn-primary, .cta-btn{
   border-radius:8px;
 }
+
+/* ════════════════════════════════════════════════════════
+   LIVE, INTERACTIVE DIAGRAMS — AI · Cybersecurity · Data
+   Replaces legacy hero SVGs. JS builds the SVG, telemetry,
+   tabs, and node detail panel; CSS handles the motion.
+════════════════════════════════════════════════════════ */
+
+.live-viz{
+  position:absolute; right:4%; top:50%; transform:translateY(-50%);
+  width:min(44vw,420px); z-index:2; pointer-events:auto;
+  font-family:var(--gh-sans,'DM Sans',sans-serif);
+  opacity:1;
+}
+@media (max-width:1100px){ .live-viz{ width:min(46vw,400px); } }
+@media (max-width:960px){ .live-viz{ display:none; } }
+
+.lv-card{
+  position:relative; border-radius:18px; padding:12px;
+  background:linear-gradient(160deg, rgba(26,39,68,.68), rgba(18,24,42,.46));
+  border:1px solid rgba(174,188,240,.18);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  box-shadow:0 30px 70px -30px rgba(10,14,28,.62), inset 0 1px 0 rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.lv-card::before{
+  content:''; position:absolute; inset:-30% -12% auto; height:66%;
+  background:radial-gradient(440px 170px at 50% 0%, rgba(114,136,214,.22), transparent 64%);
+  pointer-events:none;
+}
+.lv-card::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  border-radius:inherit;
+  box-shadow:inset 0 0 34px rgba(114,136,214,.08);
+}
+
+.lv-head{position:relative; display:flex; align-items:center; gap:8px; margin-bottom:9px; z-index:1}
+.lv-icon{
+  width:27px; height:27px; border-radius:9px; display:grid; place-items:center;
+  background:linear-gradient(135deg, rgba(114,136,214,.32), rgba(114,136,214,.08));
+  border:1px solid rgba(114,136,214,.4);
+  color:#c9d4f5; font-size:10px; font-weight:700; letter-spacing:.06em;
+  box-shadow:0 0 16px rgba(114,136,214,.25);
+}
+.lv-title{font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#eef2ff}
+.lv-sub{font-size:9px; color:rgba(212,218,240,.6); letter-spacing:.05em; margin-top:1px}
+.lv-status{margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-size:9.5px; font-weight:600; color:#9ff0c4; letter-spacing:.05em; text-transform:uppercase}
+.lv-status .lv-dot{width:6px; height:6px; border-radius:50%; background:#61e2a2; box-shadow:0 0 8px #61e2a2; animation:lv-blink 1.8s ease-in-out infinite}
+@keyframes lv-blink{0%,100%{opacity:1; transform:scale(1)}50%{opacity:.45; transform:scale(.8)}}
+
+.lv-tabs{position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:10px; z-index:1}
+.lv-tab{
+  appearance:none; border:1px solid rgba(174,188,240,.18);
+  background:rgba(174,188,240,.06); color:rgba(238,242,255,.72);
+  font-family:inherit; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  padding:7px 6px; border-radius:9px; cursor:pointer; transition:color .2s,border-color .2s,background .2s,box-shadow .2s,transform .2s;
+}
+.lv-tab:hover{color:#fff; border-color:rgba(174,188,240,.45); transform:translateY(-1px)}
+.lv-tab:focus-visible{outline:2px solid rgba(174,188,240,.6); outline-offset:2px}
+.lv-tab.active{
+  background:linear-gradient(135deg, rgba(114,136,214,.3), rgba(114,136,214,.1));
+  border-color:rgba(174,188,240,.6); color:#fff;
+  box-shadow:0 0 18px rgba(114,136,214,.22), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.lv-stage{position:relative; width:100%; aspect-ratio:1/1; border-radius:13px; overflow:hidden; z-index:1;
+  background:radial-gradient(circle at 50% 40%, rgba(114,136,214,.14), rgba(10,14,24,.2) 62%);
+  border:1px solid rgba(174,188,240,.12);
+}
+.lv-svg{width:100%; height:100%; display:block; overflow:visible; cursor:default; transition:transform .18s ease-out}
+.lv-svg text{user-select:none; -webkit-user-select:none}
+
+.lv-gridline{stroke:rgba(174,188,240,.07); stroke-width:.6}
+.lv-orbit{fill:none; stroke:rgba(174,188,240,.14); stroke-width:1}
+.lv-orbit.dash{stroke:rgba(174,188,240,.22); stroke-dasharray:3 10; transform-box:fill-box; transform-origin:center; animation:lv-orbit 30s linear infinite}
+.lv-orbit.dash.rev{animation-direction:reverse; animation-duration:42s; stroke-opacity:.55}
+@keyframes lv-orbit{to{transform:rotate(360deg)}}
+
+.lv-link{fill:none; stroke:rgba(174,188,240,.32); stroke-width:1; stroke-dasharray:5 9; animation:lv-stream 5s linear infinite}
+.lv-link.strong{stroke:rgba(174,188,240,.52); stroke-width:1.2; stroke-dasharray:none; animation:none}
+@keyframes lv-stream{to{stroke-dashoffset:-28px}}
+
+.lv-node{transform-box:fill-box; transform-origin:center; cursor:pointer; transition:opacity .2s}
+.lv-node-halo{fill:none; stroke:rgba(174,188,240,.26); stroke-width:1; animation:lv-pulse 4s ease-in-out infinite}
+@keyframes lv-pulse{0%,100%{opacity:.55; transform:scale(1)}50%{opacity:1; transform:scale(1.12)}}
+.lv-node-disc{
+  fill:rgba(18,24,42,.82); stroke:rgba(174,188,240,.7); stroke-width:1.4;
+  filter:drop-shadow(0 0 9px rgba(114,136,214,.35));
+  transition:fill .25s,stroke .25s,filter .25s,transform .25s;
+}
+.lv-node:hover .lv-node-disc,
+.lv-node.is-active .lv-node-disc{
+  fill:rgba(114,136,214,.42); stroke:#eef2ff;
+  filter:drop-shadow(0 0 16px rgba(114,136,214,.85));
+  transform:scale(1.06);
+}
+.lv-node-icon{fill:none; stroke:#eef2ff; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round}
+.lv-node-label{
+  font-size:9.4px; font-weight:700; letter-spacing:.13em; text-transform:uppercase; fill:#eef2ff; text-anchor:middle;
+  paint-order:stroke; stroke:rgba(10,14,24,.6); stroke-width:3px;
+  transition:fill .2s;
+}
+.lv-node:hover .lv-node-label,.lv-node.is-active .lv-node-label{fill:#fff}
+.lv-node-sub{
+  font-size:7px; letter-spacing:.16em; text-transform:uppercase; fill:rgba(212,218,240,.62); text-anchor:middle;
+  paint-order:stroke; stroke:rgba(10,14,24,.38); stroke-width:2px;
+}
+
+.lv-hub{filter:drop-shadow(0 0 18px rgba(114,136,214,.75))}
+.lv-hub-circle{fill:url(#lvCoreGrad); stroke:#c9d4f5; stroke-width:1.6}
+.lv-hub-label{
+  font-family:var(--gh-serif,'Cormorant Garamond',serif); font-style:italic; font-size:14px; fill:#f4f1ea; text-anchor:middle;
+}
+.lv-hub-sub{
+  font-size:7px; letter-spacing:.16em; text-transform:uppercase; fill:rgba(212,218,240,.72); text-anchor:middle;
+  paint-order:stroke; stroke:rgba(10,14,24,.4); stroke-width:2px;
+}
+
+.lv-pack{
+  fill:#aebcf0; opacity:0; transform-box:fill-box; transform-origin:center;
+  filter:drop-shadow(0 0 6px #aebcf0);
+  animation:lv-pack 5.2s cubic-bezier(.45,.05,.35,1) infinite;
+}
+.lv-pack:nth-of-type(2n){fill:#c9b190}
+.lv-pack:nth-of-type(3n){fill:#8ea0e0}
+@keyframes lv-pack{
+  0%{opacity:0; transform:translate(0,0) scale(.4)}
+  14%{opacity:1; transform:scale(1)}
+  82%{opacity:1}
+  100%{opacity:0; transform:translate(var(--dx,0),var(--dy,0)) scale(.4)}
+}
+.lv-wave{
+  fill:none; stroke:url(#lvWaveGrad); stroke-width:1.6; stroke-dasharray:3 30; opacity:.9;
+  transform-box:fill-box; transform-origin:center; animation:lv-fullspin 7s linear infinite;
+}
+@keyframes lv-fullspin{to{transform:rotate(360deg)}}
+
+.lv-readout{position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:10px; z-index:1}
+.lv-metric{background:rgba(174,188,240,.07); border:1px solid rgba(174,188,240,.12); border-radius:10px; padding:7px 8px}
+.lv-metric-label{font-size:8px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(212,218,240,.62)}
+.lv-metric-val{font-size:14px; font-weight:800; color:#eef2ff; font-variant-numeric:tabular-nums; line-height:1.4; letter-spacing:.02em}
+.lv-metric-val small{font-size:8.5px; font-weight:600; color:rgba(212,218,240,.62); margin-left:2px; letter-spacing:.02em}
+.lv-metric.flash .lv-metric-val{animation:lv-flash .8s ease}
+@keyframes lv-flash{0%{color:#fff; text-shadow:0 0 10px rgba(174,188,240,.9)}100%{color:#eef2ff; text-shadow:none}}
+
+.lv-legend{position:relative; display:flex; flex-wrap:wrap; gap:5px 10px; margin-top:10px; z-index:1}
+.lv-legend span{display:inline-flex; align-items:center; gap:5px; font-size:8.5px; font-weight:600; letter-spacing:.04em; color:rgba(212,218,240,.72)}
+.lv-legend i{width:8px; height:8px; border-radius:50%; display:inline-block}
+
+.lv-detail{
+  position:absolute; left:8px; right:8px; bottom:8px; z-index:4; padding:9px 11px; border-radius:10px;
+  background:rgba(10,14,24,.78); border:1px solid rgba(174,188,240,.22); backdrop-filter:blur(6px);
+  opacity:0; transform:translateY(8px); transition:opacity .22s,transform .22s; pointer-events:none;
+}
+.lv-detail.show{opacity:1; transform:translateY(0); pointer-events:auto}
+.lv-detail-title{font-size:10px; font-weight:800; letter-spacing:.08em; color:#eef2ff; text-transform:uppercase; padding-right:16px}
+.lv-detail-body{font-size:9.5px; line-height:1.5; color:rgba(212,218,240,.82); margin-top:3px}
+.lv-detail-close{position:absolute; top:5px; right:8px; background:none; border:none; color:rgba(212,218,240,.65); cursor:pointer; font-size:13px; line-height:1}
+.lv-detail-close:hover{color:#fff}
+.lv-hint{position:relative; margin-top:8px; font-size:8.5px; letter-spacing:.06em; color:rgba(212,218,240,.5); z-index:1; display:flex; gap:6px; align-items:center}
+.lv-hint b{color:rgba(212,218,240,.8); font-weight:700}
+
+@media (prefers-reduced-motion: reduce){
+  .live-viz .lv-orbit,.live-viz .lv-link,.live-viz .lv-wave,
+  .live-viz .lv-pack,.live-viz .lv-node-halo,.live-viz .lv-status .lv-dot{animation:none !important}
+  .lv-svg{transition:none !important}
+  .lv-pack{opacity:.6 !important; transform:none !important}
+}

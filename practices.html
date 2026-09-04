@@ -183,63 +183,8 @@
     <p class="prac-hero-sub">Every engagement is anchored to the same recognised frameworks, whether or not it's billable. This page is the reference — the frameworks we practice, and the checklists we hand to clients for free. Looking for what we deliver? See our <a href="anthroprime_services.html">Services</a>.</p>
   </div>
 
-  <!-- Animated framework layers / shield diagram -->
-  <svg class="ap-viz hero-diagram" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
-    </linearGradient>
-    <clipPath id="prShieldClip">
-      <path d="M210 70 L318 108 V188 c0 72-48 128-108 148 C150 316 102 260 102 188 V108 Z"/>
-    </clipPath>
-    <filter id="prBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
-  </defs>
-  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
-  <circle cx="210" cy="210" r="145" class="ap-ring"/>
-  <circle cx="210" cy="210" r="118" class="ap-ring reverse"/>
-  <path d="M210 58 L338 102 V196 c0 84-56 150-128 174 C110 346 82 280 82 196 V102 Z" fill="none" stroke="rgba(174,188,240,.28)" stroke-width="1.2" filter="url(#prBlur)"/>
-  <path d="M210 70 L318 108 V188 c0 72-48 128-108 148 C150 316 102 260 102 188 V108 Z" fill="rgba(18,24,42,.55)" stroke="#aebcf0" stroke-width="1.4"/>
-  <g clip-path="url(#prShieldClip)">
-    <rect x="102" y="118" width="216" height="18" fill="rgba(114,136,214,.10)"/>
-    <rect x="102" y="154" width="216" height="18" fill="rgba(114,136,214,.10)"/>
-    <rect x="102" y="190" width="216" height="18" fill="rgba(114,136,214,.10)"/>
-    <rect x="102" y="226" width="216" height="18" fill="rgba(114,136,214,.10)"/>
-    <rect x="102" y="262" width="216" height="18" fill="rgba(114,136,214,.10)"/>
-    <rect class="ap-scan" x="102" y="188" width="216" height="3" fill="#c9d4f5" opacity=".7"/>
-  </g>
-  <text class="ap-node-sub" x="210" y="132">Identify</text>
-  <text class="ap-node-sub" x="210" y="168">Protect</text>
-  <text class="ap-node-sub" x="210" y="204">Detect</text>
-  <text class="ap-node-sub" x="210" y="240">Respond</text>
-  <text class="ap-node-sub" x="210" y="276">Recover</text>
-  <g class="ap-node ap-node-sec" transform="translate(210,36)">
-    <title>NIST CSF</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">NIST</text>
-  </g>
-  <g class="ap-node ap-node-data" transform="translate(360,140)">
-    <title>ISO 27001</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">ISO</text>
-  </g>
-  <g class="ap-node ap-node-infra" transform="translate(348,300)">
-    <title>CIS Controls</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">CIS</text>
-  </g>
-  <g class="ap-node ap-node-ai" transform="translate(210,384)">
-    <title>MITRE ATT&amp;CK</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">MITRE</text>
-  </g>
-  <g class="ap-node ap-node-cloud" transform="translate(72,300)">
-    <title>DPDP Act</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">DPDP</text>
-  </g>
-  <g class="ap-node ap-node-sec" transform="translate(60,140)">
-    <title>Zero Trust</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/>
-    <text class="ap-node-label" y="36">Zero Trust</text>
-  </g>
-  <circle class="ap-core" cx="210" cy="210" r="26"/>
-  <text class="ap-core-label" x="210" y="206">People</text>
-  <text class="ap-core-label" x="210" y="222" style="font-size:12px">First</text>
-</svg>
+  <!-- Live, interactive diagram — switch between AI / Cybersecurity / Data (built by assets/site.js) -->
+  <div class="live-viz" data-live-viz="cyber"></div>
 
   <div class="scroll-indicator">
     <span>Scroll</span>

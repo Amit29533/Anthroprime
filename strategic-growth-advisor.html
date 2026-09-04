@@ -408,46 +408,8 @@
     </div>
   </div>
 
-  <!-- Animated growth orbit diagram -->
-  <svg class="ap-viz hero-diagram" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="vizCore" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c9b190"/><stop offset=".5" stop-color="#e8d7b8"/><stop offset="1" stop-color="#7288d6"/>
-    </linearGradient>
-    <filter id="gaBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
-  </defs>
-  <circle cx="210" cy="210" r="168" class="ap-ring-solid"/>
-  <g class="ap-ring" style="transform-origin:210px 210px">
-    <circle cx="210" cy="210" r="148" fill="none" stroke="rgba(201,177,144,.35)" stroke-width="1" stroke-dasharray="4 10"/>
-  </g>
-  <g class="ap-ring reverse" style="transform-origin:210px 210px">
-    <circle cx="210" cy="210" r="96" fill="none" stroke="rgba(174,188,240,.4)" stroke-width="1" stroke-dasharray="3 8"/>
-  </g>
-  <line class="ap-link-strong" x1="210" y1="210" x2="210" y2="62"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="318" y2="86"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="358" y2="210"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="318" y2="334"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="210" y2="358"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="102" y2="334"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="62" y2="210"/>
-  <line class="ap-link-strong" x1="210" y1="210" x2="102" y2="86"/>
-  <g class="ap-node ap-node-data" transform="translate(210,62)"><title>Strategy</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Strategy</text></g>
-  <g class="ap-node ap-node-infra" transform="translate(318,86)"><title>Revenue</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Revenue</text></g>
-  <g class="ap-node ap-node-cloud" transform="translate(358,210)"><title>Partners</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Partners</text></g>
-  <g class="ap-node ap-node-data" transform="translate(318,334)"><title>Services</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Services</text></g>
-  <g class="ap-node ap-node-infra" transform="translate(210,358)"><title>Talent</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Talent</text></g>
-  <g class="ap-node ap-node-cloud" transform="translate(102,334)"><title>Marketing</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Marketing</text></g>
-  <g class="ap-node ap-node-sec" transform="translate(62,210)"><title>Advisory</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Advisory</text></g>
-  <g class="ap-node ap-node-ai" transform="translate(102,86)"><title>Pitching</title><circle class="ap-node-halo" r="22"/><circle class="ap-node-disc" r="14"/><text class="ap-node-label" y="36">Pitching</text></g>
-  <circle cx="210" cy="210" r="36" fill="rgba(18,24,42,.55)" stroke="rgba(232,215,184,.5)" stroke-width="1" filter="url(#gaBlur)"/>
-  <circle class="ap-core" cx="210" cy="210" r="30"/>
-  <text class="ap-core-label" x="210" y="206">The</text>
-  <text class="ap-core-label" x="210" y="222">Founder</text>
-  <circle class="ap-packet" cx="210" cy="210" r="3" style="--dx:0px;--dy:-148px;animation-delay:.2s"/>
-  <circle class="ap-packet" cx="210" cy="210" r="3" style="--dx:148px;--dy:0px;animation-delay:1.2s"/>
-  <circle class="ap-packet" cx="210" cy="210" r="3" style="--dx:0px;--dy:148px;animation-delay:2.2s"/>
-  <circle class="ap-packet" cx="210" cy="210" r="3" style="--dx:-148px;--dy:0px;animation-delay:3.2s"/>
-</svg>
+  <!-- Live, interactive diagram — switch between AI / Cybersecurity / Data (built by assets/site.js) -->
+  <div class="live-viz" data-live-viz="data"></div>
 </section>
 
 <!-- PHILOSOPHY -->

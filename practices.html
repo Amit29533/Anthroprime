@@ -176,7 +176,7 @@
 <!-- HERO -->
 <section class="prac-hero" data-mesh-bg data-mesh-color="rgba(212,218,240,0.28)" data-mesh-dot="rgba(212,218,240,0.6)">
   <div class="hero-band"></div>
-  <div class="hero-ring"></div>
+  <div class="hero-ring dm-hide"></div>
   <div class="prac-hero-inner" data-reveal>
     <div class="prac-label">Our Practice</div>
     <h1>The standards we build to —<br>not just <em>sell.</em></h1>
@@ -185,45 +185,46 @@
 
   <!-- Animated framework layers / shield diagram -->
   <svg class="hero-diagram" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <!-- Concentric shield layers -->
-    <circle cx="190" cy="190" r="155" class="diagram-orbit-ring diagram-rotate" style="animation-duration:50s"/>
-    <circle cx="190" cy="190" r="125" class="diagram-orbit-ring diagram-rotate reverse" style="animation-duration:40s"/>
-    <circle cx="190" cy="190" r="95" class="diagram-orbit-ring"/>
-    <circle cx="190" cy="190" r="65" class="diagram-orbit-ring inner"/>
-    <!-- Framework nodes around outer ring -->
-    <circle cx="190" cy="35" r="22" class="diagram-node"/>
-    <text x="190" y="39" class="diagram-label">NIST</text>
-    <circle cx="324" cy="113" r="22" class="diagram-node" style="animation-delay:0.6s"/>
-    <text x="324" y="117" class="diagram-label">ISO</text>
-    <circle cx="324" cy="267" r="22" class="diagram-node" style="animation-delay:1.2s"/>
-    <text x="324" y="271" class="diagram-label">CIS</text>
-    <circle cx="190" cy="345" r="22" class="diagram-node" style="animation-delay:1.8s"/>
-    <text x="190" y="349" class="diagram-label">MITRE</text>
-    <circle cx="56" cy="267" r="22" class="diagram-node" style="animation-delay:2.4s"/>
-    <text x="56" y="271" class="diagram-label">DPDP</text>
-    <circle cx="56" cy="113" r="22" class="diagram-node" style="animation-delay:3s"/>
-    <text x="56" y="117" class="diagram-label">Zero Trust</text>
-    <!-- Inner ring labels -->
-    <text x="190" y="115" class="diagram-label" style="font-size:8px;opacity:0.6">IDENTIFY</text>
-    <text x="190" y="155" class="diagram-label" style="font-size:8px;opacity:0.6">PROTECT</text>
-    <text x="190" y="225" class="diagram-label" style="font-size:8px;opacity:0.6">DETECT</text>
-    <text x="190" y="265" class="diagram-label" style="font-size:8px;opacity:0.6">RESPOND</text>
-    <!-- Center hub -->
-    <circle cx="190" cy="190" r="28" class="diagram-hub"/>
-    <text x="190" y="194" class="diagram-hub-label" style="font-size:13px">Practice</text>
-    <!-- Connection lines -->
-    <line x1="190" y1="190" x2="190" y2="57" class="diagram-line" style="animation-delay:0.2s"/>
-    <line x1="190" y1="190" x2="302" y2="113" class="diagram-line" style="animation-delay:0.5s"/>
-    <line x1="190" y1="190" x2="302" y2="267" class="diagram-line" style="animation-delay:0.8s"/>
-    <line x1="190" y1="190" x2="190" y2="323" class="diagram-line" style="animation-delay:1.1s"/>
-    <line x1="190" y1="190" x2="78" y2="267" class="diagram-line" style="animation-delay:1.4s"/>
-    <line x1="190" y1="190" x2="78" y2="113" class="diagram-line" style="animation-delay:1.7s"/>
-    <!-- Flow packets -->
-    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:0px;--dy:-133px"/>
-    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:112px;--dy:-77px;animation-delay:0.9s"/>
-    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:112px;--dy:77px;animation-delay:1.7s"/>
-    <circle cx="190" cy="190" r="2.5" class="diagram-packet" style="--dx:-112px;--dy:77px;animation-delay:2.5s"/>
-  </svg>
+  <defs>
+    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
+    </linearGradient>
+    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
+    </linearGradient>
+  
+    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <circle cx="190" cy="190" r="168" class="dg-ring-soft"/>
+  <circle cx="190" cy="190" r="142" class="dg-ring"/>
+  <circle cx="190" cy="190" r="112" class="dg-ring reverse"/>
+  <circle cx="190" cy="190" r="70" class="dg-ring-soft"/>
+  <circle cx="190" cy="190" r="160" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="24" filter="url(#dgBlur)"/>
+  <line x1="190" y1="190" x2="190" y2="40" class="diagram-line" style="animation-delay:.2s"/>
+  <line x1="190" y1="190" x2="315" y2="119" class="diagram-line" style="animation-delay:.45s"/>
+  <line x1="190" y1="190" x2="315" y2="261" class="diagram-line" style="animation-delay:.7s"/>
+  <line x1="190" y1="190" x2="190" y2="340" class="diagram-line" style="animation-delay:.95s"/>
+  <line x1="190" y1="190" x2="65" y2="261" class="diagram-line" style="animation-delay:1.2s"/>
+  <line x1="190" y1="190" x2="65" y2="119" class="diagram-line" style="animation-delay:1.45s"/>
+  <g><circle cx="190" cy="40" r="24" class="diagram-node dg-node-sec"/><text x="190" y="44" class="dg-label">NIST</text></g>
+  <g><circle cx="315" cy="119" r="24" class="diagram-node dg-node-data"/><text x="315" y="123" class="dg-label">ISO</text></g>
+  <g><circle cx="315" cy="261" r="24" class="diagram-node dg-node-infra"/><text x="315" y="265" class="dg-label">CIS</text></g>
+  <g><circle cx="190" cy="340" r="24" class="diagram-node dg-node-ai"/><text x="190" y="344" class="dg-label">MITRE</text></g>
+  <g><circle cx="65" cy="261" r="24" class="diagram-node dg-node-cloud"/><text x="65" y="265" class="dg-label">DPDP</text></g>
+  <g><circle cx="65" cy="119" r="24" class="diagram-node dg-node-sec"/><text x="65" y="123" class="dg-label">Zero Trust</text></g>
+  <text x="190" y="132" class="dg-sub">IDENTIFY</text>
+  <text x="190" y="164" class="dg-sub">PROTECT</text>
+  <text x="190" y="216" class="dg-sub">DETECT</text>
+  <text x="190" y="248" class="dg-sub">RESPOND</text>
+  <circle cx="190" cy="190" r="30" class="dg-core"/>
+  <text x="190" y="186" class="dg-label" style="font-size:10px">People</text>
+  <text x="190" y="199" class="dg-label" style="font-size:10px">First</text>
+  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:0px;--dy:-150px;animation-delay:.2s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:125px;--dy:-71px;animation-delay:.9s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:125px;--dy:71px;animation-delay:1.7s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:-125px;--dy:71px;animation-delay:2.5s"/>
+  <circle class="dg-pack" cx="190" cy="190" r="3.4" style="--dx:-125px;--dy:-71px;animation-delay:3.3s"/>
+</svg>
 
   <div class="scroll-indicator">
     <span>Scroll</span>

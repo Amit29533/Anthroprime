@@ -432,44 +432,64 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
   </div>
 </section>
 
-<section class="hero" data-mesh-bg>
+<section class="hero" data-mesh-bg data-hud="Human First|AI · Data · Cloud · Security|Zero Trust mindset|Open systems">
   <div class="hero-band"></div>
-  <div class="hero-band-inner"></div>
-  <div class="hero-ring"></div>
+  <div class="hero-band-inner dm-hide"></div>
+  <div class="hero-ring dm-hide"></div>
   <svg class="hero-orbit" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <line x1="170" y1="170" x2="170" y2="45" class="orbit-line" style="animation-delay:.2s"/>
-    <line x1="170" y1="170" x2="288.9" y2="131.4" class="orbit-line" style="animation-delay:.45s"/>
-    <line x1="170" y1="170" x2="243.5" y2="271.1" class="orbit-line" style="animation-delay:.7s"/>
-    <line x1="170" y1="170" x2="96.5" y2="271.1" class="orbit-line" style="animation-delay:.95s"/>
-    <line x1="170" y1="170" x2="51.1" y2="131.4" class="orbit-line" style="animation-delay:1.2s"/>
-    <circle cx="170" cy="170" r="27" class="orbit-hub-circle"/>
-    <text x="170" y="175" text-anchor="middle" class="orbit-hub-label">AP</text>
-    <g class="orbit-node" style="animation-delay:0s">
-      <circle cx="170" cy="45" r="30" class="node-circle"/>
-      <text x="170" y="49" text-anchor="middle" class="orbit-node-label">AI</text>
-    </g>
-    <g class="orbit-node" style="animation-delay:.72s">
-      <circle cx="288.9" cy="131.4" r="30" class="node-circle"/>
-      <text x="288.9" y="135.4" text-anchor="middle" class="orbit-node-label">Data</text>
-    </g>
-    <g class="orbit-node" style="animation-delay:1.44s">
-      <circle cx="243.5" cy="271.1" r="30" class="node-circle"/>
-      <text x="243.5" y="275.1" text-anchor="middle" class="orbit-node-label">Cloud</text>
-    </g>
-    <g class="orbit-node" style="animation-delay:2.16s">
-      <circle cx="96.5" cy="271.1" r="30" class="node-circle"/>
-      <text x="96.5" y="275.1" text-anchor="middle" class="orbit-node-label">Security</text>
-    </g>
-    <g class="orbit-node" style="animation-delay:2.88s">
-      <circle cx="51.1" cy="131.4" r="30" class="node-circle"/>
-      <text x="51.1" y="135.4" text-anchor="middle" class="orbit-node-label">Infra</text>
-    </g>
-    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:0px;--pdy:-125px;animation-delay:.2s"/>
-    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:118.9px;--pdy:-38.6px;animation-delay:.92s"/>
-    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:73.5px;--pdy:101.1px;animation-delay:1.64s"/>
-    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:-73.5px;--pdy:101.1px;animation-delay:2.36s"/>
-    <circle class="orbit-packet" cx="170" cy="170" r="3.2" style="--pdx:-118.9px;--pdy:-38.6px;animation-delay:3.08s"/>
-  </svg>
+  <defs>
+    <linearGradient id="dgCoreGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#aebcf0"/><stop offset=".55" stop-color="#7288d6"/><stop offset="1" stop-color="#c9b190"/>
+    </linearGradient>
+    <linearGradient id="dgSweepGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#aebcf0" stop-opacity="0"/><stop offset=".5" stop-color="#aebcf0"/><stop offset="1" stop-color="#aebcf0" stop-opacity="0"/>
+    </linearGradient>
+  
+    <filter id="dgBlur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <circle cx="170" cy="170" r="156" class="dg-ring-soft"/>
+  <circle cx="170" cy="170" r="128" class="dg-ring"/>
+  <circle cx="170" cy="170" r="86" class="dg-ring reverse"/>
+  <circle cx="170" cy="170" r="150" fill="none" stroke="rgba(114,136,214,.08)" stroke-width="22" filter="url(#dgBlur)"/>
+  <line x1="170" y1="170" x2="170" y2="45" class="diagram-line" style="animation-delay:.2s"/>
+  <line x1="170" y1="170" x2="288.9" y2="131.4" class="diagram-line" style="animation-delay:.45s"/>
+  <line x1="170" y1="170" x2="243.5" y2="271.1" class="diagram-line" style="animation-delay:.7s"/>
+  <line x1="170" y1="170" x2="96.5" y2="271.1" class="diagram-line" style="animation-delay:.95s"/>
+  <line x1="170" y1="170" x2="51.1" y2="131.4" class="diagram-line" style="animation-delay:1.2s"/>
+  <g>
+    <circle cx="170" cy="45" r="30" class="diagram-node dg-node-ai"/>
+    <circle cx="170" cy="45" r="38" fill="none" stroke="rgba(114,136,214,.25)"/>
+    <text x="170" y="49" class="dg-label">AI</text>
+  </g>
+  <g>
+    <circle cx="288.9" cy="131.4" r="30" class="diagram-node dg-node-data"/>
+    <circle cx="288.9" cy="131.4" r="38" fill="none" stroke="rgba(201,177,144,.25)"/>
+    <text x="288.9" y="135.4" class="dg-label">Data</text>
+  </g>
+  <g>
+    <circle cx="243.5" cy="271.1" r="30" class="diagram-node dg-node-cloud"/>
+    <circle cx="243.5" cy="271.1" r="38" fill="none" stroke="rgba(142,160,224,.25)"/>
+    <text x="243.5" y="275.1" class="dg-label">Cloud</text>
+  </g>
+  <g>
+    <circle cx="96.5" cy="271.1" r="30" class="diagram-node dg-node-sec"/>
+    <circle cx="96.5" cy="271.1" r="38" fill="none" stroke="rgba(114,136,214,.25)"/>
+    <text x="96.5" y="275.1" class="dg-label">Security</text>
+  </g>
+  <g>
+    <circle cx="51.1" cy="131.4" r="30" class="diagram-node dg-node-infra"/>
+    <circle cx="51.1" cy="131.4" r="38" fill="none" stroke="rgba(184,160,128,.25)"/>
+    <text x="51.1" y="135.4" class="dg-label">Infra</text>
+  </g>
+  <circle cx="170" cy="170" r="28" class="dg-core"/>
+  <text x="170" y="166" class="dg-label" style="font-size:11px">Anthro</text>
+  <text x="170" y="180" class="dg-label" style="font-size:11px">Prime</text>
+  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:0px;--dy:-125px;animation-delay:.2s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:118.9px;--dy:-38.6px;animation-delay:.92s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:73.5px;--dy:101.1px;animation-delay:1.64s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:-73.5px;--dy:101.1px;animation-delay:2.36s"/>
+  <circle class="dg-pack" cx="170" cy="170" r="3.6" style="--dx:-118.9px;--dy:-38.6px;animation-delay:3.08s"/>
+</svg>
   <div class="hero-content" data-reveal>
     <div class="hero-tag" data-typewriter="AI · Data · Cloud · Cybersecurity · AI Infrastructure">AI · Data · Cloud · Cybersecurity · AI Infrastructure</div>
     <h1>Technology that<br/>starts with <em>people.</em></h1>

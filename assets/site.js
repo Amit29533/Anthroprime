@@ -52,7 +52,12 @@
 
   // Keep every open tab/page in sync if the user flips the toggle elsewhere.
   window.addEventListener('storage', function(e){
-    if(e.key === THEME_KEY && e.newValue){ root.setAttribute('data-theme', e.newValue); }
+    if(e.key === THEME_KEY && e.newValue){
+      root.setAttribute('data-theme', e.newValue);
+      var syncedToggle = document.querySelector('.theme-toggle');
+      if(syncedToggle){ syncedToggle.setAttribute('aria-pressed', e.newValue === 'dark' ? 'true' : 'false'); }
+      document.dispatchEvent(new CustomEvent('ap-theme-change', {detail:{theme:e.newValue}}));
+    }
   });
 
   /* ---------- entrance reveal on load ---------- */

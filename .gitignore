@@ -1,0 +1,13 @@
+# QA harness dependencies (the site itself is zero-build static)
+node_modules/
+package-lock.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Local dev output
+.cache/
+.tmp/

@@ -56,6 +56,23 @@
   .prac-hero-sub{font-size:1.02rem;font-weight:300;color:rgba(245,244,241,0.7);max-width:560px;line-height:1.8;margin-bottom:0}
   .prac-hero-sub a{color:var(--navy-lt);text-decoration:underline;text-underline-offset:3px}
 
+  /* ── HERO LAYOUT ── copy column + diagram column, so the diagram
+     is a real grid item instead of an overlay on top of the copy. */
+  @media (min-width:961px){
+    .prac-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(340px,420px);
+      column-gap:clamp(28px,4vw,56px);
+      align-items:center;
+    }
+    .prac-hero > .prac-hero-inner{grid-column:1;grid-row:1;min-width:0;max-width:none}
+    .prac-hero > .live-viz{grid-column:2;grid-row:1}
+    .prac-hero > .hero-ring{right:auto;left:40%;width:300px;height:300px}
+  }
+  @media (min-width:961px) and (max-width:1120px){
+    .prac-hero{grid-template-columns:minmax(0,1fr) minmax(300px,360px);column-gap:28px}
+  }
+
   /* ── PEOPLE-FIRST BAND ── */
   .people-band{background:var(--navy);padding:6rem 3.5rem;position:relative;overflow:hidden}
   .people-intro{max-width:640px;margin:0 auto 3.5rem;text-align:center;position:relative;z-index:1}
@@ -113,6 +130,9 @@
   .checklist-items li.done .chk-box svg{opacity:1;transform:scale(1)}
   .chk-text{font-size:.87rem;color:var(--text);font-weight:300;line-height:1.55;transition:color .2s ease,opacity .2s ease}
   .checklist-items li.done .chk-text{color:var(--faint);text-decoration:line-through;opacity:.75}
+  .checklist-items li:focus-visible{
+    outline:2px solid var(--navy-mid);outline-offset:2px;border-radius:3px;
+  }
 
   /* ── MATURITY LADDER ── */
   .ladder{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
@@ -493,19 +513,39 @@
 </footer>
 
 <script>
-  // Interactive checklist: click a line item to check it off, update the counter.
+  /* Interactive checklist: click or press Space/Enter on a line item to
+     check it off, and keep the counter in sync. The <li> elements are
+     promoted to real checkboxes here so keyboard and screen-reader
+     users get the same interaction mouse users have. */
   document.querySelectorAll('.checklist-card').forEach(function(card){
     var items = card.querySelectorAll('.checklist-items li');
     var counter = card.querySelector('[data-count]');
     var total = items.length;
+
     function refresh(){
       var done = card.querySelectorAll('.checklist-items li.done').length;
-      if(counter) counter.textContent = done + '/' + total;
+      if(counter){
+        counter.textContent = done + '/' + total;
+        counter.setAttribute('aria-label', done + ' of ' + total + ' items complete');
+      }
     }
+
+    function toggle(li){
+      li.classList.toggle('done');
+      li.setAttribute('aria-checked', li.classList.contains('done') ? 'true' : 'false');
+      refresh();
+    }
+
     items.forEach(function(li){
-      li.addEventListener('click', function(){
-        li.classList.toggle('done');
-        refresh();
+      li.setAttribute('role', 'checkbox');
+      li.setAttribute('tabindex', '0');
+      li.setAttribute('aria-checked', 'false');
+      li.addEventListener('click', function(){ toggle(li); });
+      li.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          toggle(li);
+        }
       });
     });
     refresh();

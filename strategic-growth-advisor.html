@@ -136,6 +136,19 @@
     .hero-stats{grid-template-columns:repeat(2,1fr);}
   }
 
+  /* Keep the live hero diagram in its own visual lane. At the
+     default desktop scale it no longer sits on top of the copy or
+     the stat row, while the tablet rule still leaves room for the
+     compact version before the mobile breakpoint hides it. */
+  @media (min-width:1101px){
+    .hero .wrap{padding-right:460px;}
+  }
+  @media (min-width:961px) and (max-width:1100px){
+    .hero .wrap{padding-right:360px;}
+    .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+    .live-viz{right:3%;width:min(38vw,360px);}
+  }
+
   section{padding:96px 0;}
   .section-head{max-width:680px;margin-bottom:56px;}
   .section-head h2{font-size:34px;line-height:1.18;}
@@ -160,10 +173,12 @@
     text-align:center;font-size:11px;font-weight:700;letter-spacing:.16em;
     color:var(--blue);margin-bottom:16px;
   }
-  .outside-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:8px;}
+  .outside-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:8px;}
   .outside-pill{
     background:var(--blue-light);border:1px solid var(--blue);color:var(--blue);
     border-radius:30px;padding:10px 8px;text-align:center;font-size:12.5px;font-weight:600;
+    min-width:0;min-height:42px;display:flex;align-items:center;justify-content:center;
+    line-height:1.25;overflow-wrap:break-word;
   }
   .arrow-down{
     display:flex;justify-content:center;margin:6px 0;
@@ -176,10 +191,12 @@
     text-align:center;font-family:var(--serif);font-weight:700;letter-spacing:.06em;
     font-size:15px;margin-bottom:16px;
   }
-  .inside-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .inside-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
   .inside-pill{
     background:var(--navy-2);border-radius:20px;padding:8px 4px;text-align:center;
-    font-size:11.5px;color:var(--muted-light);
+    font-size:11.5px;color:var(--muted-light);min-width:0;min-height:32px;
+    display:flex;align-items:center;justify-content:center;line-height:1.25;
+    overflow-wrap:break-word;
   }
   .box-caption{
     text-align:center;font-family:var(--serif);font-style:italic;color:var(--muted);
@@ -188,7 +205,11 @@
   .box-caption b{color:var(--ink);font-style:italic;}
   @media (max-width:900px){
     .philosophy-grid{grid-template-columns:1fr;gap:40px;}
-    .inside-grid{grid-template-columns:repeat(2,1fr);}
+    .inside-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (min-width:901px) and (max-width:1040px){
+    .philosophy-grid{grid-template-columns:1fr;gap:40px;}
+    .diagram{width:100%;max-width:680px;margin:0 auto;}
   }
 
   /* ---------- Bottleneck panel ---------- */
@@ -240,6 +261,9 @@
   .pillar-card .icon{font-size:20px;color:var(--tan);margin-bottom:18px;}
   .pillar-card h3{font-family:var(--sans);font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.3;}
   .pillar-card p{font-size:11.5px;color:var(--muted-light);margin:0;line-height:1.45;}
+  /* Keep the acronym intact and legible when the four-column scope
+     cards tighten at desktop widths. */
+  .psu-label{display:inline-block;white-space:nowrap;font-weight:700;color:inherit;}
   @media (max-width:980px){.pillar-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.pillar-grid{grid-template-columns:1fr;}}
 
@@ -499,7 +523,7 @@
     <div class="obj-grid">
       <div class="obj-card"><div class="icon">&#128200;</div><h3>Accelerate growth</h3><p>Sustainable growth across security, AI, data, cloud, and technology markets.</p></div>
       <div class="obj-card"><div class="icon">&#127970;</div><h3>Strengthen positioning</h3><p>Sharper standing against category competitors and within target markets.</p></div>
-      <div class="obj-card"><div class="icon">&#129309;</div><h3>Win enterprise &amp; government accounts</h3><p>Stronger key-account strategy, including PSU pursuits.</p></div>
+      <div class="obj-card"><div class="icon">&#129309;</div><h3>Win enterprise &amp; government accounts</h3><p>Stronger key-account strategy, including <span class="psu-label">PSU</span> pursuits.</p></div>
       <div class="obj-card"><div class="icon">&#127760;</div><h3>Build partnerships</h3><p>Strategic technology, channel, and ecosystem alliances.</p></div>
       <div class="obj-card"><div class="icon">&#129513;</div><h3>Develop differentiated services</h3><p>New, defensible offerings and adjacent verticals.</p></div>
       <div class="obj-card"><div class="icon">&#9878;&#65039;</div><h3>Sharpen decision-making</h3><p>Better calls under regulatory and compliance pressure.</p></div>
@@ -516,7 +540,7 @@
     </div>
     <div class="pillar-grid">
       <div class="pillar-card"><span class="num">01</span><div class="icon">&#128200;</div><h3>Business Strategy</h3><p>Planning, roadmap, competitive positioning</p></div>
-      <div class="pillar-card"><span class="num">02</span><div class="icon">&#128640;</div><h3>Revenue &amp; Growth</h3><p>Enterprise, government &amp; PSU pursuits</p></div>
+      <div class="pillar-card"><span class="num">02</span><div class="icon">&#128640;</div><h3>Revenue &amp; Growth</h3><p>Enterprise, government &amp; <span class="psu-label">PSU</span> pursuits</p></div>
       <div class="pillar-card"><span class="num">03</span><div class="icon">&#129309;</div><h3>Strategic Partnerships</h3><p>Technology, channel &amp; ecosystem alliances</p></div>
       <div class="pillar-card"><span class="num">04</span><div class="icon">&#128209;</div><h3>Service &amp; Portfolio Development</h3><p>New, productized, differentiated offerings</p></div>
       <div class="pillar-card"><span class="num">05</span><div class="icon">&#128101;</div><h3>Talent &amp; Leadership Hiring</h3><p>Curated network, strategic introductions</p></div>
@@ -550,7 +574,7 @@
         <div class="head"><span class="ico">&#128640;</span><h3>Revenue &amp; Growth</h3></div>
         <ul>
           <li>Enterprise sales strategy</li>
-          <li>Government, PSU &amp; CERT-In sector accounts</li>
+          <li>Government, <span class="psu-label">PSU</span> &amp; CERT-In sector accounts</li>
           <li>Pipeline review &amp; prioritization</li>
           <li>Pricing strategy for security &amp; advisory work</li>
           <li>Opportunity qualification</li>

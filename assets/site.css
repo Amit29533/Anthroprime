@@ -1567,3 +1567,22 @@ html[data-theme="dark"] .mesh-chip{color:#eef2ff}
   .lv-svg{transition:none !important}
   .lv-pack{opacity:.6 !important; transform:none !important}
 }
+
+/* ════════════════════════════════════════════════════════
+   DESKTOP DEFAULT SCALE
+   The desktop composition is intentionally designed to match
+   the comfortable density of a 90% browser view. Applying the
+   scale in CSS keeps that experience consistent without asking
+   visitors to change their browser settings. The compensating
+   body width preserves the full viewport instead of leaving a
+   blank strip on the right. Small screens keep their native
+   responsive sizing so type and touch targets stay comfortable.
+════════════════════════════════════════════════════════ */
+@media (min-width:961px){
+  html{--ap-desktop-scale:.9}
+  body{
+    zoom:var(--ap-desktop-scale);
+    width:111.111111%;
+    min-height:111.111111vh;
+  }
+}

@@ -1567,3 +1567,136 @@ html[data-theme="dark"] .mesh-chip{color:#eef2ff}
   .lv-svg{transition:none !important}
   .lv-pack{opacity:.6 !important; transform:none !important}
 }
+
+/* ════════════════════════════════════════════════════════
+   DESKTOP DEFAULT SCALE
+   The desktop composition is intentionally designed to match
+   the comfortable density of a 90% browser view. Applying the
+   scale in CSS keeps that experience consistent without asking
+   visitors to change their browser settings. The compensating
+   body width preserves the full viewport instead of leaving a
+   blank strip on the right. Small screens keep their native
+   responsive sizing so type and touch targets stay comfortable.
+════════════════════════════════════════════════════════ */
+@media (min-width:961px){
+  html{--ap-desktop-scale:.9}
+  body{
+    zoom:var(--ap-desktop-scale);
+    width:111.111111%;
+    min-height:111.111111vh;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   DARK MODE — FINAL CROSS-PAGE CONTRAST PASS
+   Page-specific stylesheets are intentionally kept local to each
+   document. These last shared rules cover the few light hover
+   states and native controls that would otherwise be able to
+   override the dark theme on individual pages.
+════════════════════════════════════════════════════════ */
+html[data-theme="dark"] body{
+  background:#15161b;
+  color:#ece9e2;
+}
+
+/* Light hover declarations in the page-level styles must not flash
+   white when a dark-mode user moves across a card. */
+html[data-theme="dark"] .service-card:not(.expanded):hover,
+html[data-theme="dark"] .industry-card:hover,
+html[data-theme="dark"] .framework-card:hover,
+html[data-theme="dark"] .approach-step:hover{
+  background:#23252b !important;
+  color:#ece9e2 !important;
+  border-color:rgba(255,255,255,.16) !important;
+}
+html[data-theme="dark"] .service-card:not(.expanded):hover .service-name,
+html[data-theme="dark"] .service-card:not(.expanded):hover .service-tagline,
+html[data-theme="dark"] .industry-card:hover .industry-name,
+html[data-theme="dark"] .industry-card:hover .industry-desc,
+html[data-theme="dark"] .framework-card:hover .framework-name,
+html[data-theme="dark"] .framework-card:hover .framework-desc{
+  color:#ece9e2 !important;
+}
+html[data-theme="dark"] .service-card.expanded,
+html[data-theme="dark"] .sub-services-panel{
+  background:#1a2744 !important;
+  color:#f6f3ec;
+}
+
+/* Cards and panels which use a light token in the homepage drawer or
+   the advisory page keep a readable dark surface in both themes. */
+html[data-theme="dark"] .coverage-item,
+html[data-theme="dark"] .bound-card.dont,
+html[data-theme="dark"] .framework-word:not(.accent),
+html[data-theme="dark"] .btn-outline{
+  background:#1c1e24 !important;
+  border-color:rgba(255,255,255,.14) !important;
+  color:#ece9e2 !important;
+}
+html[data-theme="dark"] .framework-word.accent{
+  background:#1a2744 !important;
+  border-color:#7288d6 !important;
+  color:#f6f3ec !important;
+}
+html[data-theme="dark"] .bound-card.dont .note,
+html[data-theme="dark"] .bound-card.dont .footnote{
+  color:#aaa59b !important;
+}
+html[data-theme="dark"] .detail-card:not(.dark) li,
+html[data-theme="dark"] .checklist-items li,
+html[data-theme="dark"] .industry-sub-list li{
+  border-color:rgba(255,255,255,.1) !important;
+}
+
+/* Readable native form controls and placeholders. */
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{
+  color:#8f8a80 !important;
+  opacity:1;
+}
+html[data-theme="dark"] select,
+html[data-theme="dark"] option{
+  color-scheme:dark;
+}
+html[data-theme="dark"] .segmented label{
+  background:#1c1e24;
+  border-color:rgba(255,255,255,.16);
+  color:#bdb8ae;
+}
+html[data-theme="dark"] .segmented input:checked + label{
+  background:#2e4080;
+  border-color:#7288d6;
+  color:#f6f3ec;
+}
+html[data-theme="dark"] .date-pill,
+html[data-theme="dark"] .time-pill,
+html[data-theme="dark"] .btn-ics{
+  background:#1c1e24;
+  border-color:rgba(255,255,255,.16);
+  color:#ece9e2;
+}
+html[data-theme="dark"] .date-pill.is-selected,
+html[data-theme="dark"] .time-pill.is-selected{
+  background:#2e4080;
+  border-color:#7288d6;
+  color:#f6f3ec;
+}
+
+/* Keep subtle supporting copy from dropping below comfortable contrast. */
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .service-number,
+html[data-theme="dark"] .approach-num,
+html[data-theme="dark"] .ladder-desc,
+html[data-theme="dark"] .sched-note{
+  color:#918c82;
+}
+html[data-theme="dark"] .site-footer{
+  background:#121827;
+}
+
+html[data-theme="dark"] .pillar-chip.active{
+  background:#2e4080 !important;
+  border-color:#7288d6 !important;
+  color:#f6f3ec !important;
+  box-shadow:0 4px 18px -6px rgba(114,136,214,.45);
+}

@@ -45,7 +45,7 @@
 html[data-theme="dark"]{
   --bg:#15161b;--bg2:#1c1e24;--bg3:#24262d;
   --surface:#1a1b20;--border:rgba(255,255,255,0.09);--border2:rgba(255,255,255,0.16);
-  --text:#ece9e2;--muted:#a8a297;--faint:#6f6a60;
+  --text:#ece9e2;--muted:#a8a297;--faint:#918c82;
   --navy-mid:#7288d6;--accent:#7288d6;--warm:#7d7568;
   --cream:#1c1d22;--cream-dark:#24252b;--warm-white:#1a1b1f;
   --text-primary:#ece9e2;--text-secondary:#a29c90;--text-muted:#6f6a60;
@@ -78,6 +78,31 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
    MAIN SITE — HERO
 ══════════════════════════════ */
 .hero{min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:4rem 3.5rem 5rem;position:relative;overflow:hidden;background:var(--surface)}
+
+/* Keep the live diagram in its own desktop column. The previous
+   absolute placement allowed it to cover the hero stats, including
+   the visible Gov + PSU sector line. */
+@media (min-width:961px){
+  .hero{
+    grid-template-columns:minmax(0,1fr) minmax(360px,420px);
+    column-gap:clamp(28px,4vw,56px);
+  }
+  .hero > .live-viz{
+    grid-column:2;grid-row:1;position:relative;right:auto;top:auto;
+    transform:none;width:100%;max-width:420px;justify-self:end;
+    align-self:center;
+  }
+  .hero-content{grid-column:1;grid-row:1;}
+  .hero-bottom{grid-column:1 / -1;grid-row:2;}
+}
+@media (min-width:961px) and (max-width:1100px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(320px,360px);column-gap:28px;}
+  .hero > .live-viz{max-width:360px;}
+  .hero-bottom{gap:2rem;}
+}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;}
+}
 .hero-band{position:absolute;top:0;right:0;width:38%;height:100%;background:var(--navy);clip-path:polygon(12% 0,100% 0,100% 100%,0% 100%);pointer-events:none;opacity:0.97}
 .hero-band-inner{position:absolute;top:0;right:0;width:36%;height:100%;background:var(--navy2);clip-path:polygon(18% 0,100% 0,100% 100%,6% 100%);pointer-events:none;opacity:0.5}
 .hero-ring{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:340px;height:340px;border-radius:50%;border:1px solid rgba(212,218,240,0.15);pointer-events:none;animation:ring-breathe 8s ease-in-out infinite}
@@ -97,6 +122,9 @@ h1 em{font-style:italic;color:var(--sp-accent, var(--navy-mid))}
 .btn-text::after{content:'→';transition:transform 0.2s}
 .btn-text:hover::after{transform:translateX(3px)}
 .hero-bottom{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1}
+.hero-bottom .stat-num{white-space:nowrap;}
+.hero-bottom .psu-label{display:inline-block;white-space:nowrap;font-weight:500;color:inherit;}
+@media (min-width:961px){.hero-bottom > div{min-width:max-content;}}
 .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--text);line-height:1}
 .stat-label{font-size:0.72rem;color:var(--faint);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.1em}
 
@@ -428,7 +456,7 @@ hr.sp-divider{border:none;border-top:1px solid var(--sp-border);margin:2.5rem 0}
   <div class="hero-bottom" data-reveal>
     <div><div class="stat-num">Human First</div><div class="stat-label">Our founding principle</div></div>
     <div><div class="stat-num"><span data-count-to="5" data-count-suffix=" Disciplines">0</span></div><div class="stat-label">AI, Data, Cloud, Security &amp; Infrastructure</div></div>
-    <div><div class="stat-num">Gov + PSU</div><div class="stat-label">Sector pipeline</div></div>
+    <div><div class="stat-num">Gov + <span class="psu-label">PSU</span></div><div class="stat-label">Sector pipeline</div></div>
   </div>
   <div class="scroll-indicator" style="color:var(--text)">
     <span style="color:var(--muted)">Scroll</span>

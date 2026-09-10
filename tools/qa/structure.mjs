@@ -66,6 +66,22 @@ function load(page) {
   return dom.window.document;
 }
 
+/* Collect EVERY declaration block for a selector in a file, with whitespace
+   normalised. Several of these classes are declared more than once (base rule
+   plus media-query overrides), and matching only the first one silently tests
+   the wrong block. */
+function declBlocks(file, selector) {
+  const src = fs.readFileSync(path.join(ROOT, file), 'utf8');
+  const esc = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const out = [];
+  const re = new RegExp(esc + '\\s*\\{([^}]*)\\}', 'g');
+  let m;
+  while ((m = re.exec(src)) !== null) out.push(m[1].replace(/\s+/g, ' ').trim());
+  return out;
+}
+const anyBlockHas = (file, sel, re) => declBlocks(file, sel).some((b) => re.test(b));
+const noBlockHas  = (file, sel, re) => !declBlocks(file, sel).some((b) => re.test(b));
+
 /* ================================================================== */
 console.log('\n=== 1. ARIA wiring =================================================');
 
@@ -361,6 +377,99 @@ for (const page of PAGES) {
     return `${n} local reference(s) resolve`;
   });
 }
+
+console.log('\n=== 9. Stats row vs. the navy hero wedge (PSU regression) ==========');
+
+/* index.html is the only page whose hero sits on the light surface with a
+   navy .hero-band wedge painted across the right 38% at full height. Below
+   ~1280px that wedge reaches the "Gov + PSU" stat, and dark ink on navy made
+   the trailing letters disappear. These guards pin the fix. */
+
+await check('the stats strip paints an opaque surface behind itself', () => {
+  const blocks = declBlocks('index.html', '.hero-bottom');
+  assert(blocks.length > 0, '.hero-bottom rule not found');
+  const hit = blocks.find((b) => /background:\s*var\(--surface\)/.test(b));
+  assert(hit, '.hero-bottom has no opaque background — the navy wedge shows through the stats');
+  return `${blocks.length} .hero-bottom block(s); background: var(--surface)`;
+});
+
+await check('stats items can shrink instead of overflowing', () => {
+  assert(noBlockHas('index.html', '.hero-bottom > div', /min-width:\s*max-content/),
+    'min-width:max-content is back — it forces unwrapped widths past the clipped edge');
+  assert(anyBlockHas('index.html', '.hero-bottom > div', /min-width:\s*0/),
+    '.hero-bottom > div should declare min-width:0');
+  return 'min-width:0, no max-content';
+});
+
+await check('the PSU acronym can break before, but never inside', () => {
+  for (const page of ['index.html', 'strategic-growth-advisor.html']) {
+    const blocks = declBlocks(page, '.psu-label');
+    assert(blocks.length > 0, `${page}: .psu-label rule not found`);
+    assert(blocks.some((b) => /white-space:\s*nowrap/.test(b)), `${page}: PSU could split mid-word`);
+    assert(blocks.every((b) => !/display:\s*inline-block/.test(b)),
+      `${page}: inline-block makes PSU an atomic inline that cannot break before`);
+  }
+  // the escape hatch: nowrap must not be forced on the whole stat line
+  assert(noBlockHas('index.html', '.hero-bottom .stat-num', /white-space:\s*nowrap/),
+    'nowrap on .stat-num removes the only place the line can break');
+  return 'nowrap on the acronym only';
+});
+
+await check('stat numerals have room for the font metrics', () => {
+  const blocks = declBlocks('index.html', '.stat-num');
+  assert(blocks.length > 0, '.stat-num rule not found');
+  const withLh = blocks.map((b) => b.match(/line-height:\s*([\d.]+)/)).filter(Boolean);
+  assert(withLh.length > 0, 'no line-height on .stat-num');
+  const lh = withLh[0];
+  // Cormorant Garamond ascender+descender is ~1.22em, so line-height:1 gives
+  // negative half-leading and glyphs spill outside the line box.
+  assert(parseFloat(lh[1]) >= 1.1, `line-height ${lh[1]} is too tight for the serif`);
+  return `line-height: ${lh[1]}`;
+});
+
+await check('only the homepage mixes a light hero with a navy wedge', () => {
+  // Confirms the contrast hazard is unique to index.html, so the fix belongs there.
+  const light = { 'index.html': 'var(--surface)', 'anthroprime_services.html': 'var(--navy)',
+    'practices.html': 'var(--navy)', 'contact.html': 'var(--navy)' };
+  for (const [page, bg] of Object.entries(light)) {
+    const heroClass = { 'index.html': '.hero', 'anthroprime_services.html': '.services-hero',
+      'practices.html': '.prac-hero', 'contact.html': '.contact-hero' }[page];
+    assert(anyBlockHas(page, heroClass, new RegExp('background:\\s*' + bg.replace(/[()]/g, '\\$&'))),
+      `${page}: ${heroClass} background is not ${bg}`);
+  }
+  return 'index=light+navy wedge; other three are navy-on-navy';
+});
+
+console.log('\n=== 10. Content below the diagram =================================');
+
+await check('services pillar strip spans full width below the diagram', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'anthroprime_services.html'), 'utf8');
+  assert(/\.services-hero\s*>\s*\.pillars-strip\{[^}]*grid-column\s*:\s*1\s*\/\s*-1[^}]*grid-row\s*:\s*2/.test(html),
+    'pillar strip is not spanning row 2 across both columns');
+  return 'grid-column: 1 / -1; grid-row: 2';
+});
+
+await check('contact quicklinks sit below the copy, clear of the diagram', () => {
+  const html = fs.readFileSync(path.join(ROOT, 'contact.html'), 'utf8');
+  assert(/\.contact-hero\s*>\s*\.hero-quicklinks\{[^}]*grid-column\s*:\s*1[^}]*grid-row\s*:\s*2/.test(html),
+    'quicklinks are not pinned to column 1 / row 2');
+  assert(/\.contact-hero\s*>\s*\.live-viz\{[^}]*grid-row\s*:\s*1\s*\/\s*span\s*2/.test(html),
+    'diagram should span both rows so it cannot collide with the quicklinks');
+  return 'quicklinks col 1 row 2; diagram spans rows 1-2 in col 2';
+});
+
+await check('growth-advisor stats live inside the copy column', () => {
+  const doc = load('strategic-growth-advisor.html');
+  const wrap = doc.querySelector('.hero .wrap');
+  const stats = wrap.querySelector('.hero-stats');
+  assert(stats, 'hero-stats not found');
+  assert(!stats.parentElement.classList.contains('live-viz'), 'stats must not be inside the diagram');
+  assert(stats.parentElement.hasAttribute('data-reveal'), 'stats should be in the copy column');
+  const viz = wrap.querySelector(':scope > .live-viz');
+  assert(viz, 'diagram is not a direct child of .wrap');
+  assert(!viz.contains(stats), 'diagram contains the stats');
+  return 'stats in col 1, diagram in col 2, no nesting';
+});
 
 /* ================================================================== */
 console.log('\n' + '='.repeat(66));

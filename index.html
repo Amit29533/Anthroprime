@@ -120,11 +120,20 @@ h1 em{font-style:italic;color:var(--sp-accent, var(--navy-mid))}
 .btn-text:hover{color:var(--text)}
 .btn-text::after{content:'→';transition:transform 0.2s}
 .btn-text:hover::after{transform:translateX(3px)}
-.hero-bottom{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1}
-.hero-bottom .stat-num{white-space:nowrap;}
-.hero-bottom .psu-label{display:inline-block;white-space:nowrap;font-weight:500;color:inherit;}
-@media (min-width:961px){.hero-bottom > div{min-width:max-content;}}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--text);line-height:1}
+/* The stats strip runs full width under the hero, but .hero-band paints a
+   navy wedge across the right 38% at full height. Below ~1280px the wedge
+   reaches the "Gov + PSU" stat, and dark ink on navy made the trailing
+   letters vanish — the "U" first, being rightmost. An opaque surface
+   background keeps the strip readable at every width. */
+.hero-bottom{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1;background:var(--surface)}
+/* Let the items shrink so flex-wrap can do its job. The previous
+   min-width:max-content forced each stat to its unwrapped width, which
+   pushed the last one past the hero's clipped edge. */
+.hero-bottom > div{min-width:0}
+/* "PSU" must never split mid-word, but the line is still allowed to break
+   before it — nowrap on the whole stat removed that escape hatch. */
+.hero-bottom .psu-label{white-space:nowrap;font-weight:500;color:inherit}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--text);line-height:1.15}
 .stat-label{font-size:0.72rem;color:var(--faint);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.1em}
 
 /* ── Hero signature visual is now the live interactive diagram,

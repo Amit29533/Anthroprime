@@ -394,6 +394,32 @@ await check('the stats strip paints an opaque surface behind itself', () => {
   return `${blocks.length} .hero-bottom block(s); background: var(--surface)`;
 });
 
+await check('the hero wedges stay inside the column gap (one clean diagonal past the stats)', () => {
+  /* The gap and the wedge bleed must come from the same --hero-gap custom
+     property. An earlier version bled the band clamp(56px,6vw,96px) past
+     column 2 — up to 40px into the copy column at the hero's bottom — so
+     the stats strip's opaque background painted over the slanted edge and
+     replaced the diagonal with a vertical seam plus two steps around
+     "Gov + PSU". If the bleed and the gap can drift apart again, the same
+     artifact returns. */
+  const heroBlocks = declBlocks('index.html', '.hero');
+  assert(heroBlocks.some((b) => /--hero-gap:\s*clamp\(28px,\s*4vw,\s*56px\)/.test(b)
+        && /column-gap:\s*var\(--hero-gap\)/.test(b)),
+    '.hero (≥961px) must define --hero-gap and set column-gap from it');
+  assert(heroBlocks.some((b) => /--hero-gap:\s*28px/.test(b)),
+    'the 961–1100px block must re-declare --hero-gap:28px so the bleed follows the narrower gap');
+  const bandBlocks = declBlocks('index.html', '.hero > .hero-band');
+  assert(bandBlocks.length > 0, '.hero > .hero-band rule not found');
+  assert(bandBlocks.every((b) => !/clamp\(\s*56px,\s*6vw/.test(b)),
+    'the band bleeds past the gap into the copy column again — the stats strip will step the slanted edge');
+  assert(bandBlocks.some((b) => /margin-left:\s*calc\(-1 \* \(var\(--hero-gap\) - 2px\)\)/.test(b)),
+    '.hero > .hero-band margin-left must be derived from --hero-gap');
+  const innerBlocks = declBlocks('index.html', '.hero > .hero-band-inner');
+  assert(innerBlocks.some((b) => /margin-left:[^;]*var\(--hero-gap\)/.test(b)),
+    '.hero > .hero-band-inner margin-left must be capped by --hero-gap');
+  return 'both wedge bleeds derived from --hero-gap';
+});
+
 await check('stats items can shrink instead of overflowing', () => {
   assert(noBlockHas('index.html', '.hero-bottom > div', /min-width:\s*max-content/),
     'min-width:max-content is back — it forces unwrapped widths past the clipped edge');

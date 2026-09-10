@@ -381,9 +381,10 @@ for (const page of PAGES) {
 console.log('\n=== 9. Stats row vs. the navy hero wedge (PSU regression) ==========');
 
 /* index.html is the only page whose hero sits on the light surface with a
-   navy .hero-band wedge painted across the right 38% at full height. Below
-   ~1280px that wedge reaches the "Gov + PSU" stat, and dark ink on navy made
-   the trailing letters disappear. These guards pin the fix. */
+   navy .hero-band panel occupying the diagram's grid column at full height.
+   The stats strip lives in the copy column (grid-column:1), so no stat —
+   including "Gov + PSU" — can ever sit on navy; the opaque surface
+   background is kept as a belt-and-braces guarantee. These guards pin it. */
 
 await check('the stats strip paints an opaque surface behind itself', () => {
   const blocks = declBlocks('index.html', '.hero-bottom');

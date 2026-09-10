@@ -83,8 +83,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
    the visible Gov + PSU sector line. */
 @media (min-width:961px){
   .hero{
+    /* Single source of truth for the column gap: the navy wedges bleed
+       into the gap but must NEVER reach the copy column, so the gap and
+       the bleed have to move together. The -2px below keeps the wedge
+       tip a hair clear of the copy column's edge. */
+    --hero-gap:clamp(28px,4vw,56px);
     grid-template-columns:minmax(0,1fr) minmax(360px,420px);
-    column-gap:clamp(28px,4vw,56px);
+    column-gap:var(--hero-gap);
   }
   .hero > .live-viz{
     grid-column:2;grid-row:1;position:relative;right:auto;top:auto;
@@ -97,8 +102,13 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   .hero-bottom{grid-column:1;grid-row:2;}
   /* The navy panel is a grid item in the diagram's own column, so the
      diagram can never spill onto the cream side. Negative margins bleed
-     it to the viewport edge on the right and a hand-width past the
-     column on the left; the clip-path slants the leading edge. */
+     it to the viewport edge on the right and into the column gap on the
+     left — but no further: an earlier version bled a hand-width past
+     the gap into the copy column, and the stats strip's opaque surface
+     background then painted over the slanted edge, replacing the
+     diagonal with a vertical seam and two visible steps around
+     "Gov + PSU". Keeping the bleed inside the gap means the clip-path
+     diagonal is the only visible edge, top to bottom. */
   /* Selectors carry .hero > so they out-specify the absolute-positioned
      base rules that appear later in this stylesheet. */
   .hero > .hero-band,.hero > .hero-band-inner{
@@ -110,16 +120,22 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
     margin-bottom:calc(-1 * 5rem);
   }
   .hero > .hero-band{
-    margin-left:calc(-1 * clamp(56px,6vw,96px));
+    margin-left:calc(-1 * (var(--hero-gap) - 2px));
     clip-path:polygon(clamp(40px,4vw,72px) 0,100% 0,100% 100%,0 100%);
   }
   .hero > .hero-band-inner{
-    margin-left:calc(-1 * clamp(24px,3vw,48px));
+    /* keep the lighter wedge's own bleed, but never let it exceed the
+       gap either (it could at 961–1100px, where the gap is 28px) */
+    margin-left:calc(-1 * min(clamp(24px,3vw,48px), calc(var(--hero-gap) - 2px)));
     clip-path:polygon(clamp(56px,5vw,88px) 0,100% 0,100% 100%,0 100%);
   }
 }
 @media (min-width:961px) and (max-width:1100px){
-  .hero{grid-template-columns:minmax(0,1fr) minmax(320px,360px);column-gap:28px;}
+  .hero{
+    --hero-gap:28px;
+    grid-template-columns:minmax(0,1fr) minmax(320px,360px);
+    column-gap:var(--hero-gap);
+  }
   .hero > .live-viz{max-width:360px;}
   .hero-bottom{gap:2rem;}
   .hero h1{font-size:clamp(2.9rem,5.6vw,4.4rem);}
@@ -146,10 +162,11 @@ h1 em{font-style:italic;color:var(--sp-accent, var(--navy-mid))}
 .btn-text:hover{color:var(--text)}
 .btn-text::after{content:'→';transition:transform 0.2s}
 .btn-text:hover::after{transform:translateX(3px)}
-/* The stats strip lives in the copy column (grid-column:1 at ≥961px), so
-   every stat — including "Gov + PSU" — always sits on the light surface,
-   never on the navy panel that now occupies column 2 full-height. The
-   opaque background is kept as a belt-and-braces guarantee. */
+/* The stats strip lives in the copy column (grid-column:1 at ≥961px), and
+   the navy wedges are confined to column 2 plus the gap (see the ≥961px
+   media query), so every stat — including "Gov + PSU" — always sits on
+   the light surface. The opaque background stays as a belt-and-braces
+   guarantee only; it should never intersect the wedge. */
 .hero-bottom{display:flex;gap:3rem;padding-top:4rem;border-top:1px solid var(--border);flex-wrap:wrap;position:relative;z-index:1;background:var(--surface)}
 /* Let the items shrink so flex-wrap can do its job. The previous
    min-width:max-content forced each stat to its unwrapped width, which

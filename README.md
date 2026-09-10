@@ -48,10 +48,11 @@ cd tools/qa
 npm install
 
 npm run audit           # runtime errors, broken links/anchors, duplicate ids, a11y, dead code
-npm test                # both suites below
+npm test                # all three suites below
 npm run test:ui         # behaviour: theme, nav, overlay, diagram, forms, scheduler
 npm run test:structure  # structure: ARIA wiring, head, ids, netlify config, hero layout
-npm run qa              # audit + both suites
+npm run test:sweep      # breadth: every service, pillar, checklist, theme and viewport
+npm run qa              # audit + all three suites
 ```
 
 `audit` exits non-zero on any error-severity finding; both suites exit non-zero
@@ -105,6 +106,20 @@ on any failed assertion.
 The suite is mutation-tested: reintroducing the `zoom` hack, setting `.live-viz`
 back to `position:absolute`, or reverting the contact scheduler's declaration
 order each turns the relevant check red.
+
+`tools/qa/sweep.mjs` (53 assertions) — walks every instance of every repeated
+component rather than a representative sample:
+* all 5 pages boot in 4 configurations each — light/dark × desktop/phone,
+  coarse pointer, reduced motion (20 configurations)
+* all 6 homepage service detail pages render their full copy and stay in sync
+  with the sidebar; all 6 switch cleanly in sequence
+* all 5 service pillars render, and all 22 expandable cards open and collapse
+* all 30 checklist items across 6 practice checklists toggle and reset
+* nav and footer link sets are identical across all 5 pages; 76 internal links
+  and every in-page anchor resolve
+* all 3 diagram domains render on all 5 pages; all 18 nodes have copy
+* a theme set on one page is applied before first paint on the next
+* a full click-through on each page produces zero runtime errors
 
 `tools/qa/strip-dead-css.mjs` is a maintenance script used to remove CSS whose
 selectors only ever matched retired visuals. It removes a block only when

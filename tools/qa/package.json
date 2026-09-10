@@ -1,0 +1,18 @@
+{
+  "name": "anthroprime-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static + runtime QA harness for the AnthroPrime static site. The site itself is zero-build; these tools only verify it.",
+  "type": "module",
+  "scripts": {
+    "audit": "node audit.mjs",
+    "test": "node interactions.mjs && node structure.mjs && node sweep.mjs",
+    "test:ui": "node interactions.mjs",
+    "test:structure": "node structure.mjs",
+    "test:sweep": "node sweep.mjs",
+    "qa": "node audit.mjs && node interactions.mjs && node structure.mjs && node sweep.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.1"
+  }
+}

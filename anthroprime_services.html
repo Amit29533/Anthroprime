@@ -187,6 +187,32 @@
     width:30px; height:2px; background:var(--navy-mid); border-radius:1px;
   }
   .pillar-chip{ position:relative; }
+  .pillar-chip:focus-visible{
+    outline:2px solid var(--navy-lt); outline-offset:-2px;
+  }
+
+  /* ── HERO LAYOUT ─────────────────────────────────────────
+     Copy column + diagram column, with the pillar strip spanning
+     the full width underneath. The diagram is a real grid item so
+     it can never overlap the copy or escape the hero band.
+     ------------------------------------------- */
+  @media (min-width:961px){
+    .services-hero{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(340px,420px);
+      column-gap:clamp(28px,4vw,56px);
+      row-gap:2.75rem;
+      align-items:center;
+    }
+    .services-hero > .hero-content-inner{grid-column:1;grid-row:1;min-width:0;max-width:none}
+    .services-hero > .live-viz{grid-column:2;grid-row:1}
+    .services-hero > .pillars-strip{grid-column:1 / -1;grid-row:2}
+    /* keep the decorative ring clear of the diagram column */
+    .services-hero > .hero-ring{right:auto;left:38%;width:300px;height:300px}
+  }
+  @media (min-width:961px) and (max-width:1120px){
+    .services-hero{grid-template-columns:minmax(0,1fr) minmax(300px,360px);column-gap:28px}
+  }
 
   /* ── MAIN CONTENT ── */
   .services-body { max-width: 1360px; margin: 0 auto; padding: 2rem 3.5rem 6rem; }
@@ -617,18 +643,19 @@
     <div class="hero-label">Our Services</div>
     <h1 class="hero-headline">Technology that starts<br>with <em>people.</em></h1>
     <p class="hero-sub">Five integrated services — cybersecurity, AI, data, cloud, and AI infrastructure consulting — built for enterprises, government bodies, and critical infrastructure. Looking for the standards behind the work? See our <a href="practices.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Practice</a> page.</p>
-
-    <div class="pillars-strip" data-reveal>
-      <button class="pillar-chip active" onclick="switchPillar('cyber', this)">01 / Cybersecurity</button>
-      <button class="pillar-chip" onclick="switchPillar('ai', this)">02 / AI Systems</button>
-      <button class="pillar-chip" onclick="switchPillar('data', this)">03 / Data</button>
-      <button class="pillar-chip" onclick="switchPillar('cloud', this)">04 / Cloud</button>
-      <button class="pillar-chip" onclick="switchPillar('infra', this)">05 / AI Infrastructure Consulting</button>
-    </div>
   </div>
 
   <!-- Live, interactive diagram — switch between AI / Cybersecurity / Data (built by assets/site.js) -->
   <div class="live-viz" data-live-viz="cyber"></div>
+
+  <!-- Spans the full hero width beneath the copy + diagram row -->
+  <div class="pillars-strip" data-reveal role="tablist" aria-label="Service pillars">
+    <button class="pillar-chip active" role="tab" aria-selected="true" aria-controls="panel-cyber" id="tab-cyber" type="button" data-pillar="cyber">01 / Cybersecurity</button>
+    <button class="pillar-chip" role="tab" aria-selected="false" aria-controls="panel-ai" id="tab-ai" type="button" data-pillar="ai">02 / AI Systems</button>
+    <button class="pillar-chip" role="tab" aria-selected="false" aria-controls="panel-data" id="tab-data" type="button" data-pillar="data">03 / Data</button>
+    <button class="pillar-chip" role="tab" aria-selected="false" aria-controls="panel-cloud" id="tab-cloud" type="button" data-pillar="cloud">04 / Cloud</button>
+    <button class="pillar-chip" role="tab" aria-selected="false" aria-controls="panel-infra" id="tab-infra" type="button" data-pillar="infra">05 / AI Infrastructure Consulting</button>
+  </div>
 
   <div class="scroll-indicator" style="color:rgba(212,218,240,0.6)">
     <span>Scroll</span>
@@ -660,7 +687,7 @@
     <div class="service-grid" id="grid-cyber" data-reveal-group>
 
       <!-- 1.1 IS Auditing -->
-      <div class="service-card" onclick="toggleService('cyber-1', this)">
+      <div class="service-card" data-service-id="cyber-1">
         <div class="service-number">1.1</div>
         <div class="service-name">Information Security Auditing</div>
         <div class="service-tagline">CERT-IN aligned audits across network, application, cloud, and organisational controls.</div>
@@ -708,7 +735,7 @@
       </div>
 
       <!-- 1.2 Pentest -->
-      <div class="service-card" onclick="toggleService('cyber-2', this)">
+      <div class="service-card" data-service-id="cyber-2">
         <div class="service-number">1.2</div>
         <div class="service-name">Penetration Testing</div>
         <div class="service-tagline">Adversarial simulation across web, mobile, API, network, cloud, and OT/SCADA.</div>
@@ -750,7 +777,7 @@
       </div>
 
       <!-- 1.3 Red Team -->
-      <div class="service-card" onclick="toggleService('cyber-3', this)">
+      <div class="service-card" data-service-id="cyber-3">
         <div class="service-number">1.3</div>
         <div class="service-name">Red Team & Simulation</div>
         <div class="service-tagline">Full-scope red team operations, phishing campaigns, and ransomware resiliency testing.</div>
@@ -791,7 +818,7 @@
       </div>
 
       <!-- 1.4 MDR -->
-      <div class="service-card" onclick="toggleService('cyber-4', this)">
+      <div class="service-card" data-service-id="cyber-4">
         <div class="service-number">1.4</div>
         <div class="service-name">Managed Detection & Response</div>
         <div class="service-tagline">24/7 SOC-as-a-Service, SIEM, UEBA, threat hunting, and SLA-tracked incident response.</div>
@@ -833,7 +860,7 @@
       </div>
 
       <!-- 1.5 IR & Forensics -->
-      <div class="service-card" onclick="toggleService('cyber-5', this)">
+      <div class="service-card" data-service-id="cyber-5">
         <div class="service-number">1.5</div>
         <div class="service-name">Incident Response & Forensics</div>
         <div class="service-tagline">Rapid breach containment, crisis management, and litigation-ready forensic investigation.</div>
@@ -876,7 +903,7 @@
       </div>
 
       <!-- 1.6 DevSecOps -->
-      <div class="service-card" onclick="toggleService('cyber-6', this)">
+      <div class="service-card" data-service-id="cyber-6">
         <div class="service-number">1.6</div>
         <div class="service-name">DevSecOps & Cloud Security</div>
         <div class="service-tagline">Security embedded into CI/CD pipelines, Zero Trust architecture, and cloud-native environments.</div>
@@ -917,7 +944,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('cyber-7', this)">
+      <div class="service-card" data-service-id="cyber-7">
         <div class="service-number">1.7</div>
         <div class="service-name">Cyber Risk Quantification</div>
         <div class="service-tagline">FAIR-based financial modelling that converts technical risk into loss exposure estimates.</div>
@@ -956,7 +983,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('cyber-8', this)">
+      <div class="service-card" data-service-id="cyber-8">
         <div class="service-number">1.8</div>
         <div class="service-name">GRC & Compliance</div>
         <div class="service-tagline">End-to-end governance, risk, and compliance across international and Indian regulatory frameworks.</div>
@@ -998,7 +1025,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('cyber-9', this)">
+      <div class="service-card" data-service-id="cyber-9">
         <div class="service-number">1.9</div>
         <div class="service-name">Government & PSU Advisory</div>
         <div class="service-tagline">Strategic cybersecurity guidance for central bodies, PSUs, and critical national infrastructure.</div>
@@ -1140,7 +1167,7 @@
 
     <div class="service-grid" id="grid-ai" data-reveal-group>
 
-      <div class="service-card" onclick="toggleService('ai-1', this)">
+      <div class="service-card" data-service-id="ai-1">
         <div class="service-number">2.1</div>
         <div class="service-name">AI Security & Red-Teaming</div>
         <div class="service-tagline">Adversarial testing, prompt injection assessment, and governance for AI-powered systems.</div>
@@ -1178,7 +1205,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('ai-2', this)">
+      <div class="service-card" data-service-id="ai-2">
         <div class="service-number">2.2</div>
         <div class="service-name">Agentic AI for Business</div>
         <div class="service-tagline">Autonomous AI agents driving acquisition, conversion, retention, and support at scale.</div>
@@ -1217,7 +1244,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('ai-3', this)">
+      <div class="service-card" data-service-id="ai-3">
         <div class="service-number">2.3</div>
         <div class="service-name">Data & Business Intelligence</div>
         <div class="service-tagline">Natural language querying, predictive analytics, and AI-powered decision intelligence.</div>
@@ -1286,7 +1313,7 @@
 
     <div class="service-grid" id="grid-data" data-reveal-group>
 
-      <div class="service-card" onclick="toggleService('data-1', this)">
+      <div class="service-card" data-service-id="data-1">
         <div class="service-number">3.1</div>
         <div class="service-name">Data Architecture &amp; Engineering</div>
         <div class="service-tagline">Modern data platforms, pipelines, and warehousing built for reliability and scale.</div>
@@ -1323,7 +1350,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('data-2', this)">
+      <div class="service-card" data-service-id="data-2">
         <div class="service-number">3.2</div>
         <div class="service-name">Data Governance &amp; Compliance</div>
         <div class="service-tagline">Policy, access control, and regulatory alignment for data you can trust and defend.</div>
@@ -1359,7 +1386,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('data-3', this)">
+      <div class="service-card" data-service-id="data-3">
         <div class="service-number">3.3</div>
         <div class="service-name">Analytics &amp; Business Intelligence</div>
         <div class="service-tagline">Dashboards, models, and self-serve analytics that turn data into decisions.</div>
@@ -1427,7 +1454,7 @@
 
     <div class="service-grid" id="grid-cloud" data-reveal-group>
 
-      <div class="service-card" onclick="toggleService('cloud-1', this)">
+      <div class="service-card" data-service-id="cloud-1">
         <div class="service-number">4.1</div>
         <div class="service-name">Cloud Strategy &amp; Architecture</div>
         <div class="service-tagline">Landing zones, reference architectures, and multi-cloud strategy aligned to business goals.</div>
@@ -1463,7 +1490,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('cloud-2', this)">
+      <div class="service-card" data-service-id="cloud-2">
         <div class="service-number">4.2</div>
         <div class="service-name">Migration &amp; Modernisation</div>
         <div class="service-tagline">Lift-and-shift, replatforming, and application modernisation with minimal disruption.</div>
@@ -1499,7 +1526,7 @@
         </div>
       </div>
 
-      <div class="service-card" onclick="toggleService('cloud-3', this)">
+      <div class="service-card" data-service-id="cloud-3">
         <div class="service-number">4.3</div>
         <div class="service-name">Cloud Operations &amp; FinOps</div>
         <div class="service-tagline">Ongoing optimisation for cost, performance, and reliability at scale.</div>
@@ -1569,7 +1596,7 @@
     <div class="service-grid" id="grid-infra" data-reveal-group>
 
       <!-- 5.1 Capacity Readiness Diagnostic -->
-      <div class="service-card" onclick="toggleService('infra-1', this)">
+      <div class="service-card" data-service-id="infra-1">
         <div class="service-number">5.1</div>
         <div class="service-name">Capacity Readiness Diagnostic</div>
         <div class="service-tagline">Translate a workload into a comparable spec, TCO range and sourcing plan — in days, not weeks.</div>
@@ -1606,7 +1633,7 @@
       </div>
 
       <!-- 5.2 GPU Sourcing -->
-      <div class="service-card" onclick="toggleService('infra-2', this)">
+      <div class="service-card" data-service-id="infra-2">
         <div class="service-number">5.2</div>
         <div class="service-name">GPU Sourcing</div>
         <div class="service-tagline">A controlled RFQ across a vetted provider panel, negotiated to close on your behalf.</div>
@@ -1642,7 +1669,7 @@
       </div>
 
       <!-- 5.3 Technical & Capacity Assurance -->
-      <div class="service-card" onclick="toggleService('infra-3', this)">
+      <div class="service-card" data-service-id="infra-3">
         <div class="service-number">5.3</div>
         <div class="service-name">Technical &amp; Capacity Assurance</div>
         <div class="service-tagline">Independent verification of ownership, topology and live performance before you sign.</div>
@@ -1677,7 +1704,7 @@
       </div>
 
       <!-- 5.4 Managed Capacity Governance -->
-      <div class="service-card" onclick="toggleService('infra-4', this)">
+      <div class="service-card" data-service-id="infra-4">
         <div class="service-number">5.4</div>
         <div class="service-name">Managed Capacity Governance</div>
         <div class="service-tagline">Ongoing SLA, utilization and renewal oversight after deployment.</div>
@@ -1748,64 +1775,131 @@
 </footer>
 
 <script>
-  // Switch pillar tabs
-  function switchPillar(pillar, btn) {
-    // Deactivate all panels and chips
-    document.querySelectorAll('.pillar-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.pillar-chip').forEach(c => c.classList.remove('active'));
-    
-    // Close any open service cards
-    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('expanded'));
-    document.querySelectorAll('.sub-services-panel').forEach(p => {
+(function(){
+  'use strict';
+
+  /* ══════════ PILLAR TABS ══════════ */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.pillar-chip'));
+
+  function closeAllCards(scope){
+    scope.querySelectorAll('.service-card').forEach(function(c){ c.classList.remove('expanded'); });
+    scope.querySelectorAll('.sub-services-panel').forEach(function(p){
       p.classList.remove('active');
       p.style.display = 'none';
     });
-    
-    // Activate selected (re-triggering animation)
-    const activePanel = document.getElementById('panel-' + pillar);
-    activePanel.style.animation = 'none';
-    activePanel.offsetHeight; /* trigger reflow */
-    activePanel.style.animation = null;
-    activePanel.classList.add('active');
-    
-    btn.classList.add('active');
+  }
 
-    // Smooth scroll to top of services body
-    const servicesBody = document.querySelector('.services-body');
+  function switchPillar(pillar, btn){
+    document.querySelectorAll('.pillar-panel').forEach(function(p){ p.classList.remove('active'); });
+    chips.forEach(function(c){
+      c.classList.remove('active');
+      c.setAttribute('aria-selected', 'false');
+      c.tabIndex = -1;
+    });
+
+    closeAllCards(document);
+
+    var panel = document.getElementById('panel-' + pillar);
+    if(!panel){ return; }
+
+    // re-trigger the entrance animation
+    panel.style.animation = 'none';
+    void panel.offsetHeight;
+    panel.style.animation = '';
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden', 'false');
+    document.querySelectorAll('.pillar-panel:not(.active)').forEach(function(p){
+      p.setAttribute('aria-hidden', 'true');
+    });
+
+    if(btn){
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      btn.tabIndex = 0;
+    }
+
+    var servicesBody = document.querySelector('.services-body');
     if(servicesBody){
       servicesBody.scrollIntoView({behavior:'smooth', block:'start'});
     }
   }
 
-  // Toggle service card expansion
-  function toggleService(id, card) {
-    const panel = document.getElementById(id);
-    const grid = card.closest('.service-grid');
-    const allCards = grid.querySelectorAll('.service-card');
-    const allPanels = grid.querySelectorAll('.sub-services-panel');
-    const isOpen = card.classList.contains('expanded');
+  chips.forEach(function(chip, i){
+    chip.tabIndex = chip.classList.contains('active') ? 0 : -1;
+    chip.addEventListener('click', function(){
+      switchPillar(chip.dataset.pillar, chip);
+    });
+    // roving tabindex + arrow-key navigation for the tab strip
+    chip.addEventListener('keydown', function(e){
+      var next = null;
+      if(e.key === 'ArrowRight' || e.key === 'ArrowDown'){ next = chips[(i + 1) % chips.length]; }
+      else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ next = chips[(i - 1 + chips.length) % chips.length]; }
+      else if(e.key === 'Home'){ next = chips[0]; }
+      else if(e.key === 'End'){ next = chips[chips.length - 1]; }
+      if(!next) return;
+      e.preventDefault();
+      switchPillar(next.dataset.pillar, next);
+      next.focus();
+    });
+  });
 
-    // Close all in this grid
-    allCards.forEach(c => c.classList.remove('expanded'));
-    allPanels.forEach(p => {
+  /* ══════════ EXPANDABLE SERVICE CARDS ══════════ */
+  function toggleService(id, card){
+    var panel = document.getElementById(id);
+    var grid = card.closest('.service-grid');
+    if(!panel || !grid) return;
+
+    var allCards = Array.prototype.slice.call(grid.querySelectorAll('.service-card'));
+    var allPanels = grid.querySelectorAll('.sub-services-panel');
+    var isOpen = card.classList.contains('expanded');
+
+    allCards.forEach(function(c){
+      c.classList.remove('expanded');
+      c.setAttribute('aria-expanded', 'false');
+    });
+    allPanels.forEach(function(p){
       p.classList.remove('active');
       p.style.display = 'none';
+      p.setAttribute('aria-hidden', 'true');
     });
 
-    if (!isOpen) {
-      card.classList.add('expanded');
-      // Insert panel after the row containing this card
-      const cardIndex = Array.from(allCards).indexOf(card);
-      const cols = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
-      const rowEnd = Math.floor(cardIndex / cols) * cols + cols;
-      const anchorCard = allCards[Math.min(rowEnd - 1, allCards.length - 1)];
+    if(isOpen) return;
 
-      // Move panel to after anchor card's position in DOM
-      anchorCard.parentNode.insertBefore(panel, anchorCard.nextSibling);
-      panel.style.display = 'grid';
-      panel.classList.add('active');
-    }
+    card.classList.add('expanded');
+    card.setAttribute('aria-expanded', 'true');
+
+    // Park the panel at the end of the row this card sits in, so the
+    // expanded detail reads as part of its row rather than the grid.
+    var cardIndex = allCards.indexOf(card);
+    var cols = window.innerWidth > 900 ? 3 : (window.innerWidth > 600 ? 2 : 1);
+    var rowEnd = Math.floor(cardIndex / cols) * cols + cols;
+    var anchor = allCards[Math.min(rowEnd - 1, allCards.length - 1)];
+
+    anchor.parentNode.insertBefore(panel, anchor.nextSibling);
+    panel.style.display = 'grid';
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden', 'false');
   }
+
+  document.querySelectorAll('.service-card[data-service-id]').forEach(function(card){
+    var panelId = card.getAttribute('data-service-id');
+    card.setAttribute('role', 'button');
+    card.tabIndex = 0;
+    card.setAttribute('aria-expanded', 'false');
+    card.setAttribute('aria-controls', panelId);
+    if(!card.getAttribute('aria-label')){
+      var name = card.querySelector('.service-name');
+      if(name){ card.setAttribute('aria-label', 'Expand details for ' + name.textContent.trim()); }
+    }
+    card.addEventListener('click', function(){ toggleService(panelId, card); });
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleService(panelId, card);
+      }
+    });
+  });
+})();
 </script>
 <script src="assets/site.js"></script>
 

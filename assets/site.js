@@ -112,14 +112,24 @@
   var links  = document.querySelector('.site-links');
 
   function closeMenu(){
-    if(burger) burger.classList.remove('is-open');
+    if(burger){
+      burger.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
     if(links) links.classList.remove('is-open');
     body.style.overflow = '';
   }
   if(burger && links){
+    // Wire the disclosure state into ARIA so the menu button reports
+    // itself correctly to assistive tech on every page.
+    if(!links.id){ links.id = 'site-menu'; }
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-controls', links.id);
+
     burger.addEventListener('click', function(){
       var open = links.classList.toggle('is-open');
       burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       body.style.overflow = open ? 'hidden' : '';
     });
     links.querySelectorAll('a').forEach(function(a){
@@ -237,7 +247,11 @@
       canvas.className = 'gh-mesh-canvas';
       canvas.setAttribute('aria-hidden', 'true');
       host.insertBefore(canvas, host.firstChild);
+      // getContext() can legitimately return null (canvas memory pressure,
+      // hardened/privacy contexts). The mesh is decorative, so bail out
+      // quietly rather than throwing and killing the rest of the bundle.
       var ctx = canvas.getContext('2d');
+      if(!ctx){ return; }
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var w = 0, h = 0, nodes = [], linkDist = 130, raf;
       var mx = -9999, my = -9999;
@@ -425,21 +439,20 @@
       btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
     });
 
-    /* ---------- hero parallax: the orbit diagram drifts with the pointer ---------- */
+    /* ---------- hero parallax: the decorative ring drifts with the pointer ----------
+       (The old .hero-orbit SVG was replaced by the live diagram, which has
+       its own parallax on the stage, so only the ring is handled here.) */
     var hero = document.querySelector('.hero');
-    var orbit = document.querySelector('.hero-orbit');
     var ring = document.querySelector('.hero-ring');
-    if(hero && (orbit || ring)){
+    if(hero && ring){
       hero.addEventListener('mousemove', function(e){
         var r = hero.getBoundingClientRect();
         var px = ((e.clientX - r.left) / r.width - 0.5) * 2;   // -1..1
         var py = ((e.clientY - r.top) / r.height - 0.5) * 2;
-        if(orbit){ orbit.style.transform = 'translateY(-50%) translate(' + (px * -10) + 'px,' + (py * -8) + 'px)'; }
-        if(ring){ ring.style.transform = 'translateY(-50%) translate(' + (px * -14) + 'px,' + (py * -11) + 'px)'; }
+        ring.style.transform = 'translateY(-50%) translate(' + (px * -14) + 'px,' + (py * -11) + 'px)';
       }, {passive:true});
       hero.addEventListener('mouseleave', function(){
-        if(orbit){ orbit.style.transform = ''; }
-        if(ring){ ring.style.transform = ''; }
+        ring.style.transform = '';
       });
     }
   }
@@ -515,24 +528,6 @@
   }
 
   /* ════════════════════════════════════════════════════════
-     FADE-IN-UP on scroll — generic utility class.
-     Add .fade-in-up to any element; it becomes .visible
-     once it enters the viewport.
-  ════════════════════════════════════════════════════════ */
-  var fadeEls = document.querySelectorAll('.fade-in-up');
-  if(fadeEls.length && 'IntersectionObserver' in window){
-    var fadeIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          fadeIO.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
-    fadeEls.forEach(function(el){ fadeIO.observe(el); });
-  }
-
-  /* ════════════════════════════════════════════════════════
      SCROLL INDICATOR auto-hide — fades out once user scrolls.
   ════════════════════════════════════════════════════════ */
   var scrollInd = document.querySelector('.scroll-indicator');
@@ -545,37 +540,6 @@
         scrollHidden = true;
       }
     }, {passive:true});
-  }
-
-  /* ════════════════════════════════════════════════════════
-     STAGGERED REVEAL — elements with [data-stagger] get
-     delayed reveal based on their index within parent.
-  ════════════════════════════════════════════════════════ */
-  var staggerParents = document.querySelectorAll('[data-stagger]');
-  if(staggerParents.length && 'IntersectionObserver' in window){
-    var staggerIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(!entry.isIntersecting) return;
-        var children = entry.target.children;
-        for(var i = 0; i < children.length; i++){
-          (function(child, delay){
-            setTimeout(function(){
-              child.style.opacity = '1';
-              child.style.transform = 'translateY(0)';
-            }, delay);
-          })(children[i], i * 120);
-        }
-        staggerIO.unobserve(entry.target);
-      });
-    }, {threshold:0.15});
-    staggerParents.forEach(function(parent){
-      for(var i = 0; i < parent.children.length; i++){
-        parent.children[i].style.opacity = '0';
-        parent.children[i].style.transform = 'translateY(20px)';
-        parent.children[i].style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      }
-      staggerIO.observe(parent);
-    });
   }
 
   /* ════════════════════════════════════════════════════════
@@ -612,22 +576,10 @@
     twEls.forEach(function(el){ twIO.observe(el); });
   }
 
-  /* ════════════════════════════════════════════════════════
-     SMOOTH PARALLAX on scroll — elements with [data-parallax]
-     shift vertically at a fraction of the scroll speed.
-  ════════════════════════════════════════════════════════ */
-  var parallaxEls = document.querySelectorAll('[data-parallax]');
-  if(parallaxEls.length && !reduceMotion){
-    window.addEventListener('scroll', function(){
-      var scrollY = window.scrollY;
-      parallaxEls.forEach(function(el){
-        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.15;
-        var rect = el.getBoundingClientRect();
-        var offset = (scrollY - el.offsetTop) * speed;
-        el.style.transform = 'translateY(' + offset + 'px)';
-      });
-    }, {passive:true});
-  }
+  /* (Three opt-in scroll utilities were removed here — .fade-in-up,
+     [data-stagger] and [data-parallax]. No page used any of them; the
+     generic [data-reveal] / [data-reveal-group] system covers the same
+     ground and is actually wired up.) */
 
   /* ════════════════════════════════════════════════════════
      TILT EFFECT on cards — subtle 3D tilt on mousemove.
@@ -695,48 +647,14 @@
     host.insertBefore(aurora, host.firstChild);
   });
 
-  /* ---------- floating HUD chips ---------- */
-  var hudDefaults = {
-    'services-hero': ['Security-first','AI-ready data mesh','Cloud native','Zero Trust'],
-    'prac-hero': ['NIST CSF','Zero Trust','CIS Controls','MITRE ATT&CK'],
-    'contact-hero': ['Response < 1 day','Senior humans only','No sales layer','In confidence']
-  };
-  var hudHosts = document.querySelectorAll('.hero, .services-hero, .prac-hero, .contact-hero');
-  hudHosts.forEach(function(host){
-    if(host.querySelector('.site-mesh-hud') || reduceMotion) return;
-    var custom = (host.getAttribute('data-hud') || '').split('|').filter(Boolean);
-    var list = custom.length ? custom : (hudDefaults[host.className.replace(/\s.*/,'')] || ['Human first','AI · Data · Cloud','Secure by design','Open systems']);
-    var layer = document.createElement('div');
-    layer.className = 'site-mesh-hud';
-    layer.setAttribute('aria-hidden','true');
-    list.slice(0,6).forEach(function(label){
-      var chip = document.createElement('span');
-      chip.className = 'mesh-chip';
-      chip.innerHTML = '<span class="hud-dot"></span>' + label;
-      layer.appendChild(chip);
-    });
-    host.appendChild(layer);
-  });
-
-  /* ---------- interactive diagram: hover focus / slow glow ---------- */
-  var diagrams = document.querySelectorAll('.hero-diagram, .hero-orbit');
-  diagrams.forEach(function(dg){
-    var host = dg.closest('.hero, .services-hero, .prac-hero, .contact-hero') || dg.parentElement;
-    if(!host) return;
-    host.addEventListener('mousemove', function(e){
-      var r = host.getBoundingClientRect();
-      var px = ((e.clientX - r.left) / r.width);
-      var py = ((e.clientY - r.top) / r.height);
-      var dx = (px - 0.5) * 12;
-      var dy = (py - 0.5) * 10;
-      dg.style.transform = 'translateY(-50%) translate(' + dx + 'px,' + dy + 'px)';
-      dg.style.filter = 'drop-shadow(0 0 22px rgba(114,136,214,.32)) drop-shadow(0 26px 60px rgba(26,39,68,.28))';
-    }, {passive:true});
-    host.addEventListener('mouseleave', function(){
-      dg.style.transform = '';
-      dg.style.filter = '';
-    });
-  });
+  /* Two decorative hero systems were removed here:
+     • the floating HUD chip rail (.site-mesh-hud / .mesh-chip) — every hero
+       on every page now carries the live diagram, which shows the same
+       "live systems" idea with more information, and the rail stacked on
+       top of the diagram card;
+     • the .hero-diagram / .hero-orbit hover glow — those visuals were
+       replaced by the live diagram, which parallaxes its own stage.
+     Both matched no element on any page. */
 
   /* ---------- pointer shine on cards (adds to existing spotlight) ---------- */
   var shineCards = document.querySelectorAll('.cap-card, .service-card, .framework-card, .industry-card, .checklist-card, .pillar');

@@ -96,8 +96,6 @@
   .btn-primary:hover{background:#1f2e60;transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(46,64,128,.45);}
   .btn-ghost{border-color:rgba(255,255,255,.3);color:var(--on-navy);}
   .btn-ghost:hover{border-color:var(--tan);color:var(--tan);}
-  .btn-ghost.on-light{border-color:var(--ink);color:var(--ink);}
-  .btn-ghost.on-light:hover{border-color:var(--blue);color:var(--blue);}
 
   /* Header/nav now lives in assets/site.css (.site-header / .site-nav) — shared across pages */
 
@@ -274,9 +272,13 @@
   .pillar-card .icon{font-size:20px;color:var(--tan);margin-bottom:18px;}
   .pillar-card h3{font-family:var(--sans);font-size:14px;font-weight:700;margin-bottom:8px;line-height:1.3;}
   .pillar-card p{font-size:11.5px;color:var(--muted-light);margin:0;line-height:1.45;}
-  /* Keep the acronym intact and legible when the four-column scope
-     cards tighten at desktop widths. */
-  .psu-label{display:inline-block;white-space:nowrap;font-weight:700;color:inherit;}
+  /* Keep the acronym intact when the four-column scope cards tighten at
+     desktop widths. Plain inline (not inline-block) so the line can still
+     break *before* "PSU" instead of overflowing its card; nowrap keeps the
+     acronym itself from splitting. */
+  .psu-label{white-space:nowrap;font-weight:700;color:inherit;}
+  /* Guard the cards so a tight column can never clip the last glyph. */
+  .obj-card p, .pillar-card p, .detail-card li{overflow-wrap:break-word;min-width:0}
   @media (max-width:980px){.pillar-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.pillar-grid{grid-template-columns:1fr;}}
 
@@ -354,7 +356,6 @@
 
   /* ---------- Network / bench ---------- */
   .bench-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .bench-grid .wide{grid-column:span 1;}
   .bench-card{
     background:var(--navy-2);border-radius:6px;padding:26px;color:var(--on-navy);
   }

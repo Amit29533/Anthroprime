@@ -65,6 +65,23 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .quicklink:hover{opacity:.75}
 .quicklink span:first-child{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,218,240,.45)}
 
+/* ── HERO LAYOUT ── copy column + diagram column, so the diagram is a
+   real grid item instead of an overlay sitting on top of the copy. */
+@media (min-width:961px){
+  .contact-hero{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(340px,420px);
+    column-gap:clamp(28px,4vw,56px);
+    align-items:center;
+  }
+  .contact-hero > .contact-hero-inner{grid-column:1;grid-row:1;min-width:0;max-width:none}
+  .contact-hero > .hero-quicklinks{grid-column:1;grid-row:2}
+  .contact-hero > .live-viz{grid-column:2;grid-row:1 / span 2}
+}
+@media (min-width:961px) and (max-width:1120px){
+  .contact-hero{grid-template-columns:minmax(0,1fr) minmax(300px,360px);column-gap:28px}
+}
+
 /* ══════════════════════════════
    MAIN GRID — FORM + SIDEBAR
 ══════════════════════════════ */
@@ -135,9 +152,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 .side-card.light{background:var(--surface);color:var(--text);border:1px solid var(--border)}
 .side-card.light h3{color:var(--text)}
-.side-card.light .side-item{border-top-color:var(--border)}
-.side-card.light .side-item span:first-child{color:var(--faint)}
-.side-card.light .side-item a,.side-card.light .side-item p{color:var(--text)}
+/* The light side card holds .sla-row entries, not .side-item, so the old
+   per-item overrides were never reachable. Only the label colour actually
+   needs adjusting on the light surface — .sla-row already draws its border
+   from --border. */
+.side-card.light .sla-row span:first-child{color:var(--faint)}
 .sla-row{display:flex;justify-content:space-between;padding:.6rem 0;font-size:.85rem;border-top:1px solid var(--border)}
 .sla-row:first-of-type{border-top:none}
 .sla-row span:first-child{color:var(--muted);font-weight:300}
@@ -558,6 +577,17 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   var timeGrid = document.getElementById('timeGrid');
   var selectedDate = null, selectedSlot = null;
 
+  /* Element lookups MUST be resolved before the first `pill.click()`
+     below. `var` hoists the name but not the value, so when these
+     lived further down the file the auto-selected first date called
+     `updateSummary()` against `undefined`, threw a TypeError and
+     killed the whole IIFE — no listeners on any of the three action
+     buttons and a permanently disabled scheduler. */
+  var summaryEl = document.getElementById('schedSummary');
+  var btnOutlook = document.getElementById('btnOutlook');
+  var btnIcs = document.getElementById('btnIcs');
+  var btnRequestSlot = document.getElementById('btnRequestSlot');
+
   dates.forEach(function(d, i){
     var pill = document.createElement('div');
     pill.className = 'date-pill';
@@ -607,11 +637,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   function escIcs(str){
     return String(str || '').replace(/([,;])/g,'\\$1').replace(/\n/g,'\\n');
   }
-
-  var summaryEl = document.getElementById('schedSummary');
-  var btnOutlook = document.getElementById('btnOutlook');
-  var btnIcs = document.getElementById('btnIcs');
-  var btnRequestSlot = document.getElementById('btnRequestSlot');
 
   function updateSummary(){
     if(!selectedDate || !selectedSlot){

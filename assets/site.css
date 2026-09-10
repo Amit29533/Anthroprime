@@ -35,6 +35,10 @@ html[data-theme="dark"]{
   --gh-cream: #ece9e2;
 }
 html[data-theme="dark"] .site-links{background:#111216}
+/* Decorative hero layers tagged .dm-hide (inner wedge tint, orbit ring)
+   are light-mode depth cues; on the dark surface they read as stray
+   rectangles, so dark mode hides them. */
+html[data-theme="dark"] .dm-hide{display:none}
 html[data-theme="dark"] .gh-cursor-ring{border-color:rgba(114,136,214,0.5)}
 html[data-theme="dark"] .gh-cursor-hover .gh-cursor-ring{
   border-color:rgba(114,136,214,0.3); background:rgba(114,136,214,0.12);

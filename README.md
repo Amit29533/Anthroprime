@@ -90,7 +90,7 @@ on any failed assertion.
 * regression guards: no `zoom` hack, the diagram is never `position:absolute`,
   every hero places the diagram in a grid column, no inline `on*=` handlers
 
-`tools/qa/structure.mjs` (50 assertions)
+`tools/qa/structure.mjs` (58 assertions)
 * every `aria-controls` / `aria-labelledby` resolves to a real id
 * `role="tab"` elements live inside a `role="tablist"`; each controls a real panel
 * roving tabindex leaves exactly one tab stop

@@ -134,9 +134,19 @@ All phases delivered. Final numbers from the harness:
 |---|---|---|
 | audit errors | 11 | **0** |
 | audit warnings | 364 | **4** (all runtime-state false positives) |
-| interaction assertions | — | **61 passed, 0 failed** |
+| behaviour assertions (`interactions.mjs`) | — | **61 passed, 0 failed** |
+| structure assertions (`structure.mjs`) | — | **50 passed, 0 failed** |
 | `assets/site.css` | 1702 lines / 72,846 B | 1328 lines / 58,775 B (**−19.3%**) |
 | inline `on*=` handlers | 27 | **0** |
+
+The 111 assertions are mutation-tested. Reintroducing each of the three original
+defects turns the matching check red and nothing else:
+
+| reintroduced defect | caught by |
+|---|---|
+| `body{ zoom:.9; width:111.111111% }` | `interactions.mjs` — "no page uses the removed desktop zoom hack" |
+| `.live-viz{ position:absolute; right:4% }` | `interactions.mjs` — "the live diagram is never absolutely positioned" |
+| contact scheduler declarations moved back below `dates.forEach` | `audit.mjs` (JS_ERROR) **and** `interactions.mjs` — "contact.html boots cleanly" |
 
 The 4 remaining warnings are not dead code: `#services-overlay.open`,
 `.sched-summary strong` and `.checklist-items li.done` only exist after an

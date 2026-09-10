@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "audit": "node audit.mjs",
-    "test": "node interactions.mjs",
-    "qa": "node audit.mjs && node interactions.mjs"
+    "test": "node interactions.mjs && node structure.mjs",
+    "test:ui": "node interactions.mjs",
+    "test:structure": "node structure.mjs",
+    "qa": "node audit.mjs && node interactions.mjs && node structure.mjs"
   },
   "devDependencies": {
     "jsdom": "^25.0.1"

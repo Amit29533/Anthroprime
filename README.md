@@ -47,12 +47,15 @@ DOM (jsdom) — it does not reimplement any site logic.
 cd tools/qa
 npm install
 
-npm run audit   # runtime errors, broken links/anchors, duplicate ids, a11y, dead code
-npm test        # drives the UI: theme, nav, overlay, diagram, forms, scheduler
-npm run qa      # both
+npm run audit           # runtime errors, broken links/anchors, duplicate ids, a11y, dead code
+npm test                # both suites below
+npm run test:ui         # behaviour: theme, nav, overlay, diagram, forms, scheduler
+npm run test:structure  # structure: ARIA wiring, head, ids, netlify config, hero layout
+npm run qa              # audit + both suites
 ```
 
-`audit` exits non-zero on any error-severity finding.
+`audit` exits non-zero on any error-severity finding; both suites exit non-zero
+on any failed assertion.
 
 ### What the checks cover
 
@@ -85,6 +88,23 @@ npm run qa      # both
 * reduced motion disables the mesh canvas and custom cursor
 * regression guards: no `zoom` hack, the diagram is never `position:absolute`,
   every hero places the diagram in a grid column, no inline `on*=` handlers
+
+`tools/qa/structure.mjs` (50 assertions)
+* every `aria-controls` / `aria-labelledby` resolves to a real id
+* `role="tab"` elements live inside a `role="tablist"`; each controls a real panel
+* roving tabindex leaves exactly one tab stop
+* exactly one page-level `<h1>`, plus `lang`, charset, viewport, title, description
+* no duplicate ids **after** the scripts run (catches JS-injected collisions)
+* diagram gradient ids don't collide within a page
+* every `netlify.toml` redirect target exists; `publish = "."` with no build command
+* the hero each page's grid CSS targets really does contain `.live-viz` as a
+  direct child — this is the guard that stops the overlay regression returning
+* keyboard-operable widgets declare a `:focus-visible` style
+* form controls are labelled, required fields are `required`, Netlify honeypot present
+
+The suite is mutation-tested: reintroducing the `zoom` hack, setting `.live-viz`
+back to `position:absolute`, or reverting the contact scheduler's declaration
+order each turns the relevant check red.
 
 `tools/qa/strip-dead-css.mjs` is a maintenance script used to remove CSS whose
 selectors only ever matched retired visuals. It removes a block only when
